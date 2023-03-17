@@ -1,0 +1,19 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "Vidventures Web app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VijinV/Vidventures-WebApp.git"
+  },
+  "author": "Vijin Vinod",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VijinV/Vidventures-WebApp/issues"
+  },
+  "homepage": "https://github.com/VijinV/Vidventures-WebApp#readme"
+}
