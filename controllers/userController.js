@@ -2,33 +2,6 @@ const bcrypt = require('bcrypt');
 const userModel = require('../models/userModel')
 const nodemailer = require('nodemailer');
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'techcab.india@gmail.com',
-      pass: 'techcabindia@swargam'
-    }
-  });
-
-  function sendEmail(to, subject, text) {
-    const mailOptions = {
-      from: 'techcabindia@gmail.com',
-      to: "techcabindia@gmail.com",
-      subject: 'this is a test',
-      text: 'testing nodemailer'
-    };
-  
-    transporter.sendMail(mailOptions, function(error, info) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent: ' + info.response);
-      }
-    });
-  }
-
-  sendEmail()
-  
 
 const loadHome = (req,res,next)=>{
     res.render('home')
