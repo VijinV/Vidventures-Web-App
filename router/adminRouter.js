@@ -6,7 +6,7 @@ const adminAuth = require('../middlewares/adminAuth');
 
 
 
-route.get('/',adminController.loadDashboard)
+route.get('/',adminAuth.isLogin,adminController.loadDashboard)
 
 route.get('/login',adminAuth.isLogout,adminController.loadLogin)
 
