@@ -12,6 +12,10 @@ route.get('/login',userController.loadLogin)
 
 route.post('/register',userController.registerUser)
 
+route.get('/verify',userController.verifyUserEmail)
+
+route.post('/login',userController.verifyUser)
+
 
 
 

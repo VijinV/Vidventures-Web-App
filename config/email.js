@@ -20,10 +20,15 @@ const message = {
 
 
 // Send the message using the previously created transporter object
-transporter.sendMail(message, function(error, info) {
+const sendMessage = transporter.sendMail(message, function(error, info) {
   if (error) {
     console.log('Error occurred while sending email: ', error.message);
     return process.exit(1);
   }
   console.log('Email sent successfully to: ', info.messageId);
 });
+
+
+module.exports ={
+  transporter
+}

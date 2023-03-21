@@ -28,7 +28,11 @@ app.use(express.urlencoded({ extended: true }));
 // user Router
 
 const userRoute = require("./router/userRouter");
+const adminRoute = require('./router/adminRouter')
+
 app.use("/", userRoute);
+app.use("/admin", adminRoute);
+
 userRoute.set("views", path.join(__dirname+'/views/user'));
 userRoute.engine(
   "hbs",
@@ -39,9 +43,27 @@ userRoute.engine(
     layoutsDir: __dirname + "/views/layout",
   })
 );
-userRoute.use(express.static(path.join(__dirname, "public/user")));
 
 // admin route
+
+adminRoute.set("views", path.join(__dirname+'/views/admin'));
+adminRoute.engine(
+  "hbs",
+  hbs.engine({
+    extname: "hbs",
+    defaultLayout: "adminLayout",
+    partialsDir: __dirname + "/views/partials/admin",
+    layoutsDir: __dirname + "/views/layout",
+  })
+);
+
+app.use(express.static(path.join(__dirname, "public/user")));
+
+adminRoute.use(express.static(path.join(__dirname, "public/admin")));
+
+
+
+
 
 mongoose.set("strictQuery", true);
 mongoose.connect("mongodb://127.0.0.1:27017/Vidventures", () =>

@@ -3,6 +3,22 @@ const userModel = require('../models/userModel')
 const nodemailer = require('nodemailer');
 
 
+// const sendMessage = require('../config/email')
+let message;
+
+let newUser;
+
+// Create a transporter object with SMTP configuration
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'vfcvijin@gmail.com', // your Gmail address
+      pass: 'nkmgensuqskzdgze' // your Gmail password
+    }
+  });
+  
+
+
 const loadHome = (req,res,next)=>{
     res.render('home')
 }
@@ -15,7 +31,7 @@ const loadLogin = async (req,res,next)=>{
 const registerUser = async (req,res,next)=>{
 
     try {
-        const {email,name,password} = req.body
+        const {email,name,password,mobile} = req.body
 
         const userData = await userModel.findOne({email:email})
 
@@ -23,19 +39,37 @@ const registerUser = async (req,res,next)=>{
             
             const newPassword = await bcrypt.hash(password,10)
 
-            const user = new userModel({
+            newUser = new userModel({
                 name:name,
                 email:email,
-                password:newPassword
+                password:newPassword,
+                mobile:mobile
             })
 
-            if(user){
-                user.save(()=>console.log('userSaved'))
+            // Create a message object
+            const message = {
+           from: 'vfcvijin@gmail.com', // Sender address
+           to: email, // List of recipients
+           subject: 'Test Email from Node.js', // Subject line
+           text: 'Hello, this is a test email sent from Node.js using Nodemailer!', // Plain text body,
+           html: '<p>Hello, this is a test email sent from Node.js using Nodemailer!</p><p>Here\'s a <a href="http://localhost:3000/verify">link</a> for you to check out.</p>' // HTML body with a link
+            };
 
-            }
+
+
+                transporter.sendMail(message, function(error, info) {
+                    if (error) {
+                      console.log('Error occurred while sending email: ', error.message);
+                      return process.exit(1);
+                    }
+                    console.log('Email sent successfully to: ', info.messageId);
+                  });
+                  res.redirect('/login')
 
         } else {
             
+            res.render('login.html',{message: 'Account already exists'})
+
         }
 
     
@@ -44,8 +78,52 @@ const registerUser = async (req,res,next)=>{
     }
 }
 
+const verifyUserEmail = (req,res)=>{
+
+
+    newUser.isVerified = true;
+
+    newUser.save(()=>{
+        console.log('user saved successfully')
+    })
+    console.log(newUser)
+
+    res.render('/')
+
+}
+
+const verifyUser = async (req,res)=>{
+    
+    try {
+        const {email,password} = req.body;
+
+        const userDate = await userModel.findOne({email:email})
+
+        if(userDate){
+
+            const passwordMatch = await bcrypt.compare(password,userDate.password)
+
+            if(passwordMatch){
+
+
+                console.log('password match')
+
+                res.redirect('/')
+
+            }
+        }
+    
+    } catch (error) {
+        
+    }
+
+
+}
+
 
 module.exports = {
+    verifyUser,
+    verifyUserEmail,
     loadHome,
     loadLogin,
     registerUser
