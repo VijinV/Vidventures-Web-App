@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
+const session = require('express-session')
 
 
 // requiring config files
@@ -24,6 +25,19 @@ app.engine(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(session({
+
+  secret:'ijuytrdsfxcgvhbj',
+  saveUninitialized:true,
+  resave:true,
+  cookie:{
+    maxAge:1000*60*60*24*7
+  }
+
+}))
+
+
 
 // user Router
 
@@ -57,9 +71,9 @@ adminRoute.engine(
   })
 );
 
-app.use(express.static(path.join(__dirname, "public/user")));
+userRoute.use(express.static(path.join(__dirname, "public")));
 
-adminRoute.use(express.static(path.join(__dirname, "public/admin")));
+app.use(express.static(path.join(__dirname, "public/admin")));
 
 
 

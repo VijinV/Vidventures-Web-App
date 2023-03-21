@@ -21,6 +21,11 @@ const userSchema = new mongoose.Schema({
   isVerified:{
     type:Boolean,
     required: true,
+  },
+  isAdmin:{
+    type:Boolean,
+    required: true,
+    default: false,
   }
 });
 

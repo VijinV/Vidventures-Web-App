@@ -2,12 +2,12 @@
             <div class="card mx-auto card-login">
                 <div class="card-body">
                     <h4 class="card-title mb-4">Sign in</h4>
-                    <form>
+                    <form action="/admin/login" method="post">
                         <div class="mb-3">
-                            <input class="form-control" placeholder="Username or email" type="text">
+                            <input class="form-control" name="email" placeholder=" Email" type="text">
                         </div> <!-- form-group// -->
                         <div class="mb-3">
-                            <input class="form-control" placeholder="Password" type="password">
+                            <input class="form-control" name="password" placeholder="Password" type="password">
                         </div> <!-- form-group// -->
                         <div class="mb-3">
                             <a href="#" class="float-end font-sm text-muted">Forgot password?</a>

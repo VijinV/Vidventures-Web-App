@@ -88,7 +88,7 @@ const verifyUserEmail = (req,res)=>{
     })
     console.log(newUser)
 
-    res.render('/')
+    res.redirect('/')
 
 }
 
