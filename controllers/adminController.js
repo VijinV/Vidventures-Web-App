@@ -40,8 +40,30 @@ const verifyAdmin = async (req, res, next) => {
   }
 }
 
+
+
+const loadUser = async (req, res,next) => {
+
+try {
+    
+    adminModel.find({}).exec((err,users)=>{
+
+        console.log(users);
+
+        res.render('users',{users})
+
+    })
+
+} catch (error) {
+    
+}
+
+}
+
+
 module.exports ={
     loadLogin,
     loadDashboard,
-    verifyAdmin
+    verifyAdmin,
+    loadUser
 }

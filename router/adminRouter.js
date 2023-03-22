@@ -12,6 +12,8 @@ route.get('/login',adminAuth.isLogout,adminController.loadLogin)
 
 route.post('/login',adminAuth.isLogout,adminController.verifyAdmin)
 
+route.get('/userList',adminAuth.isLogin,adminController.loadUser)
+
 
 
 

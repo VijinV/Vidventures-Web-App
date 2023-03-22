@@ -26,7 +26,25 @@ const userSchema = new mongoose.Schema({
     type:Boolean,
     required: true,
     default: false,
+  },
+  registeredAt:{
+    type:Date,
+    default:Date.now()
+  },isAvailable:{
+    type:Boolean,
+    default: true
   }
 });
+
+userSchema.statics.getUserByEmail = async function(email) {
+    const user = await this.findOne({ email });
+    return user;
+  };
+
+userSchema.statics.getUserById = async function(id) {
+    const user = await this.findOne({ email });
+    return user;
+  };
+
 
 module.exports = mongoose.model("User", userSchema);

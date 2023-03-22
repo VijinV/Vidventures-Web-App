@@ -8,6 +8,14 @@ let message;
 
 let newUser;
 
+let login =false
+
+const getSession = (req, res) => {
+
+    return req.session.user_id
+
+}
+
 // Create a transporter object with SMTP configuration
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -20,11 +28,15 @@ const transporter = nodemailer.createTransport({
 
 
 const loadHome = (req,res,next)=>{
-    res.render('home')
+    
+    
+
+
+    res.render('home',{login,session:getSession(req,res)})
 }
 
 const loadLogin = async (req,res,next)=>{
-    res.render('login')
+    res.render('login',{login:true})
 
 }
 
@@ -97,7 +109,7 @@ const verifyUser = async (req,res)=>{
     try {
         const {email,password} = req.body;
 
-        const userDate = await userModel.findOne({email:email})
+        const userDate = await userModel.getUserByEmail(email)
 
         if(userDate){
 
@@ -106,16 +118,25 @@ const verifyUser = async (req,res)=>{
             if(passwordMatch){
 
 
-                console.log('password match')
+                req.session.user_id = userDate._id
 
                 res.redirect('/')
 
             }
+        }else{
+            res.send('user not found')
         }
     
     } catch (error) {
         
     }
+
+
+}
+
+const loadCart = (req, res) => {
+
+    res.render('cart',{session:true})
 
 
 }
@@ -126,5 +147,6 @@ module.exports = {
     verifyUserEmail,
     loadHome,
     loadLogin,
-    registerUser
+    registerUser,
+    loadCart
 }

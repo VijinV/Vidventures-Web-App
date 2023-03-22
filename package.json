@@ -27,6 +27,7 @@
     "express-session": "^1.17.3",
     "handlebars": "^4.7.7",
     "mongoose": "^6.8.4",
+    "nocache": "^3.0.4",
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.21",
     "passport": "^0.6.0",

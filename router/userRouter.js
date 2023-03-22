@@ -2,19 +2,28 @@ const express = require('express');
 const route = express();
 
 const userController = require('../controllers/userController');
+const userAuth = require('../middlewares/userAuth');
 
 
 
+// get 
 
 route.get('/',userController.loadHome)
 
-route.get('/login',userController.loadLogin)
+route.get('/login',userAuth.isLogout,userController.loadLogin)
 
-route.post('/register',userController.registerUser)
+route.get('/cart',userAuth.isLogin,userController.loadCart)
 
 route.get('/verify',userController.verifyUserEmail)
 
-route.post('/login',userController.verifyUser)
+route.get('/logout',userAuth.logout)
+
+// post 
+
+route.post('/login',userAuth.isLogout,userController.verifyUser)
+
+route.post('/register',userAuth.isLogout,userController.registerUser)
+
 
 
 

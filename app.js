@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 const session = require('express-session')
+const nocache = require('nocache');
 
 
 // requiring config files
@@ -25,6 +26,8 @@ app.engine(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(nocache()) 
 
 app.use(session({
 
@@ -52,6 +55,7 @@ userRoute.engine(
   "hbs",
   hbs.engine({
     extname: "hbs",
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
     defaultLayout: "userLayout",
     partialsDir: __dirname + "/views/partials/user",
     layoutsDir: __dirname + "/views/layout",
@@ -67,6 +71,7 @@ adminRoute.engine(
     extname: "hbs",
     defaultLayout: "adminLayout",
     partialsDir: __dirname + "/views/partials/admin",
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
     layoutsDir: __dirname + "/views/layout",
   })
 );

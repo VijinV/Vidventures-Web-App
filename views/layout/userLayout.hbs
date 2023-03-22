@@ -37,12 +37,22 @@
 
 
 
-
+{{#if login}}
+{{>noNav}}
+{{else if session}}
+{{>loginNav}}
+{{else}}
 {{>header}}
+{{/if}}
 
 {{{body}}}
 
+
+{{#if login}}
+{{>noNav}}
+{{else}}
 {{>footer}}
+{{/if}}
 
 
 
