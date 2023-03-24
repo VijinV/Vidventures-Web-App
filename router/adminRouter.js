@@ -1,41 +1,25 @@
-const express = require('express');
+const express = require("express");
 const route = express();
+const multer = require("../config/multer");
 
-const adminController = require('../controllers/adminController')
-const adminAuth = require('../middlewares/adminAuth');
+const adminController = require("../controllers/adminController");
+const adminAuth = require("../middlewares/adminAuth");
 
+route.get("/", adminAuth.isLogin, adminController.loadDashboard);
 
+route.get("/login", adminAuth.isLogout, adminController.loadLogin);
 
-route.get('/',adminAuth.isLogin,adminController.loadDashboard)
+route.get("/product", adminController.loadProduct);
 
-route.get('/login',adminAuth.isLogout,adminController.loadLogin)
+route.get("/addProduct", adminController.loadAddProduct);
 
-route.post('/login',adminAuth.isLogout,adminController.verifyAdmin)
+route.get("/unListProduct", adminController.ListProduct)
 
-route.get('/userList',adminAuth.isLogin,adminController.loadUser)
+route.get("/userList", adminAuth.isLogin, adminController.loadUser);
 
+route.post("/login", adminAuth.isLogout, adminController.verifyAdmin);
 
-
-
-
-
-
-
-
+route.post("/addProduct", multer.upload, adminController.addProduct);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports = route
+module.exports = route;

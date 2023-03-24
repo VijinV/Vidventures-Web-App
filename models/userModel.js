@@ -42,7 +42,7 @@ userSchema.statics.getUserByEmail = async function(email) {
   };
 
 userSchema.statics.getUserById = async function(id) {
-    const user = await this.findOne({ email });
+    const user = await this.findOne({ id });
     return user;
   };
 

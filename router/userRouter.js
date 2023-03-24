@@ -5,7 +5,6 @@ const userController = require('../controllers/userController');
 const userAuth = require('../middlewares/userAuth');
 
 
-
 // get 
 
 route.get('/',userController.loadHome)
@@ -17,6 +16,8 @@ route.get('/cart',userAuth.isLogin,userController.loadCart)
 route.get('/verify',userController.verifyUserEmail)
 
 route.get('/logout',userAuth.logout)
+
+route.get('/profile',userAuth.isLogin,userController.loadProfile)
 
 // post 
 

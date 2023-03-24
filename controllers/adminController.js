@@ -1,5 +1,10 @@
 const bcrypt = require('bcrypt');
 const adminModel = require('../models/userModel')
+const Products = require('../models/productModel')
+const multer = require('../config/multer');
+const { response } = require('../router/adminRouter');
+
+
 
 
 const loadDashboard = (req, res, next) => {
@@ -60,10 +65,101 @@ try {
 
 }
 
+const loadProduct = async (req, res) =>{
+
+    const product = await Products.getAllProducts()
+
+    res.render('product',{product})
+
+
+}
+
+const loadAddProduct = async (req, res) =>{
+
+   
+
+    res.render('addProduct')
+}
+
+
+const addProduct = async (req, res) =>{
+    try {
+        const {name,description,mrp,discountedPrice,image} = req.body
+        const product = {
+            name: name,
+            description: description,
+            mrp:mrp,
+            discountedPrice:discountedPrice,
+            image:req.file.filename,
+        }
+
+        Products.addProduct(product).then(()=>console.log('product saved successfully'))
+
+        res.redirect('/admin/product')
+
+    } catch (error) {
+        
+        console.log(error.message)
+
+    }
+}
+
+const loadEditProduct = async (req, res) => {
+
+    const id = req.query.id
+    const product = await Product.getProduct(id)
+
+    res.render('editProduct', { product})
+
+
+}
+
+const editProduct = (req, res) => {
+
+
+    Products.findByIdAndUpdate({_id:req.query.id},{$set:{
+
+    }})
+
+
+
+}
+
+const ListProduct = async (req, res) => {
+
+    try {
+        const product = await Products.getProduct(req.query.id)
+
+        if (product.isAvailable == true) {
+            const Product = await Products.findByIdAndUpdate({_id:req.query.id},{$set:{
+               isAvailable:false
+            }}).then(()=>console.log('updated'))
+        } else {
+            const Product = await Products.findByIdAndUpdate({_id:req.query.id},{$set:{
+                isAvailable:true
+             }})
+        }
+
+        res.redirect('/admin/product')
+
+    } catch (error) {
+        
+    }
+
+}
+
+
+
+
 
 module.exports ={
     loadLogin,
     loadDashboard,
     verifyAdmin,
-    loadUser
+    loadUser,
+    loadProduct,
+    loadAddProduct,
+    addProduct,
+    loadEditProduct,
+    ListProduct
 }
