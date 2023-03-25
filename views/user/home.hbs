@@ -139,7 +139,7 @@
                                 </div>
                             </div>
                             <div class="shape-wrapper" id="scene">
-                                <img src="user/assets/images/banner/banner-01.png" alt="Hero Image">
+                                <img src="admin/assets/imgs/logo/logo.png" alt="Hero Image">
                                 <div class="hero-bg-shape-1 layer" data-depth="0.4">
                                     <img src="user/assets/images/shape/shape-01.png" alt="Hero Image Background Shape">
                                 </div>
@@ -152,11 +152,12 @@
                                 <div class="swiper-wrapper">
 
                                     <!-- Start Single Card  -->
+                                    {{#each product}}
                                     <div class="swiper-slide">
                                         <div class="rbt-card variation-01 rbt-hover">
                                             <div class="rbt-card-img">
                                                 <a href="course-details.html">
-                                                    <img src="user/assets/images/course/course-01.jpg" alt="Card image">
+                                                    <img src="admin/assets/ProductImages/{{image}}" alt="Card image">
                                                     <div class="rbt-badge-3 bg-white">
                                                         <span>-40%</span>
                                                         <span>Off</span>
@@ -164,14 +165,13 @@
                                                 </a>
                                             </div>
                                             <div class="rbt-card-body">
-                                                <ul class="rbt-meta">
+                                                {{!-- <ul class="rbt-meta">
                                                     <li><i class="feather-book"></i>12 Lessons</li>
                                                     <li><i class="feather-users"></i>50 Students</li>
-                                                </ul>
-                                                <h4 class="rbt-card-title"><a href="course-details.html">React</a>
+                                                </ul> --}}
+                                                <h4 class="rbt-card-title"><a href="course-details.html">{{name}}</a>
                                                 </h4>
-                                                <p class="rbt-card-text">It is a long established fact that a reader
-                                                    will be distracted.</p>
+                                                <p class="rbt-card-text">{{description}}</p>
                                                 <div class="rbt-review">
                                                     <div class="rating">
                                                         <i class="fas fa-star"></i>
@@ -184,104 +184,17 @@
                                                 </div>
                                                 <div class="rbt-card-bottom">
                                                     <div class="rbt-price">
-                                                        <span class="current-price">$70</span>
-                                                        <span class="off-price">$120</span>
+                                                        <span class="current-price">${{discountedPrice}}</span>
+                                                        <span class="off-price">${{mrp}}</span>
                                                     </div>
-                                                    <a class="rbt-btn-link" href="course-details.html">Learn More<i
+                                                    <a class="rbt-btn-link" href="/productDetails?={{_id}}">Learn More<i
                                                             class="feather-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- End Single Card  -->
-
-                                    <!-- Start Single Card  -->
-                                    <div class="swiper-slide">
-                                        <div class="rbt-card variation-01 rbt-hover">
-                                            <div class="rbt-card-img">
-                                                <a href="course-details.html">
-                                                    <img src="user/assets/images/course/classic-lms-01.jpg" alt="Card image">
-                                                    <div class="rbt-badge-3 bg-white">
-                                                        <span>-40%</span>
-                                                        <span>Off</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="rbt-card-body">
-                                                <ul class="rbt-meta">
-                                                    <li><i class="feather-book"></i>12 Lessons</li>
-                                                    <li><i class="feather-users"></i>50 Students</li>
-                                                </ul>
-                                                <h4 class="rbt-card-title"><a href="course-details.html">React</a>
-                                                </h4>
-                                                <p class="rbt-card-text">It is a long established fact that a reader
-                                                    will be distracted.</p>
-                                                <div class="rbt-review">
-                                                    <div class="rating">
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                    </div>
-                                                    <span class="rating-count"> (15 Reviews)</span>
-                                                </div>
-                                                <div class="rbt-card-bottom">
-                                                    <div class="rbt-price">
-                                                        <span class="current-price">$70</span>
-                                                        <span class="off-price">$120</span>
-                                                    </div>
-                                                    <a class="rbt-btn-link" href="course-details.html">Learn More<i
-                                                            class="feather-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Card  -->
-
-                                    <!-- Start Single Card  -->
-                                    <div class="swiper-slide">
-                                        <div class="rbt-card variation-01 rbt-hover">
-                                            <div class="rbt-card-img">
-                                                <a href="course-details.html">
-                                                    <img src="user/assets/images/course/course-online-02.jpg" alt="Card image">
-                                                    <div class="rbt-badge-3 bg-white">
-                                                        <span>-40%</span>
-                                                        <span>Off</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="rbt-card-body">
-                                                <ul class="rbt-meta">
-                                                    <li><i class="feather-book"></i>12 Lessons</li>
-                                                    <li><i class="feather-users"></i>50 Students</li>
-                                                </ul>
-                                                <h4 class="rbt-card-title"><a href="course-details.html">React</a>
-                                                </h4>
-                                                <p class="rbt-card-text">It is a long established fact that a reader
-                                                    will be distracted.</p>
-                                                <div class="rbt-review">
-                                                    <div class="rating">
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                    </div>
-                                                    <span class="rating-count"> (15 Reviews)</span>
-                                                </div>
-                                                <div class="rbt-card-bottom">
-                                                    <div class="rbt-price">
-                                                        <span class="current-price">$70</span>
-                                                        <span class="off-price">$120</span>
-                                                    </div>
-                                                    <a class="rbt-btn-link" href="course-details.html">Learn More<i
-                                                            class="feather-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Card  -->
+                                    {{/each}}
+                                   
 
                                 </div>
                                 <div class="rbt-swiper-pagination"></div>
@@ -457,19 +370,20 @@
                 <div class="row mb--60">
                     <div class="col-lg-12">
                         <div class="section-title text-center">
-                            <span class="subtitle bg-secondary-opacity">Top Popular Course</span>
-                            <h2 class="title">Histudy Course student <br /> can join with us.</h2>
+                            <span class="subtitle bg-secondary-opacity">Top Selling</span>
+                            {{!-- <h2 class="title">Histudy Course student <br /> can join with us.</h2> --}}
                         </div>
                     </div>
                 </div>
                 <!-- Start Card Area -->
                 <div class="row g-5">
                     <!-- Start Single Course  -->
+                    {{#each product}}
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="rbt-card variation-01 rbt-hover">
                             <div class="rbt-card-img">
-                                <a href="course-details.html">
-                                    <img src="user/assets/images/course/course-01.jpg" alt="Card image">
+                                <a href="/productDetails?id={{_id}}">
+                                    <img src="admin/assets/ProductImages/{{image}}" alt="Card image">
                                     <div class="rbt-badge-3 bg-white">
                                         <span>-50%</span>
                                         <span>Off</span>
@@ -494,15 +408,15 @@
                                     </div>
                                 </div>
 
-                                <h4 class="rbt-card-title"><a href="course-details.html">React Front To Back</a>
+                                <h4 class="rbt-card-title"><a href="/productDetails?id={{_id}}">{{name}}</a>
                                 </h4>
-                                <ul class="rbt-meta">
+                                {{!-- <ul class="rbt-meta">
                                     <li><i class="feather-book"></i>20 Lessons</li>
                                     <li><i class="feather-users"></i>40 Students</li>
                                 </ul>
-                                <p class="rbt-card-text">React Js long fact that a reader will be distracted by
-                                    the readable.</p>
-                                <div class="rbt-author-meta mb--20">
+                                <p class="rbt-card-text">React Js long fact that a reader will be distracted by --}}
+                                    {{!-- the readable.</p> --}}
+                                {{!-- <div class="rbt-author-meta mb--20">
                                     <div class="rbt-avater">
                                         <a href="#">
                                             <img src="user/assets/images/client/avater-01.png" alt="Sophia Jaymes">
@@ -511,137 +425,20 @@
                                     <div class="rbt-author-info">
                                         By <a href="profile.html">Patrick</a> In <a href="#">Languages</a>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="rbt-card-bottom">
                                     <div class="rbt-price">
-                                        <span class="current-price">$60</span>
-                                        <span class="off-price">$120</span>
+                                        <span class="current-price">${{discountedPrice}}</span>
+                                        <span class="off-price">${{mrp}}</span>
                                     </div>
-                                    <a class="rbt-btn-link" href="course-details.html">Learn
+                                    <a class="rbt-btn-link" href="/productDetails?id={{_id}}">Learn
                                         More<i class="feather-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- End Single Course  -->
-
-                    <!-- Start Single Course  -->
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="rbt-card variation-01 rbt-hover">
-                            <div class="rbt-card-img">
-                                <a href="course-details.html">
-                                    <img src="user/assets/images/course/course-02.jpg" alt="Card image">
-                                    <div class="rbt-badge-3 bg-white">
-                                        <span>-40%</span>
-                                        <span>Off</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="rbt-card-body">
-                                <div class="rbt-card-top">
-                                    <div class="rbt-review">
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <span class="rating-count"> (15 Reviews)</span>
-                                    </div>
-                                    <div class="rbt-bookmark-btn">
-                                        <a class="rbt-round-btn" title="Bookmark" href="#"><i class="feather-bookmark"></i></a>
-                                    </div>
-                                </div>
-                                <h4 class="rbt-card-title"><a href="course-details.html">PHP Beginner + Advanced</a>
-                                </h4>
-                                <ul class="rbt-meta">
-                                    <li><i class="feather-book"></i>12 Lessons</li>
-                                    <li><i class="feather-users"></i>50 Students</li>
-                                </ul>
-                                <p class="rbt-card-text">It is a long established fact that a reader will be distracted
-                                    by the readable.</p>
-                                <div class="rbt-author-meta mb--20">
-                                    <div class="rbt-avater">
-                                        <a href="#">
-                                            <img src="user/assets/images/client/avatar-02.png" alt="Sophia Jaymes">
-                                        </a>
-                                    </div>
-                                    <div class="rbt-author-info">
-                                        By <a href="profile.html">Angela</a> In <a href="#">Development</a>
-                                    </div>
-                                </div>
-                                <div class="rbt-card-bottom">
-                                    <div class="rbt-price">
-                                        <span class="current-price">$60</span>
-                                        <span class="off-price">$120</span>
-                                    </div>
-                                    <a class="rbt-btn-link left-icon" href="course-details.html"><i class="feather-shopping-cart"></i> Add To Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Course  -->
-
-                    <!-- Start Single Course  -->
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="rbt-card variation-01 rbt-hover">
-                            <div class="rbt-card-img">
-                                <a href="course-details.html">
-                                    <img src="user/assets/images/course/course-03.jpg" alt="Card image">
-                                    <div class="rbt-badge-3 bg-white">
-                                        <span>-40%</span>
-                                        <span>Off</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="rbt-card-body">
-                                <div class="rbt-card-top">
-                                    <div class="rbt-review">
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <span class="rating-count"> (5 Reviews)</span>
-                                    </div>
-                                    <div class="rbt-bookmark-btn">
-                                        <a class="rbt-round-btn" title="Bookmark" href="#"><i class="feather-bookmark"></i></a>
-                                    </div>
-                                </div>
-                                <h4 class="rbt-card-title"><a href="course-details.html">Angular Zero to Mastery</a>
-                                </h4>
-                                <ul class="rbt-meta">
-                                    <li><i class="feather-book"></i>8 Lessons</li>
-                                    <li><i class="feather-users"></i>30 Students</li>
-                                </ul>
-                                <p class="rbt-card-text">Angular Js long fact that a reader will be distracted by
-                                    the readable.</p>
-
-                                <div class="rbt-author-meta mb--20">
-                                    <div class="rbt-avater">
-                                        <a href="#">
-                                            <img src="user/assets/images/client/avatar-03.png" alt="Sophia Jaymes">
-                                        </a>
-                                    </div>
-                                    <div class="rbt-author-info">
-                                        By <a href="profile.html">Slaughter</a> In <a href="#">Languages</a>
-                                    </div>
-                                </div>
-                                <div class="rbt-card-bottom">
-                                    <div class="rbt-price">
-                                        <span class="current-price">$80</span>
-                                        <span class="off-price">$100</span>
-                                    </div>
-                                    <a class="rbt-btn-link" href="course-details.html">Learn
-                                        More<i class="feather-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {{/each}}
                     <!-- End Single Course  -->
                 </div>
                 <!-- End Card Area -->
@@ -649,9 +446,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="load-more-btn mt--60 text-center">
-                            <a class="rbt-btn btn-gradient btn-lg hover-icon-reverse" href="#">
+                            <a class="rbt-btn btn-gradient btn-lg hover-icon-reverse" href="/shop">
                                 <span class="icon-reverse-wrapper">
-                                    <span class="btn-text">Load More Course (40)</span>
+                                    <span class="btn-text">Load More </span>
                                 <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                 <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                 </span>
@@ -731,57 +528,35 @@
         </div>
         <!-- End About Area  -->
 
-        <!-- Start Call To Action  -->
-        <div class="rbt-callto-action-area mt_dec--half">
-            <div class="container">
-                <div class="row g-5">
-                    <div class="col-lg-6">
-                        <div class="rbt-callto-action callto-action-default bg-color-white rbt-radius shadow-1">
-                            <div class="row align-items-center">
-                                <div class="col-lg-12 col-xl-5">
-                                    <div class="inner">
-                                        <div class="rbt-category mb--20">
-                                            <a href="#">New Collection</a>
-                                        </div>
-                                        <h4 class="title mb--15">Online Courses from Histudy</h4>
-                                        <p class="mb--15">Top instructors from around the world</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-xl-7">
-                                    <div class="video-popup-wrapper mt_lg--10 mt_md--20 mt_sm--20">
-                                        <img class="w-100 rbt-radius" src="user/assets/images/others/video-01.jpg" alt="Video Images">
-                                        <a class="rbt-btn rounded-player-2 sm-size popup-video position-to-top with-animation" href="https://www.youtube.com/watch?v=nA1Aqp0sPQo">
-                                            <span class="play-icon"></span>
-                                        </a>
-                                    </div>
-                                </div>
+       <!-- Start Call To Action  -->
+    <div class="rbt-callto-action-area bg-color-extra2 rbt-section-gap">
+        <div class="rbt-callto-action rbt-cta-default style-2">
+            <div class="container content-wrapper overflow-hidden">
+                <div class="row gy-5 align-items-center">
+                    <div class="col-lg-8">
+                        <div class="inner">
+                            <div class="content text-left">
+                                <h3 class="title" data-sal="slide-up" data-sal-duration="400" data-sal-delay="200">Ready to start creating a standard website?</h3>
+                                <h6 class="subtitle" data-sal="slide-up" data-sal-duration="400" data-sal-delay="300">Finest choice for your home &amp; office</h6>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="rbt-callto-action callto-action-default bg-color-white rbt-radius shadow-1">
-                            <div class="row align-items-center">
-                                <div class="col-lg-12">
-                                    <div class="inner">
-                                        <div class="rbt-category mb--20">
-                                            <a href="#">Top Teacher</a>
-                                        </div>
-                                        <h4 class="title mb--10">Free Online Courses from Histudy School To Education</h4>
-                                        <p class="mb--15">Top instructors from around the world</p>
-                                        <div class="read-more-btn">
-                                            <a class="rbt-btn rbt-switch-btn btn-gradient btn-sm" href="#">
-                                                <span data-text="Join Now">Join Now</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="col-lg-4">
+                        <div class="call-to-btn text-start text-lg-end position-relative" data-sal="slide-up" data-sal-duration="400" data-sal-delay="400">
+                            <a class="rbt-btn rbt-switch-btn rbt-switch-y" href="#">
+                                <span data-text="Purchase Histudy">Purchase Histudy</span>
+                            </a>
+                            <div class="shape-text-image">
+                                <img class="rbt-rotatation-round" src="user/assets/images/shape/cta-text.png" alt="Education Images">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Call To Action  -->
+
+    </div>
+    <!-- End Call To Action  -->
 
         <!-- Start Counterup Area  -->
         <div class="rbt-counterup-area bg-color-extra2 rbt-section-gapBottom default-callto-action-overlap">
@@ -872,459 +647,460 @@
         <!-- End Counterup Area  -->
 
         <!-- Start Testimonial Area   -->
-        <div class="rbt-testimonial-area bg-color-white rbt-section-gap overflow-hidden">
-            <div class="wrapper">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="section-title text-center mb--10">
-                                <span class="subtitle bg-primary-opacity">EDUCATION FOR EVERYONE</span>
-                                <h2 class="title">People like histudy education. <br /> No joking - here’s the proof!</h2>
-                            </div>
+        <div class="rbt-testimonial-area bg-color-extra2 rbt-section-gap overflow-hidden">
+        <div class="wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <span class="subtitle bg-primary-opacity">EDUCATION FOR EVERYONE</span>
+                            <h2 class="title">People like histudy education. <br /> No joking - here’s the proof!</h2>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="scroll-animation-wrapper no-overlay mt--50">
-                <div class="scroll-animation scroll-right-left">
 
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-odd">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/facebook.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">After the launch, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-01.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Martha Maldonado, <span>CEO</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <!-- End Single Testimonial  -->
-
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-odd">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/google.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">Histudy education, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-02.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Michael D., <span>CEO</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-odd">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/yelp.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">Our educational, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-03.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Valerie J., <span>CEO</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-odd">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/facebook.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">People says about, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-04.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Hannah R., <span>CEO</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-odd">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/bing.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">Like this histudy, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-05.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Pearl B. Hill, <span>Marketing</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-odd">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/facebook.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">Educational template, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-01.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Mandy F. Wood, <span>SR Designer</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-odd">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/hubs.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">Online leaning, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-07.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Mildred W. Diaz, <span>Executive</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-odd">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/bing.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">Remote learning, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-08.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Christopher, <span>CEO</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-odd">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/yelp.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">University managemnet, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-06.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Fatima, <span>Child</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-                </div>
-            </div>
-
-            <div class="scroll-animation-wrapper no-overlay mt--30">
-                <div class="scroll-animation scroll-left-right">
-
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-even">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/facebook.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">After the launch, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-01.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Martha Maldonado, <span>CEO</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-even">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/google.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">Histudy education, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-02.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Michael D., <span>CEO</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-even">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/yelp.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">Our educational, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-03.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Valerie J., <span>CEO</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-even">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/bing.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">People says about, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-04.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Hannah R., <span>CEO</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-even">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/hubs.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">Like this histudy, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-05.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Pearl B. Hill, <span>Marketing</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-even">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/yelp.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">Educational template, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-01.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Mandy F. Wood, <span>SR Designer</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-even">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/bing.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">Online leaning, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-07.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Mildred W. Diaz, <span>Executive</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-even">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/facebook.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">Remote learning, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-08.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Christopher, <span>CEO</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
-
-                    <!-- Start Single Testimonial  -->
-                    <div class="single-column-20 bg-theme-gradient-even">
-                        <div class="rbt-testimonial-box style-2">
-                            <div class="inner">
-                                <div class="icons">
-                                    <img src="user/assets/images/icons/yelp.png" alt="Clint Images">
-                                </div>
-                                <div class="description">
-                                    <p class="subtitle-3">University managemnet, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                    <div class="clint-info-wrapper">
-                                        <div class="thumb">
-                                            <img src="user/assets/images/testimonial/client-06.png" alt="Clint Images">
-                                        </div>
-                                        <div class="client-info">
-                                            <h5 class="title">Fatima, <span>Child</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial  -->
                 </div>
             </div>
         </div>
+        <div class="scroll-animation-wrapper mt--50">
+            <div class="scroll-animation scroll-right-left">
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-01.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Martha Maldonado</h5>
+                                    <span>Executive Chairman <i>@ Google</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">After the launch, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-02.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Michael D. Lovelady</h5>
+                                    <span>CEO <i>@ Google</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">Histudy education, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-03.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Valerie J. Creasman</h5>
+                                    <span>Executive Designer <i>@ Google</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">Our educational, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-04.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Hannah R. Sutton</h5>
+                                    <span>Executive Chairman <i>@ Facebook</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">People says about, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-05.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Pearl B. Hill</h5>
+                                    <span>Chairman SR <i>@ Facebook</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">Like this histudy, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-06.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Mandy F. Wood</h5>
+                                    <span>SR Designer <i>@ Google</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">Educational template, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-07.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Mildred W. Diaz</h5>
+                                    <span>Executive Officer <i>@ Yelp</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">Online leaning, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-08.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Christopher H. Win</h5>
+                                    <span>Product Designer <i>@ Google</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">Remote learning, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-01.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Martha Maldonado</h5>
+                                    <span>Executive Chairman <i>@ Google</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">University managemnet, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+            </div>
+        </div>
+
+        <div class="scroll-animation-wrapper mt--30">
+            <div class="scroll-animation scroll-left-right">
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-01.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Martha Maldonado</h5>
+                                    <span>Executive Chairman <i>@ Google</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">After the launch, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-02.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Michael D. Lovelady</h5>
+                                    <span>CEO <i>@ Google</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">Histudy education, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-03.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Valerie J. Creasman</h5>
+                                    <span>Executive Designer <i>@ Google</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">Our educational, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-04.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Hannah R. Sutton</h5>
+                                    <span>Executive Chairman <i>@ Facebook</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">People says about, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-05.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Pearl B. Hill</h5>
+                                    <span>Chairman SR <i>@ Facebook</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">Like this histudy, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-06.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Mandy F. Wood</h5>
+                                    <span>SR Designer <i>@ Google</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">Educational template, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-07.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Mildred W. Diaz</h5>
+                                    <span>Executive Officer <i>@ Yelp</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">Online leaning, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-08.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Christopher H. Win</h5>
+                                    <span>Product Designer <i>@ Google</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">Remote learning, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+
+                <!-- Start Single Testimonial  -->
+                <div class="single-column-20">
+                    <div class="rbt-testimonial-box">
+                        <div class="inner">
+                            <div class="clint-info-wrapper">
+                                <div class="thumb">
+                                    <img src="user/assets/images/testimonial/client-01.png" alt="Clint Images">
+                                </div>
+                                <div class="client-info">
+                                    <h5 class="title">Martha Maldonado</h5>
+                                    <span>Executive Chairman <i>@ Google</i></span>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <p class="subtitle-3">University managemnet, vulputate at sapien sit amet,
+                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                class="feather-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Testimonial  -->
+            </div>
+        </div>
+    </div>
         <!-- End Testimonial Area   -->
 
         
@@ -1421,64 +1197,5 @@
             </div>
         </div>
         <!-- End Blog Style -->
-
-        <div class="rbt-newsletter-area newsletter-style-2 bg-color-primary rbt-section-gap">
-            <div class="container">
-                <div class="row row--15 align-items-center">
-                    <div class="col-lg-12">
-                        <div class="inner text-center">
-                            <div class="section-title text-center">
-                                <span class="subtitle bg-white-opacity">Get Latest Histudy Update</span>
-                                <h2 class="title color-white"><strong>Subscribe</strong> Our Newsletter</h2>
-                                <p class="description color-white mt--20">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam explicabo sit est eos earum reprehenderit inventore nam autem corrupti rerum!</p>
-                            </div>
-                            <form action="#" class="newsletter-form-1 mt--40">
-                                <input type="email" placeholder="Enter Your E-Email">
-                                <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse">
-                                    <span class="icon-reverse-wrapper">
-                            <span class="btn-text">Subscribe</span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                    </span>
-                                </button>
-                            </form>
-                            <span class="note-text color-white mt--20">No ads, No trails, No commitments</span>
-
-                            <div class="row row--15 mt--50">
-                                <!-- Start Single Counter -->
-                                <div class="col-lg-3 offset-lg-3 col-md-6 col-sm-6 single-counter">
-                                    <div class="rbt-counterup rbt-hover-03 style-2 text-color-white">
-                                        <div class="inner">
-                                            <div class="content">
-                                                <h3 class="counter color-white"><span class="odometer" data-count="500">00</span>
-                                                </h3>
-                                                <h5 class="title color-white">Successfully Trained</h5>
-                                                <span class="subtitle color-white">Learners &amp; counting</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single Counter -->
-
-                                <!-- Start Single Counter -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 single-counter mt_mobile--30">
-                                    <div class="rbt-counterup rbt-hover-03 style-2 text-color-white">
-                                        <div class="inner">
-                                            <div class="content">
-                                                <h3 class="counter color-white"><span class="odometer" data-count="100">00</span>
-                                                </h3>
-                                                <h5 class="title color-white">Certification Students</h5>
-                                                <span class="subtitle color-white">Online Course</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single Counter -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         

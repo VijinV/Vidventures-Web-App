@@ -2,7 +2,6 @@ const bcrypt = require('bcrypt');
 const adminModel = require('../models/userModel')
 const Products = require('../models/productModel')
 const multer = require('../config/multer');
-const { response } = require('../router/adminRouter');
 
 
 
@@ -107,7 +106,7 @@ const addProduct = async (req, res) =>{
 const loadEditProduct = async (req, res) => {
 
     const id = req.query.id
-    const product = await Product.getProduct(id)
+    const product = await Products.getProduct(id)
 
     res.render('editProduct', { product})
 
@@ -115,11 +114,22 @@ const loadEditProduct = async (req, res) => {
 }
 
 const editProduct = (req, res) => {
+ const {name,description,discountedPrice,mrp,image,id} = req.body
+
+     console.log(req.body.name)
 
 
-    Products.findByIdAndUpdate({_id:req.query.id},{$set:{
+    
+    Products.findByIdAndUpdate({_id:req.body.id},{$set:{
 
-    }})
+        name:name,
+        description:description,
+        discountedPrice:discountedPrice,
+        mrp:mrp
+
+    }}).then(()=>{
+        res.redirect('/admin/product')
+    })
 
 
 
@@ -153,6 +163,7 @@ const ListProduct = async (req, res) => {
 
 
 module.exports ={
+    editProduct,
     loadLogin,
     loadDashboard,
     verifyAdmin,

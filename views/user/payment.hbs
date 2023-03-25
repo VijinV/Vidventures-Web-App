@@ -1,0 +1,43 @@
+<form action="/charge" method="post">
+  <input type="text" name="cardNumber" placeholder="Card Number">
+  <input type="text" name="expMonth" placeholder="MM">
+  <input type="text" name="expYear" placeholder="YYYY">
+  <input type="text" name="cvc" placeholder="CVC">
+  <input type="hidden" name="amount" value="100">
+  <input type="hidden" name="description" value="Test Payment">
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="{{ publicKey }}"
+    data-amount="100"
+    data-name="Stripe Demo"
+    data-description="Test Payment"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto"></script>
+</form>
+
+<script>
+ var stripe = Stripe('{{ publicKey }}');
+
+var form = document.querySelector('form');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  stripe.createToken(card).then(function(result) {
+    if (result.error) {
+      // Show error message to user
+    } else {
+      // Send token to server for processing
+      stripeTokenHandler(result.token);
+    }
+  });
+});
+
+function stripeTokenHandler(token) {
+  var form = document.querySelector('form');
+  var hiddenInput = document.createElement('input');
+  hiddenInput.setAttribute('type', 'hidden');
+  hiddenInput.setAttribute('name', 'stripeToken');
+  hiddenInput.setAttribute('value', token.id);
+  form.appendChild(hiddenInput);
+  form.submit();
+}
+
+</script>

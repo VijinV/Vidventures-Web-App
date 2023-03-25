@@ -62,5 +62,13 @@ productSchema.statics.addProduct = async function (productData) {
     }
   };
 
+  productSchema.statics.getAvailableProducts = async function() {
+    try {
+      const availableProducts = await this.find({ isAvailable: true }).sort({_id:-1})
+      return availableProducts;
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-module.exports = mongoose.model("Products", productSchema);
+module.exports = mongoose.model("Product", productSchema);

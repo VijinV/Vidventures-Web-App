@@ -17,9 +17,17 @@ route.get("/unListProduct", adminController.ListProduct)
 
 route.get("/userList", adminAuth.isLogin, adminController.loadUser);
 
+route.get('/editProduct',adminController.loadEditProduct)
+
+
+
 route.post("/login", adminAuth.isLogout, adminController.verifyAdmin);
 
 route.post("/addProduct", multer.upload, adminController.addProduct);
+
+route.post('/editProduct',adminController.editProduct)
+
+
 
 
 module.exports = route;

@@ -73,6 +73,8 @@
                                 <span class="badge rounded-pill alert-danger">Unlisted</span>
                             </div>
                             {{/if}}
+
+                            <input type="hidden" value="{{_id}}" name="id">
                             <div class="col-lg-2 col-sm-2 col-4 col-action text-end ">
                                 <a href="/admin/editProduct?id={{_id}}" class="btn btn-sm font-sm rounded btn-brand me-1">
                                     <i class="material-icons md-edit"></i> Edit

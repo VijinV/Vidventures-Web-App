@@ -2,6 +2,8 @@ const bcrypt = require("bcrypt");
 const userModel = require("../models/userModel");
 const nodemailer = require("nodemailer");
 
+const Product = require("../models/productModel")
+
 // const sendMessage = require('../config/email')
 let message;
 
@@ -22,8 +24,11 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const loadHome = (req, res, next) => {
-  res.render("home", { login, session: getSession(req, res) });
+const loadHome = async (req, res, next) => {
+
+  const product = await Product.find({}).sort({_id:-1}).limit(3)
+
+  res.render("home", { login, session: getSession(req, res) ,product});
 };
 
 const loadLogin = async (req, res, next) => {
@@ -102,13 +107,82 @@ const verifyUser = async (req, res) => {
   } catch (error) {}
 };
 
-const loadCart = (req, res) => {
-  res.render("cart", { session: true });
-};
+
 
 const loadProfile = (req, res) => {
     res.render('userProfile', { session: true });
 }
+
+const loadShop = async (req, res) => {
+
+  const product = await Product.getAvailableProducts()
+
+
+  res.render('shop', { session: true,product });
+
+}
+
+loadProductDetails = async (req, res) => {
+
+
+  const product = await Product.getProduct(req.query.id)
+
+  res.render('productDetails', { session: true,product});
+}
+
+
+
+const addToCart = async (req, res) => {
+
+
+  try {
+    userSession = req.session;
+    const userData = await userModel.findById({ _id: userSession.user_id });
+    const productData = await Product.getProduct(req.query.id)
+    await userData.addToCart(productData);
+    res.redirect('/cart')
+    
+  } catch (error) {
+    
+    console.log(error.message)
+
+  }
+
+
+}
+
+const removeFromCart = async (req, res) => {
+
+  userSession = req.session;
+  const userData = await userModel.findById({ _id: userSession.user_id });
+  await userData.removeFromCart(req.query.id);
+  res.redirect('/cart')
+
+}
+
+const loadCart = async (req, res) => {
+
+
+const cartItem = await userModel.getCartItems(req.session.user_id)
+
+const totalPrice = await userModel.getCartTotalPrice(req.session.user_id)
+
+  res.render("cart", { session: true,cartItem ,totalPrice});
+};
+
+const payment = async (req, res) => {
+  publicKey='pk_test_51MZrWbSFyX3NIqQBANVfMZlBGhgE8EfYk5gnzdSVEKgh5muTtPGGvXSL9Y7Up3O0H9ZuaRuD3Ohv6KwjR4UJBNV500OVwzBdJd'
+
+  res.render('payment',{publicKey})
+
+}
+
+
+// =================================================================
+
+
+
+
 
 module.exports = {
   verifyUser,
@@ -117,5 +191,10 @@ module.exports = {
   loadLogin,
   registerUser,
   loadCart,
-  loadProfile
+  loadProfile,
+  loadShop,
+  loadProductDetails,
+  addToCart,
+  removeFromCart,
+  payment
 };
