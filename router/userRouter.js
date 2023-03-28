@@ -3,6 +3,8 @@ const route = express();
 
 const userController = require('../controllers/userController');
 const userAuth = require('../middlewares/userAuth');
+const stripe = require('stripe')('sk_test_51MZrWbSFyX3NIqQBT7JLBYjz1kjSQfCLX3iD6LgW7S4GUrFbLjjEyMQr6zSL6hK3DpOTyEgu4auV2BzmqN9plrCg00pTq5OqOl');
+
 
 require('dotenv').config();
 
@@ -35,32 +37,38 @@ route.post('/login',userAuth.isLogout,userController.verifyUser)
 
 route.post('/register',userAuth.isLogout,userController.registerUser)
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 
 // =======================
 
 route.get('/payment',userController.payment)
 
+route.get('/success',(req,res)=>{
+    res.send('success');
+})
+route.get('/cancel',(req,res)=>{
+    res.send('cancel');
+})
 
-route.post('/charge', (req, res) => {
-    const token = req.body.stripeToken;
-    const amount = req.body.amount;
-    const description = req.body.description;
-  
-    stripe.charges.create({
-      amount: amount,
-      currency: 'usd',
-      description: description,
-      source: token
-    })
-    .then(charge => res.send('Payment Successful'))
-    .catch(err => {
-      console.log('Error:', err);
-      res.status(500).send({ error: 'Payment Failed' });
+
+route.post('/create-checkout-session', async (req, res) => {
+    const session = await stripe.checkout.sessions.create({
+      line_items: [
+        {
+          // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+          price: 'price_1MqE7PSFyX3NIqQBeNLMopLk',
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      success_url: `http://localhost:3000/success`,
+      cancel_url: `http://localhost:3000/cancel`,
     });
+  
+    res.redirect(303, session.url);
   });
   
+
 
 
 

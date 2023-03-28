@@ -171,9 +171,8 @@ const totalPrice = await userModel.getCartTotalPrice(req.session.user_id)
 };
 
 const payment = async (req, res) => {
-  publicKey='pk_test_51MZrWbSFyX3NIqQBANVfMZlBGhgE8EfYk5gnzdSVEKgh5muTtPGGvXSL9Y7Up3O0H9ZuaRuD3Ohv6KwjR4UJBNV500OVwzBdJd'
 
-  res.render('payment',{publicKey})
+  res.render('payment',)
 
 }
 
