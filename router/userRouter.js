@@ -4,7 +4,7 @@ const userModel = require('../models/userModel')
 const userController = require('../controllers/userController');
 const userAuth = require('../middlewares/userAuth');
 // const session = require("express-session");
-const stripe = require('stripe')('sk_test_51MZrWbSFyX3NIqQBT7JLBYjz1kjSQfCLX3iD6LgW7S4GUrFbLjjEyMQr6zSL6hK3DpOTyEgu4auV2BzmqN9plrCg00pTq5OqOl');
+const stripe = require('stripe')('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');
 
 
 require('dotenv').config();
@@ -76,6 +76,28 @@ route.post('/create-checkout-session', async (req, res) => {
   });
   
 
+  route.post('/create-checkout', async (req, res) => {
+    const session = await stripe.checkout.sessions.create({
+      line_items: [
+        {
+          price_data: {
+            currency: 'inr',
+            product_data: {
+              name: 'T-shirt',
+            },
+            unit_amount: 100,
+          },
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      success_url: 'http://localhost:3000/success',
+      cancel_url: 'http://localhost:3000/cancel',
+    });
+  
+    res.redirect(303, session.url);
+  });
+  
   
 
 

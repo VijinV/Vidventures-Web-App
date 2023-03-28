@@ -54,7 +54,7 @@ const loadAddProduct = async (req, res) => {
 
 const addProduct = async (req, res) => {
   try {
-    const { name, description, mrp, discountedPrice, image, link, paymentId } =
+    const { name, description, mrp, discountedPrice, image,} =
       req.body;
     const product = {
       name: name,
@@ -62,8 +62,6 @@ const addProduct = async (req, res) => {
       mrp: mrp,
       discountedPrice: discountedPrice,
       image: req.file.filename,
-      link: link,
-      paymentId: paymentId,
     };
 
    await Products.addProduct(product).then(() =>
@@ -94,8 +92,6 @@ const editProduct = (req, res) => {
         description: description,
         discountedPrice: discountedPrice,
         mrp: mrp,
-        link: link,
-        paymentId: paymentId,
       },
     }
   ).then(() => {

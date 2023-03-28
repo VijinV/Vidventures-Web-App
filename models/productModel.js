@@ -29,14 +29,6 @@ const productSchema = new mongoose.Schema({
         required:true,
         default:false,
     },
-    paymentId:{
-      type:String,
-      required:true,
-    },
-    link:{
-      type:String,
-      required:true,
-    }
 
 })
 
