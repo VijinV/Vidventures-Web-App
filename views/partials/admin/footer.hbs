@@ -1,8 +1,13 @@
   <footer class="main-footer font-xs">
             <div class="row pb-30 pt-15">
-                <div class="col-sm-6">
+                <div class="col-sm-6" id="demo">
                     <script>
-                    document.write(new Date().getFullYear())
+                        setInterval(myTimer, 1000);
+                        function myTimer() {
+                          const d = new Date();
+                          document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+                        }
+                    //document.write(new Date())
                     </script>
                     {{!-- ©, Evara - HTML Ecommerce Template . --}}
                 </div>

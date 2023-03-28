@@ -1,12 +1,19 @@
 const express = require('express');
 const route = express();
-
+const userModel = require('../models/userModel')
 const userController = require('../controllers/userController');
 const userAuth = require('../middlewares/userAuth');
+// const session = require("express-session");
 const stripe = require('stripe')('sk_test_51MZrWbSFyX3NIqQBT7JLBYjz1kjSQfCLX3iD6LgW7S4GUrFbLjjEyMQr6zSL6hK3DpOTyEgu4auV2BzmqN9plrCg00pTq5OqOl');
 
 
 require('dotenv').config();
+
+// (function (req,res){
+
+//   route.locals.count = userController.cartCount()
+
+// })()
 
 
 // get 
@@ -56,7 +63,7 @@ route.post('/create-checkout-session', async (req, res) => {
       line_items: [
         {
           // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-          price: 'price_1MqE7PSFyX3NIqQBeNLMopLk',
+          price: 'price_1MqhvhSFyX3NIqQBuDZ6gSlr',
           quantity: 1,
         },
       ],
@@ -69,6 +76,7 @@ route.post('/create-checkout-session', async (req, res) => {
   });
   
 
+  
 
 
 

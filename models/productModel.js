@@ -30,7 +30,12 @@ const productSchema = new mongoose.Schema({
         default:false,
     },
     paymentId:{
-      type:String
+      type:String,
+      required:true,
+    },
+    link:{
+      type:String,
+      required:true,
     }
 
 })

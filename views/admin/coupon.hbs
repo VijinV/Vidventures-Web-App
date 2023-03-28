@@ -1,0 +1,100 @@
+  <section class="content-main">
+            <div class="content-header">
+                <div>
+                    <h2 class="content-title card-title">COUPON </h2>
+                    {{!-- <p>Add, edit or delete a category</p> --}}
+                </div> 
+                <div>
+                    <input type="text" placeholder="Search Categories" class="form-control bg-white">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <form action="/admin/coupon" method="post">
+                                <div class="mb-4">
+                                    <label for="product_name" class="form-label">Name</label>
+                                    <input type="text" placeholder="Type here" class="form-control" name="name" id="product_name" />
+                                </div>
+                                <div class="mb-4">
+                                    <label for="percentage" class="form-label">Discount Percentage</label>
+                                    <input type="text" name="discountPercentage" placeholder="Type here" class="form-control" id="percentage" />
+                                </div>
+                                 <div class="mb-4">
+                                    <label for="maxDis" class="form-label">Max Discount</label>
+                                    <input type="text" name="maximumDiscount" placeholder="Type here" class="form-control" id="maxDis" />
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="exp" class="form-label">Expiration Date</label>
+                                    <input type="date" name="expirationDate" placeholder="Type here" class="form-control" id="exp" />
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Description</label>
+                                    <textarea placeholder="Type here" class="form-control" name="description"></textarea>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Create Coupon</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" />
+                                                </div>
+                                            </th>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Discount Percentage</th>
+                                            <th>Max Discount</th>
+                                            <th>Expiration Date</th>
+                                            <th class="text-end">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each couponData}}
+                                        <tr>
+                                            <td class="text-center">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" />
+                                                </div>
+                                            </td>
+                                            <td>{{@index}}</td>
+                                            <td><b>{{name}}</b></td>
+                                            <td>{{description}}</td>
+                                            <td>{{discountPercentage}}</td>
+                                            <td>{{maximumDiscount}}</td>
+                                            <td>{{expirationDate}}</td>
+                                            <td class="text-end">
+                                                {{#if isAvailable}}
+                                                    <a href="/admin/couponBlock?id={{_id}}" class="btn btn-danger">Un List</a>
+
+                                                {{else}}
+                                                <a href="/admin/couponBlock?id={{_id}}" class="btn btn-success">List</a>
+                                                {{/if}}
+                                                {{!-- <div class="dropdown">
+                                                    <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="#">View detail</a>
+                                                        <a class="dropdown-item" href="#">Edit info</a>
+                                                        <a class="dropdown-item text-danger" href="#">Delete</a>
+                                                    </div>
+                                                </div> <!-- dropdown //end --> --}}
+                                            </td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> <!-- .col// -->
+                    </div> <!-- .row // -->
+                </div> <!-- card body .// -->
+            </div> <!-- card .// -->
+        </section>

@@ -2,16 +2,15 @@
             <div class="content-header">
                 <div>
                     <h2 class="content-title card-title">Products List</h2>
-                    <p>Lorem ipsum dolor sit amet.</p>
                 </div>
                 <div>
-                    <a href="#" class="btn btn-light rounded font-md">Export</a>
-                    <a href="#" class="btn btn-light rounded  font-md">Import</a>
-                    <a href="#" class="btn btn-primary btn-sm rounded">Create new</a>
+                    {{!-- <a href="#" class="btn btn-light rounded font-md">Export</a>
+                    <a href="#" class="btn btn-light rounded  font-md">Import</a> --}}
+                    <a href="/admin/addProduct" class="btn btn-primary btn-sm rounded">Create new</a>
                 </div>
             </div>
             <div class="card mb-4">
-                <header class="card-header">
+                {{!-- <header class="card-header">
                     <div class="row align-items-center">
                         <div class="col col-check flex-grow-0">
                             <div class="form-check ms-2">
@@ -38,7 +37,7 @@
                             </select>
                         </div>
                     </div>
-                </header> <!-- card-header end// -->
+                </header> <!-- card-header end// --> --}}
                 <div class="card-body">
                     {{#each product}}
                     <article class="itemlist">
@@ -89,7 +88,7 @@
                                 </a>
                                 
                                 {{/if}}
-                                <a href="/admin/deleteProduct?id={{_id}}" class="btn btn-sm font-sm btn-dark rounded">
+                                <a href="/admin/dltProduct?id={{_id}}" class="btn btn-sm font-sm btn-dark rounded">
                                     <i class="material-icons md-delete_forever"></i> Delete
                                 </a>
                                 

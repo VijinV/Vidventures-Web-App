@@ -49,7 +49,7 @@
                                         </a>
                                     </td>
                                     <td>{{email}}</td>
-                                    {{#if isAvailable}}
+                                    {{#if isVerified}}
                                     <td><span class="badge rounded-pill alert-success">Active</span></td>
                                     {{else}}
                                     <td><span class="badge rounded-pill alert-danger">Blocked</span></td>
@@ -59,9 +59,17 @@
                                     <td class="text-end">
                                         <a href="#" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
                                     </td>
+                                    {{#if isVerified}}
                                     <td class="text-end">
-                                        <a href="#" class="btn btn-danger rounded font-sm mt-15" style="width: 100px;">Block</a>
+                                        <a href="/admin/blockUser?id={{_id}}" class="btn btn-danger rounded font-sm mt-15" style="width: 100px;">Block</a>
                                     </td>
+                                    {{else }}
+
+                                     <td class="text-end">
+                                        <a href="/admin/blockUser?id={{_id}}" class="btn btn-success rounded font-sm mt-15" style="width: 100px; color: #fff;">Un Block</a>
+                                    </td>
+
+                                    {{/if}}
                                 </tr>
                                 {{/each}}
                             </tbody>

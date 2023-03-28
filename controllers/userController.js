@@ -2,18 +2,37 @@ const bcrypt = require("bcrypt");
 const userModel = require("../models/userModel");
 const nodemailer = require("nodemailer");
 
-const Product = require("../models/productModel")
+// const session = require("express-session");
+
+const Product = require("../models/productModel");
 
 // const sendMessage = require('../config/email')
 let message;
 
 let newUser;
 
+
 let login = false;
+
 
 const getSession = (req, res) => {
   return req.session.user_id;
 };
+
+// const cartCount = async (req, res) => {
+//   if(req.session){
+//     const cartCount = await userModel.getCartCount(req.session.user_id);
+
+//     return cartCount.length
+//   }else{
+//     return null
+//   }
+
+
+
+// }
+
+
 
 // Create a transporter object with SMTP configuration
 const transporter = nodemailer.createTransport({
@@ -98,7 +117,9 @@ const verifyUser = async (req, res) => {
 
       if (passwordMatch) {
         req.session.user_id = userDate._id;
-
+         cartCount= await userModel.getCartItems(req.session.user_id)
+        console.log(cartCount.length,'count')
+        res.locals.count = cartCount.length
         res.redirect("/");
       }
     } else {
@@ -195,5 +216,6 @@ module.exports = {
   loadProductDetails,
   addToCart,
   removeFromCart,
-  payment
+  payment,
+  // cartCount
 };

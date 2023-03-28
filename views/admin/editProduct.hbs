@@ -46,10 +46,17 @@
                                         <label class="form-label">Currency</label>
                                         <select class="form-select">
                                             <option> USD </option>
-                                            <option> EUR </option>
-                                            <option> RUBL </option>
                                         </select>
                                     </div>
+                                    <div class="mb-4">
+                                    <label for="product_name" class="form-label">Product Payment Id</label>
+                                    <input type="password" placeholder="id" value="{{product.paymentId}}" name="paymentId" class="form-control" id="product_name">
+                                </div>
+                                 <div class="mb-4">
+                                    <label for="product_name" class="form-label">Product Link</label>
+                                    <input type="text" placeholder="Google Drive Link" value="{{product.link}}" name="link" class="form-control" id="product_name">
+                                </div>
+                               
                                 </div>
                                 <input type="hidden" name="id" value="{{product._id}}">                               
                         </div>

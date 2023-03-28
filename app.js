@@ -87,7 +87,7 @@ app.use(express.static(path.join(__dirname, "public/admin")));
 
 
 mongoose.set("strictQuery", true);
-mongoose.connect("mongodb://127.0.0.1:27017/vijin", () =>
+mongoose.connect("mongodb://127.0.0.1:27017/Vidventures", () =>
   console.log("Database connection established")
 );
 app.listen(process.env.PORT, () =>
