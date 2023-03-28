@@ -159,6 +159,40 @@ const ListProduct = async (req, res) => {
 }
 
 
+const blockUser = async (req,res)=>{
+    try {
+        const id = req.query.id;
+
+        const userData = await adminModel.getUserById(id)
+
+        if(userData.isVerified){
+
+            await adminModel.findByIdAndUpdate({_id:id},{$set:{isVerified:false}})
+        }
+        else
+        {
+            await adminModel.findByIdAndUpdate({_id:id},{$set:{isVerified:true}})
+        }                                              
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
+
+
+
+const dltProduct = async (req,res)=>{
+    try {
+
+        await Products.findByIdAndDelete({_id:req.query.id})
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 
 
 
@@ -172,5 +206,7 @@ module.exports ={
     loadAddProduct,
     addProduct,
     loadEditProduct,
-    ListProduct
+    ListProduct,
+    dltProduct,
+    blockUser
 }

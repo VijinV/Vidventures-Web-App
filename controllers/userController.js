@@ -26,9 +26,9 @@ const transporter = nodemailer.createTransport({
 
 const loadHome = async (req, res, next) => {
 
-  const product = await Product.find({}).sort({_id:-1}).limit(3)
+  // const product = await Product.find({}).sort({_id:-1}).limit(3)
 
-  res.render("home", { login, session: getSession(req, res) ,product});
+  res.render("home", { login, session: getSession(req, res) });
 };
 
 const loadLogin = async (req, res, next) => {

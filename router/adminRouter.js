@@ -9,16 +9,22 @@ route.get("/", adminAuth.isLogin, adminController.loadDashboard);
 
 route.get("/login", adminAuth.isLogout, adminController.loadLogin);
 
-route.get("/product", adminController.loadProduct);
+route.get("/product",adminAuth.isLogin, adminController.loadProduct);
 
-route.get("/addProduct", adminController.loadAddProduct);
+route.get("/addProduct",adminAuth.isLogin, adminController.loadAddProduct);
 
-route.get("/unListProduct", adminController.ListProduct)
+route.get("/unListProduct",adminAuth.isLogin, adminController.ListProduct)
 
 route.get("/userList", adminAuth.isLogin, adminController.loadUser);
 
-route.get('/editProduct',adminController.loadEditProduct)
+route.get('/editProduct',adminAuth.isLogin,adminController.loadEditProduct)
 
+route.get('/blockUser',adminAuth.isLogin,adminController.blockUser)
+
+route.get('/dltProduct',adminAuth.isLogin,adminController.dltProduct)
+
+
+// POST method 
 
 
 route.post("/login", adminAuth.isLogout, adminController.verifyAdmin);
