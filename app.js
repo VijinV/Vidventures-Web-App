@@ -7,6 +7,8 @@ const nocache = require('nocache');
 
 // requiring config files
 require("dotenv").config();
+const DB_CONNECTION = process.env.DB_CONNECTION;
+// const PORT = process.env.PORT || 4000;
 
 const path = require("path");
 // hbs
@@ -85,9 +87,11 @@ app.use(express.static(path.join(__dirname, "public/admin")));
 
 
 mongoose.set("strictQuery", true);
-mongoose.connect("mongodb://127.0.0.1:27017/Vidventures", () =>
+mongoose.connect("mongodb://127.0.0.1:27017/vijin", () =>
   console.log("Database connection established")
 );
 app.listen(process.env.PORT, () =>
-  console.log("listening on port " + process.env.PORT)
-);
+  console.log("listening on port " )    
+);  
+  
+    

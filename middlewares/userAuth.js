@@ -1,6 +1,19 @@
-const isLogin = (req, res, next) => {
+
+const userModel = require('../models/userModel')
+
+const isLogin = async (req, res, next) => {
   if (req.session.user_id) {
+
+  const userData = await userModel.getUserById(req.session.user_id)
+
+  if(userData.isVerified){   
     next();
+  }
+  else{
+    res.redirect("/login");
+
+  }
+
   } else {
     res.redirect("/login");
   }
