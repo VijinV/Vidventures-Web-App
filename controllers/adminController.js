@@ -173,7 +173,7 @@ const blockUser = async (req,res)=>{
         {
             await adminModel.findByIdAndUpdate({_id:id},{$set:{isVerified:true}})
         }                                              
-        
+         
     } catch (error) {
         console.log(error);
         
