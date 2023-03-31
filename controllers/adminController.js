@@ -2,6 +2,9 @@ const bcrypt = require("bcrypt");
 const adminModel = require("../models/userModel");
 const Products = require("../models/productModel");
 const couponModel = require("../models/couponModel");
+const orderModel = require("../models/orderModel");
+const invoice = require("easyinvoice");
+
 // const multer = require('../config/multer');
 
 const loadDashboard = (req, res, next) => {
@@ -54,7 +57,7 @@ const loadAddProduct = async (req, res) => {
 
 const addProduct = async (req, res) => {
   try {
-    const { name, description, mrp, discountedPrice, image,} =
+    const { name, description, mrp, discountedPrice, image,link} =
       req.body;
     const product = {
       name: name,
@@ -62,6 +65,7 @@ const addProduct = async (req, res) => {
       mrp: mrp,
       discountedPrice: discountedPrice,
       image: req.file.filename,
+      link:link
     };
 
    await Products.addProduct(product).then(() =>
@@ -92,6 +96,7 @@ const editProduct = (req, res) => {
         description: description,
         discountedPrice: discountedPrice,
         mrp: mrp,
+        link:link
       },
     }
   ).then(() => {
@@ -211,7 +216,36 @@ const couponBlock = async (req, res) => {
   res.redirect('/admin/coupon')
 };
 
+
+const listOrders = async (req, res) => {
+
+  const order = await orderModel.find().sort({_id:-1}).populate('products.item.productId').populate('userId')
+
+  const products = await orderModel.getProducts()
+  
+
+  console.log(products)
+
+  res.render('order',{order});
+
+}
+
+const viewOrder = async (req, res) => {
+
+  const order = await orderModel.getOrder(req.query.id);
+
+  const product = await orderModel.getProductSummary(req.query.id);
+
+  res.render('viewOrder',{order,product});
+
+
+
+
+}
+
+
 module.exports = {
+  viewOrder,
   addCoupon,
   editProduct,
   loadLogin,
@@ -226,5 +260,6 @@ module.exports = {
   dltProduct,
   blockUser,
   loadCoupon,
-  couponBlock
+  couponBlock,
+  listOrders
 };

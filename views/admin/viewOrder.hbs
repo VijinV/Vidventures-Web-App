@@ -1,0 +1,229 @@
+ <script src="https://unpkg.com/easyinvoice/dist/easyinvoice.min.js"></script>
+  <section class="content-main">
+            <div class="content-header">
+                <div>
+                    <h2 class="content-title card-title">Order detail</h2>
+                    {{!-- <p>Order ID: {{order.orderId}}</p> --}}
+                </div>
+            </div>
+            <div class="card">
+                <header class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-6 mb-lg-0 mb-15">
+                            <span>
+                                <i class="material-icons md-calendar_today"></i> <b>{{order.createdAt}}</b>
+                            </span> <br>
+                            <small class="text-muted">Order ID: {{order.orderId}}</small>
+                        </div>
+                        <div class="col-lg-6 col-md-6 ms-auto text-md-end">
+                            <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200">
+                                <option>Change status</option>
+                                <option>Awaiting payment</option>
+                                <option>Confirmed</option>
+                                <option>Shipped</option>
+                                <option>Delivered</option>
+                            </select>
+                            <a class="btn btn-primary" onclick="invoice()" href="#">Save</a>
+                            <a class="btn btn-secondary print ms-2" href="#"><i class="icon material-icons md-print"></i></a>
+                        </div>
+                    </div>
+                </header> <!-- card-header end// -->
+                <div class="card-body">
+                    <div class="row mb-50 mt-20 order-info-wrap">
+                        <div class="col-md-4">
+                            <article class="icontext align-items-start">
+                                <span class="icon icon-sm rounded-circle bg-primary-light">
+                                    <i class="text-primary material-icons md-person"></i>
+                                </span>
+                                <div class="text">
+                                    <h6 class="mb-1">Customer</h6>
+                                    <p class="mb-1">
+                                        {{order.userId.name}} <br> {{order.userId.email}}<br>  {{order.userId.mobile}} 
+                                    </p>
+                                    <a href="#">View profile</a>
+                                </div>
+                            </article>
+                        </div> <!-- col// -->
+                        <div class="col-md-4">
+                            <article class="icontext align-items-start">
+                                <span class="icon icon-sm rounded-circle bg-primary-light">
+                                    <i class="text-primary material-icons md-local_shipping"></i>
+                                </span>
+                                <div class="text">
+                                    <h6 class="mb-1">Order info</h6>
+                                    <p class="mb-1">
+                                       {{order.orderId}} <br> Pay method: {{order.payment}} <br> Status: {{order.status}}
+                                    </p>
+                                    <a href="#">Download info</a>
+                                </div>
+                            </article>
+                        </div> <!-- col// -->
+                        {{!-- <div class="col-md-4">
+                            <article class="icontext align-items-start">
+                                <span class="icon icon-sm rounded-circle bg-primary-light">
+                                    <i class="text-primary material-icons md-place"></i>
+                                </span>
+                                <div class="text">
+                                    <h6 class="mb-1">Deliver to</h6>
+                                    <p class="mb-1">
+                                        City: Tashkent, Uzbekistan <br>Block A, House 123, Floor 2 <br> Po Box 10000
+                                    </p>
+                                    <a href="#">View profile</a>
+                                </div>
+                            </article>
+                        </div> <!-- col// --> --}}
+                    </div> <!-- row // -->
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th width="40%">Product</th>
+                                            <th width="20%">Unit Price</th>
+                                            <th width="20%">Quantity</th>
+                                            <th width="20%" class="text-end">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each order.products.item}}
+                                        <tr>
+                                            <td>
+                                                <a class="itemside" href="#">
+                                                    <div class="left">
+                                                        <img src="assets/imgs/items/1.jpg" width="40" height="40" class="img-xs" alt="Item">
+                                                    </div>
+                                                    <div class="info"> {{productId.name}} </div>
+                                                </a>
+                                            </td>
+                                            <td> ${{productId.discountedPrice}} </td>
+                                            <td> {{qty}} </td>
+                                            <td class="text-end"> ${{multi qty productId.discountedPrice}} </td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </div> <!-- table-responsive// -->
+                        </div> <!-- col// -->
+                        <div class="col-lg-1"></div>
+                        {{!-- <div class="col-lg-4">
+                            <div class="box shadow-sm bg-light">
+                                <h6 class="mb-15">Payment info</h6>
+                                <p>
+                                    <img src="assets/imgs/card-brands/2.png" class="border" height="20"> Master Card **** **** **** <br>
+                                    Business name: Grand Market LLC <br>
+                                    Phone: +1 (800) 555-154-52
+                                </p>
+                            </div>
+                            <div class="h-25 pt-4">
+                                <div class="mb-3">
+                                    <label>Notes</label>
+                                    <textarea class="form-control" name="notes" id="notes" placeholder="Type some note"></textarea>
+                                </div>
+                                <button class="btn btn-primary">Save note</button>
+                            </div>
+                        </div> <!-- col// --> --}}
+                    </div>
+                </div> <!-- card-body end// -->
+            </div> <!-- card end// -->
+        </section> <!-- content-main end// -->
+
+        <script src="https://unpkg.com/nice-invoice@1.1.4/dist/index.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/easyinvoice/dist/easyinvoice.min.js"></script>
+
+        <script>
+
+              var data = {
+    // Customize enables you to provide your own templates
+    // Please review the documentation for instructions and examples
+    "customize": {
+        //  "template": fs.readFileSync('template.html', 'base64') // Must be base64 encoded html 
+    },
+    "images": {
+        // The logo on top of your invoice
+        "logo": "https://cdn.logo.com/hotlink-ok/logo-social.png",
+        // The invoice background
+        "background": "https://public.easyinvoice.cloud/img/watermark-draft.jpg"
+    },
+    // Your own data
+    "sender": {
+        "company": "Vidventures",
+        "address": "Sample Street 123",
+        "zip": "1234 AB",
+        "city": "Sampletown",
+        "country": "Samplecountry"
+        //"custom1": "custom value 1",
+        //"custom2": "custom value 2",
+        //"custom3": "custom value 3"
+    },
+    // Your recipient
+    "client": {
+        "name": "{{order.userId.name}}",
+        "email": "{{order.userId.email}}",
+        "mobile": "{{order.userId.mobile}}",
+        // "custom1": "custom value 1",
+        // "custom2": "custom value 2",
+        // "custom3": "custom value 3"
+    },
+    "information": {
+        // Invoice number
+        "number": "{{order.orderId}}",
+        // Invoice data
+        
+        "date": "{{order.createdAt}}",
+        // Invoice due date
+        // "due-date": "31-12-2021" 
+    },
+    // The products you would like to see on your invoice
+    // Total values are being calculated automatically
+    "products": [
+
+        {
+            "quantity": 2,
+            "description": "Product 1",
+            "tax-rate": 6,
+            "price": 33.87
+        },
+        
+        
+    ],
+    // The message you would like to display on the bottom of your invoice
+    "bottom-notice": "Kindly pay your invoice within 15 days.",
+    // Settings to customize your invoice
+    "settings": {
+        "currency": "USD", // See documentation 'Locales and Currency' for more info. Leave empty for no currency.
+        // "locale": "nl-NL", // Defaults to en-US, used for number formatting (See documentation 'Locales and Currency')        
+        // "margin-top": 25, // Defaults to '25'
+        // "margin-right": 25, // Defaults to '25'
+        // "margin-left": 25, // Defaults to '25'
+        // "margin-bottom": 25, // Defaults to '25'
+        // "format": "A4", // Defaults to A4, options: A3, A4, A5, Legal, Letter, Tabloid
+        // "height": "1000px", // allowed units: mm, cm, in, px
+        // "width": "500px", // allowed units: mm, cm, in, px
+        // "orientation": "landscape", // portrait or landscape, defaults to portrait
+    },
+    // Translate your invoice to your preferred language
+    "translate": {
+        // "invoice": "FACTUUR",  // Default to 'INVOICE'
+        // "number": "Nummer", // Defaults to 'Number'
+        // "date": "Datum", // Default to 'Date'
+        // "due-date": "Verloopdatum", // Defaults to 'Due Date'
+        // "subtotal": "Subtotaal", // Defaults to 'Subtotal'
+        // "products": "Producten", // Defaults to 'Products'
+        // "quantity": "Aantal", // Default to 'Quantity'
+        // "price": "Prijs", // Defaults to 'Price'
+        // "product-total": "Totaal", // Defaults to 'Total'
+        // "total": "Totaal", // Defaults to 'Total'
+        // "vat": "btw" // Defaults to 'vat'
+    },
+};
+            function invoice(){
+                easyinvoice.createInvoice(data, function (result) {
+                easyinvoice.download('myInvoice.pdf', result.pdf);
+                //	you can download like this as well:
+                //	easyinvoice.download();
+                //	easyinvoice.download('myInvoice.pdf');   
+                 });
+            }
+        </script>

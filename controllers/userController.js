@@ -3,17 +3,22 @@ const userModel = require("../models/userModel");
 const nodemailer = require("nodemailer");
 
 // const session = require("express-session");
+const orderIdCreate = require('order-id')('key');
+
 
 const Product = require("../models/productModel");
+const couponModel = require("../models/couponModel");
+const orderModel = require("../models/orderModel");
+
 
 // const sendMessage = require('../config/email')
 let message;
 
 let newUser;
 
+let order
 
 let login = false;
-
 
 const getSession = (req, res) => {
   return req.session.user_id;
@@ -28,11 +33,7 @@ const getSession = (req, res) => {
 //     return null
 //   }
 
-
-
 // }
-
-
 
 // Create a transporter object with SMTP configuration
 const transporter = nodemailer.createTransport({
@@ -44,7 +45,6 @@ const transporter = nodemailer.createTransport({
 });
 
 const loadHome = async (req, res, next) => {
-
   // const product = await Product.find({}).sort({_id:-1}).limit(3)
 
   res.render("home", { login, session: getSession(req, res) });
@@ -112,14 +112,16 @@ const verifyUser = async (req, res) => {
 
     const userDate = await userModel.getUserByEmail(email);
 
+    console.log('userData',userDate)
+
     if (userDate) {
       const passwordMatch = await bcrypt.compare(password, userDate.password);
 
       if (passwordMatch) {
         req.session.user_id = userDate._id;
-         cartCount= await userModel.getCartItems(req.session.user_id)
-        console.log(cartCount.length,'count')
-        res.locals.count = cartCount.length
+        cartCount = await userModel.getCartItems(req.session.user_id);
+        console.log(cartCount.length, "count");
+        res.locals.count = cartCount.length;
         res.redirect("/");
       }
     } else {
@@ -128,81 +130,80 @@ const verifyUser = async (req, res) => {
   } catch (error) {}
 };
 
-
-
 const loadProfile = (req, res) => {
-    res.render('userProfile', { session: true });
-}
+  res.render("userProfile", { session: true });
+};
 
 const loadShop = async (req, res) => {
+  const product = await Product.getAvailableProducts();
 
-  const product = await Product.getAvailableProducts()
-
-
-  res.render('shop', { session: true,product });
-
-}
+  res.render("shop", { session: true, product });
+};
 
 loadProductDetails = async (req, res) => {
+  const product = await Product.getProduct(req.query.id);
 
-
-  const product = await Product.getProduct(req.query.id)
-
-  res.render('productDetails', { session: true,product});
-}
-
-
+  res.render("productDetails", { session: true, product });
+};
 
 const addToCart = async (req, res) => {
-
-
   try {
     userSession = req.session;
     const userData = await userModel.findById({ _id: userSession.user_id });
-    const productData = await Product.getProduct(req.query.id)
+    const productData = await Product.getProduct(req.query.id);
     await userData.addToCart(productData);
-    res.redirect('/cart')
-    
+    res.redirect("/cart");
   } catch (error) {
-    
-    console.log(error.message)
-
+    console.log(error.message);
   }
-
-
-}
+};
 
 const removeFromCart = async (req, res) => {
-
   userSession = req.session;
   const userData = await userModel.findById({ _id: userSession.user_id });
   await userData.removeFromCart(req.query.id);
-  res.redirect('/cart')
-
-}
+  res.redirect("/cart");
+};
 
 const loadCart = async (req, res) => {
+  const cartItem = await userModel.getCartItems(req.session.user_id);
 
+  const totalPrice = await userModel.getCartTotalPrice(req.session.user_id);
 
-const cartItem = await userModel.getCartItems(req.session.user_id)
-
-const totalPrice = await userModel.getCartTotalPrice(req.session.user_id)
-
-  res.render("cart", { session: true,cartItem ,totalPrice});
+  res.render("cart", { session: true, cartItem, totalPrice });
 };
 
 const payment = async (req, res) => {
+  res.render("payment");
+};
 
-  res.render('payment',)
+
+
+const placeOrder = async (req, res) => {
+
+  const user = await userModel.findById(req.session.user_id)
+  const cartItems = await userModel.getCartItems(req.session.user_id)
+
+  const oid = orderIdCreate.generate();
+
+  order = new orderModel({
+
+    products:user.cart,
+    userId:req.session.user_id,
+    status:'Confirm',
+    orderId:oid
+  })
+
+  order.save()
+
+  
+
 
 }
 
 
+
 // =================================================================
-
-
-
-
 
 module.exports = {
   verifyUser,
@@ -217,5 +218,6 @@ module.exports = {
   addToCart,
   removeFromCart,
   payment,
+  placeOrder
   // cartCount
 };

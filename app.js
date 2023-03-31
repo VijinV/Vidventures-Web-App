@@ -1,9 +1,8 @@
 const express = require("express");
 const app = express();
-const mongoose = require('mongoose');
-const session = require('express-session')
-const nocache = require('nocache');
-
+const mongoose = require("mongoose");
+const session = require("express-session");
+const nocache = require("nocache");
 
 // requiring config files
 require("dotenv").config();
@@ -29,30 +28,28 @@ app.engine(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(nocache()) 
+app.use(nocache());
 
-app.use(session({
-
-  secret:'ijuytrdsfxcgvhbj',
-  saveUninitialized:true,
-  resave:true,
-  cookie:{
-    maxAge:1000*60*60*24*7
-  }
-
-}))
-
-
+app.use(
+  session({
+    secret: "ijuytrdsfxcgvhbj",
+    saveUninitialized: true,
+    resave: true,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+    },
+  })
+);
 
 // user Router
 
 const userRoute = require("./router/userRouter");
-const adminRoute = require('./router/adminRouter')
+const adminRoute = require("./router/adminRouter");
 
 app.use("/", userRoute);
 app.use("/admin", adminRoute);
 
-userRoute.set("views", path.join(__dirname+'/views/user'));
+userRoute.set("views", path.join(__dirname + "/views/user"));
 userRoute.engine(
   "hbs",
   hbs.engine({
@@ -66,7 +63,7 @@ userRoute.engine(
 
 // admin route
 
-adminRoute.set("views", path.join(__dirname+'/views/admin'));
+adminRoute.set("views", path.join(__dirname + "/views/admin"));
 adminRoute.engine(
   "hbs",
   hbs.engine({
@@ -75,6 +72,18 @@ adminRoute.engine(
     partialsDir: __dirname + "/views/partials/admin",
     handlebars: allowInsecurePrototypeAccess(Handlebars),
     layoutsDir: __dirname + "/views/layout",
+    helpers: {
+      eq: function (v1, v2) {
+        if (v1 === v2) {
+          return v2;
+        } else {
+        }
+      },
+      multi:function(val1,val2){
+        return  parseInt(val1)*parseInt(val2)
+      }
+  
+    },
   })
 );
 
@@ -82,16 +91,8 @@ userRoute.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.static(path.join(__dirname, "public/admin")));
 
-
-
-
-
 mongoose.set("strictQuery", true);
 mongoose.connect("mongodb://127.0.0.1:27017/Vidventures", () =>
   console.log("Database connection established")
 );
-app.listen(process.env.PORT, () =>
-  console.log("listening on port " )    
-);  
-  
-    
+app.listen(process.env.PORT, () => console.log("listening on port "));

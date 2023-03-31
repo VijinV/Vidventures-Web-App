@@ -20,6 +20,11 @@ const userSchema = new mongoose.Schema({
     type:Number,
     required: true,
   },
+  coordinator:{
+    type:Boolean,
+    default: false,
+  }
+  ,
   isVerified:{
     type:Boolean,
     required: true,
@@ -90,9 +95,6 @@ const isExisting = cart.item.findIndex(
   (objInItems) =>
     new String(objInItems.productId).trim() === new String(productId).trim()
 )
-
-console.log(isExisting)
-
 if (isExisting >= 0) {
   const prod = await Product.findById(productId)
   cart.totalPrice -= prod.discountedPrice * cart.item[isExisting].qty

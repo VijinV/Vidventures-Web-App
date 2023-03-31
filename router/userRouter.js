@@ -90,6 +90,7 @@ route.post('/create-checkout-session', async (req, res) => {
           quantity: 1,
         },
       ],
+      
       mode: 'payment',
       success_url: 'http://localhost:3000/success',
       cancel_url: 'http://localhost:3000/cancel',
@@ -98,6 +99,8 @@ route.post('/create-checkout-session', async (req, res) => {
     res.redirect(303, session.url);
   });
   
+
+  route.get('/save',userAuth.isLogin,userController.placeOrder)
   
 
 

@@ -29,6 +29,10 @@ const productSchema = new mongoose.Schema({
         required:true,
         default:false,
     },
+    link:{
+      type:String,
+      required:true,
+    }
 
 })
 

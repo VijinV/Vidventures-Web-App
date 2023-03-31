@@ -26,6 +26,10 @@ const couponSchema = new mongoose.Schema({
     isAvailable:{
         type:Boolean,
         default:false
+    },
+    usedBy:{
+      type:mongoose.Types.ObjectId,
+      ref:'User'
     }
 })
 
@@ -46,6 +50,11 @@ couponSchema.statics.addCoupon = async function (couponData) {
     } catch (err) {
       console.error(err);
     }
+  };
+
+  couponSchema.statics.getCoupon = async function(coupon) {
+    const user = await this.findOne({ name: coupon});
+    return user;
   };
 
   

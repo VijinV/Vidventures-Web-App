@@ -27,6 +27,10 @@ route.get('/coupon',adminAuth.isLogin,adminController.loadCoupon)
 
 route.get('/couponBlock',adminAuth.isLogin,adminController.couponBlock)
 
+route.get('/order',adminAuth.isLogin,adminController.listOrders)
+
+route.get('/viewOrder',adminAuth.isLogin,adminController.viewOrder)
+
 
 // POST method 
 
