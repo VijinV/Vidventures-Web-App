@@ -173,15 +173,14 @@ const loadDashboard = async (req, res, next) => {
   let salesData = salesArray.slice(0,nowMonth+1);
   let userData = usersArray.slice(0,nowMonth +1);
 
-  
 
 
-
-   console.log('current month',nowMonth)
 
   // !============================================================
 
-  const users = await userModel.getUser();
+  const users = await userModel.find()
+
+  const user =await userModel.find({}).sort({registeredAt:-1}).limit(3)
 
   const usersCount = users.length;
 
@@ -193,7 +192,8 @@ const loadDashboard = async (req, res, next) => {
     Sales: Sales.length,
     dailyVisitorCount,
     monthlyRevenue,
-    userData:userData
+    userData:userData,
+    user
   });
 };
 
