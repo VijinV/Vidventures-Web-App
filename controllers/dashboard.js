@@ -34,7 +34,7 @@ const loadDashboard = async (req, res, next) => {
   // Visitors count
 
   // Use the variable outside of the callback function
-  console.log(dailyVisitorCount, "dailyVis");
+  // console.log(dailyVisitorCount, "dailyVis");
 
   // for calculating the current months revenue
 
@@ -157,7 +157,7 @@ const loadDashboard = async (req, res, next) => {
     users,
     revenue,
     Sales: Sales.length,
-    dailyVisitorCount,
+    // dailyVisitorCount,
     monthlyRevenue,
     userData:userData,
     user
