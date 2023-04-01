@@ -33,39 +33,6 @@ const loadDashboard = async (req, res, next) => {
 
   // Visitors count
 
-  const startOfDay = new Date();
-  startOfDay.setHours(0, 0, 0, 0); // Set the time to the beginning of the day
-
-  let dailyVisitorCount = null; // Define a variable to hold the result
-
-  await visitorsModel.aggregate(
-    [
-      {
-        $match: { createdAt: { $gte: startOfDay } }, // Only consider documents created today
-      },
-      {
-        $group: {
-          _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } }, // Group by date
-          count: { $sum: "$count" }, // Sum the count field for each group
-        },
-      },
-      {
-        $project: {
-          _id: 0,
-          date: "$_id",
-          count: 1,
-        },
-      },
-    ],
-    function (err, results) {
-      if (err) {
-        console.log(err);
-      } else {
-        dailyVisitorCount = results; // Save the result to the variable
-      }
-    }
-  );
-
   // Use the variable outside of the callback function
   console.log(dailyVisitorCount, "dailyVis");
 
