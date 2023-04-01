@@ -30,7 +30,7 @@ const loadDashboard = async (req, res, next) => {
   // Visitors count 
   
   const startOfDay = new Date();
-startOfDay.setHours(0, 0, 0, 0); // Set the time to the beginning of the day
+startOfDay.setHours(0, 0, 0, 0); // Set the time to the beginning of the day   
 
 let dailyVisitorCount = null; // Define a variable to hold the result
 

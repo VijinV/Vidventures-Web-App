@@ -6,8 +6,8 @@ const nocache = require("nocache");
 
 // requiring config files
 require("dotenv").config();
-const DB_CONNECTION = process.env.DB_CONNECTION;
-// const PORT = process.env.PORT || 4000;
+
+
 
 const path = require("path");
 // hbs
@@ -73,7 +73,7 @@ adminRoute.engine(
     handlebars: allowInsecurePrototypeAccess(Handlebars),
     layoutsDir: __dirname + "/views/layout",
     helpers: {
-      eq: function (v1, v2) {
+      eq: function (v1, v2) {  
         if (v1 === v2) {
           return v2;
         } else {
@@ -95,4 +95,4 @@ mongoose.set("strictQuery", true);
 mongoose.connect("mongodb://127.0.0.1:27017/Vidventures", () =>
   console.log("Database connection established")
 );
-app.listen(process.env.PORT, () => console.log("listening on port "));
+app.listen(process.env.PORT, () => console.log("listening on port "+ process.env.PORT));

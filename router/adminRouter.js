@@ -32,6 +32,8 @@ route.get('/order',adminAuth.isLogin,adminController.listOrders)
 
 route.get('/viewOrder',adminAuth.isLogin,adminController.viewOrder)
 
+route.get('/logout',adminAuth.logout)
+
 
 // POST method 
 
@@ -41,6 +43,7 @@ route.post("/login", adminAuth.isLogout, adminController.verifyAdmin);
 route.post("/addProduct", multer.upload, adminController.addProduct);
 
 route.post('/editProduct',adminController.editProduct)
+
 route.post('/coupon',adminAuth.isLogin,adminController.addCoupon)
 
 

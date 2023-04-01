@@ -1,0 +1,149 @@
+<form action="/verifyEmail" method="POST" class="otp-form" name="otp-form" >
+  
+  <div class="title">
+    <br><br><br><br>
+
+    <h3>OTP VERIFICATION</h3>
+    <br>
+    <p class="info">An otp has been sent to ********k876@gmail.com</p>
+    <p class="msg">Please enter OTP to verify</p>
+    <p class="msg" style="color: red;">{{message}}<br></p>
+    
+    
+  </div>
+  <div class="otp-input-fields">
+<input type="number" min="0" max="9" pattern="[0-9]" class="otp__digit" name="digit1">
+  <input type="number" class="otp__digit" name="digit2">
+  <input type="number" class="otp__digit" name="digit3">
+  <input type="number" class="otp__digit" name="digit4">
+  <input type="number" class="otp__digit" name="digit5">
+  <input type="number" class="otp__digit" name="digit6">
+</div>
+ <input type="hidden" name="otp" id="otp-input">
+  <button type="submit" >Submit</button>
+
+
+  {{!-- <div class="result"><p id="_otp" class="_notok">855412</p></div> --}}
+</form>
+
+<style>
+   
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    display: none;
+  }
+
+
+
+    *{
+  box-sizing: border-box;
+}
+body{
+  margin: 0;
+}
+.title{
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  h3{
+    font-weight: bold;
+  }
+  p{
+    font-size: 12px;
+    color: #118a44;
+    &.msg{
+      color: initial;
+      text-align: initial;
+      font-weight: bold;
+    }
+  }
+}
+  
+.otp-input-fields{
+  margin: auto;
+  background-color: white;
+  box-shadow: 0px 0px 8px 0px #02025044;
+  max-width: 400px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 40px;
+  
+  input{
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+    border-radius: 4px;
+    border: 1px solid #2f8f1f;
+    text-align: center;
+    outline: none;
+    font-size: 16px;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
+    &:focus{
+      border-width: 2px;
+      border-color: darken(#2f8f1f, 5%);
+      font-size: 20px;
+    }
+  }
+}
+
+.result{
+  max-width: 400px;
+  margin: auto;
+  padding: 24px;
+  text-align: center;
+  p{
+    font-size: 24px;
+    font-family: 'Antonio', sans-serif;
+    opacity: 1;
+    transition: color 0.5s ease;
+    &._ok{
+      color: green;
+    }
+    &._notok{
+      color: red;
+      border-radius: 3px;
+    }
+  }
+}
+</style>
+
+
+
+<script>
+  // Get all the input elements with class name "otp__digit"
+  const otpInputs = document.querySelectorAll(".otp__digit");
+
+  // Attach event listener to each input element
+  otpInputs.forEach(input => {
+    input.addEventListener("input", function() {
+      // Remove any non-digit characters from the input value
+      let sanitizedValue = this.value.replace(/\D/g, "");
+      
+      // Truncate the input value to only one digit
+      sanitizedValue = sanitizedValue.slice(0, 1);
+      
+      // Update the input value to the sanitized value
+      this.value = sanitizedValue;
+      
+      // If this input has a value, move focus to the next input
+      if (sanitizedValue.length > 0) {
+        const nextInput = this.nextElementSibling;
+        if (nextInput) {
+          nextInput.focus();
+        }
+      }
+    });
+  });
+</script>
