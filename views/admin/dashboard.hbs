@@ -315,16 +315,24 @@
                                             {{formatDate createdAt}}
                                         </td>
                                         <td>
-                                            $400
+                                            ${{products.totalPrice}}
                                         </td>
+                                        {{#if (eq status "Confirm")}}
                                         <td>
                                             <span class="badge badge-pill badge-soft-success">Paid</span>
                                         </td>
+                                        {{else}}
+
                                         <td>
-                                            <i class="material-icons md-payment font-xxl text-muted mr-5"></i> Mastercard
+                                            <span class="badge badge-pill badge-soft-danger">Payment Failed</span>
+                                        </td>
+
+                                        {{/if}}
+                                        <td>
+                                            <i class="material-icons md-payment font-xxl text-muted mr-5"></i> Stripe
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-xs"> View details</a>
+                                            <a href="/admin/viewOrder?id={{_id}}" class="btn btn-xs"> View details</a>
                                         </td>
                                     </tr>
                                     {{/each}}

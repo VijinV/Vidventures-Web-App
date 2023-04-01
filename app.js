@@ -84,7 +84,7 @@ adminRoute.engine(
         return  parseInt(val1)*parseInt(val2)
       },
       formatDate:function (num) {
-        return num.moment.format('MMMM Do YYYY ')
+        return num.toLocaleDateString('en-US');
       },
     
   

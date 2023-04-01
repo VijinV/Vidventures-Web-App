@@ -9,13 +9,6 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 require('dotenv').config();
 
-// (function (req,res){
-
-//   route.locals.count = userController.cartCount()
-
-// })()
-
-
 // get 
 
 route.get('/',userController.loadHome)
