@@ -22,6 +22,7 @@ const isLogout = (req, res,next) => {
 const logout = (req, res, next) => {
 
     req.session.admin_id = null;
+    res.redirect('/admin/login')
 
 }
 

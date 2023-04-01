@@ -24,7 +24,7 @@ route.get('/login',userAuth.isLogout,userController.loadLogin)
 
 route.get('/cart',userAuth.isLogin,userController.loadCart)
 
-route.get('/verify',userController.verifyUserEmail)
+// route.get('/verify',userController.verifyUserEmail)
 
 route.get('/logout',userAuth.logout)
 
@@ -38,11 +38,15 @@ route.get('/addToCart',userAuth.isLogin,userController.addToCart)
 
 route.get('/removeFromCart',userAuth.isLogin,userController.removeFromCart)
 
+
+
 // post 
 
 route.post('/login',userAuth.isLogout,userController.verifyUser)
 
 route.post('/register',userAuth.isLogout,userController.registerUser)
+
+route.post('/verifyEmail',userController.verifyUserEmail)
 
 
 
