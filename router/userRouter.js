@@ -41,6 +41,8 @@ route.post('/register',userAuth.isLogout,userController.registerUser)
 
 route.post('/verifyEmail',userController.verifyUserEmail)
 
+route.post('/editProdile',userAuth.isLogin,userController.editProfile)
+
 
 
 // =======================
