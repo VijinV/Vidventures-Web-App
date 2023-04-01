@@ -110,14 +110,16 @@ const loadLogin = (req, res, next) => {
   res.render("login");
 };
 
+
+
 const verifyAdmin = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
     const adminData = await adminModel.findOne({ email: email });
 
-    if (adminData.isAdmin) {
-      const passwordMatch = bcrypt.compare(password, adminData.password);
+    if (adminData.isAdmin || adminData.coordinator) {
+      const passwordMatch =await bcrypt.compare(password, adminData.password);
 
       if (passwordMatch) {
         req.session.admin_id = adminData._id;
@@ -127,8 +129,13 @@ const verifyAdmin = async (req, res, next) => {
     } else {
       res.render("login", { message: "You are not an administrator" });
     }
-  } catch (error) {}
+  } catch (error) {
+
+    console.log(error);
+  }
 };
+
+
 
 const loadUser = async (req, res, next) => {
   try {

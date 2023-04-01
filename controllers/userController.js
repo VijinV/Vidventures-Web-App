@@ -1,13 +1,16 @@
 const bcrypt = require("bcrypt");
 const userModel = require("../models/userModel");
 const nodemailer = require("nodemailer");
+const otplib = require('otplib')
+const secret = otplib.authenticator.generateSecret();
 
 // const session = require("express-session");
-const orderIdCreate = require('order-id')('key');
+// const orderIdCreate = require('order-id')('key');
 const Product = require("../models/productModel");
 const couponModel = require("../models/couponModel");
 const orderModel = require("../models/orderModel");
-const visitorModel = require("../models/visitorsModel" )
+const visitorModel = require("../models/visitorsModel" );
+const { log } = require("console");
 
 
 // const sendMessage = require('../config/email')
@@ -83,6 +86,9 @@ const loadLogin = async (req, res, next) => {
   res.render("login", { login: true });
 };
 
+
+let emailOtp;
+
 const registerUser = async (req, res, next) => {
   try {
     const { email, name, password, mobile } = req.body;
@@ -99,40 +105,66 @@ const registerUser = async (req, res, next) => {
         mobile: mobile,
       });
 
-      // Create a message object
-      const message = {
-        from: "vfcvijin@gmail.com", // Sender address
-        to: email, // List of recipients
-        subject: "Test Email from Node.js", // Subject line
-        text: "Hello, this is a test email sent from Node.js using Nodemailer!", // Plain text body,
-        html: '<p>Hello, this is a test email sent from Node.js using Nodemailer!</p><p>Here\'s a <a href="http://localhost:3000/verify">link</a> for you to check out.</p>', // HTML body with a link
-      };
+      //  Create otp
 
-      transporter.sendMail(message, function (error, info) {
-        if (error) {
-          console.log("Error occurred while sending email: ", error.message);
-          return process.exit(1);
-        }
-        console.log("Email sent successfully to: ", info.messageId);
-      });
-      res.redirect("/login");
+      const token = otplib.authenticator.generate(secret);
+      emailOtp = token
+
+// Create a message object
+const message = {
+  from: "vfcvijin@gmail.com", // Sender address
+  to: email, // List of recipients
+  subject: "Test Email from Node.js", // Subject line
+  text: "Hello, this is a test email sent from Node.js using Nodemailer!", // Plain text body
+  html: `<p style:"color:red">Hello, this is a test email sent from Node.js using Nodemailer! <br>this is your otp token ${token}</p>`, // HTML body with a link
+};
+
+await transporter.sendMail(message, function (error, info) {
+  if (error) {
+    console.log("Error occurred while sending email: ", error.message);
+    return process.exit(1);
+  }
+  console.log("Email sent successfully to: ", info.messageId);
+
+  
+});
+res.render('otp',{ login: true })
     } else {
       res.render("login.html", { message: "Account already exists" });
     }
   } catch (error) {
-    console.log(error.message);
+    console.log(error.message); 
   }
-};
+}; 
 
 const verifyUserEmail = (req, res) => {
-  newUser.isVerified = true;
+  try {
 
-  newUser.save(() => {
-    console.log("user saved successfully");
-  });
-  console.log(newUser);
+    const otpString = req.body.digit1 + req.body.digit2 + req.body.digit3 + req.body.digit4 + req.body.digit5 + req.body.digit6;
+    const otp = Number(otpString);
+    console.log(otp);
+    console.log('email Otp'+ emailOtp);
+    if(otp == emailOtp){
+      newUser.isVerified = true;
 
-  res.redirect("/");
+      newUser.save(() => {
+        console.log("user saved successfully");
+      });
+      console.log(newUser);
+    
+      res.redirect("/");
+    }
+    else{
+      console.log('otp error');
+      res.render('otp',{message:'otp not valid',login: true})
+    }
+   
+    
+
+    
+  } catch (error) {
+    
+  }
 };
 
 const verifyUser = async (req, res) => {
@@ -159,6 +191,8 @@ const verifyUser = async (req, res) => {
   } catch (error) {}
 };
 
+
+
 const loadProfile = (req, res) => {
   res.render("userProfile", { session: true });
 };
@@ -169,7 +203,7 @@ const loadShop = async (req, res) => {
   res.render("shop", { session: true, product });
 };
 
-loadProductDetails = async (req, res) => {
+const loadProductDetails = async (req, res) => {
   const product = await Product.getProduct(req.query.id);
 
   res.render("productDetails", { session: true, product });
@@ -232,6 +266,7 @@ const placeOrder = async (req, res) => {
 
 
 
+
 // =================================================================
 
 module.exports = {
@@ -247,6 +282,7 @@ module.exports = {
   addToCart,
   removeFromCart,
   payment,
-  placeOrder
-  // cartCount
+  placeOrder,
+  // loadOtp
+    // cartCount
 };
