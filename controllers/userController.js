@@ -4,11 +4,10 @@ const nodemailer = require("nodemailer");
 
 // const session = require("express-session");
 const orderIdCreate = require('order-id')('key');
-
-
 const Product = require("../models/productModel");
 const couponModel = require("../models/couponModel");
 const orderModel = require("../models/orderModel");
+const visitorModel = require("../models/visitorsModel" )
 
 
 // const sendMessage = require('../config/email')
@@ -46,6 +45,36 @@ const transporter = nodemailer.createTransport({
 
 const loadHome = async (req, res, next) => {
   // const product = await Product.find({}).sort({_id:-1}).limit(3)
+
+  // Storing the records from the Visitor table
+  let visitors = await visitorModel.findOne({name: 'localhost'})
+  
+  // If the app is being visited first
+  // time, so no records
+  if(visitors == null) {
+        
+      // Creating a new default record
+      const beginCount = new visitorModel({
+          name : 'localhost',
+          count : 1,
+      })
+
+      // Saving in the database
+      beginCount.save()
+      // Logging when the app is visited first time
+      console.log("First visitor arrived")
+  }
+  else{
+        
+      // Incrementing the count of visitor by 1
+      visitors.count += 1;
+
+      // Saving to the database
+      visitors.save()
+
+      // Logging the visitor count in the console
+      console.log("visitor arrived: ",visitors.count)
+  }
 
   res.render("home", { login, session: getSession(req, res) });
 };

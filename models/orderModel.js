@@ -34,8 +34,8 @@ const orderSchema = new mongoose.Schema({
   }
   ,
   createdAt:{
-    type:String,
-    default:moment().format('MMMM Do YYYY'),
+    type:Date,
+    default:Date.now()
   },
   orderId:{
     type:String,
@@ -61,6 +61,7 @@ orderSchema.statics.getProductSummary = async function(orderId) {
     { $unwind: "$products.item" },
     {
       $group: {
+        _id:null,
         products: {
           $push: {
             productId: "$products.item.productId",
@@ -75,7 +76,6 @@ orderSchema.statics.getProductSummary = async function(orderId) {
 
   return result[0];
 };
-
 
 
 module.exports = mongoose.model('Order',orderSchema)

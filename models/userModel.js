@@ -126,7 +126,13 @@ userSchema.statics.getUserById = async function(id) {
     }
     return 0;
   };
+
+  userSchema.statics.getUser = async function() {
+    const user = await this.find({isAdmin:false,coordinator:false})
+    return user;
+  };
+
   
 
-
+ 
 module.exports = mongoose.model("User", userSchema);

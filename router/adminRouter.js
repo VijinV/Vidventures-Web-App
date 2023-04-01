@@ -4,8 +4,9 @@ const multer = require("../config/multer");
 
 const adminController = require("../controllers/adminController");
 const adminAuth = require("../middlewares/adminAuth");
+const dashboard = require("../controllers/dashboard");
 
-route.get("/", adminAuth.isLogin, adminController.loadDashboard);
+route.get("/", adminAuth.isLogin, dashboard.loadDashboard);
 
 route.get("/login", adminAuth.isLogout, adminController.loadLogin);
 

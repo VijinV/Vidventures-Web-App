@@ -4,11 +4,106 @@ const Products = require("../models/productModel");
 const couponModel = require("../models/couponModel");
 const orderModel = require("../models/orderModel");
 const invoice = require("easyinvoice");
+const userModel = require("../models/userModel");
+const visitorsModel = require("../models/visitorsModel");
 
 // const multer = require('../config/multer');
 
-const loadDashboard = (req, res, next) => {
-  res.render("dashboard");
+const loadDashboard = async (req, res, next) => {
+
+  const order = await orderModel.find().limit(6).populate("products.item.productId").populate("userId")
+
+  // calculating total Revenue
+const  revenue = await orderModel.aggregate([
+  {
+    $group: {
+      _id: null,
+      totalPrice: { $sum: "$products.totalPrice" }
+    }
+  }
+]).exec((err, result) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(result,"revenue");
+  }
+});
+
+// counting the total number of Orders
+
+const Sales = await orderModel.find({ status: 'Confirm'});
+
+console.log(Sales.length,'sales');
+
+
+// Visitors count 
+
+const startOfDay = new Date();
+startOfDay.setHours(0, 0, 0, 0); // Set the time to the beginning of the day
+
+visitorsModel.aggregate([
+  {
+    $match: { createdAt: { $gte: startOfDay } } // Only consider documents created today
+  },
+  {
+    $group: {
+      _id: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } }, // Group by date
+      count: { $sum: '$count' } // Sum the count field for each group
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      date: '$_id',
+      count: 1
+    }
+  }
+], function(err, results) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(results,'visitors count');
+  }
+});
+
+// dashboard charts
+
+
+  // orderModel.aggregate([
+  //   {
+  //     $group: {
+  //       _id: {
+  //         year: { $year: { date: "$createdAt", } },
+  //         month: { $month: { date: "$createdAt", } },
+  //         day: { $dayOfMonth: { date: "$createdAt",} }
+  //       },
+  //       count: { $sum: 1 }
+  //     }
+  //   },
+  //   {
+  //     $group: {
+  //       _id: {
+  //         year: "$_id.year",
+  //         month: "$_id.month",
+  //         day: "$_id.day"
+  //       },
+  //       count: { $sum: "$count" }
+  //     }
+  //   }
+  // ], (err, result) => {
+  //   if (err) {
+  //     console.error(err);
+  //   } else {
+  //     console.log(result);
+  //   }
+  // });
+  
+  const users = await userModel.getUser()
+
+  const usersCount = users.length
+
+  const data =  [50, 70, 19, 1, 4, 5, 7, 30, 54, 8, 27, 2]
+  res.render("dashboard",{data,order,users});
 };
 
 const loadLogin = (req, res, next) => {
@@ -237,9 +332,6 @@ const viewOrder = async (req, res) => {
   const product = await orderModel.getProductSummary(req.query.id);
 
   res.render('viewOrder',{order,product});
-
-
-
 
 }
 

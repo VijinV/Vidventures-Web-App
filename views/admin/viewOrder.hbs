@@ -52,7 +52,7 @@
                                 <div class="text">
                                     <h6 class="mb-1">Order info</h6>
                                     <p class="mb-1">
-                                       {{order.orderId}} <br> Pay method: {{order.payment}} <br> Status: {{order.status}}
+                                    {{order.orderId}} <br> Pay method: {{order.payment}} <br> Status: {{order.status}}
                                     </p>
                                     <a href="#">Download info</a>
                                 </div>
@@ -106,23 +106,23 @@
                             </div> <!-- table-responsive// -->
                         </div> <!-- col// -->
                         <div class="col-lg-1"></div>
-                        {{!-- <div class="col-lg-4">
+                        <div class="col-lg-4">
                             <div class="box shadow-sm bg-light">
                                 <h6 class="mb-15">Payment info</h6>
                                 <p>
                                     <img src="assets/imgs/card-brands/2.png" class="border" height="20"> Master Card **** **** **** <br>
-                                    Business name: Grand Market LLC <br>
-                                    Phone: +1 (800) 555-154-52
+                                    Business name: {{order.userId.name}} <br>
+                                    Phone: {{order.userId.mobile}} <br>
                                 </p>
                             </div>
-                            <div class="h-25 pt-4">
+                            {{!-- <div class="h-25 pt-4">
                                 <div class="mb-3">
                                     <label>Notes</label>
                                     <textarea class="form-control" name="notes" id="notes" placeholder="Type some note"></textarea>
                                 </div>
                                 <button class="btn btn-primary">Save note</button>
-                            </div>
-                        </div> <!-- col// --> --}}
+                            </div> --}}
+                        </div> <!-- col// -->
                     </div>
                 </div> <!-- card-body end// -->
             </div> <!-- card end// -->
@@ -131,10 +131,10 @@
         <script src="https://unpkg.com/nice-invoice@1.1.4/dist/index.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/easyinvoice/dist/easyinvoice.min.js"></script>
-
+{{!-- 
         <script>
 
-              var data = {
+    var data = {
     // Customize enables you to provide your own templates
     // Please review the documentation for instructions and examples
     "customize": {
@@ -226,4 +226,4 @@
                 //	easyinvoice.download('myInvoice.pdf');   
                  });
             }
-        </script>
+        </script> --}}
