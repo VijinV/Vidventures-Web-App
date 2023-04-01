@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const session = require("express-session");
 const nocache = require("nocache");
+const moment = require("moment");
 
 // requiring config files
 require("dotenv").config();
@@ -81,7 +82,11 @@ adminRoute.engine(
       },
       multi:function(val1,val2){
         return  parseInt(val1)*parseInt(val2)
-      }
+      },
+      formatDate:function (num) {
+        return num.moment.format('MMMM Do YYYY ')
+      },
+    
   
     },
   })

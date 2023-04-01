@@ -6,8 +6,9 @@
                     <p>Whole data about your business here</p>
                 </div>
                 <div>
-                    <a href="#" class="btn btn-primary"><i class="text-muted material-icons md-post_add"></i>Create report</a>
+                    <a href="#" class="btn btn-primary"><i class="text-muted material-icons md-post_add"></i>Manage Co-ordintors</a>
                 </div>
+                
             </div>
             <div class="row">
                 <div class="col-lg-3">
@@ -208,12 +209,12 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-12">
-                    {{!-- <div class="card mb-4">
+                    <div class="card mb-4">
                         <article class="card-body">
                             <h5 class="card-title">Revenue Base on Area</h5>
                             <canvas id="myChart2" height="217"></canvas>
                         </article>
-                    </div> --}}
+                    </div>
                     <div class="card mb-4">
                         <article class="card-body">
                             <h5 class="card-title">Marketing Chanel</h5>
@@ -242,7 +243,7 @@
                 </div>
             </div>
             <div class="card mb-4">
-                <header class="card-header">
+                {{!-- <header class="card-header">
                     <h4 class="card-title">Latest orders</h4>
                     <div class="row align-items-center">
                         <div class="col-md-3 col-12 me-auto mb-md-0 mb-3">
@@ -277,7 +278,7 @@
                             </div>
                         </div>
                     </div>
-                </header>
+                </header> --}}
                 <div class="card-body">
                     <div class="table-responsive">
                         <div class="table-responsive">
@@ -300,6 +301,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {{#each order}}
                                     <tr>
                                         <td class="text-center">
                                             <div class="form-check">
@@ -307,10 +309,10 @@
                                                 <label class="form-check-label" for="transactionCheck02"></label>
                                             </div>
                                         </td>
-                                        <td><a href="#" class="fw-bold">#SK2540</a> </td>
-                                        <td>Neal Matthews</td>
+                                        <td><a href="/admin/viewOrder?id={{_id}}" class="fw-bold">#{{orderId}}</a> </td>
+                                        <td>{{userId.name}}</td>
                                         <td>
-                                            07 Oct, 2021
+                                            {{formatDate createdAt}}
                                         </td>
                                         <td>
                                             $400
@@ -325,131 +327,7 @@
                                             <a href="#" class="btn btn-xs"> View details</a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="text-center">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="transactionCheck03">
-                                                <label class="form-check-label" for="transactionCheck03"></label>
-                                            </div>
-                                        </td>
-                                        <td><a href="#" class="fw-bold">#SK2541</a> </td>
-                                        <td>Jamal Burnett</td>
-                                        <td>
-                                            07 Oct, 2021
-                                        </td>
-                                        <td>
-                                            $380
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-pill badge-soft-danger">Chargeback</span>
-                                        </td>
-                                        <td>
-                                            <i class="material-icons md-payment font-xxl text-muted mr-5"></i> Visa
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-xs"> View details</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="transactionCheck04">
-                                                <label class="form-check-label" for="transactionCheck04"></label>
-                                            </div>
-                                        </td>
-                                        <td><a href="#" class="fw-bold">#SK2542</a> </td>
-                                        <td>Juan Mitchell</td>
-                                        <td>
-                                            06 Oct, 2021
-                                        </td>
-                                        <td>
-                                            $384
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-pill badge-soft-success">Paid</span>
-                                        </td>
-                                        <td>
-                                            <i class="material-icons md-payment font-xxl text-muted mr-5"></i> Paypal
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-xs"> View details</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="transactionCheck05">
-                                                <label class="form-check-label" for="transactionCheck05"></label>
-                                            </div>
-                                        </td>
-                                        <td><a href="#" class="fw-bold">#SK2543</a> </td>
-                                        <td>Barry Dick</td>
-                                        <td>
-                                            05 Oct, 2021
-                                        </td>
-                                        <td>
-                                            $412
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-pill badge-soft-success">Paid</span>
-                                        </td>
-                                        <td>
-                                            <i class="material-icons md-payment font-xxl text-muted mr-5"></i> Mastercard
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-xs"> View details</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="transactionCheck06">
-                                                <label class="form-check-label" for="transactionCheck06"></label>
-                                            </div>
-                                        </td>
-                                        <td><a href="#" class="fw-bold">#SK2544</a> </td>
-                                        <td>Ronald Taylor</td>
-                                        <td>
-                                            04 Oct, 2021
-                                        </td>
-                                        <td>
-                                            $404
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-pill badge-soft-warning">Refund</span>
-                                        </td>
-                                        <td>
-                                            <i class="material-icons md-payment font-xxl text-muted mr-5"></i> Visa
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-xs"> View details</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="transactionCheck07">
-                                                <label class="form-check-label" for="transactionCheck07"></label>
-                                            </div>
-                                        </td>
-                                        <td><a href="#" class="fw-bold">#SK2545</a> </td>
-                                        <td>Jacob Hunter</td>
-                                        <td>
-                                            04 Oct, 2021
-                                        </td>
-                                        <td>
-                                            $392
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-pill badge-soft-success">Paid</span>
-                                        </td>
-                                        <td>
-                                            <i class="material-icons md-payment font-xxl text-muted mr-5"></i> Paypal
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-xs"> View details</a>
-                                        </td>
-                                    </tr>
+                                    {{/each}}
                                 </tbody>
                             </table>
                         </div>
@@ -480,6 +358,7 @@
                     <div class="text-sm-end">
                         All rights reserved
                         <input type="hidden" id="data" value="{{data}}">
+                        <input type="hidden" id="userData" value="{{userData}}">
                     </div>
                 </div>
             </div>
@@ -492,7 +371,10 @@
 
 const datas = document.getElementById("data")   
 
+const userData = document.getElementById("userData")
+
 const count = datas.value.split(',');
+const userCount = userData.value.split(',');
 
   var ctx = document.getElementById('myChart').getContext('2d');
 
@@ -515,18 +397,10 @@ const count = datas.value.split(',');
                         label: 'Users',
                         tension: 0.3,
                         fill: true,
-                        backgroundColor: 'rgba(4, 209, 130, 0.2)',
-                        borderColor: 'rgb(4, 209, 130)',
-                        data: [40, 20, 17, 9, 23, 35, 39, 30, 34, 25, 27, 17]
-                    },
-                    {
-                        label: 'Products',
-                        tension: 0.3,
-                        fill: true,
                         backgroundColor: 'rgba(380, 200, 230, 0.2)',
-                        borderColor: 'rgb(380, 200, 230)',
-                        data: [30, 10, 27, 19, 33, 15, 19, 20, 24, 15, 37, 6]
-                    }
+                         borderColor: 'rgb(380, 200, 230)',
+                        data: userCount
+                    },
 
                 ]
             },
@@ -541,51 +415,51 @@ const count = datas.value.split(',');
             }
         });
 
-  //       var ctx = document.getElementById("myChart2");
-  //           var myChart = new Chart(ctx, {
-  //               type: 'bar',
-  //               data: {
-  //               labels: ["900", "1200", "1400", "1600"],
-  //               datasets: [
-  //                   {
-  //                       label: "US",
-  //                       backgroundColor: "#5897fb",
-  //                       barThickness:10,
-  //                       data: [233,321,783,900]
-  //                   }, 
-  //                   {
-  //                       label: "Europe",
-  //                       backgroundColor: "#7bcf86",
-  //                       barThickness:10,
-  //                       data: [408,547,675,734]
-  //                   },
-  //                   {
-  //                       label: "Asian",
-  //                       backgroundColor: "#ff9076",
-  //                       barThickness:10,
-  //                       data: [208,447,575,634]
-  //                   },
-  //                   {
-  //                       label: "Africa",
-  //                       backgroundColor: "#d595e5",
-  //                       barThickness:10,
-  //                       data: [123,345,122,302]
-  //                   },
-  //               ]
-  //               },
-  //               options: {
-  //                   plugins: {
-  //                       legend: {
-  //                           labels: {
-  //                           usePointStyle: true,
-  //                           },
-  //                       }
-  //                   },
-  //                   scales: {
-  //                       y: {
-  //                           beginAtZero: true
-  //                       }
-  //                   }
-  //               }
-  //           });
+       var ctx = document.getElementById("myChart2");
+           var myChart = new Chart(ctx, {
+               type: 'bar',
+               data: {
+               labels: ["900", "1200", "1400", "1600"],
+               datasets: [
+                   {
+                       label: "US",
+                       backgroundColor: "#5897fb",
+                       barThickness:10,
+                       data: [233,321,783,900]
+                   }, 
+                   {
+                       label: "Europe",
+                       backgroundColor: "#7bcf86",
+                       barThickness:10,
+                       data: [408,547,675,734]
+                   },
+                   {
+                       label: "Asian",
+                       backgroundColor: "#ff9076",
+                       barThickness:10,
+                       data: [208,447,575,634]
+                   },
+                   {
+                       label: "Africa",
+                       backgroundColor: "#d595e5",
+                       barThickness:10,
+                       data: [123,345,122,302]
+                   },
+               ]
+               },
+               options: {
+                   plugins: {
+                       legend: {
+                           labels: {
+                           usePointStyle: true,
+                           },
+                       }
+                   },
+                   scales: {
+                       y: {
+                           beginAtZero: true
+                       }
+                   }
+               }
+           });
 </script>
