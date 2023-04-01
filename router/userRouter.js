@@ -4,7 +4,7 @@ const userModel = require('../models/userModel')
 const userController = require('../controllers/userController');
 const userAuth = require('../middlewares/userAuth');
 // const session = require("express-session");
-const stripe = require('stripe')('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');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 
 require('dotenv').config();
