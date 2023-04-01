@@ -133,9 +133,9 @@ res.render('otp',{ login: true })
       res.render("login.html", { message: "Account already exists" });
     }
   } catch (error) {
-    console.log(error.message);
+    console.log(error.message); 
   }
-};
+}; 
 
 const verifyUserEmail = (req, res) => {
   try {
