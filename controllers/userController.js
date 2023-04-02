@@ -221,45 +221,6 @@ console.log(userData);
 };
 
 
-// const editProfile = async (req,res)=>{
-//   try {
-
-//     const password = req.body.cpasswrd;
-
-//     const userData = await userModel.getUserById(req.session.user_id)
-
-//     const passwordMatch = await bcrypt.compare(password, userData.password);
-//     if(passwordMatch && req.body.newpasswrd)
-//     {
-//       const salt = await bcrypt.genSalt(10);
-//       const newPassword = await bcrypt.hash(req.body.newpassword, 10);
-
-//       await userModel.findByIdAndUpdate({_id:req.session.user_id},{$set:{
-//         name:req.body.name,
-//         mobile:req.body.mobile,
-//         password:newPassword
-
-//       }})
-//       console.log('success')
-//       res.redirect('/profile')
-      
-//     }
-//     else{
-//       await userModel.findByIdAndUpdate({_id:req.session.user_id},{$set:{
-//         name:req.body.name,
-//         mobile:req.body.mobile
-       
-
-//       }})
-//       console.log('success password not changed');
-//       res.redirect('/profile')
-//     }     
-//   } catch (error) 
-//   {
-//     console.log(error);
-    
-//   }
-// }
 const editProfile = async (req, res) => {
   try {
     const password = req.body.cpasswrd;
