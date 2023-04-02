@@ -59,6 +59,11 @@ userRoute.engine(
     defaultLayout: "userLayout",
     partialsDir: __dirname + "/views/partials/user",
     layoutsDir: __dirname + "/views/layout",
+    helpers:{
+      formatDate:function (num) {
+        return num.toLocaleDateString('en-US');
+      },
+    }
   })
 );
 

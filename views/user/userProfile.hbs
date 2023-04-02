@@ -75,17 +75,18 @@
                                                 </thead>
 
                                                 <tbody>
-                                                    
+                                                    {{#each order}}
                                                     <tr>
-                                                        <td>1</td>
-                                                        <td>Miracle Morning</td>
-                                                        <td>Janu 22, 2022</td>
-                                                        <td>Pending</td>
+                                                        <td>{{@index}}</td>
+                                                        <td>{{orderId}}</td>
+                                                        <td>{{formatDate createdAt}}</td>
+                                                        <td>{{status}}</td>
                                                         <td>$45</td>
                                                         <td>
                                                             <a class="rbt-btn btn-gradient btn-sm" href="#">View Details</a>
                                                         </td>
                                                     </tr>
+                                                    {{/each}}
                                                 </tbody>
                                             </table>
                                         </div>
