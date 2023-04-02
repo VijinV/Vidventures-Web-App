@@ -133,9 +133,9 @@ res.render('otp',{ login: true })
       res.render("login.html", { message: "Account already exists" });
     }
   } catch (error) {
-    console.log(error.message); 
+    console.log(error.message);
   }
-}; 
+};
 
 const verifyUserEmail = (req, res) => {
   try {
@@ -191,6 +191,17 @@ const verifyUser = async (req, res) => {
 };
 
 
+const viewOrderDetail = async (req,res)=>{
+  try {
+
+    res.render('viewOrderDetails')
+    
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
+
 
 const loadProfile = async (req, res) => {
  try {
@@ -208,7 +219,6 @@ console.log(userData);
   
  }
 };
-
 
 
 const editProfile = async (req, res) => {
@@ -249,7 +259,17 @@ const editProfile = async (req, res) => {
   }
 };
 
+const contact = async (req,res)=>{
+  try{
 
+    res.render('contact')
+
+  }
+  catch(err)
+  {
+    console.log(err)
+  }
+}
 
 
 
@@ -272,7 +292,7 @@ const addToCart = async (req, res) => {
     const productData = await Product.getProduct(req.query.id);
     await userData.addToCart(productData);
     res.redirect("/cart");
-  } catch (error) {
+  } catch (error) { 
     console.log(error.message);
   }
 };
@@ -335,7 +355,8 @@ module.exports = {
   payment,
   placeOrder,
   editProfile,
-  // loadCoordinators
+  contact,
+  viewOrderDetail
   // loadOtp
     // cartCount
 };
