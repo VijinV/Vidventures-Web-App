@@ -31,6 +31,10 @@ route.get('/addToCart',userAuth.isLogin,userController.addToCart)
 
 route.get('/removeFromCart',userAuth.isLogin,userController.removeFromCart)
 
+route.get('/contact',userController.contact)
+
+route.get('/viewOrderDetails',userAuth.isLogin,userController.viewOrderDetail)
+
 
 
 // post 
