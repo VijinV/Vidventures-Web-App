@@ -110,7 +110,7 @@ userSchema.statics.getUserByEmail = async function(email) {
   };
 
 userSchema.statics.getUserById = async function(id) {
-    const user = await this.findOne({ id });
+    const user = await this.findOne({ _id:id });
     return user;
   };
 
