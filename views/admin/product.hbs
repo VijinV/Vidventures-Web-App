@@ -58,7 +58,7 @@
                                 </a>
                             </div>
                             
-                            <div class="col-lg-2 col-sm-2 col-4 col-price"> <span>{{mrp}}</span> </div>
+                            <div class="col-lg-1 col-sm-2 col-4 col-price"> <span>{{mrp}}</span> </div>
                             
                             <div class="col-lg-1 col-sm-2 col-4 col-date">
                                 <span>02.11.2021</span>
@@ -72,6 +72,13 @@
                                 <span class="badge rounded-pill alert-danger">Unlisted</span>
                             </div>
                             {{/if}}
+                            <div class="col-lg-1 col-sm-2 col-4 col-date">
+                                <a href="/admin/showInBanner?id={{_id}}" class="btn btn-sm font-sm rounded btn-dark me-1">
+                                    <i class="material-icons"></i>Banner
+                                </a>
+                            </div>
+
+                            
 
                             <input type="hidden" value="{{_id}}" name="id">
                             <div class="col-lg-2 col-sm-2 col-4 col-action text-end ">
@@ -88,7 +95,7 @@
                                 </a>
                                 
                                 {{/if}}
-                                <a href="/admin/dltProduct?id={{_id}}" class="btn btn-sm font-sm btn-dark rounded">
+                                <a href="/admin/dltProduct?id={{_id}}" class="btn btn-sm font-sm btn-danger rounded">
                                     <i class="material-icons md-delete_forever"></i> Delete
                                 </a>
                                 

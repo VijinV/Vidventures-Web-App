@@ -159,7 +159,7 @@ const loadAddProduct = async (req, res) => {
 
 const addProduct = async (req, res) => {
   try {
-    const { name, description, mrp, discountedPrice, image,link} =
+    const { name, description, mrp, discountedPrice, image,link,sdescription} =
       req.body;
     const product = {
       name: name,
@@ -167,7 +167,8 @@ const addProduct = async (req, res) => {
       mrp: mrp,
       discountedPrice: discountedPrice,
       image: req.file.filename,
-      link:link
+      link:link,
+      sdescription:sdescription
     };
 
    await Products.addProduct(product).then(() =>
@@ -188,7 +189,7 @@ const loadEditProduct = async (req, res) => {
 };
 
 const editProduct = (req, res) => {
-  const { name, description, discountedPrice, mrp, image, paymentId, link } =
+  const { name, description, discountedPrice, mrp, image, paymentId, link ,sdescription} =
     req.body;
   Products.findByIdAndUpdate(
     { _id: req.body.id },
@@ -198,7 +199,8 @@ const editProduct = (req, res) => {
         description: description,
         discountedPrice: discountedPrice,
         mrp: mrp,
-        link:link
+        link:link,
+        sdescription:sdescription
       },
     }
   ).then(() => {

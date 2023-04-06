@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
     mrp:{
         type:Number,
         required:true,
-    },
+    }, 
     discountedPrice:{
         type:Number,
         required:true,
@@ -32,6 +32,13 @@ const productSchema = new mongoose.Schema({
     link:{
       type:String,
       required:true,
+    },
+    sdescription:{
+      type:String,
+      required:true,
+    },
+    showInBanner:{
+      type:Boolean,
     }
 
 })
