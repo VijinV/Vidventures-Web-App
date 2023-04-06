@@ -34,20 +34,22 @@
                                             <th class="pro-title">Product</th>
                                             <th class="pro-price">Price</th>
                                             <th class="pro-quantity">Quantity</th>
-                                            <th class="pro-subtotal">Total</th>
+                                            {{!-- <th class="pro-subtotal">Total</th> --}}
                                             <th class="pro-remove">Remove</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        
                                         {{#each cartItem}}
+                                        
                                         <tr>
                                             <td class="pro-thumbnail"><a href="#"><img src="admin/assets/ProductImages/{{productId.image}}" alt="Product"></a></td>
                                             <td class="pro-title"><a href="#">{{productId.name}}</a></td>
                                             <td class="pro-price"><span>${{productId.discountedPrice}}</span></td>
                                             <td class="pro-quantity">
-                                                <div class="pro-qty"><input type="text" value="1" ></div>
+                                                <div class="pro-qty w-100"><input class="w-100" type="text" value="1"></div>
                                             </td>
-                                            <td class="pro-subtotal"><span>${{productId.discountedPrice}}</span></td>
+                                            {{!-- <td class="pro-subtotal"><span>${{productId.discountedPrice}}</span></td> --}}
                                             <td class="pro-remove"><a href="/removeFromCart?id={{productId._id}}"><i class="feather-x"></i></a>
                                             </td>
                                         </tr>
@@ -93,22 +95,21 @@
                                             <h4 class="title mb--30">Cart Summary</h4>
                                         </div>
                                         <p>Sub Total <span>${{totalPrice}}</span></p>
-                                        <p>Shipping Cost <span>$00.00</span></p>
-                                        <h2>Grand Total <span>$1250.00</span></h2>
+                                        {{!-- <p>Shipping Cost <span>$00.00</span></p> --}}
+                                        <h2>Grand Total <span>${{total}}</span></h2>
                                     </div>
 
                                     <div class="cart-submit-btn-group">
                                         <div class="single-button w-100">
-                                            <button class="rbt-btn btn-gradient rbt-switch-btn rbt-switch-y w-100">
+                                            <form action="/checkout" method="post">
+                                            
+                                            <button type="submit" class="rbt-btn btn-gradient rbt-switch-btn rbt-switch-y w-100">
                                                 <span data-text="Checkout">Checkout</span>
                                             </button>
-                                        </div>
-                                        {{!-- <div class="single-button w-50">
-                                            <button class="rbt-btn rbt-switch-btn rbt-switch-y w-100 btn-border">
-                                                <span data-text="Update Cart">Update Cart</span>
-                                            </button>
-                                        </div> --}}
 
+                                            </form>
+                                            <input>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -125,3 +126,41 @@
             <hr class="rbt-separator m-0">
         </div>
     </div>
+    <!-- Latest version of jQuery -->
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<!-- Specific version of jQuery (e.g. 3.6.0) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+        // Get the input field for the quantity
+const quantityInput = document.querySelector('.pro-qty input');
+const productId = document.querySelector('product-id');
+
+// Listen for changes in the quantity input field
+quantityInput.addEventListener('change', (event) => {
+  const newQuantity = parseInt(event.target.value);
+  const productId = '{{cartItem.productId._id}}'; // Replace with the actual product ID
+
+  // Send an AJAX request to update the quantity of the item in the cart
+  $.ajax({
+    type: 'POST',
+    url: '/update-cart',
+    data: {
+      productId,
+      newQuantity
+    },
+    success: function(data) {
+      // Update the total price in the cart
+      const totalPrice = data.totalPrice;
+      const totalPriceElement = document.querySelector('.cart-total-price');
+      totalPriceElement.innerText = totalPrice;
+    },
+    error: function(xhr, status, error) {
+      console.log(error);
+    }
+  });
+});
+
+    </script>

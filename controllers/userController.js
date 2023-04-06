@@ -4,16 +4,16 @@ const nodemailer = require("nodemailer");
 const otplib = require('otplib')
 const secret = otplib.authenticator.generateSecret();
 
-// const session = require("express-session");
-// const orderIdCreate = require('order-id')('key');
+require('dotenv').config();
+
 const Product = require("../models/productModel");
 const couponModel = require("../models/couponModel");
 const orderModel = require("../models/orderModel");
 const visitorModel = require("../models/visitorsModel" );
-const { log } = require("console");
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
+const orderIdCreate = require('order-id')('key');
 
-// const sendMessage = require('../config/email')
 let message;
 
 let newUser;
@@ -25,17 +25,6 @@ let login = false;
 const getSession = (req, res) => {
   return req.session.user_id;
 };
-
-// const cartCount = async (req, res) => {
-//   if(req.session){
-//     const cartCount = await userModel.getCartCount(req.session.user_id);
-
-//     return cartCount.length
-//   }else{
-//     return null
-//   }
-
-// }
 
 // Create a transporter object with SMTP configuration
 const transporter = nodemailer.createTransport({
@@ -210,6 +199,26 @@ const userData = await userModel.getUserById(req.session.user_id)
 const order = await orderModel.find({userId:req.session.user_id}).populate("products.item.productId").populate("userId").sort({createdAt:-1})
 console.log(userData);
 
+const orderDetails = await orderModel.find({})
+.populate('products.item.productId')
+.exec((err, orders) => {
+  if (err) {
+    console.log(err);
+  } else {
+    orders.forEach((order) => {
+      console.log(`Order Id: ${order.orderId}`);
+      order.products.item.forEach((item) => {
+        console.log(`Product Id: ${item.productId._id}`);
+        console.log(`Product Name: ${item.productId.name}`);
+        console.log(`Quantity: ${item.qty}`);
+        console.log(`Price: ${item.price}`);
+      });
+    });
+  }
+});
+
+console.log(orderDetails,'orderDetails')
+
   res.render("userProfile", { session: true,userData,order});
   
  } catch (error) {
@@ -311,9 +320,7 @@ const loadCart = async (req, res) => {
   res.render("cart", { session: true, cartItem, totalPrice });
 };
 
-const payment = async (req, res) => {
-  res.render("payment");
-};
+
 
 
 
@@ -336,10 +343,117 @@ const placeOrder = async (req, res) => {
 
 }
 
+const stripePayment = async (req, res) => {
 
+  const cartItems = await userModel.findById(req.session.user_id).populate('cart.item.productId');
+
+  
+ let line_items =[]
+
+ let line_object
+
+ await cartItems.cart.item.forEach(item => {
+
+    let name = item.productId.name
+    let price = item.productId.discountedPrice * 100
+
+    console.log(name, price)
+
+    line_object =  {
+      price_data: {
+        currency: 'usd',
+        product_data: { 
+          name: name,
+        },
+        unit_amount: price,
+      },
+      quantity: item.qty,
+    }
+    line_items.push(line_object) 
+  })
+
+  console.log(line_items,'line_items')
+
+  
+  const session = await stripe.checkout.sessions.create({
+    line_items: line_items,
+    mode: 'payment',
+    success_url: 'http://localhost:3000/success',
+    cancel_url: 'http://localhost:3000/cancel',
+  });
+
+  res.redirect(303, session.url);
+
+}
+
+const updateCart = async (req, res) => {
+
+  
+
+  try {
+    const { productId,newQuantity} = req.body 
+
+    console.log(productId, newQuantity)
+    // Find the user by ID
+    const user = await userModel.findById(productId);
+
+    // Find the item in the cart with the matching product ID
+    const cartItem = user.cart.item.find(item => item.productId.toString() === productId);
+
+    // Calculate the new total price of the cart
+    const oldPrice = cartItem.price * cartItem.qty;
+    const newPrice = cartItem.price * newQuantity;
+    const totalPrice = user.cart.totalPrice - oldPrice + newPrice;
+
+    // Update the quantity and total price of the cart item
+    cartItem.qty = newQuantity;
+
+    // Save the user object with the updated cart data
+    await user.save();
+
+    // Send back the updated cart data as a response
+    res.status(200).json({ cart: user.cart, totalPrice: totalPrice });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+
+
+}
+
+
+const payment = async (req, res) => {
+  res.render("payment");
+};
+
+let logged
+
+
+const loadAbout = async (req, res) => {
+
+
+
+  if(req.session.user_id){
+    logged= true;
+  }else{
+    logged=false;
+  }
+  res.render("aboutUs",{logged,session:getSession(req, res)});
+
+}
+
+const loadFaq = (req, res) =>{
+
+  res.render("faq",{session:getSession(req, res)});
+
+}
 // =================================================================
 
 module.exports = {
+  loadFaq,
+  loadAbout,
+  updateCart,
+  stripePayment,
   verifyUser,
   verifyUserEmail,
   loadHome,
@@ -356,6 +470,4 @@ module.exports = {
   editProfile,
   contact,
   viewOrderDetail
-  // loadOtp
-    // cartCount
 };

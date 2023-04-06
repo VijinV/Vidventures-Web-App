@@ -35,6 +35,10 @@ route.get('/contact',userController.contact)
 
 route.get('/viewOrderDetails',userAuth.isLogin,userController.viewOrderDetail)
 
+route.get('/about',userController.loadAbout)
+
+route.get('/faq',userController.loadFaq)
+
 
 
 // post 
@@ -104,6 +108,10 @@ route.post('/create-checkout-session', async (req, res) => {
   
 
   route.get('/save',userAuth.isLogin,userController.placeOrder)
+
+  route.post('/checkout',userAuth.isLogin,userController.stripePayment)
+
+  route.post('/update-cart',userAuth.isLogin,userController.updateCart)
   
 
 
