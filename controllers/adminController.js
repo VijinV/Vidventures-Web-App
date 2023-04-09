@@ -3,7 +3,7 @@ const adminModel = require("../models/userModel");
 const Products = require("../models/productModel");
 const couponModel = require("../models/couponModel");
 const orderModel = require("../models/orderModel");
-const invoice = require("easyinvoice");
+// const invoice = require("easyinvoice");
 const userModel = require("../models/userModel");
 const visitorsModel = require("../models/visitorsModel");
 
