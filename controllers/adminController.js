@@ -6,68 +6,75 @@ const orderModel = require("../models/orderModel");
 // const invoice = require("easyinvoice");
 const userModel = require("../models/userModel");
 const visitorsModel = require("../models/visitorsModel");
+const reviewModel = require("../models/reviewModel");
 
 // const multer = require('../config/multer');
 
 const loadDashboard = async (req, res, next) => {
-
-  const order = await orderModel.find().limit(6).populate("products.item.productId").populate("userId")
+  const order = await orderModel
+    .find()
+    .limit(6)
+    .populate("products.item.productId")
+    .populate("userId");
 
   // calculating total Revenue
-const  revenue = await orderModel.aggregate([
-  {
-    $group: {
-      _id: null,
-      totalPrice: { $sum: "$products.totalPrice" }
+  const revenue = await orderModel
+    .aggregate([
+      {
+        $group: {
+          _id: null,
+          totalPrice: { $sum: "$products.totalPrice" },
+        },
+      },
+    ])
+    .exec((err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result, "revenue");
+      }
+    });
+
+  // counting the total number of Orders
+
+  const Sales = await orderModel.find({ status: "Confirm" });
+
+  console.log(Sales.length, "sales");
+
+  // Visitors count
+
+  const startOfDay = new Date();
+  startOfDay.setHours(0, 0, 0, 0); // Set the time to the beginning of the day
+
+  visitorsModel.aggregate(
+    [
+      {
+        $match: { createdAt: { $gte: startOfDay } }, // Only consider documents created today
+      },
+      {
+        $group: {
+          _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } }, // Group by date
+          count: { $sum: "$count" }, // Sum the count field for each group
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          date: "$_id",
+          count: 1,
+        },
+      },
+    ],
+    function (err, results) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(results, "visitors count");
+      }
     }
-  }
-]).exec((err, result) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(result,"revenue");
-  }
-});
+  );
 
-// counting the total number of Orders
-
-const Sales = await orderModel.find({ status: 'Confirm'});
-
-console.log(Sales.length,'sales');
-
-
-// Visitors count 
-
-const startOfDay = new Date();
-startOfDay.setHours(0, 0, 0, 0); // Set the time to the beginning of the day
-
-visitorsModel.aggregate([
-  {
-    $match: { createdAt: { $gte: startOfDay } } // Only consider documents created today
-  },
-  {
-    $group: {
-      _id: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } }, // Group by date
-      count: { $sum: '$count' } // Sum the count field for each group
-    }
-  },
-  {
-    $project: {
-      _id: 0,
-      date: '$_id',
-      count: 1
-    }
-  }
-], function(err, results) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(results,'visitors count');
-  }
-});
-
-// dashboard charts
-
+  // dashboard charts
 
   // orderModel.aggregate([
   //   {
@@ -97,20 +104,18 @@ visitorsModel.aggregate([
   //     console.log(result);
   //   }
   // });
-  
-  const users = await userModel.getUser()
 
-  const usersCount = users.length
+  const users = await userModel.getUser();
 
-  const data =  [50, 70, 19, 1, 4, 5, 7, 30, 54, 8, 27, 2]
-  res.render("dashboard",{data,order,users});
+  const usersCount = users.length;
+
+  const data = [50, 70, 19, 1, 4, 5, 7, 30, 54, 8, 27, 2];
+  res.render("dashboard", { data, order, users });
 };
 
 const loadLogin = (req, res, next) => {
   res.render("login");
 };
-
-
 
 const verifyAdmin = async (req, res, next) => {
   try {
@@ -119,7 +124,7 @@ const verifyAdmin = async (req, res, next) => {
     const adminData = await adminModel.findOne({ email: email });
 
     if (adminData.isAdmin || adminData.coordinator) {
-      const passwordMatch =await bcrypt.compare(password, adminData.password);
+      const passwordMatch = await bcrypt.compare(password, adminData.password);
 
       if (passwordMatch) {
         req.session.admin_id = adminData._id;
@@ -130,12 +135,9 @@ const verifyAdmin = async (req, res, next) => {
       res.render("login", { message: "You are not an administrator" });
     }
   } catch (error) {
-
     console.log(error);
   }
 };
-
-
 
 const loadUser = async (req, res, next) => {
   try {
@@ -159,19 +161,26 @@ const loadAddProduct = async (req, res) => {
 
 const addProduct = async (req, res) => {
   try {
-    const { name, description, mrp, discountedPrice, image,link,sdescription} =
-      req.body;
+    const {
+      name,
+      description,
+      mrp,
+      discountedPrice,
+      image,
+      link,
+      sdescription,
+    } = req.body;
     const product = {
       name: name,
       description: description,
       mrp: mrp,
       discountedPrice: discountedPrice,
       image: req.file.filename,
-      link:link,
-      sdescription:sdescription
+      link: link,
+      sdescription: sdescription,
     };
 
-   await Products.addProduct(product).then(() =>
+    await Products.addProduct(product).then(() =>
       console.log("product saved successfully")
     );
 
@@ -189,8 +198,16 @@ const loadEditProduct = async (req, res) => {
 };
 
 const editProduct = (req, res) => {
-  const { name, description, discountedPrice, mrp, image, paymentId, link ,sdescription} =
-    req.body;
+  const {
+    name,
+    description,
+    discountedPrice,
+    mrp,
+    image,
+    paymentId,
+    link,
+    sdescription,
+  } = req.body;
   Products.findByIdAndUpdate(
     { _id: req.body.id },
     {
@@ -199,8 +216,8 @@ const editProduct = (req, res) => {
         description: description,
         discountedPrice: discountedPrice,
         mrp: mrp,
-        link:link,
-        sdescription:sdescription
+        link: link,
+        sdescription: sdescription,
       },
     }
   ).then(() => {
@@ -317,35 +334,172 @@ const couponBlock = async (req, res) => {
     });
   }
 
-  res.redirect('/admin/coupon')
+  res.redirect("/admin/coupon");
 };
 
-
 const listOrders = async (req, res) => {
+  const order = await orderModel
+    .find()
+    .sort({ _id: -1 })
+    .populate("products.item.productId")
+    .populate("userId");
 
-  const order = await orderModel.find().sort({_id:-1}).populate('products.item.productId').populate('userId')
+  const products = await orderModel.getProducts();
 
-  const products = await orderModel.getProducts()
-  
+  console.log(products);
 
-  console.log(products)
-
-  res.render('order',{order});
-
-}
+  res.render("order", { order });
+};
 
 const viewOrder = async (req, res) => {
-
   const order = await orderModel.getOrder(req.query.id);
 
   const product = await orderModel.getProductSummary(req.query.id);
 
-  res.render('viewOrder',{order,product});
+  res.render("viewOrder", { order, product });
+};
 
+// !not completed
+
+const addLink = async (req, res) => {
+  // Get the form data from the request body
+  const { link, id } = req.body;
+
+  const order = await orderModel
+    .findByIdAndUpdate({ _id: id }, { $set: { driveLink: link } })
+    .then(() => {
+      console.log("link added successfully");
+    });
+  // Send a success response
+  res.status(200).json({ message: "Order updated successfully!" });
+};
+
+const loadReview = async (req, res) => {
+  const review = await reviewModel.find();
+
+  res.render("review", { review });
+};
+
+const loadAddReview = async (req, res) => {
+  try {
+    const id = req.query.id;
+
+    if (id) {
+      console.log("hai");
+      const review = await reviewModel.findById(id);
+
+      res.render("addReview",{review});
+    } else {
+      res.render("addReview");
+    }
+  } catch (error) {}
+};
+
+const addReview = (req, res) => {
+  const { name, channelName, review } = req.body;
+
+  const newReview = new reviewModel({
+    name: name,
+    channelName: channelName,
+    review: review,
+    image: req.file.filename,
+  })
+    .save()
+    .then(() => {
+      res.redirect("/admin/review");
+    });
+};
+
+const listReview = async (req, res) => {
+  try {
+    const review = await reviewModel.findById({ _id: req.query.id });
+
+    if (review.isAvailable) {
+      await reviewModel
+        .findByIdAndUpdate(
+          { _id: req.query.id },
+          { $set: { isAvailable: false } }
+        )
+        .then(() => {
+          res.redirect("/admin/review");
+        });
+    } else {
+      await reviewModel
+      .findByIdAndUpdate(
+        { _id: req.query.id },
+        { $set: { isAvailable: true } }
+      )
+      .then(() => {
+        res.redirect("/admin/review");
+      });
+    }
+  } catch (error) {}
+};
+
+const deleteReview = async (req, res) => {
+  try {
+    await reviewModel.findByIdAndDelete({_id:req.query.id}).then(()=>res.redirect('/admin/review'));
+  } catch (error) {
+    
+  }
 }
 
+const listOrders2 = async (req, res) => {
+  const order = await orderModel
+    .find()
+    .sort({ _id: -1 })
+    .populate("products.item.productId")
+    .populate("userId");
+
+    let products = []
+    let data =[]
+
+    order.forEach((item) => {
+
+      let id = item._id
+      let userId = item.userId
+      let status = item.status
+      let orderId = item.orderId
+      let link = item.driveLink
+
+      item.products.item.forEach((product) => {
+
+        let productId = product.productId
+        let price = product.price
+        let qty = product.qty
+
+        let newOrder = {
+          id ,
+          userId ,
+          status ,
+          orderId,
+          link,
+          productId,
+          price ,
+          qty
+        }
+
+        data.push(newOrder)
+
+      })
+
+    })
+
+
+    console.log(data)
+
+
+  res.render("order", { order:data });
+};
 
 module.exports = {
+  listOrders2,
+  deleteReview,
+  listReview,
+  addReview,
+  loadAddReview,
+  loadReview,
+  addLink,
   viewOrder,
   addCoupon,
   editProduct,
@@ -362,5 +516,5 @@ module.exports = {
   blockUser,
   loadCoupon,
   couponBlock,
-  listOrders
+  listOrders,
 };

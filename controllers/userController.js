@@ -12,6 +12,8 @@ const orderModel = require("../models/orderModel");
 const visitorModel = require("../models/visitorsModel" );
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
+const reviewModel = require("../models/reviewModel")
+
 const orderIdCreate = require('order-id')('key');
 
 let message;
@@ -68,7 +70,11 @@ const loadHome = async (req, res, next) => {
       console.log("visitor arrived: ",visitors.count)
   }
 
-  res.render("home", { login, session: getSession(req, res) });
+  const review = await reviewModel.find({})
+
+  console.log(review)
+
+  res.render("home", { login, session: getSession(req, res),review:review });
 };
 
 const loadLogin = async (req, res, next) => {
@@ -448,9 +454,12 @@ const loadFaq = (req, res) =>{
   res.render("faq",{session:getSession(req, res)});
 
 }
+
+
 // =================================================================
 
 module.exports = {
+
   loadFaq,
   loadAbout,
   updateCart,

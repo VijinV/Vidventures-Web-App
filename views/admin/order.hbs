@@ -1,5 +1,7 @@
 
         <section class="content-main">
+
+            
             <div class="content-header">
                 <div>
                     <h2 class="content-title card-title">Order List </h2>
@@ -8,6 +10,15 @@
                 <div>
                     <input type="text" placeholder="Search order ID" class="form-control bg-white">
                 </div>
+            </div>
+            <div class="mb-5 d-flex justify-content-around" style="height: 80px;">
+              <button class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100">All</button>
+              <button class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100">Scripting</button>
+              <button class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100">Thumbnail & Seo</button>
+              <button class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100">Voice Over</button>
+              <button class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100">Video Editing</button>
+              <button class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100">Copyright & Quantity Check</button>
+
             </div>
             <div class="card mb-4">
                 <div class="card-body">
@@ -39,7 +50,10 @@
                                     <td><span class="badge rounded-pill alert-warning">{{status}}</span></td>
 
                                     {{/if}}
-                                    <td>{{formatDate createdAt}}</td>
+                                    {{!-- <td>{{formatDate createdAt}}</td> --}}
+                                    <td><a href="/admin/order" type="button" class="btn btn-primary btn btn-light rounded btn-sm font-sm " >
+                                      Move to Scripting ==>
+                                    </a></td>
                                     <td class="text-end">
                                         <a href="/admin/viewOrder?id={{_id}}" class="btn btn-md rounded font-sm">Detail</a>
                                         <div class="dropdown">
@@ -51,6 +65,7 @@
                                             </div>
                                         </div> <!-- dropdown //end -->
                                     </td>
+
                                 </tr>
                                 {{/each}}
                             </tbody>
@@ -58,5 +73,7 @@
                     </div> <!-- table-responsive //end -->
                 </div> <!-- card-body end// -->
             </div> <!-- card end// -->
-        </section> <!-- content-main end// -->
-  
+
+            <!-- Button trigger modal -->
+
+

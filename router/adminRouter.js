@@ -28,9 +28,19 @@ route.get('/coupon',adminAuth.isLogin,adminController.loadCoupon)
 
 route.get('/couponBlock',adminAuth.isLogin,adminController.couponBlock)
 
-route.get('/order',adminAuth.isLogin,adminController.listOrders)
+route.get('/order',adminAuth.isLogin,adminController.listOrders2)
 
 route.get('/viewOrder',adminAuth.isLogin,adminController.viewOrder)
+
+route.get('/review',adminAuth.isLogin,adminController.loadReview)
+
+route.get('/addReview',adminAuth.isLogin,adminController.loadAddReview)
+
+route.get("/listReview",adminAuth.isLogin, adminController.listReview)
+
+route.get("/dltReview",adminAuth.isLogin, adminController.deleteReview)
+
+
 
 route.get('/logout',adminAuth.logout)
 
@@ -45,6 +55,10 @@ route.post("/addProduct", multer.upload, adminController.addProduct);
 route.post('/editProduct',adminController.editProduct)
 
 route.post('/coupon',adminAuth.isLogin,adminController.addCoupon)
+
+route.post('/addLink',adminController.addLink)
+
+route.post('/addReview',adminAuth.isLogin,multer.upload,adminController.addReview)
 
 
 
