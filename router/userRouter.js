@@ -114,7 +114,7 @@ route.post('/create-checkout-session', async (req, res) => {
 
   route.post('/checkout',userAuth.isLogin,userController.stripePayment)
 
-  route.post('/update-cart',userAuth.isLogin,userController.updateCart)
+  route.post('/updateQuantity',userAuth.isLogin,userController.updateCart)
   
 
 

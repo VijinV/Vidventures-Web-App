@@ -1,166 +1,206 @@
- <!-- Start breadcrumb Area -->
-    <div class="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb-inner text-center">
-                        <h2 class="title">Cart</h2>
-                        <ul class="page-list">
-                            <li class="rbt-breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li>
-                                <div class="icon-right"><i class="feather-chevron-right"></i></div>
-                            </li>
-                            <li class="rbt-breadcrumb-item active">Cart</li>
-                        </ul>
-                    </div>
+<!-- Start breadcrumb Area -->
+<div class="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-inner text-center">
+                    <h2 class="title">Cart</h2>
+                    <ul class="page-list">
+                        <li class="rbt-breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li>
+                            <div class="icon-right"><i class="feather-chevron-right"></i></div>
+                        </li>
+                        <li class="rbt-breadcrumb-item active">Cart</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-    <!-- End Breadcrumb Area -->
+</div>
+<!-- End Breadcrumb Area -->
 
-    <div class="rbt-cart-area bg-color-white rbt-section-gap">
-        <div class="cart_area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <form action="#">
-                            <!-- Cart Table -->
-                            <div class="cart-table table-responsive mb--60">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th class="pro-thumbnail">Image</th>
-                                            <th class="pro-title">Product</th>
-                                            <th class="pro-price">Price</th>
-                                            <th class="pro-quantity">Quantity</th>
-                                            {{!-- <th class="pro-subtotal">Total</th> --}}
-                                            <th class="pro-remove">Remove</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-                                        {{#each cartItem}}
-                                        
-                                        <tr>
-                                            <td class="pro-thumbnail"><a href="#"><img src="admin/assets/ProductImages/{{productId.image}}" alt="Product"></a></td>
-                                            <td class="pro-title"><a href="#">{{productId.name}}</a></td>
-                                            <td class="pro-price"><span>${{productId.discountedPrice}}</span></td>
-                                            <td class="pro-quantity">
-                                                <div class="pro-qty w-100"><input class="w-100" type="text" value="1"></div>
-                                            </td>
-                                            {{!-- <td class="pro-subtotal"><span>${{productId.discountedPrice}}</span></td> --}}
-                                            <td class="pro-remove"><a href="/removeFromCart?id={{productId._id}}"><i class="feather-x"></i></a>
-                                            </td>
-                                        </tr>
-                                        {{/each}}
-                                      
-                                    </tbody>
-                                </table>
-                            </div>
-                        </form>
+<div class="rbt-cart-area bg-color-white rbt-section-gap">
+    <div class="cart_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <form action="#">
+                        <!-- Cart Table -->
+                        <div class="cart-table table-responsive mb--60">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="pro-thumbnail">Image</th>
+                                        <th class="pro-title">Product</th>
+                                        <th class="pro-price">Price</th>
+                                        <th class="pro-quantity">Quantity</th>
+                                        {{! <th class="pro-subtotal">Total</th> }}
+                                        <th class="pro-remove">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                        <div class="row g-5">
+                                    {{#each cartItem}}
 
-                            <div class="col-lg-6 col-12">
-                                <!-- Discount Coupon -->
-                                {{!-- <div class="discount-coupon edu-bg-shade">
+                                    <tr>
+                                        <td class="pro-thumbnail"><a href="#"><img
+                                                    src="admin/assets/ProductImages/{{productId.image}}"
+                                                    alt="Product" /></a></td>
+                                        <td class="pro-title"><a href="#">{{productId.name}}</a></td>
+                                        <td class="pro-price"><span>${{productId.discountedPrice}}</span></td>
+                                        <td class="pro-quantity">
+                                            <div class="pro-qty w-100">
+                                                <button class="minus-btn">-</button>
+                                                <input class="qty-input w-100" type="number" value="{{qty}}"
+                                                    data-product-id="{{productId._id}}" />
+                                                <button class="plus-btn">+</button>
+                                            </div>
+                                        </td>
+
+                                        {{!-- <td class="pro-subtotal"><span>${{productId.discountedPrice}}</span></td>
+                                        --}}
+                                        <td class="pro-remove"><a href="/removeFromCart?id={{productId._id}}"><i
+                                                    class="feather-x"></i></a>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+
+                    <div class="row g-5">
+
+                        <div class="col-lg-6 col-12">
+                            <!-- Discount Coupon -->
+                            {{! <div class="discount-coupon edu-bg-shade">
+                                <div class="section-title text-start">
+                                    <h4 class="title mb--30">Discount Coupon Code</h4>
+                                </div>
+                                <form action="#">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12 mb--25">
+                                            <input type="text" placeholder="Coupon Code">
+                                        </div>
+                                        <div class="col-md-6 col-12 mb--25">
+                                            <button class="rbt-btn btn-gradient hover-icon-reverse btn-sm">
+                                                <span class="icon-reverse-wrapper">
+                                                    <span class="btn-text">Apply Code</span>
+                                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div> }}
+                        </div>
+                        <!-- Cart Summary -->
+
+                        <div class="col-lg-5 offset-lg-1 col-12">
+                            <div class="cart-summary">
+                                <div class="cart-summary-wrap">
                                     <div class="section-title text-start">
-                                        <h4 class="title mb--30">Discount Coupon Code</h4>
+                                        <h4 class="title mb--30">Cart Summary</h4>
                                     </div>
-                                    <form action="#">
-                                        <div class="row">
-                                            <div class="col-md-6 col-12 mb--25">
-                                                <input type="text" placeholder="Coupon Code">
-                                            </div>
-                                            <div class="col-md-6 col-12 mb--25">
-                                                <button class="rbt-btn btn-gradient hover-icon-reverse btn-sm">
-                                                    <span class="icon-reverse-wrapper">
-                                                        <span class="btn-text">Apply Code</span>
-                                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div> --}}
-                            </div>
-                            <!-- Cart Summary -->
+                                    <p>Sub Total <span>${{totalPrice}}</span></p>
+                                    {{! <p>Shipping Cost <span>$00.00</span></p> }}
+                                    <h2>Grand Total <span>${{totalPrice}}</span></h2>
+                                </div>
 
-                            <div class="col-lg-5 offset-lg-1 col-12">
-                                <div class="cart-summary">
-                                    <div class="cart-summary-wrap">
-                                        <div class="section-title text-start">
-                                            <h4 class="title mb--30">Cart Summary</h4>
-                                        </div>
-                                        <p>Sub Total <span>${{totalPrice}}</span></p>
-                                        {{!-- <p>Shipping Cost <span>$00.00</span></p> --}}
-                                        <h2>Grand Total <span>${{totalPrice}}</span></h2>
-                                    </div>
+                                <div class="cart-submit-btn-group">
+                                    <div class="single-button w-100">
+                                        <form action="/checkout" method="post">
 
-                                    <div class="cart-submit-btn-group">
-                                        <div class="single-button w-100">
-                                            <form action="/checkout" method="post">
-                                            
-                                            <button type="submit" class="rbt-btn btn-gradient rbt-switch-btn rbt-switch-y w-100">
+                                            <button type="submit"
+                                                class="rbt-btn btn-gradient rbt-switch-btn rbt-switch-y w-100">
                                                 <span data-text="Checkout">Checkout</span>
                                             </button>
 
-                                            </form>
-                                            <input>
-                                        </div>
+                                        </form>
+                                        <input />
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="rbt-separator-mid">
-        <div class="container">
-            <hr class="rbt-separator m-0">
-        </div>
+<div class="rbt-separator-mid">
+    <div class="container">
+        <hr class="rbt-separator m-0" />
     </div>
-    <!-- Latest version of jQuery -->
+</div>
+<!-- Latest version of jQuery -->
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
 <!-- Specific version of jQuery (e.g. 3.6.0) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
 <script>
-        // Get the input field for the quantity
-const quantityInput = document.querySelector('.pro-qty input');
-const productId = document.querySelector('product-id');
+    // Get the input field and the plus and minus buttons
+    const qtyInput = document.querySelector('.qty-input');
+    const minusBtn = document.querySelector('.minus-btn');
+    const plusBtn = document.querySelector('.plus-btn');
 
-// Listen for changes in the quantity input field
-quantityInput.addEventListener('change', (event) => {
-  const newQuantity = parseInt(event.target.value);
-  const productId = '{{cartItem.productId._id}}'; // Replace with the actual product ID
+    // Decrease the value when the minus button is clicked
+    minusBtn.addEventListener('click', () => {
+        if (qtyInput.value > 1) {
+            qtyInput.value--;
+            const productId = qtyInput.getAttribute('data-product-id');
+            const newQuantity = qtyInput.value;
+            updateCartItem(productId, newQuantity);
+        }
+    });
 
-  // Send an AJAX request to update the quantity of the item in the cart
-  $.ajax({
-    type: 'POST',
-    url: '/update-cart',
-    data: {
-      productId,
-      newQuantity
-    },
-    success: function(data) {
-      // Update the total price in the cart
-      const totalPrice = data.totalPrice;
-      const totalPriceElement = document.querySelector('.cart-total-price');
-      totalPriceElement.innerText = totalPrice;
-    },
-    error: function(xhr, status, error) {
-      console.log(error);
+    // Increase the value when the plus button is clicked
+    plusBtn.addEventListener('click', () => {
+        qtyInput.value++;
+        const productId = qtyInput.getAttribute('data-product-id');
+        const newQuantity = qtyInput.value;
+        updateCartItem(productId, newQuantity);
+    });
+
+    // Function to update the quantity using AJAX
+    function updateQuantity(productId, quantity) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/updateQuantity');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                console.log(response.message);
+            } else {
+                console.error('There was a problem with the AJAX request.');
+            }
+        };
+        xhr.send(JSON.stringify({ productId, quantity }));
     }
-  });
-});
 
-    </script>
+    function updateCartItem(productId, qty) {
+        $.ajax({
+            url: '/updateQuantity',
+            type: 'POST',
+            data: { productId: productId, qty: qty },
+            success: function (data) {
+                // update subtotal and  grand total
+                console.log(data);
+                const productPrice = data.productPrice;
+                const newPrice = productPrice * qty;
+                $('#price').text(newPrice);
+                $('#subtotal').text(data.subtotal);
+                // $('#totalart').text(data.grandTotal); 
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+    }
+
+</script>

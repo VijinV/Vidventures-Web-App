@@ -5,7 +5,7 @@
 
     <h3>OTP VERIFICATION</h3>
     <br>
-    <p class="info">An otp has been sent to ********k876@gmail.com</p>
+    <p class="info">An otp has been sent to ********{{email}}</p>
     <p class="msg">Please enter OTP to verify</p>
     <p class="msg" style="color: red;">{{message}}<br></p>
     
@@ -18,9 +18,14 @@
   <input type="number" class="otp__digit" name="digit4">
   <input type="number" class="otp__digit" name="digit5">
   <input type="number" class="otp__digit" name="digit6">
+  <input type="hidden" name="otp" id="otp-input">
+  
 </div>
- <input type="hidden" name="otp" id="otp-input">
-  <button type="submit" >Submit</button>
+
+<div class="w-100 d-flex justify-content-center mt-3">
+<button class="btn btn-primary btn-lg" style="width: 150px; height: 50px; font-size: 20px;" type="submit" >Submit</button>
+</div>
+ 
 
 
   {{!-- <div class="result"><p id="_otp" class="_notok">855412</p></div> --}}

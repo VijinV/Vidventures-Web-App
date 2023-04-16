@@ -8,32 +8,32 @@
                     <div class="rbt-contact-form contact-form-style-1 max-width-auto">
                         <div class="section-title text-start">
                             <span class="subtitle bg-primary-opacity">Add Instructions</span>
-                        </div>{{#each instruction}}
+                        </div>
                         {{!-- <h3 class="title">Get a Free Course You Can Contact With Me</h3> --}}
                         <form id="contact-form" method="POST" action="/addInstructions" class="rainbow-dynamic-form max-width-auto">
                            <div class="form-group">
                           
-                                <textarea name="script" id="contact-message">{{script}}</textarea>
+                                <textarea class="pt-5" name="script" id="contact-message">{{instruction.script}}</textarea>
                                 <label>Script</label>
                                 <span class="focus-border"></span>
                             </div>
                             <div class="form-group">
-                                <textarea name="voice" id="contact-message">{{voice}}</textarea>
+                                <textarea  class="pt-5"  name="voice" id="contact-message">{{instruction.voice}}</textarea>
                                 <label>Voice Over</label>
                                 <span class="focus-border"></span>
                             </div>
                             <div class="form-group">
-                                <textarea name="editing" id="contact-message">{{editing}}</textarea>
+                                <textarea  class="pt-5" name="editing" id="contact-message">{{instruction.editing}}</textarea>
                                 <label>Editing</label>
                                 <span class="focus-border"></span>
                             </div>
                             <div class="form-group">
-                                <input type="text" value="{{thumbnail}}"  id="subject" name="thumbnail">
+                                <input  class="pt-5" type="text" value="{{instruction.thumbnail}}"  id="subject" name="thumbnail">
                                 <label>Thumbnail </label>
                                 <span class="focus-border"></span>
                             </div>
-                            <input type="hidden" name="id" value="{{id}}" id="">
-                            <input type="hidden" name="productId" value="{{productId}}" id="">
+                           <input type="hidden" name="id" value="{{id}}" id="">
+                            <input type="hidden" name="productId" value="{{productId}}" >
                             <div class="form-submit-group">
                                 <button name="submit" type="submit" id="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100">
                                     <span class="icon-reverse-wrapper">
@@ -44,7 +44,9 @@
                                 </button>
                             </div>
                         </form>
-                        {{/each}}
+                        
+
+                         
                     </div>
                 </div>
             </div>
