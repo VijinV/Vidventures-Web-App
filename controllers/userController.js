@@ -511,6 +511,17 @@ const stripePayment = async (req, res) => {
     .findById(req.session.user_id)
     .populate("cart.item.productId");
 
+    const oid = orderIdCreate.generate();
+
+    const user = await userModel.findById(req.session.user_id);
+
+    order = new orderModel({
+      products: user.cart,
+      userId: req.session.user_id,
+      status: "Confirm",
+      orderId: oid,
+    });
+
   let line_items = [];
 
   let line_object;
@@ -523,11 +534,11 @@ const stripePayment = async (req, res) => {
 
     line_object = {
       price_data: {
-        currency: "usd",
+        currency: "inr",
         product_data: {
           name: name,
           images: [
-            "https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8=",
+            "https://lh3.googleusercontent.com/p/AF1QipNl0KL5RiHkyjn6GWNcFtnyav2-cNug_A4AfWYO=s680-w680-h510",
           ],
         },
         unit_amount: price,
@@ -537,8 +548,6 @@ const stripePayment = async (req, res) => {
     line_items.push(line_object);
   });
 
-  console.log(line_items, "line_items");
-
   const session = await stripe.checkout.sessions.create({
     line_items: line_items,
     mode: "payment",
@@ -546,7 +555,31 @@ const stripePayment = async (req, res) => {
     cancel_url: "http://localhost:3000/cancel",
   });
 
-  res.redirect(303, session.url);
+  console.log(session)
+
+  // if(session.url == "http://localhost:3000/success"){
+  //   order = new orderModel({
+  //     products: user.cart,
+  //     userId: req.session.user_id,
+  //     status: "Confirm",
+  //     orderId: oid,
+  //   });
+
+  //   await order.save();
+  // }else{
+  //   order = new orderModel({
+  //     products: user.cart,
+  //     userId: req.session.user_id,
+  //     status: "Payment Failed",
+  //     orderId: oid,
+  //   });
+  //   await order.save();
+  // }
+  // await order.save();
+
+  res.redirect(303, session.url+`?id=${session}`);
+
+  
 };
 
 const updateCart = async (req, res) => {
@@ -670,6 +703,13 @@ const addInstruction = async (req, res) => {
 
   res.redirect(`/viewOrderDetails?id=${id}&productId=${productId}`);
 };
+
+
+const loadSuccess = (req, res) => {
+
+
+
+}
 
 // =================================================================
 

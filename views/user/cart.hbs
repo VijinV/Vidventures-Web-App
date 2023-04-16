@@ -41,7 +41,6 @@
                                 <tbody>
 
                                     {{#each cartItem}}
-
                                     <tr>
                                         <td class="pro-thumbnail"><a href="#"><img
                                                     src="admin/assets/ProductImages/{{productId.image}}"
@@ -50,20 +49,25 @@
                                         <td class="pro-price"><span>${{productId.discountedPrice}}</span></td>
                                         <td class="pro-quantity">
                                             <div class="pro-qty w-100">
-                                                <button class="minus-btn">-</button>
+                                                <a class="minus-btn ms-2 me 3"><svg xmlns="http://www.w3.org/2000/svg"
+                                                        width="24" height="24" viewBox="0 0 24 24">
+                                                        <path fill="currentColor" d="M19 12.998H5v-2h14z" />
+                                                    </svg></a>
                                                 <input class="qty-input w-100" type="number" value="{{qty}}"
                                                     data-product-id="{{productId._id}}" />
-                                                <button class="plus-btn">+</button>
+                                                <a class="plus-btn ms-3 me-2"><svg xmlns="http://www.w3.org/2000/svg"
+                                                        width="24" height="24" viewBox="0 0 24 24">
+                                                        <path fill="currentColor"
+                                                            d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6h-2Z" />
+                                                    </svg></a>
                                             </div>
                                         </td>
-
-                                        {{!-- <td class="pro-subtotal"><span>${{productId.discountedPrice}}</span></td>
-                                        --}}
                                         <td class="pro-remove"><a href="/removeFromCart?id={{productId._id}}"><i
-                                                    class="feather-x"></i></a>
-                                        </td>
+                                                    class="feather-x"></i></a></td>
                                     </tr>
                                     {{/each}}
+
+
 
                                 </tbody>
                             </table>
@@ -104,9 +108,9 @@
                                     <div class="section-title text-start">
                                         <h4 class="title mb--30">Cart Summary</h4>
                                     </div>
-                                    <p>Sub Total <span>${{totalPrice}}</span></p>
+                                    <p>Sub Total <span class="subtotal">${{totalPrice}}</span></p>
                                     {{! <p>Shipping Cost <span>$00.00</span></p> }}
-                                    <h2>Grand Total <span>${{totalPrice}}</span></h2>
+                                    <h2>Grand Total <span class="subtotal">${{totalPrice}}</span></h2>
                                 </div>
 
                                 <div class="cart-submit-btn-group">
@@ -142,29 +146,34 @@
 
 <!-- Specific version of jQuery (e.g. 3.6.0) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script>
-    // Get the input field and the plus and minus buttons
-    const qtyInput = document.querySelector('.qty-input');
-    const minusBtn = document.querySelector('.minus-btn');
-    const plusBtn = document.querySelector('.plus-btn');
+    // Get all the quantity input fields and plus/minus buttons
+    const qtyInputs = document.querySelectorAll('.qty-input');
+    const minusBtns = document.querySelectorAll('.minus-btn');
+    const plusBtns = document.querySelectorAll('.plus-btn');
 
-    // Decrease the value when the minus button is clicked
-    minusBtn.addEventListener('click', () => {
-        if (qtyInput.value > 1) {
-            qtyInput.value--;
+    // Loop through each input field and add event listeners to the corresponding plus/minus buttons
+    qtyInputs.forEach((qtyInput, index) => {
+        const minusBtn = minusBtns[index];
+        const plusBtn = plusBtns[index];
+
+        // Decrease the value when the minus button is clicked
+        minusBtn.addEventListener('click', () => {
+            if (qtyInput.value > 1) {
+                qtyInput.value--;
+                const productId = qtyInput.getAttribute('data-product-id');
+                const newQuantity = qtyInput.value;
+                updateCartItem(productId, newQuantity);
+            }
+        });
+
+        // Increase the value when the plus button is clicked
+        plusBtn.addEventListener('click', () => {
+            qtyInput.value++;
             const productId = qtyInput.getAttribute('data-product-id');
             const newQuantity = qtyInput.value;
             updateCartItem(productId, newQuantity);
-        }
-    });
-
-    // Increase the value when the plus button is clicked
-    plusBtn.addEventListener('click', () => {
-        qtyInput.value++;
-        const productId = qtyInput.getAttribute('data-product-id');
-        const newQuantity = qtyInput.value;
-        updateCartItem(productId, newQuantity);
+        });
     });
 
     // Function to update the quantity using AJAX
@@ -194,7 +203,7 @@
                 const productPrice = data.productPrice;
                 const newPrice = productPrice * qty;
                 $('#price').text(newPrice);
-                $('#subtotal').text(data.subtotal);
+                $('.subtotal').text(data.subtotal);
                 // $('#totalart').text(data.grandTotal); 
             },
             error: function (jqXHR, textStatus, errorThrown) {

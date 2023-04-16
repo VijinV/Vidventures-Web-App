@@ -265,10 +265,10 @@
 
 
                         <tr>
-                            <td>{{@index}}</td>
+                            <td>{{orderId}}</td>
                             <td><b>{{userId.name}}</b></td>
                             <td>{{userId.email}}</td>
-                            <td>${{multi qty price}}</td>
+                            <td>${{ price }}</td>
                             {{#if (eq status "Confirm") }}
                             <td><span class="badge rounded-pill alert-primary">{{status}}</span></td>
                             {{else if (eq status "Scripting") }}
