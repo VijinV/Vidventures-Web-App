@@ -40,13 +40,20 @@ route.get("/listReview",adminAuth.isLogin, adminController.listReview)
 
 route.get("/dltReview",adminAuth.isLogin, adminController.deleteReview)
 
+route.get('/startScripting',adminAuth.isLogin, adminController.startScripting)
 
+route.get('/moveToThumbnail',adminAuth.isLogin, adminController.moveToThumbnail)
+
+route.get('/moveToVoiceover',adminAuth.isLogin, adminController.moveToVoiceover)
+
+route.get('/moveToVideoEditing',adminAuth.isLogin, adminController.moveToVideoEditing)
+
+route.get('/moveToCopyright',adminAuth.isLogin, adminController.moveToCopyright)
 
 route.get('/logout',adminAuth.logout)
 
 
 // POST method 
-
 
 route.post("/login", adminAuth.isLogout, adminController.verifyAdmin);
 
@@ -59,6 +66,8 @@ route.post('/coupon',adminAuth.isLogin,adminController.addCoupon)
 route.post('/addLink',adminController.addLink)
 
 route.post('/addReview',adminAuth.isLogin,multer.upload,adminController.addReview)
+
+route.post('/addDriveLink',adminAuth.isLogin,adminController.DeliverOrder)
 
 
 

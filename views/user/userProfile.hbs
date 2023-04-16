@@ -75,15 +75,15 @@
                                                 </thead>
 
                                                 <tbody>
-                                                    {{#each order}}
+                                                    {{#each data}}
                                                     <tr>
                                                         <td>{{@index}}</td>
-                                                        <td>{{orderId}}</td>
+                                                        <td>{{productId.name}}</td>
                                                         <td>{{formatDate createdAt}}</td>
                                                         <td>{{status}}</td>
-                                                        <td>$45</td>
+                                                        <td>${{multi price qty}}</td>
                                                         <td>
-                                                            <a class="rbt-btn btn-gradient btn-sm" href="/viewOrderDetails">View Details</a>
+                                                            <a class="rbt-btn btn-gradient btn-sm" href="/viewOrderDetails?id={{id}}&productId={{productId._id}}">View Details</a>
                                                         </td>
                                                     </tr>
                                                     {{/each}}

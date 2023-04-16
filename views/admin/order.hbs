@@ -1,79 +1,317 @@
-
-        <section class="content-main">
-
-            
-            <div class="content-header">
-                <div>
-                    <h2 class="content-title card-title">Order List </h2>
-                    <p></p>
-                </div>
-                <div>
-                    <input type="text" placeholder="Search order ID" class="form-control bg-white">
-                </div>
-            </div>
-            <div class="mb-5 d-flex justify-content-around" style="height: 80px;">
-              <button class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100">All</button>
-              <button class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100">Scripting</button>
-              <button class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100">Thumbnail & Seo</button>
-              <button class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100">Voice Over</button>
-              <button class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100">Video Editing</button>
-              <button class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100">Copyright & Quantity Check</button>
-
-            </div>
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                               
-                                <tr>
-                                    <th>#ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Total</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col" class="text-end"> Action </th>
-                                </tr>
-                                
-                            </thead>
-                            <tbody>
-                                {{#each order}}
-                                <tr>
-                                    <td>{{@index}}</td>
-                                    <td><b>{{userId.name}}</b></td>
-                                        <td>{{userId.email}}</td>
-                                    <td>${{products.totalPrice}}</td>
-                                    {{#if (eq status "Confirm") }}
-                                    <td><span class="badge rounded-pill alert-success">{{status}}</span></td>
-                                    {{else}}
-                                    <td><span class="badge rounded-pill alert-warning">{{status}}</span></td>
-
-                                    {{/if}}
-                                    {{!-- <td>{{formatDate createdAt}}</td> --}}
-                                    <td><a href="/admin/order" type="button" class="btn btn-primary btn btn-light rounded btn-sm font-sm " >
-                                      Move to Scripting ==>
-                                    </a></td>
-                                    <td class="text-end">
-                                        <a href="/admin/viewOrder?id={{_id}}" class="btn btn-md rounded font-sm">Detail</a>
-                                        <div class="dropdown">
-                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">View detail</a>
-                                                <a class="dropdown-item" href="#">Edit info</a>
-                                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                                            </div>
-                                        </div> <!-- dropdown //end -->
-                                    </td>
-
-                                </tr>
-                                {{/each}}
-                            </tbody>
-                        </table>
-                    </div> <!-- table-responsive //end -->
-                </div> <!-- card-body end// -->
-            </div> <!-- card end// -->
-
-            <!-- Button trigger modal -->
+<section class="content-main">
 
 
+    <div class="content-header">
+        <div>
+            {{#if (eq id "Scripting")}}
+            <h2 class="content-title card-title">Scripting</h2>
+            {{else if (eq id "Thumbnail")}}
+            <h2 class="content-title card-title">Thumbnail & SEO</h2>
+            {{else if (eq id "Voice")}}
+            <h2 class="content-title card-title">Voice Over</h2>
+            {{else if (eq id "Video")}}
+            <h2 class="content-title card-title">Video Editing</h2>
+            {{else if (eq id "Copyright")}}
+            <h2 class="content-title card-title">Copyright & Quality Checking</h2>
+            {{else if (eq id "Delivered")}}
+            <h2 class="content-title card-title">Delivered Orders</h2>
+            {{else}}
+            <h2 class="content-title card-title">All Orders</h2>
+            {{/if}}
+
+        </div>
+        <div>
+            <input type="text" placeholder="Search order ID" class="form-control bg-white">
+        </div>
+    </div>
+    <div class="mb-5 d-flex justify-content-around" style="height: 80px;">
+        <a href="/admin/order?" class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100 p-4">All</a>
+        <a href="/admin/order?id=Scripting" class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100 p-4">Scripting</a>
+        <a href="/admin/order?id=Thumbnail" class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100 p-4">Thumbnail & Seo</a>
+        <a href="/admin/order?id=Voice" class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100 p-4">Voice Over</a>
+        <a href="/admin/order?id=Video" class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100 p-4">Video Editing</a>
+        <a href="/admin/order?id=Copyright" class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100 p-4">Copyright & Quantity
+            Check</a>
+        <a href="/admin/order?id=Delivered" class="btn btn-primary mb-5 w-100 ms-1 me-3 h-100 p-4">Delivered Orders</a>
+
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+
+                        <tr>
+                            <th>#ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Date</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+
+                    </thead>
+                    {{#if (eq id "Scripting")}}
+                    <tbody>
+                        {{#each order}}
+
+                        {{#if (statusConfirm status)}}
+                        <tr>
+                            <td>{{@index}}</td>
+                            <td><b>{{userId.name}}</b></td>
+                            <td>{{userId.email}}</td>
+                            <td>${{multi qty price}}</td>
+                            {{#if (eq status "Confirm") }}
+                            <td><span class="badge rounded-pill alert-primary">{{status}}</span></td>
+                            {{else}}
+                            <td><span class="badge rounded-pill alert-warning">{{status}}</span></td>
+
+                            {{/if}}
+                            <td>{{formatDate createdAt}}</td>
+
+                            {{#if (eq status "Confirm")}}
+
+                            <td> <a href="/admin/startScripting?id={{id}}&productId={{productId._id}}"
+                                    class="btn btn-lg font-sm rounded btn-dark me-1">
+                                    Start Scripting
+                                </a></td>
+                            <td></td>
+                            {{else if (eq status "Scripting")}}
+                            <td> <a href="/admin/moveToThumbnail?id={{id}}&productId={{productId._id}}"
+                                    class="btn btn-lg font-sm rounded btn-dark me-1">
+                                    Move to Thumbnail
+                                </a></td>
+                            <td> <a href="/admin/moveToVoiceover?id={{id}}&productId={{productId._id}}"
+                                    class="btn btn-lg font-sm rounded btn-dark me-1">
+                                    Voice Over
+                                </a></td>
+                            {{/if}}
+
+                            <td class="text-end">
+                                <a href="/admin/viewOrder?id={{id}}&productId={{productId._id}}"
+                                    class="btn btn-md rounded font-sm">Detail</a>
+                            </td>
+
+
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                    </tbody>
+                    {{else if (eq id "Thumbnail")}}
+                    <tbody>
+                        {{#each order}}
+                        {{#if (eq status "Creating Thumbnail" )}}
+                        <tr>
+                            <td>{{@index}}</td>
+                            <td><b>{{userId.name}}</b></td>
+                            <td>{{userId.email}}</td>
+                            <td>${{multi qty price}}</td>
+                            {{#if (eq status "Confirm") }}
+                            <td><span class="badge rounded-pill alert-success">{{status}}</span></td>
+                            {{else}}
+                            <td><span class="badge rounded-pill alert-warning">{{status}}</span></td>
+                            {{/if}}
+                            <td>{{formatDate createdAt}}</td>
+
+
+                            <td></td>
+
+                            <td> <a href="/admin/moveToVoiceover?id={{id}}&productId={{productId._id}}"
+                                    class="btn btn-lg font-sm rounded btn-dark me-1">
+                                    Move To Voice Over
+                                </a></td>
+
+                             <td class="text-end">
+                                <a href="/admin/viewOrder?id={{id}}&productId={{productId._id}}"
+                                    class="btn btn-md rounded font-sm">Detail</a>
+                            </td>
+
+
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                    </tbody>
+                    {{else if (eq id "Voice")}}
+                    <tbody>
+                        {{#each order}}
+                        {{#if (eq status "Started Voice Over" )}}
+                        <tr>
+                            <td>{{@index}}</td>
+                            <td><b>{{userId.name}}</b></td>
+                            <td>{{userId.email}}</td>
+                            <td>${{multi qty price}}</td>
+                            {{#if (eq status "Confirm") }}
+                            <td><span class="badge rounded-pill alert-success">{{status}}</span></td>
+                            {{else}}
+                            <td><span class="badge rounded-pill alert-warning">{{status}}</span></td>
+
+                            {{/if}}
+                            <td>{{formatDate createdAt}}</td>
+
+                            <td> <a href="/admin/moveToVideoEditing?id={{id}}&productId={{productId._id}}"
+                                    class="btn btn-lg font-sm rounded btn-dark me-1">
+                                    Move To Video Editing
+                                </a></td>
+
+                           <td class="text-end">
+                                <a href="/admin/viewOrder?id={{id}}&productId={{productId._id}}"
+                                    class="btn btn-md rounded font-sm">Detail</a>
+                            </td>
+
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                    </tbody>
+                    {{else if (eq id "Video")}}
+                    <tbody>
+                        {{#each order}}
+                        {{#if (eq status "Started Video Editing" )}}
+                        <tr>
+                            <td>{{@index}}</td>
+                            <td><b>{{userId.name}}</b></td>
+                            <td>{{userId.email}}</td>
+                            <td>${{multi qty price}}</td>
+                            {{#if (eq status "Confirm") }}
+                            <td><span class="badge rounded-pill alert-success">{{status}}</span></td>
+                            {{else}}
+                            <td><span class="badge rounded-pill alert-warning">{{status}}</span></td>
+
+                            {{/if}}
+                            <td>{{formatDate createdAt}}</td>
+
+                            <td> <a href="/admin/moveToCopyright?id={{id}}&productId={{productId._id}}"
+                                    style="width: 200px; height: 60px; " class=" btn rounded font-sm btn-dark ">
+                                    Move To Copyright & Quantity Check
+                                </a></td>
+
+                           <td class="text-end">
+                                <a href="/admin/viewOrder?id={{id}}&productId={{productId._id}}"
+                                    class="btn btn-md rounded font-sm">Detail</a>
+                            </td>
+
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                    </tbody>
+
+                    {{else if (eq id "Copyright")}}
+                    <tbody>
+                        {{#each order}}
+                        {{#if (eq status "Started copyright & Quality Checking" )}}
+                        <tr>
+                            <td>{{@index}}</td>
+                            <td><b>{{userId.name}}</b></td>
+                            <td>{{userId.email}}</td>
+                            <td>${{multi qty price}}</td>
+                            {{#if (eq status "Confirm") }}
+                            <td><span class="badge rounded-pill alert-success">{{status}}</span></td>
+                            {{else}}
+                            <td><span class="badge rounded-pill alert-warning">{{status}}</span></td>
+
+                            {{/if}}
+                            <td>{{formatDate createdAt}}</td>
+
+                            <td> <a href="/admin/viewOrder?id={{id}}&productId={{productId._id}}"
+                                    class="btn btn-lg font-sm rounded btn-dark me-1">
+                                    Deliver Product
+                                </a></td>
+
+                            <td class="text-end">
+                                <a href="/admin/viewOrder?id={{id}}&productId={{productId._id}}"
+                                    class="btn btn-md rounded font-sm">Detail</a>
+                            </td>
+
+                        </tr>
+
+                        {{/if}}
+                        {{/each}}
+                    </tbody>
+                    {{else if (eq id "Delivered")}}
+                    <tbody>
+                        {{#each order}}
+                        {{#if (eq status "Delivered" )}}
+                        <tr>
+                            <td>{{@index}}</td>
+                            <td><b>{{userId.name}}</b></td>
+                            <td>{{userId.email}}</td>
+                            <td>${{multi qty price}}</td>
+
+                            <td><span class="badge rounded-pill alert-success">{{status}}</span></td>
+
+
+                            <td>{{formatDate createdAt}}</td>
+
+                                                        <td> <a href="/admin/viewOrder?id={{id}}&productId={{productId._id}}"
+                                    class="btn btn-lg font-sm rounded btn-dark me-1">
+                                   ReEdit
+                                </a></td>
+
+                            <td class="text-end">
+                                <a href="/admin/viewOrder?id={{id}}&productId={{productId._id}}"
+                                    class="btn btn-md rounded font-sm">Detail</a>
+                            </td>
+
+                        </tr>
+
+                        {{/if}}
+                        {{/each}}
+                    </tbody>
+                    {{else}}
+
+                    <tbody>
+                        {{#each order}}
+
+
+                        <tr>
+                            <td>{{@index}}</td>
+                            <td><b>{{userId.name}}</b></td>
+                            <td>{{userId.email}}</td>
+                            <td>${{multi qty price}}</td>
+                            {{#if (eq status "Confirm") }}
+                            <td><span class="badge rounded-pill alert-primary">{{status}}</span></td>
+                            {{else if (eq status "Scripting") }}
+                            <td><span class="badge rounded-pill alert-warning">{{status}}</span></td>
+                            {{else if (eq status "Creating Thumbnail") }}
+                            <td><span class="badge rounded-pill alert-warning">{{status}}</span></td>
+                            {{else if (eq status "Started Voice Over") }}
+                            <td><span class="badge rounded-pill alert-warning">{{status}}</span></td>
+                            {{else if (eq status "Started Video Editing") }}
+                            <td><span class="badge rounded-pill alert-warning">{{status}}</span></td>
+                            {{else if (eq status "Started copyright & Quality Checking") }}
+                            <td><span class="badge rounded-pill alert-warning">{{status}}</span></td>
+                            {{else if (eq status "Delivered") }}
+                            <td><span class="badge rounded-pill alert-success">{{status}}</span></td>
+
+                            {{/if}}
+                            <td>{{formatDate createdAt}}</td>
+
+                            {{#if (eq status "Confirm")}}
+
+                            <td> <a href="/admin/startScripting?id={{id}}&productId={{productId._id}}"
+                                    class="btn btn-lg font-sm rounded btn-dark me-1">
+                                    Start Scripting
+                                </a></td>
+                            {{else}}
+                            <td></td>
+                            {{/if}}
+                            <td class="text-end">
+                                <a href="/admin/viewOrder?id={{id}}&productId={{productId._id}}"
+                                class="btn btn-md rounded font-sm">Detail</a>
+                            </td>
+
+                        </tr>
+
+                        {{/each}}
+                    </tbody>
+
+                    {{/if}}
+
+
+                </table>
+            </div> <!-- table-responsive //end -->
+        </div> <!-- card-body end// -->
+    </div> <!-- card end// -->
+
+    <!-- Button trigger modal -->

@@ -72,11 +72,11 @@
                                 <span class="badge rounded-pill alert-danger">Unlisted</span>
                             </div>
                             {{/if}}
-                            <div class="col-lg-1 col-sm-2 col-4 col-date">
+                            {{!-- <div class="col-lg-1 col-sm-2 col-4 col-date">
                                 <a href="/admin/showInBanner?id={{_id}}" class="btn btn-sm font-sm rounded btn-dark me-1">
                                     <i class="material-icons"></i>Banner
                                 </a>
-                            </div>
+                            </div> --}}
 
                             
 
@@ -86,7 +86,7 @@
                                     <i class="material-icons md-edit"></i> Edit
                                 </a>
                                 {{#if isAvailable}}
-                                <a href="/admin/unListProduct?id={{_id}}" class="btn btn-sm font-sm btn-light rounded me-1">
+                                <a onclick="unList('{{_id}}')" class="btn btn-sm font-sm btn-light rounded me-1">
                                      Unlist
                                 </a>
                                 {{else}}
@@ -95,7 +95,7 @@
                                 </a>
                                 
                                 {{/if}}
-                                <a href="/admin/dltProduct?id={{_id}}" class="btn btn-sm font-sm btn-danger rounded">
+                                <a onclick="deleteRecord('{{_id}}')" class="btn btn-sm font-sm btn-danger rounded">
                                     <i class="material-icons md-delete_forever"></i> Delete
                                 </a>
                                 
@@ -106,3 +106,46 @@
                 </div> <!-- card-body end// -->
             </div> <!-- card end// -->
         </section> <!-- content-main end// -->
+
+<script>
+function deleteRecord(recordId) {
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this record!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            // User confirmed deletion, perform deletion logic
+            window.location.href = "/admin/dltReview?id=" + recordId;
+        } else {
+            // User cancelled deletion
+            swal("Your record is safe!");
+        }
+    });
+}
+
+function unList(recordId) {
+    swal({
+        title: "Are you sure?",
+        text: "Once Unlist, Users will not be able to purchase this Product!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            // User confirmed deletion, perform deletion logic
+            window.location.href = "/admin/unListProduct?id=" + recordId;
+        } else {
+            // User cancelled deletion
+            swal("Your record is safe!");
+        }
+    });
+}
+
+
+
+</script>

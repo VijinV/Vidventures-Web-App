@@ -18,6 +18,28 @@ const orderSchema = new mongoose.Schema({
         price: {
           type: Number,
         },
+        status: {
+          type: String,
+          default:null
+        },
+        link:{
+          type: String,
+          default:null
+        },
+        instruction:{
+          script:{
+            type: String,
+          },
+          voice:{
+            type: String,
+          },
+          editing:{
+            type: String,
+          },
+          thumbnail:{
+            type: String,
+          }
+        }
       },
     ],
     totalPrice: {

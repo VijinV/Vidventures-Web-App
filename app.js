@@ -63,6 +63,15 @@ userRoute.engine(
       formatDate:function (num) {
         return num.toLocaleDateString('en-US');
       },
+      multi:function(val1,val2){
+        return  parseInt(val1)*parseInt(val2)
+      },
+      eq: function (v1, v2) {  
+        if (v1 === v2) {
+          return v2;
+        } else {
+        }
+      },
     }
   })
 );
@@ -91,6 +100,15 @@ adminRoute.engine(
       formatDate:function (num) {
         return num.toLocaleDateString('en-US');
       },
+      statusConfirm:function (v1){
+        if (v1 === "Scripting" || v1 === "Confirm"){
+
+          return v1
+
+        }else{
+          return false
+        }
+      }
     
   
     },

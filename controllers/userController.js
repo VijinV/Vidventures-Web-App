@@ -12,9 +12,12 @@ const orderModel = require("../models/orderModel");
 const visitorModel = require("../models/visitorsModel" );
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-const reviewModel = require("../models/reviewModel")
+const reviewModel = require("../models/reviewModel");
+const productModel = require("../models/productModel");
 
-const orderIdCreate = require('order-id')('key');
+const orderIdCreate = require('order-id')('key',{
+  prefix: '5000'
+});
 
 let message;
 
@@ -189,7 +192,33 @@ const verifyUser = async (req, res) => {
 const viewOrderDetail = async (req,res)=>{
   try {
 
-    res.render('viewOrderDetails')
+    const id = req.query.id;
+
+    const productId = req.query.productId
+
+
+
+
+
+    const order = await orderModel.findById({_id:id}).populate("products.item.productId").populate("userId")
+
+    let product ;
+
+    const newProduct = await productModel.findById(productId)
+
+    
+if (order) {
+  const item = order.products.item.find((i) => String(i.productId._id) === String(productId));
+  if (item) {
+    product = item
+  } else {
+    console.log('No item found with the given productId');
+  }
+  } else {
+  console.log('No order found with the given id');
+  }
+
+    res.render('viewOrderDetails',{product,order,newProduct})
     
   } catch (error) {
     console.log(error);
@@ -201,31 +230,63 @@ const viewOrderDetail = async (req,res)=>{
 const loadProfile = async (req, res) => {
  try {
 const userData = await userModel.getUserById(req.session.user_id)
-
 const order = await orderModel.find({userId:req.session.user_id}).populate("products.item.productId").populate("userId").sort({createdAt:-1})
-console.log(userData);
 
 const orderDetails = await orderModel.find({})
-.populate('products.item.productId')
-.exec((err, orders) => {
-  if (err) {
-    console.log(err);
-  } else {
-    orders.forEach((order) => {
-      console.log(`Order Id: ${order.orderId}`);
-      order.products.item.forEach((item) => {
-        console.log(`Product Id: ${item.productId._id}`);
-        console.log(`Product Name: ${item.productId.name}`);
-        console.log(`Quantity: ${item.qty}`);
-        console.log(`Price: ${item.price}`);
-      });
-    });
-  }
-});
+.populate('products.item.productId').populate('userId').sort({createdAt:-1})
 
-console.log(orderDetails,'orderDetails')
 
-  res.render("userProfile", { session: true,userData,order});
+let data =[]
+
+// orderDetails.forEach((item) => {console.log(item.status)})
+
+
+ await orderDetails.forEach((item) => {
+
+      let id = item._id
+      let userId = item.userId
+      let orderId = item.orderId
+      let createdAt = item.createdAt
+      let itemStatus = item.status
+
+      let status;
+
+      item.products.item.forEach((product) => {
+
+        let productId = product.productId
+        let price = product.price
+        let qty = product.qty
+        let pStatus = product.status
+        let link = product.link
+
+        if(pStatus){
+         status = pStatus
+        }else{
+          status = itemStatus
+        }
+
+        let newOrder = {
+          id ,
+          userId ,
+          status ,
+          orderId,
+          link,
+          productId,
+          price ,
+          qty,
+          link,
+          createdAt
+        }
+
+
+        data.push(newOrder)
+
+      })
+
+    })
+
+
+  res.render("userProfile", { session: true,userData,data});
   
  } catch (error) {
 
@@ -345,7 +406,8 @@ const placeOrder = async (req, res) => {
     orderId:oid
   })
 
-  order.save()
+ await order.save()
+
 
 }
 
@@ -455,11 +517,62 @@ const loadFaq = (req, res) =>{
 
 }
 
+const loadAddInstruction = async (req, res) =>{
+
+  const {id ,productId} = req.query
+
+  const order = await orderModel
+    .findById({_id :id})
+    .populate("products.item.productId")
+    .populate("userId");
+  let instruction = [];
+
+    order.products.item.forEach((product) => {
+
+      if( new String(product.productId._id).trim() === productId ){
+
+        let itemFound = product.instruction
+
+        instruction.push(itemFound);
+
+      }
+
+     
+    })
+
+    console.log(instruction)
+
+res.render("addInstruction",{session:getSession(req, res),id ,productId,instruction});
+}
+
+const addInstruction = async (req, res) =>{
+
+  const {script, voice, editing,thumbnail,id ,productId} = req.body
+
+  const instruction = {
+    script : script,
+    voice : voice,
+    editing : editing,
+    thumbnail:thumbnail,
+  }
+
+  const order = await orderModel.findOneAndUpdate(
+    { _id: id, "products.item": { $elemMatch: { productId: productId } } },
+    { $set: { "products.item.$.instruction":instruction  } },
+    { new: true }
+  );
+
+  res.redirect(`/viewOrderDetails?id=${id}&productId=${productId}`)
+
+}
+
+
 
 // =================================================================
 
 module.exports = {
-
+  addInstruction,
+  loadAddInstruction,
   loadFaq,
   loadAbout,
   updateCart,

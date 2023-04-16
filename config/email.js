@@ -18,7 +18,7 @@ const message = {
   html: '<p>Hello, this is a test email sent from Node.js using Nodemailer!</p><p>Here\'s a <a href="https://example.com">link</a> for you to check out.</p>' // HTML body with a link
 };
 
-
+ 
 // Send the message using the previously created transporter object
 const sendMessage = transporter.sendMail(message, function(error, info) {
   if (error) {

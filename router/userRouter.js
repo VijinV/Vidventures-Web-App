@@ -39,6 +39,8 @@ route.get('/about',userController.loadAbout)
 
 route.get('/faq',userController.loadFaq)
 
+route.get('/addInstructions',userAuth.isLogin,userController.loadAddInstruction)
+
 
 
 // post 
@@ -51,6 +53,7 @@ route.post('/verifyEmail',userController.verifyUserEmail)
 
 route.post('/editProdile',userAuth.isLogin,userController.editProfile)
 
+route.post('/addInstructions',userAuth.isLogin,userController.addInstruction)
 
 
 // =======================

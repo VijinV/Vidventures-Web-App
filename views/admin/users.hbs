@@ -39,9 +39,9 @@
                                 <tr>
                                     <td width="40%">
                                         <a href="#" class="itemside">
-                                            <div class="left">
+                                            {{!-- <div class="left">
                                                 <img src="assets/imgs/people/avatar1.jpg" class="img-sm img-avatar" alt="Userpic">
-                                            </div>
+                                            </div> --}}
                                             <div class="info pl-3">
                                                 <h6 class="mb-0 title">{{name}}</h6>
                                                 <small class="text-muted"></small>
@@ -55,13 +55,13 @@
                                     <td><span class="badge rounded-pill alert-danger">Blocked</span></td>
 
                                     {{/if}}
-                                    <td>{{registeredAt}}</td>
+                                    <td>{{formatDate registeredAt}}</td>
                                     <td class="text-end">
                                         <a href="#" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
                                     </td>
                                     {{#if isVerified}}
                                     <td class="text-end">
-                                        <a href="/admin/blockUser?id={{_id}}" class="btn btn-danger rounded font-sm mt-15" style="width: 100px;">Block</a>
+                                        <a onclick="deleteRecord('{{_id}}')" class="btn btn-danger rounded font-sm mt-15" style="width: 100px;">Block</a>
                                     </td>
                                     {{else }}
 
@@ -78,3 +78,23 @@
                 </div> <!-- card-body end// -->
             </div> <!-- card end// -->
            
+           <script>
+            function deleteRecord(recordId) {
+    swal({
+        title: "Are you sure?",
+        text: "Once Blocked , The User cannot access the website !",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            // User confirmed deletion, perform deletion logic
+            window.location.href = "/admin/blockUser?id=" + recordId;
+        } else {
+            // User cancelled deletion
+            swal("Your record is safe!");
+        }
+    });
+}
+           </script>

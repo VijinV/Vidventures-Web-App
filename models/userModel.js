@@ -78,7 +78,7 @@ userSchema.methods.addToCart = async function (product) {
     cart.item.push({
       productId: product._id,
       qty: 1,
-      price:product.price
+      price:product.discountedPrice
     });
   }
 
