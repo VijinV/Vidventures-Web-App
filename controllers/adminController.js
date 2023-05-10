@@ -817,7 +817,44 @@ const message = {
 
 
 
+const loadCoordinators = async (req, res) =>{
+
+  const coordinator = await userModel.find({coordinator:true});
+
+  res.render('coordinators',{coordinator});
+
+}
+
+const blockCord = async (req, res) => {
+  try {
+    const id = req.query.id;
+
+    const userData = await adminModel.getUserById(id);
+
+    if (userData.coordinator) {
+      await adminModel.findByIdAndUpdate(
+        { _id: id },
+        { $set: { coordinator: false } }
+      );
+    } else {
+      await adminModel.findByIdAndUpdate(
+        { _id: id },
+        { $set: { coordinator: true } }
+      );
+    }
+
+    res.redirect("/admin/coordinators");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
+
 module.exports = {
+  blockCord,
+  loadCoordinators,
   DeliverOrder,
   moveToThumbnail,
   moveToVoiceover,

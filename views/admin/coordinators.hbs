@@ -26,7 +26,7 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Users</th>
+                                    <th>Coordinators</th>
                                     <th>Email</th>
                                     <th>Status</th>
                                     <th>Registered</th>
@@ -35,7 +35,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{#each users}}
+                                {{#each coordinator}}
                                 <tr>
                                     <td width="40%">
                                         <a href="#" class="itemside">
@@ -61,12 +61,12 @@
                                     </td>
                                     {{#if isVerified}}
                                     <td class="text-end">
-                                        <a href="/admin/blockUser?id={{_id}}" class="btn btn-danger rounded font-sm mt-15" style="width: 100px;">Block</a>
+                                        <a href="/admin/blockCord?id={{_id}}" class="btn btn-danger rounded font-sm mt-15" style="width: 100px;">Block</a>
                                     </td>
                                     {{else }}
 
                                      <td class="text-end">
-                                        <a href="/admin/blockUser?id={{_id}}" class="btn btn-success rounded font-sm mt-15" style="width: 100px; color: #fff;">Un Block</a>
+                                        <a href="/admin/blockCord?id={{_id}}" class="btn btn-success rounded font-sm mt-15" style="width: 100px; color: #fff;">Un Block</a>
                                     </td>
 
                                     {{/if}}

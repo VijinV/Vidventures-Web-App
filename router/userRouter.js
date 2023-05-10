@@ -6,12 +6,14 @@ const userAuth = require('../middlewares/userAuth');
 // const session = require("express-session");
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
+const userHome = require('../controllers/userHome');
+
 
 require('dotenv').config();
 
 // get 
 
-route.get('/',userController.loadHome)
+route.get('/',userHome.loadHome)
 
 route.get('/login',userAuth.isLogout,userController.loadLogin)
 

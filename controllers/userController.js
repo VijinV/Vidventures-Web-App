@@ -41,6 +41,23 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+async function fetchInstagramPosts() {
+  // Login to Instagram
+  ig.state.generateDevice('sampkle');
+  await ig.account.login('sampkle', '@narsmaster31');
+
+  // Get user's media
+  const user = await ig.user.searchExact('sampkle');
+  const userFeed = ig.feed.user(user.pk);
+  const mediaList = await userFeed.items();
+
+  // Log the media URLs
+  for (const media of mediaList) {
+    console.log(media.image_versions2.candidates[0].url);
+    console.log(`Description: ${media.caption.text}`);
+  }
+}
+
 const loadHome = async (req, res, next) => {
   // const product = await Product.find({}).sort({_id:-1}).limit(3)
 
@@ -73,7 +90,15 @@ const loadHome = async (req, res, next) => {
 
   const review = await reviewModel.find({});
 
-  console.log(review);
+
+  // !insta post 
+
+  fetchInstagramPosts()
+
+
+
+  // !
+
 
   res.render("home", { login, session: getSession(req, res), review: review });
 };

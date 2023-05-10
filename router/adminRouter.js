@@ -50,6 +50,10 @@ route.get('/moveToVideoEditing',adminAuth.isLogin, adminController.moveToVideoEd
 
 route.get('/moveToCopyright',adminAuth.isLogin, adminController.moveToCopyright)
 
+route.get('/coordinators',adminAuth.isLogin, adminController.loadCoordinators)
+
+route.get('/blockCord',adminAuth.isLogin, adminController.blockCord)
+
 route.get('/logout',adminAuth.logout)
 
 
