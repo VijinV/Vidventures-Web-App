@@ -10,42 +10,42 @@ const getSession = (req, res) => {
   let login = false;
 let instPost = []
 
-async function fetchInstagramPosts() {
-    // Login to Instagram
-    ig.state.generateDevice('sampkle');
-    await ig.account.login('sampkle', '@narsmaster31');
+// async function fetchInstagramPosts() {
+//     // Login to Instagram
+//     ig.state.generateDevice('sampkle');
+//     await ig.account.login('sampkle', '@narsmaster31');
   
-    // Get user's media
-    const user = await ig.user.searchExact('sampkle');
-    const userFeed = ig.feed.user(user.pk);
-    const mediaList = await userFeed.items();
+//     // Get user's media
+//     const user = await ig.user.searchExact('sampkle');
+//     const userFeed = ig.feed.user(user.pk);
+//     const mediaList = await userFeed.items();
 
-    // console.log(mediaList);
+//     // console.log(mediaList);
   
-    // Log the media URLs
-    for (const media of mediaList) {
-    //   console.log(media.image_versions2.candidates[0].url);
-    //   console.log(`Description: ${media.caption.text}`)
-    const imageUrl = `https://cors-anywhere.herokuapp.com/${media.image_versions2.candidates[0].url}`;
+//     // Log the media URLs
+//     for (const media of mediaList) {
+//     //   console.log(media.image_versions2.candidates[0].url);
+//     //   console.log(`Description: ${media.caption.text}`)
+//     const imageUrl = `https://cors-anywhere.herokuapp.com/${media.image_versions2.candidates[0].url}`;
 
-      const post = {
-        image:imageUrl,
-        description:media.caption.text
-      }
-
-
-      instPost.push(post)
-
-      console.log(instPost)
-
-    }
+//       const post = {
+//         image:imageUrl,
+//         description:media.caption.text
+//       }
 
 
+//       instPost.push(post)
 
-  }
+      
+
+//     }
 
 
-  fetchInstagramPosts()
+
+//   }
+
+
+//   fetchInstagramPosts()
    
 
   const loadHome = async (req, res, next) => {
@@ -54,7 +54,7 @@ async function fetchInstagramPosts() {
   
    
   
-    res.render("home", { login, session: getSession(req, res), review: review ,post:instPost});
+    res.render("home", { login, session: getSession(req, res), review: review });
   };
 
 
