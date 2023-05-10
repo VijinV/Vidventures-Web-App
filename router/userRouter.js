@@ -58,11 +58,9 @@ route.post('/addInstructions',userAuth.isLogin,userController.addInstruction)
 
 // =======================
 
-route.get('/payment',userController.payment)
 
-route.get('/success',(req,res)=>{
-    res.send('success');
-})
+route.get('/success',userAuth.isLogin,userController.loadSuccess)
+
 route.get('/cancel',(req,res)=>{
     res.send('cancel');
 })

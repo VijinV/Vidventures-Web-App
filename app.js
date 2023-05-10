@@ -115,6 +115,16 @@ adminRoute.engine(
   })
 );
 
+// error handing 
+// ! page not done yet
+
+
+app.use((err,req, res, next) => {
+  res.status(500).render('admin/40')
+})
+
+
+
 userRoute.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.static(path.join(__dirname, "public/admin")));

@@ -14,6 +14,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const reviewModel = require("../models/reviewModel");
 const productModel = require("../models/productModel");
+const randomstring = require("randomstring");
 
 const orderIdCreate = require("order-id")("key", {
   prefix: "5000",
@@ -35,8 +36,8 @@ const getSession = (req, res) => {
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "vfcvijin@gmail.com", // your Gmail address
-    pass: "nkmgensuqskzdgze", // your Gmail password
+    user: process.env.EMAIL ,// your Gmail address
+    pass: process.env.EMAIL_PASSWORD // your Gmail password
   },
 });
 
@@ -101,11 +102,11 @@ const registerUser = async (req, res, next) => {
 
       //  Create otp
 
-      const token = otplib.authenticator.generate(secret);
+      const token = await otplib.authenticator.generate(secret);
       emailOtp = token;
 
       const showEmail = email.slice(-13)
-
+      console.log(token);
       // Create a message object
       const message = {
         from: "vfcvijin@gmail.com", // Sender address
@@ -213,7 +214,7 @@ const registerUser = async (req, res, next) => {
         <w:anchorlock></w:anchorlock>
         <center style='color:#ffffff; font-family:Poppins, sans-serif; font-size:16px; font-weight:400; line-height:16px; mso-text-raise:1px'>${token}</center>
         </v:roundrect></a>
-        <![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border" style="border-style:solid;border-color:#2CB543;background:#8928c6;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:16px;padding:15px 35px 15px 35px;display:inline-block;background:#8928c6;border-radius:30px;font-family:Poppins, sans-serif;font-weight:normal;font-style:normal;line-height:19px;width:auto;text-align:center;border-color:#8928c6">Your OTP</a></span><!--<![endif]--></td>
+        <![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border" style="border-style:solid;border-color:#2CB543;background:#8928c6;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:16px;padding:15px 35px 15px 35px;display:inline-block;background:#8928c6;border-radius:30px;font-family:Poppins, sans-serif;font-weight:normal;font-style:normal;line-height:19px;width:auto;text-align:center;border-color:#8928c6"> ${token}</a></span><!--<![endif]--></td>
         </tr>
         </table></td>
         </tr>
@@ -506,6 +507,8 @@ const placeOrder = async (req, res) => {
   await order.save();
 };
 
+
+
 const stripePayment = async (req, res) => {
   const cartItems = await userModel
     .findById(req.session.user_id)
@@ -515,12 +518,7 @@ const stripePayment = async (req, res) => {
 
     const user = await userModel.findById(req.session.user_id);
 
-    order = new orderModel({
-      products: user.cart,
-      userId: req.session.user_id,
-      status: "Confirm",
-      orderId: oid,
-    });
+   
 
   let line_items = [];
 
@@ -555,29 +553,17 @@ const stripePayment = async (req, res) => {
     cancel_url: "http://localhost:3000/cancel",
   });
 
-  console.log(session)
+  req.session.paymentString = randomstring.generate()
 
-  // if(session.url == "http://localhost:3000/success"){
-  //   order = new orderModel({
-  //     products: user.cart,
-  //     userId: req.session.user_id,
-  //     status: "Confirm",
-  //     orderId: oid,
-  //   });
+  order = new orderModel({
+    products: user.cart,
+    userId: req.session.user_id,
+    status: "Confirm",
+    orderId: oid,
+    paymentString:req.session.paymentString
+  });
 
-  //   await order.save();
-  // }else{
-  //   order = new orderModel({
-  //     products: user.cart,
-  //     userId: req.session.user_id,
-  //     status: "Payment Failed",
-  //     orderId: oid,
-  //   });
-  //   await order.save();
-  // }
-  // await order.save();
-
-  res.redirect(303, session.url+`?id=${session}`);
+  res.redirect(303, session.url);
 
   
 };
@@ -705,15 +691,32 @@ const addInstruction = async (req, res) => {
 };
 
 
-const loadSuccess = (req, res) => {
+const loadSuccess = async (req, res,next) => {
 
+  try {
+    if(req.session.paymentString == order.paymentString){
+  
+     await order.save()
+  
+     req.session.paymentString = null;
+  
+     res.render("success")
+  
+    }else{
+      res.redirect('/cart')
+    }
+  } catch (err) {
+    next(err)
+  }
 
+  
 
 }
 
 // =================================================================
 
 module.exports = {
+  loadSuccess,
   addInstruction,
   loadAddInstruction,
   loadFaq,

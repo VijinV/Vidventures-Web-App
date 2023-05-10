@@ -63,7 +63,7 @@ const orderSchema = new mongoose.Schema({
     type:String,
     required:true,
   },
-  driveLink:{
+  paymentString:{
     type:String,
   }
 });

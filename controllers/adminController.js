@@ -7,6 +7,7 @@ const userModel = require("../models/userModel");
 const visitorsModel = require("../models/visitorsModel");
 const reviewModel = require("../models/reviewModel");
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 // nodemailer configuration to send email when the product is completed
 
@@ -15,8 +16,8 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "vfcvijin@gmail.com", // your Gmail address
-    pass: "nkmgensuqskzdgze", // your Gmail password
+    user: process.env.EMAIL , // your Gmail address
+    pass: process.env.EMAIL_PASSWORD, // your Gmail password
   },
 });
 

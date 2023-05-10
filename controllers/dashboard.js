@@ -27,9 +27,10 @@ const loadDashboard = async (req, res, next) => {
 
   // counting the total number of Orders
 
-  const Sales = await orderModel.find({ status: "Confirm" });
+  const Sales = await orderModel.find({});
 
-  console.log(Sales.length, "sales");
+
+  console.log(Sales.length, "sales", Sales);
 
   // Visitors count
 
