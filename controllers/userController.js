@@ -315,19 +315,31 @@ const verifyUser = async (req, res) => {
     const userDate = await userModel.getUserByEmail(email);
 
     if (userDate) {
-      const passwordMatch = await bcrypt.compare(password, userDate.password);
 
-      if (passwordMatch) {
-        req.session.user_id = userDate._id;
-        cartCount = await userModel.getCartItems(req.session.user_id);
-        console.log(cartCount.length, "count");
-        res.locals.count = cartCount.length;
-        res.redirect("/");
+      if(userDate.isAvailable){
+
+        const passwordMatch = await bcrypt.compare(password, userDate.password);
+
+        if (passwordMatch) {
+          req.session.user_id = userDate._id;
+          cartCount = await userModel.getCartItems(req.session.user_id);
+          console.log(cartCount.length, "count");
+          res.locals.count = cartCount.length;
+          res.redirect("/");
+        }else{
+  
+          res.render("login",{message:"Invalid Password",})
+  
+        }
+
       }else{
 
-        res.render("login",{message:"Invalid Password",})
+        res.render("login",{message:"You Are Blocked By The Administrator",})
+  
 
       }
+
+    
     } else {
       res.send("user not found");
     }
