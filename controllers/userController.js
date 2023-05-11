@@ -593,8 +593,8 @@ const stripePayment = async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: line_items,
     mode: "payment",
-    success_url: "http://localhost:3000/success",
-    cancel_url: "http://localhost:3000/cancel",
+    success_url: "http://vidventuresyt.com/success",
+    cancel_url: "http://vidventuresyt.com/cancel",
   });
 
   req.session.paymentString = randomstring.generate()
@@ -741,7 +741,7 @@ const loadSuccess = async (req, res,next) => {
     if(req.session.paymentString == order.paymentString){
   
      await order.save()
-  
+
      req.session.paymentString = null;
   
      res.render("success")
@@ -750,7 +750,7 @@ const loadSuccess = async (req, res,next) => {
       res.redirect('/cart')
     }
   } catch (err) {
-    next(err)
+    console.log(err)
   }
 
   
