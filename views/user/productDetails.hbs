@@ -20,7 +20,7 @@
                         <h2 class="title">{{product.name}}</h2>
                         <p class="description">{{product.sdescription}}</p>
 
-                        <div class="d-flex align-items-center mb--20 flex-wrap rbt-course-details-feature">
+                        {{!-- <div class="d-flex align-items-center mb--20 flex-wrap rbt-course-details-feature">
 
                             <div class="feature-sin best-seller-badge">
                                 <span class="rbt-badge-2">
@@ -46,7 +46,7 @@
                                 <span>616,029 students</span>
                             </div> --}}
 
-                        </div>
+                        </div> --}}
 
                         {{!-- <div class="rbt-author-meta mb--20">
                             <div class="rbt-avater">
@@ -85,7 +85,7 @@
                         <div class="rbt-course-feature-box overview-wrapper rbt-shadow-box mt--30 has-show-more" id="overview">
                             <div class="rbt-course-feature-inner has-show-more-inner-content">
                                 <div class="section-title">
-                                    <h4 class="rbt-title-style-3">What you'll learn</h4>
+                                    <h4 class="rbt-title-style-3">Services included in the full production</h4>
                                 </div>
                                 <p>{{product.description}}</p>
 
@@ -524,8 +524,8 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="read-more-btn text-start text-md-end">
-                                    <a class="rbt-btn rbt-switch-btn btn-border btn-sm" href="/termsandconditions">
-                                        <span data-text="Terms &amp; Conditions">Term &amp; Conditions</span>
+                                    <a class="rbt-btn-link rbt-switch-btn btn-border btn-sm" href="/termsandconditions">
+                                        <span >Terms &amp; Conditions</span>
                                     </a>
                                 </div>
                             </div>
@@ -552,8 +552,8 @@
                                         
                                         <div class="rbt-card-bottom">
                                             <div class="rbt-price">
-                                                <span class="current-price">{{discountedPrice}}</span>
-                                                <span class="off-price">{{mrp}}</span>
+                                                <span class="current-price">${{discountedPrice}}</span>
+                                                <span class="off-price">${{mrp}}</span>
                                             </div>
                                             <a class="rbt-btn-link" href="/productDetails?id={{_id}}">Learn
                                                 More<i class="feather-arrow-right"></i></a>
