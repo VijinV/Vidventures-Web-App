@@ -119,7 +119,7 @@ function deleteRecord(recordId) {
     .then((willDelete) => {
         if (willDelete) {
             // User confirmed deletion, perform deletion logic
-            window.location.href = "/admin/dltReview?id=" + recordId;
+            window.location.href = "/admin/dltProduct?id=" + recordId;
         } else {
             // User cancelled deletion
             swal("Your record is safe!");
