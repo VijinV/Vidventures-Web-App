@@ -43,6 +43,8 @@ route.get('/faq',userController.loadFaq)
 
 route.get('/addInstructions',userAuth.isLogin,userController.loadAddInstruction)
 
+route.get('/termsandconditions',userController.loadTerms)
+
 
 
 // post 

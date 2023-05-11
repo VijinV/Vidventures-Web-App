@@ -819,9 +819,17 @@ const loadSuccess = async (req, res,next) => {
 
 }
 
+const loadTerms = (req, res) => {
+
+
+res.render('terms')
+
+}
+
 // =================================================================
 
 module.exports = {
+  loadTerms,
   loadSuccess,
   addInstruction,
   loadAddInstruction,
