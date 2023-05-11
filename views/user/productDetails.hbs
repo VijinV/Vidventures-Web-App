@@ -18,7 +18,7 @@
                             <li class="rbt-breadcrumb-item active">{{product.name}}</li>
                         </ul>
                         <h2 class="title">{{product.name}}</h2>
-                        <p class="description">{{product.description}}</p>
+                        <p class="description">{{product.sdescription}}</p>
 
                         <div class="d-flex align-items-center mb--20 flex-wrap rbt-course-details-feature">
 
@@ -87,13 +87,9 @@
                                 <div class="section-title">
                                     <h4 class="rbt-title-style-3">What you'll learn</h4>
                                 </div>
-                                <p>Are you new to PHP or need a refresher? Then this course will help you get
-                                    all the fundamentals of Procedural PHP, Object Oriented PHP, MYSQLi and
-                                    ending the course by building a CMS system similar to WordPress, Joomla or
-                                    Drupal. Knowing PHP has allowed me to make enough money to stay home and
-                                    make courses like this one for students all over the world. </p>
+                                <p>{{product.description}}</p>
 
-                                <div class="row g-5 mb--30">
+                                {{!-- <div class="row g-5 mb--30">
                                     <!-- Start Feture Box  -->
                                     <div class="col-lg-6">
                                         <ul class="rbt-list-style-1">
@@ -113,38 +109,11 @@
                                     </div>
                                     <!-- End Feture Box  -->
 
-                                    <!-- Start Feture Box  -->
-                                    <div class="col-lg-6">
-                                        <ul class="rbt-list-style-1">
-                                            <li><i class="feather-check"></i>Use the Jupyter Notebook
-                                                Environment.
-                                                JavaScript developer from scratch.</li>
-                                            <li><i class="feather-check"></i>Use the pandas module with Python
-                                                to create and
-                                                structure data.</li>
-                                            <li><i class="feather-check"></i>Have a portfolio of various data
-                                                analysis
-                                                projects.</li>
-                                            <li><i class="feather-check"></i>Create data visualizations using
-                                                matplotlib and
-                                                the seaborn.</li>
-                                        </ul>
-                                    </div>
-                                    <!-- End Feture Box  -->
+                                  
                                 </div>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis, aliquam
-                                    voluptas laudantium incidunt architecto nam excepturi provident rem laborum
-                                    repellendus placeat neque aut doloremque ut ullam, veritatis nesciunt iusto
-                                    officia alias, non est vitae. Eius repudiandae optio quam alias aperiam nemo
-                                    nam tempora, dignissimos dicta excepturi ea quo ipsum omnis maiores
-                                    perferendis commodi voluptatum facere vel vero. Praesentium quisquam iure
-                                    veritatis, perferendis adipisci sequi blanditiis quidem porro eligendi
-                                    fugiat facilis inventore amet delectus expedita deserunt ut molestiae modi
-                                    laudantium, quia tenetur animi natus ea. Molestiae molestias ducimus
-                                    pariatur et consectetur. Error vero, eum soluta delectus necessitatibus
-                                    eligendi numquam hic at?</p>
+                                --}}
                             </div>
-                            <div class="rbt-show-more-btn">Show More</div>
+                            
                         </div>
                         <!-- End Course Feature Box  -->
 
@@ -556,7 +525,7 @@
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="read-more-btn text-start text-md-end">
                                     <a class="rbt-btn rbt-switch-btn btn-border btn-sm" href="/shop">
-                                        <span data-text="View All Course">View All Services</span>
+                                        <span data-text="View All Services">View All Services</span>
                                     </a>
                                 </div>
                             </div>
