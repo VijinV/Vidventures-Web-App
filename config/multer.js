@@ -1,22 +1,28 @@
 const multer = require('multer');
 const path = require('path');
 
-const Storage = multer.diskStorage({
+const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./public/admin/assets/ProductImages");
+    cb(null, './public/admin/assets/ProductImages');
   },
-  filename: (req, file, cb) => {
+  filename: function (req, file, cb) {
+    if (!file) {
+      return cb(new Error('File is missing.'));
+    }
+    if (!file.originalname) {
+      return cb(new Error('File has no original name.'));
+    }
     cb(
       null,
-      file.fieldname + "_" + Date.now() + path.extname(file.originalname)
+      file.fieldname + '_' + Date.now() + path.extname(file.originalname)
     );
   },
 });
 
 const upload = multer({
-  storage: Storage,
-}).single("image");
+  storage: storage,
+}).single('image');
 
-module.exports ={
-  upload
-}
+module.exports = {
+  upload,
+};

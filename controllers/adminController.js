@@ -185,6 +185,10 @@ const addProduct = async (req, res) => {
       link,
       sdescription,
     } = req.body;
+
+    console.log(req.file.path)
+
+
     const product = {
       name: name,
       description: description,
