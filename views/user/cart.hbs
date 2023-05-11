@@ -22,6 +22,7 @@
 <div class="rbt-cart-area bg-color-white rbt-section-gap">
     <div class="cart_area">
         <div class="container">
+            {{#if cartItem }}
             <div class="row">
                 <div class="col-12">
                     <form action="#">
@@ -132,6 +133,9 @@
                     </div>
                 </div>
             </div>
+            {{else}}
+
+            {{/if}}
         </div>
     </div>
 </div>
