@@ -316,7 +316,7 @@ const verifyUser = async (req, res) => {
 
     if (userDate) {
 
-      if(userDate.isAvailable){
+      if(userDate.isVerified){
 
         const passwordMatch = await bcrypt.compare(password, userDate.password);
 
