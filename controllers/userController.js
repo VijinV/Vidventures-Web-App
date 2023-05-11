@@ -502,7 +502,10 @@ const loadShop = async (req, res) => {
 const loadProductDetails = async (req, res) => {
   const product = await Product.getProduct(req.query.id);
 
-  res.render("productDetails", { session: true, product });
+  const products = await Product.find({ _id: { $ne: req.query.id } }).limit(2)
+
+
+  res.render("productDetails", { session: true, product ,products});
 };
 
 const addToCart = async (req, res) => {
