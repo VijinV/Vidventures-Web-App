@@ -24,8 +24,11 @@
 
 <body>
 
-    {{>header}}
+  {{#if login}} 
 
+  {{else}}
+ {{>header}}
+  {{/if}}
     {{{body}}}
 
     {{>footer}}

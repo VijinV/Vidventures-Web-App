@@ -54,6 +54,12 @@ route.get('/coordinators',adminAuth.isLogin, adminController.loadCoordinators)
 
 route.get('/blockCord',adminAuth.isLogin, adminController.blockCord)
 
+route.get('/listPosts',adminAuth.isLogin, adminController.listPost)
+
+route.get('/addPost',adminAuth.isLogin, adminController.loadAddPost)
+
+route.get('/unListPosts',adminAuth.isLogin, adminController.unListPosts)
+
 route.get('/logout',adminAuth.logout)
 
 
@@ -72,6 +78,8 @@ route.post('/addLink',adminController.addLink)
 route.post('/addReview',adminAuth.isLogin,multer.upload,adminController.addReview)
 
 route.post('/addDriveLink',adminAuth.isLogin,adminController.DeliverOrder)
+
+route.post('/addPost',adminAuth.isLogin,multer.upload,adminController.addPost)
 
 
 

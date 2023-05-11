@@ -6,24 +6,22 @@ const orderModel = require("../models/orderModel");
 const userModel = require("../models/userModel");
 const visitorsModel = require("../models/visitorsModel");
 const reviewModel = require("../models/reviewModel");
-const nodemailer = require('nodemailer');
-require('dotenv').config();
+const postModel = require("../models/postModel");
+const nodemailer = require("nodemailer");
+require("dotenv").config();
 
 // nodemailer configuration to send email when the product is completed
-
 
 // Create a transporter object with SMTP configuration
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.EMAIL , // your Gmail address
+    user: process.env.EMAIL, // your Gmail address
     pass: process.env.EMAIL_PASSWORD, // your Gmail password
   },
 });
 
-
 ///////////////////////////////////////////////////////////
-
 
 const loadDashboard = async (req, res, next) => {
   const order = await orderModel
@@ -129,7 +127,7 @@ const loadDashboard = async (req, res, next) => {
 };
 
 const loadLogin = (req, res, next) => {
-  res.render("login");
+  res.render("login",{login:true});
 };
 
 const verifyAdmin = async (req, res, next) => {
@@ -186,8 +184,7 @@ const addProduct = async (req, res) => {
       sdescription,
     } = req.body;
 
-    console.log(req.file.path)
-
+    console.log(req.file.path);
 
     const product = {
       name: name,
@@ -588,78 +585,71 @@ const moveToCopyright = async (req, res) => {
   res.redirect("/admin/order");
 };
 
-
 const viewOrder = async (req, res) => {
   const order = await orderModel
-    .findById({_id :req.query.id})
+    .findById({ _id: req.query.id })
     .sort({ _id: -1 })
     .populate("products.item.productId")
     .populate("userId");
-
 
   const pID = req.query.productId;
 
   let products = [];
 
-  let link
+  let link;
 
-  let status
+  let status;
 
-  let instruction
+  let instruction;
 
- 
+  order.products.item.forEach((product) => {
+    // console.log(product)
 
-    order.products.item.forEach((product) => {
-      // console.log(product)
+    console.log(new String(product.productId._id).trim());
+    console.log(pID);
 
-      console.log( new String(product.productId._id).trim())
-      console.log( pID)
+    if (new String(product.productId._id).trim() === pID) {
+      let itemFound = product;
 
+      link = product.link;
 
-      if( new String(product.productId._id).trim() === pID){
+      status = product.status;
 
-        let itemFound = product
+      instruction = product.instruction;
 
-        link = product.link
+      products.push(itemFound);
+    }
+  });
 
-        status = product.status
-
-        instruction = product.instruction
-
-        products.push(itemFound);
-
-      }
-
-     
-    })
-
-
-  res.render("viewOrder", { order, products, pID ,link,status,instruction});
+  res.render("viewOrder", { order, products, pID, link, status, instruction });
 };
 
-
 const DeliverOrder = async (req, res) => {
+  const { id, productId, link } = req.body;
 
-  const {id, productId,link} = req.body
-  
   const order = await orderModel.findOneAndUpdate(
     { _id: id, "products.item.productId": productId },
-    { $set: { "products.item.$.link": link, "products.item.$.status": "Delivered" } },
+    {
+      $set: {
+        "products.item.$.link": link,
+        "products.item.$.status": "Delivered",
+      },
+    },
     { new: true }
   );
 
-  const completeOrder = await order.populate("userId")
+  const completeOrder = await order.populate("userId");
 
-  const email = completeOrder.userId.email
-  const name = completeOrder.userId.name
+  const email = completeOrder.userId.email;
+  const name = completeOrder.userId.name;
 
-// Create a message object
-const message = {
-  from: "vfcvijin@gmail.com", // Sender address
-  to: email, // List of recipients
-  subject: "Test Email from Node.js", // Subject line
-  text: "Hello, this is a test email sent from Node.js using Nodemailer!", // Plain text body
-  html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  // Create a message object
+  const message = {
+    from: "vfcvijin@gmail.com", // Sender address
+    to: email, // List of recipients
+    subject: "Test Email from Node.js", // Subject line
+    text: "Hello, this is a test email sent from Node.js using Nodemailer!", // Plain text body
+    html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" style="font-family:arial, 'helvetica neue', helvetica, sans-serif">
   <head>
   <meta charset="UTF-8">
@@ -803,8 +793,7 @@ const message = {
   </div>
   </body>
   </html>`, // HTML body with a link
-};
-
+  };
 
   await transporter.sendMail(message, function (error, info) {
     if (error) {
@@ -812,22 +801,15 @@ const message = {
       return process.exit(1);
     }
     console.log("Email sent successfully to: ", info.messageId);
-  
-    
   });
   res.redirect(`/admin/viewOrder?id=${id}&productId=${productId}`);
-
 };
 
+const loadCoordinators = async (req, res) => {
+  const coordinator = await userModel.find({ coordinator: true });
 
-
-const loadCoordinators = async (req, res) =>{
-
-  const coordinator = await userModel.find({coordinator:true});
-
-  res.render('coordinators',{coordinator});
-
-}
+  res.render("coordinators", { coordinator });
+};
 
 const blockCord = async (req, res) => {
   try {
@@ -853,10 +835,98 @@ const blockCord = async (req, res) => {
   }
 };
 
+const listPost = async (req, res) => {
+  const post = await postModel.find().sort({_id:-1});
 
+  res.render("postList", { post });
+};
+
+const loadAddPost = async (req, res) => {
+  const id = req.query.id;
+
+  if (id) {
+    const post = await postModel.findById(id);
+
+    res.render("addPost", { post });
+  } else {
+    res.render("addPost");
+  }
+};
+
+const addPost = async (req, res) => {
+  const { name, link, id } = req.body;
+
+  if (id) {
+    try {
+      if (req.file.filename) {
+        await postModel.findByIdAndUpdate(
+          { _id: id },
+          {
+            $set: {
+              name: name,
+              link: link,
+              image: req.file.filename,
+            },
+          }
+        );
+      }
+    } catch (error) {
+      await postModel.findByIdAndUpdate(
+        { _id: id },
+        {
+          $set: {
+            name: name,
+            link: link,
+          },
+        }
+      );
+    }
+  } else {
+    const post = new postModel({
+      name: name,
+      link: link,
+      image: req.file.filename,
+    });
+
+    await post.save();
+  }
+
+  res.redirect("/admin/listPosts");
+};
+
+const unListPosts = async (req, res) => {
+  const id = req.query.id;
+
+  const post = await postModel.findById(id);
+
+  if (post.isAvailable) {
+    await postModel.findByIdAndUpdate(
+      { _id: id },
+      {
+        $set: {
+          isAvailable: false,
+        },
+      }
+    );
+  } else {
+    await postModel.findByIdAndUpdate(
+      { _id: id },
+      {
+        $set: {
+          isAvailable: true,
+        },
+      }
+    );
+  }
+  res.redirect("/admin/listPosts");
+};
 
 
 module.exports = {
+  unListPosts,
+  addPost,
+  loadAddPost,
+  listPost,
   blockCord,
   loadCoordinators,
   DeliverOrder,

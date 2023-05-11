@@ -1,0 +1,91 @@
+ <section class="content-main">
+            <div class="content-header">
+                <div>
+                    <h2 class="content-title card-title">Blog Posts</h2>
+                </div>
+                <div>
+                    {{!-- <a href="#" class="btn btn-light rounded font-md">Export</a>
+                    <a href="#" class="btn btn-light rounded  font-md">Import</a> --}}
+                    <a href="/admin/addPost" class="btn btn-primary btn-sm rounded">Create new</a>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body">
+                    {{#each post}}
+                    <article class="itemlist">
+                        <div class="row align-items-center">
+                            {{!-- <div class="col col-check flex-grow-0">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                </div>
+                            </div> --}}
+                            <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name">
+                                <a class="itemside" href="#">
+                                    <div class="left">
+                                        <img src="assets/ProductImages/{{image}}" class="img-sm img-thumbnail" alt="Item">
+                                    </div>
+                                    <div class="info">
+                                        <h6 class="mb-0">{{name}}</h6>
+                                    </div>
+                                </a>
+                            </div>
+                            
+
+                            {{#if isAvailable}}
+                            <div class="col-lg-2 col-sm-2 col-4 col-status">
+                                <span class="badge rounded-pill alert-success">Listed</span>
+                            </div>
+                            {{else}}
+                            <div class="col-lg-2 col-sm-2 col-4 col-status">
+                                <span class="badge rounded-pill alert-danger">Unlisted</span>
+                            </div>
+                            {{/if}}
+
+                            <input type="hidden" value="{{_id}}" name="id">
+                            <div class="col-lg-2 col-sm-2 col-4 col-action text-end ">
+                                <a href="/admin/addPost?id={{_id}}" class="btn btn-sm font-sm rounded btn-brand me-1">
+                                    <i class="material-icons md-edit"></i> Edit
+                                </a>
+                                {{#if isAvailable}}
+                                <a href="/admin/unListPosts?id={{_id}}" class="btn btn-sm font-sm btn-light rounded me-1">
+                                     Unlist
+                                </a>
+                                {{else}}
+                                <a href="/admin/unListPosts?id={{_id}}" class="btn btn-sm font-sm btn-light rounded me-1">
+                                     List
+                                </a>
+                                
+                                {{/if}}
+                                {{!-- <a  onclick="deleteRecord('{{_id}}')" class="btn btn-sm font-sm btn-danger rounded">
+                                    <i class="material-icons md-delete_forever"></i> Delete
+                                </a>
+                                 --}}
+                            </div>
+                        </div> <!-- row .// -->
+                    </article> 
+                    {{/each}}
+                </div> <!-- card-body end// -->
+            </div> <!-- card end// -->
+        </section> <!-- content-main end// -->
+
+
+<script>
+function deleteRecord(recordId) {
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this record!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            // User confirmed deletion, perform deletion logic
+            window.location.href = "/admin/dltReview?id=" + recordId;
+        } else {
+            // User cancelled deletion
+            swal("Your record is safe!");
+        }
+    });
+}
+</script>

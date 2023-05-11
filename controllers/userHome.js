@@ -1,3 +1,4 @@
+const postModel = require("../models/postModel");
 const reviewModel = require("../models/reviewModel");
 const { IgApiClient } = require('instagram-private-api');
 const ig = new IgApiClient();
@@ -51,10 +52,11 @@ let instPost = []
   const loadHome = async (req, res, next) => {
 
     const review = await reviewModel.find({});
-  
-   
-  
-    res.render("home", { login, session: getSession(req, res), review: review });
+
+    const post = await postModel.find({isAvailable:true}).sort({_id:-1}).limit(1)
+
+    const posts = await postModel.find({isAvailable:true}).skip(1).sort({_id:-1}).limit(3)
+    res.render("home", { login, session: getSession(req, res), review: review ,post,posts});
   };
 
 
