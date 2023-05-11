@@ -384,6 +384,7 @@ const verifyUser = async (req, res) => {
 
         if (passwordMatch) {
           req.session.user_id = userDate._id;
+          req.session.user_email = userDate.email;
           cartCount = await userModel.getCartItems(req.session.user_id);
           console.log(cartCount.length, "count");
           res.locals.count = cartCount.length;
@@ -812,7 +813,7 @@ const loadSuccess = async (req, res,next) => {
 
       const message = {
         from: "vidventures.yt@gmail.com", // Sender address
-        to: email, // List of recipients
+        to: req.session.user_email, // List of recipients
         subject: "Vidventures OTP VERIFICATION", // Subject line
         text: "Hello, this is a test email sent from Node.js using Nodemailer!", // Plain text body
         html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -1029,8 +1030,17 @@ const loadSuccess = async (req, res,next) => {
         </html>`, // HTML body with a link
       };
 
+
   
      await order.save()
+
+     await transporter.sendMail(message, function (error, info) {
+      if (error) {
+        console.log("Error occurred while sending email: ", error.message);
+        return process.exit(1);
+      }
+      console.log("Email sent successfully to: ", info.messageId);
+    });
 
      req.session.paymentString = null;
   
