@@ -323,6 +323,10 @@ const verifyUser = async (req, res) => {
         console.log(cartCount.length, "count");
         res.locals.count = cartCount.length;
         res.redirect("/");
+      }else{
+
+        res.render("login",{message:"Invalid Password",})
+
       }
     } else {
       res.send("user not found");
