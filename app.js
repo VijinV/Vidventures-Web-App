@@ -11,6 +11,10 @@ require("dotenv").config();
 app.use(cors())
 
 
+const port = process.env.PORT || 4000
+
+const defaultPort = process.env.PORT;
+const fallbackPort = 4000;
 
 const path = require("path");
 // hbs
@@ -144,4 +148,11 @@ mongoose.set("strictQuery", true);
 mongoose.connect(process.env.MONGO_URL, () =>
   console.log("Database connection established")
 );
-app.listen(process.env.PORT, () => console.log("listening on port "+ process.env.PORT));
+
+
+
+
+
+
+
+app.listen(4000, () => console.log("listening on port "+ process.env.PORT));

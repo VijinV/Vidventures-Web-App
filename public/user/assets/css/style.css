@@ -210,7 +210,7 @@
   --transition-4: all .25s cubic-bezier(.645,.045,.355,1);
   --font-primary: "Euclid Circular";
   --font-secondary: "Euclid Circular";
-  --font-alt: "Source Serif Pro", serif;
+  --font-alt: "Euclid Circular";
   --font-size-b1: 24px;
   --font-size-b2: 18px;
   --font-size-b3: 16px;
@@ -1092,7 +1092,8 @@ ol ul {
 .rbt-page-banner-wrapper .rbt-banner-image, .bg-gradient-9 {
   position: relative;
   z-index: 1;
-  background: linear-gradient(270deg, var(--color-secondary) 0%, var(--color-primary) 100%) !important;
+  /* background: linear-gradient(270deg, var(--color-secondary) 0%, var(--color-primary) 100%) !important; */
+  background: url("https://w7.pngwing.com/pngs/34/55/png-transparent-youtube-video-banner-23-january-youtube-heart-color-grass.png");
 }
 .rbt-page-banner-wrapper .rbt-banner-image::after, .bg-gradient-9::after {
   background: linear-gradient(white 0%, rgba(255, 255, 255, 0.1) 100%);
@@ -24195,11 +24196,11 @@ blockquote.has-text-align-right cite,
     Banner Style Home One And Home Five (variation-2)
 -------------------------------------------------------------*/
 .rbt-banner-1 {
-  background-color: var(--color-light);
+  /* background-color: var(--color-light); */
   padding: 0 150px;
   position: relative;
   overflow: hidden;
-  background-image: url(../images/bg/bg-g1.webp);
+  /* background-image: url(../images/bg/bg-g1.webp); */
   background-position: top center;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1599px) {
@@ -24227,7 +24228,7 @@ blockquote.has-text-align-right cite,
   position: absolute;
   bottom: -1px;
   left: 0;
-  background: url(../images/bg/banner-bg-shape-1.svg);
+  /* background: url(../images/bg/banner-bg-shape-1.svg); */
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

@@ -1,58 +1,87 @@
-
 <style>
     #newbtn {
-  text-decoration: none;
+        text-decoration: none;
+        position: relative;
+        border: none;
+        font-size: 14px;
+        font-family: inherit;
+        color: #fff;
+        width: 9em;
+        height: 3em;
+        line-height: 2em;
+        text-align: center;
+        background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+        background-size: 300%;
+        border-radius: 30px;
+        z-index: 1;
+    }
+
+    #newbtn:hover {
+        animation: ani 8s linear infinite;
+        border: none;
+    }
+
+    @keyframes ani {
+        0% {
+            background-position: 0%;
+        }
+
+        100% {
+            background-position: 400%;
+        }
+    }
+
+    #newbtn:before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        z-index: -1;
+        background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+        background-size: 400%;
+        border-radius: 35px;
+        transition: 1s;
+    }
+
+    #newbtn:hover::before {
+        filter: blur(20px);
+    }
+
+    #newbtn:active {
+        background: linear-gradient(32deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    }
+    .ani h1:not(:first-child) {
+  opacity: 0;
+}
+
+
+.ani h1 {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.ani h1.show {
+  opacity: 1;
+}
+
+.ani {
   position: relative;
-  border: none;
-  font-size: 14px;
-  font-family: inherit;
-  color: #fff;
-  width: 9em;
-  height: 3em;
-  line-height: 2em;
-  text-align: center;
-  background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
-  background-size: 300%;
-  border-radius: 30px;
-  z-index: 1;
+  height: 50px; /* Set the height of the container */
 }
 
-#newbtn:hover {
-  animation: ani 8s linear infinite;
-  border: none;
-}
-
-@keyframes ani {
-  0% {
-    background-position: 0%;
-  }
-
-  100% {
-    background-position: 400%;
-  }
-}
-
-#newbtn:before {
-  content: '';
+.ani h1 {
   position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  z-index: -1;
-  background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
-  background-size: 400%;
-  border-radius: 35px;
-  transition: 1s;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  
 }
 
-#newbtn:hover::before {
-  filter: blur(20px);
-}
 
-#newbtn:active {
-  background: linear-gradient(32deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
-}
+
 </style>
 
 <!-- Start Side Vav -->
@@ -170,40 +199,45 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12 pb--120 pt--70">
-                    <div class="content">
+                    <div class="content d-flex justify-content-center">
                         <div class="inner">
-                            <div class="rbt-new-badge rbt-new-badge-one">
+                            {{!-- <div class="rbt-new-badge rbt-new-badge-one">
                                 <span class="rbt-new-badge-icon">🏆</span> Your YouTube Automation Team
+                            </div> --}}
+                            
+                            <div class="">
+                                <span  style="position: absolute; margin-left: -30px;"><h1 style="color: red; font-family: 'Poppins', sans-serif;">|</h1></span>
+                                <h1 class="" style="font-family: 'Poppins', sans-serif;">
+                             We're a global content creation agency 
+                             <br>
+                                 curating videos that enables you 
+                              <br>
+                               <div class="ani" style="">
+                                <h1 class="" style="color: red; font-size: 50px; font-family: 'Poppins', sans-serif;">Financial Freedom</h1>
+                                <h1 class="" style="color: red; font-size: 50px; font-family: 'Poppins', sans-serif;">Location Freedom</h1>
+                                <h1 class="" style="color: red; font-size: 50px; font-family: 'Poppins', sans-serif;">Time Freedom</h1>
+                            </div>
+                            </h1>
+                              
+                            </div>
+                        
+                            
+                            <div class="w-100 d-flex justify-content-center">
+                                <video width="1000" height="720" autoplay loop muted>
+                                    <source src="user/assets/video/hai.mp4" type="video/mp4">
+                                </video>
                             </div>
 
-                            <h1 class="title">
-                                Transforming your <span style="color: #ff0000;">YouTube</span>   Dreams into reality.
-                            </h1>
                             <p class="description lh-base">
 
-                                We're on a mission to bring you highly engaging
-
-                                <strong> YouTube 
-                                Cashcow videos.</strong>
-                                Our team is committed to deliver the  finest quality content. If you're looking for a content creation
-                                partner dedicated to crafting exciting, profitable cashcow videos, look no further!
-
                             </p>
-                            <div class="slider-btn">
-                                <button id="newbtn">Get Started Now</button>
-                                {{!-- <a class="rbt-btn btn-gradient hover-icon-reverse" href="/login">
-                                    <span class="icon-reverse-wrapper">
-                                        <span class="btn-text">Get Started now</span>
-                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                    </span>
-                                </a> --}}
-                            </div>
+                           
                         </div>
-                        <div class="shape-wrapper" id="scene">
-                            <img src="admin/assets/imgs/logo/logoMain2.png" alt="Hero Image">
+                        {{!-- <div class="shape-wrapper" id="scene">
 
-                        </div>
+
+
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -267,9 +301,9 @@
                             </div>
                             <div class="content">
                                 <h5 class="title">Viral Video Titles
-                                {{!-- <div class="read-more-btn">
-                                    <span class="rbt-btn-link">20 Courses<i class="feather-arrow-right"></i></span>
-                                </div> --}}
+                                    {{!-- <div class="read-more-btn">
+                                        <span class="rbt-btn-link">20 Courses<i class="feather-arrow-right"></i></span>
+                                    </div> --}}
                             </div>
                         </div>
                     </a>
@@ -378,10 +412,12 @@
                 <div class="col-lg-6">
                     <div class="thumbnail-wrapper">
                         <div class="thumbnail image-1">
-                            <img data-parallax='{"x": 0, "y": -20}' src="admin/assets/imgs/logo/01_analystics.png" alt="Youtube_revenuve">
+                            <img data-parallax='{"x": 0, "y": -20}' src="admin/assets/imgs/logo/01_analystics.png"
+                                alt="Youtube_revenuve">
                         </div>
                         <div class="thumbnail image-2 d-none d-xl-block">
-                            <img data-parallax='{"x": 0, "y": 60}' src="admin/assets/imgs/logo/Result_3_cufn0g.png" alt="Youtube Automation">
+                            <img data-parallax='{"x": 0, "y": 60}' src="admin/assets/imgs/logo/Result_3_cufn0g.png"
+                                alt="Youtube Automation">
                         </div>
                         <div class="thumbnail image-3 d-none d-md-block">
                             <img data-parallax='{"x": 0, "y": 80}' src="admin/assets/imgs/logo/Result png.png"
@@ -393,10 +429,10 @@
                     <div class="inner pl--50 pl_sm--0 pl_md--0">
                         <div class="section-title text-start">
                             {{!-- <span class="subtitle bg-coral-opacity">Why YouTube Automation</span> --}}
-                            <h2 class="title">Why YouTube Automation</h2>
+                            <h2 class="title">Why <strong style="color: red;">Vidventures</strong> </h2>
                         </div>
 
-                        <p class="description mt--30">Looking to invest in a profitable business model? Look no further than YouTube automation! With a proven track record of delivering up to 95% return on investment, YouTube automation is the ultimate business model for success. Our team of experts will help you set up and manage your YouTube channel, using advanced automation tools to drive traffic, increase views, and boost your revenue</p>
+                        <p class="description mt--30">We bring valuable experience to the table. Our team has honed the skills and knowledge through countless projects, ensuring that we understand the intricacies of cashcow content creation.</p>
 
                         <!-- Start Feature List  -->
 
@@ -407,7 +443,10 @@
                                 </div>
                                 <div class="feature-content">
                                     <h6 class="feature-title">Flexibility</h6>
-                                    <p class="feature-description">YouTube automation allows you to work from anywhere, anytime. You can manage your channel from the comfort of your home or while traveling, giving you the freedom and flexibility to pursue your other passions and goals</p>
+                                    <p class="feature-description">YouTube automation allows you to work from anywhere,
+                                        anytime. You can manage your channel from the comfort of your home or while
+                                        traveling, giving you the freedom and flexibility to pursue your other passions
+                                        and goals</p>
                                 </div>
                             </div>
 
@@ -417,7 +456,9 @@
                                 </div>
                                 <div class="feature-content">
                                     <h6 class="feature-title">Low-risk investment</h6>
-                                    <p class="feature-description">Compared to other business models, YouTube automation offers a low-risk, high-reward investment opportunity that is hard to beat. You can start small and scale up as you see results.</p>
+                                    <p class="feature-description">Compared to other business models, YouTube automation
+                                        offers a low-risk, high-reward investment opportunity that is hard to beat. You
+                                        can start small and scale up as you see results.</p>
                                 </div>
                             </div>
                         </div>
@@ -447,7 +488,8 @@
                     <div class="col-lg-8">
                         <div class="inner">
                             <div class="content text-left">
-                                <h3 class="title" data-sal="slide-up" data-sal-duration="400" data-sal-delay="200">Looking to connect with your dedicated <br> content creation team?</h3>
+                                <h3 class="title" data-sal="slide-up" data-sal-duration="400" data-sal-delay="200">
+                                    Looking to connect with your dedicated <br> content creation team?</h3>
                                 <h6 class="subtitle" data-sal="slide-up" data-sal-duration="400" data-sal-delay="300">
                                     Schedule a call with our expert team today &#128521;</h6>
                             </div>
@@ -548,7 +590,7 @@
                             </div>
                             <div class="content">
                                 <h3 class="">
-                                    Online 
+                                    Online
                                     {{!-- <span class="odometer" data-count="100">00</span> --}}
                                 </h3>
                                 <span class="subtitle">Chat &amp; Call Support</span>
@@ -863,14 +905,14 @@
                     <div class="rbt-card variation-02 height-330 rbt-hover">
                         <div class="rbt-card-img">
                             <a href="{{link}}">
-                               <img src="assets/ProductImages/{{image}}" alt="">
+                                <img src="assets/ProductImages/{{image}}" alt="">
                         </div>
                         <div class="rbt-card-body">
                             <h3 class="rbt-card-title"><a href="{{link}}">{{name}}</a></h3>
                             {{!-- <p class="rbt-card-text">It is a long established fact that a reader.</p> --}}
                             <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="{{link}}">Learn More<i><svg width="17"
-                                            height="12" xmlns="http://www.w3.org/2000/svg">
+                                <a class="transparent-button" href="{{link}}">Learn More<i><svg width="17" height="12"
+                                            xmlns="http://www.w3.org/2000/svg">
                                             <g stroke="#27374D" fill="none" fill-rule="evenodd">
                                                 <path d="M10.614 0l5.629 5.629-5.63 5.629" />
                                                 <path stroke-linecap="square" d="M.663 5.572h14.594" />
@@ -885,7 +927,7 @@
                 <div class="col-lg-6 col-md-12 col-sm-12 col-12 mt--30" data-sal-delay="150" data-sal="slide-up"
                     data-sal-duration="800">
                     {{#each posts}}
-             <!-- Start Single Card  -->
+                    <!-- Start Single Card  -->
                     <div class="rbt-card card-list variation-02 rbt-hover">
                         <div class="rbt-card-img">
                             <a href="{{link}}">
@@ -894,8 +936,8 @@
                         <div class="rbt-card-body">
                             <h5 class="rbt-card-title"><a href="{{link}}">{{name}}</a></h5>
                             <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="{{link}}">Read Article<i><svg width="17"
-                                            height="12" xmlns="http://www.w3.org/2000/svg">
+                                <a class="transparent-button" href="{{link}}">Read Article<i><svg width="17" height="12"
+                                            xmlns="http://www.w3.org/2000/svg">
                                             <g stroke="#27374D" fill="none" fill-rule="evenodd">
                                                 <path d="M10.614 0l5.629 5.629-5.63 5.629" />
                                                 <path stroke-linecap="square" d="M.663 5.572h14.594" />
@@ -904,7 +946,7 @@
                             </div>
                         </div>
                     </div>
-                 
+
                     <br>
                     <!-- End Single Card  -->
                     {{/each}}
@@ -918,4 +960,32 @@
 
     <script>
         document.addEventListener('contextmenu', event => event.preventDefault());
+
+
+        // Get all the spans
+const spans = document.querySelectorAll('.ani h1');
+// Loop through the spans and add a class to show them one by one
+let i = 0;
+const showNextSpan = () => {
+  // Remove the show class from all the spans
+  spans.forEach(span => {
+    span.classList.remove('show');
+  });
+
+  // Add the show class to the current span after a delay
+  setTimeout(() => {
+    spans[i].classList.add('show');
+    i++;
+
+    if (i >= spans.length) { // Check if i has reached the end of the array
+      i = 0; // Reset i to 0 if it has
+    }
+
+    setTimeout(showNextSpan, 1200); // Use a delay of 3000ms (2s fade-out + 1s delay)
+  }, 1000); // Use a delay of 1000ms (1s delay)
+}
+
+
+// Call the function to start the animation
+showNextSpan();
     </script>
