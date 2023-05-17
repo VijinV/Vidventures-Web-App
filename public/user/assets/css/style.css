@@ -21617,7 +21617,7 @@ ul.testimonial-thumb-wrapper li a.active .thumb img {
 ------------------------*/
 .modal {
   z-index: 99999999;
-  background: var(--color-white);
+  background:transparent;
   padding: 60px 15px !important;
 }
 .modal .modal-news {

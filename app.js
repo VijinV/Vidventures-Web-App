@@ -150,9 +150,7 @@ mongoose.connect(process.env.MONGO_URL, () =>
 );
 
 
+app.listen(process.env.PORT, () => console.log("listening on port "+ process.env.PORT));
 
 
-
-
-
-app.listen(4000, () => console.log("listening on port "+ process.env.PORT));
+// app.listen(4000, () => console.log("listening on port "+ process.env.PORT));

@@ -52,186 +52,274 @@
     #newbtn:active {
         background: linear-gradient(32deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
     }
+    h1{
+        color: #233142;
+        font-weight: lighter;
+    }
+
     .ani h1:not(:first-child) {
-  opacity: 0;
-}
+        opacity: 0;
+    }
 
 
-.ani h1 {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
+    .ani h1 {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
 
-.ani h1.show {
-  opacity: 1;
-}
+    .ani h1.show {
+        opacity: 1;
+    }
 
-.ani {
-  position: relative;
-  height: 50px; /* Set the height of the container */
-}
+    .ani {
+        position: relative;
+        height: 50px;
+        /* Set the height of the container */
+    }
 
-.ani h1 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-  
-}
+    .ani h1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+
+    }
+
+    .input {
+        border: none;
+        padding: 1rem;
+        border-radius: 1rem;
+        background: #e8e8e8;
+        box-shadow: 20px 20px 60px #c5c5c5,
+            -20px -20px 60px #ffffff;
+        transition: 0.3s;
+    }
+
+    .input:focus {
+        outline-color: #e8e8e8;
+        background: #e8e8e8;
+        box-shadow: inset 20px 20px 60px #c5c5c5,
+            inset -20px -20px 60px #ffffff;
+        transition: 0.3s;
+    }
+
+    input::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        color: rgb(151, 151, 151) !important;
+    }
+
+    ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: rgb(151, 151, 151) !important;
+    }
+
+    :-ms-input-placeholder {
+        /* IE 10+ */
+        color: rgb(151, 151, 151) !important;
+    }
+
+    :-moz-placeholder {
+        /* Firefox 18- */
+        color: rgb(151, 151, 151) !important;
+    }
 
 
+    .btn-conteiner {
+        display: flex;
+        justify-content: center;
+        --color-text: #ffffff;
+        --color-background: #0d6efd;
+        --color-outline: #ff145b80;
+        --color-shadow: #00000080;
+    }
 
+    .btn-content {
+        display: flex;
+        align-items: center;
+        padding: 3px 20px;
+        text-decoration: none;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 30px;
+        color: var(--color-text);
+        background: var(--color-background);
+        transition: 1s;
+        border-radius: 100px;
+        box-shadow: 0 0 0.2em 0 var(--color-background);
+    }
+
+    .btn-content:hover,
+    .btn-content:focus {
+        transition: 0.5s;
+        -webkit-animation: btn-content 1s;
+        animation: btn-content 1s;
+        outline: 0.1em solid transparent;
+        outline-offset: 0.2em;
+        box-shadow: 0 0 0.4em 0 var(--color-background);
+    }
+
+    .btn-content .icon-arrow {
+        transition: 0.5s;
+        margin-right: 0px;
+        transform: scale(0.6);
+    }
+
+    .btn-content:hover .icon-arrow {
+        transition: 0.5s;
+        margin-right: 25px;
+    }
+
+    .icon-arrow {
+        width: 20px;
+        margin-left: 15px;
+        position: relative;
+        top: 6%;
+    }
+
+    /* SVG */
+    #arrow-icon-one {
+        transition: 0.4s;
+        transform: translateX(-60%);
+    }
+
+    #arrow-icon-two {
+        transition: 0.5s;
+        transform: translateX(-30%);
+    }
+
+    .btn-content:hover #arrow-icon-three {
+        animation: color_anim 1s infinite 0.2s;
+    }
+
+    .btn-content:hover #arrow-icon-one {
+        transform: translateX(0%);
+        animation: color_anim 1s infinite 0.6s;
+    }
+
+    .btn-content:hover #arrow-icon-two {
+        transform: translateX(0%);
+        animation: color_anim 1s infinite 0.4s;
+    }
+
+    /* SVG animations */
+    @keyframes color_anim {
+        0% {
+            fill: white;
+        }
+
+        50% {
+            fill: var(--color-background);
+        }
+
+        100% {
+            fill: white;
+        }
+    }
+
+    /* Button animations */
+    @-webkit-keyframes btn-content {
+        0% {
+            outline: 0.2em solid var(--color-background);
+            outline-offset: 0;
+        }
+    }
+
+    @keyframes btn-content {
+        0% {
+            outline: 0.2em solid var(--color-background);
+            outline-offset: 0;
+        }
+    }
+
+    .btn-content-final {
+        display: flex;
+        align-items: center;
+        padding: 3px 20px;
+        text-decoration: none;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 30px;
+        color: var(--color-text);
+        background: #198754;
+        transition: 1s;
+        border-radius: 100px;
+        box-shadow: 0 0 0.2em 0 #198754;
+    }
+
+    .btn-content-final:hover,
+    .btn-content-final:focus {
+        transition: 0.5s;
+        -webkit-animation: btn-content 1s;
+        animation: btn-content 1s;
+        outline: 0.1em solid transparent;
+        outline-offset: 0.2em;
+        box-shadow: 0 0 0.4em 0 #198754;
+    }
+
+    /* Button animations */
+    @-webkit-keyframes btn-content-final {
+        0% {
+            outline: 0.2em solid #198754;
+            outline-offset: 0;
+        }
+    }
+
+    @keyframes btn-content-final {
+        0% {
+            outline: 0.2em solid #198754;
+            outline-offset: 0;
+        }
+    }
 </style>
 
-<!-- Start Side Vav -->
-<div class="rbt-cart-side-menu">
-    <div class="inner-wrapper">
-        <div class="inner-top">
-            <div class="content">
-                <div class="title">
-                    <h4 class="title mb--0">Your shopping cart</h4>
-                </div>
-                <div class="rbt-btn-close" id="btn_sideNavClose">
-                    <button class="minicart-close-button rbt-round-btn"><i class="feather-x"></i></button>
-                </div>
-            </div>
-        </div>
-        <nav class="side-nav w-100">
-            <ul class="rbt-minicart-wrapper">
-                <li class="minicart-item">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <img src="user/assets/images/product/1.jpg" alt="Product Images">
-                        </a>
-                    </div>
-                    <div class="product-content">
-                        <h6 class="title"><a href="single-product.html">Miracle Morning</a></h6>
-
-                        <span class="quantity">1 * <span class="price">$22</span></span>
-                    </div>
-                    <div class="close-btn">
-                        <button class="rbt-round-btn"><i class="feather-x"></i></button>
-                    </div>
-                </li>
-
-                <li class="minicart-item">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <img src="user/assets/images/product/7.jpg" alt="Product Images">
-                        </a>
-                    </div>
-                    <div class="product-content">
-                        <h6 class="title"><a href="single-product.html">Happy Strong</a></h6>
-
-                        <span class="quantity">1 * <span class="price">$30</span></span>
-                    </div>
-                    <div class="close-btn">
-                        <button class="rbt-round-btn"><i class="feather-x"></i></button>
-                    </div>
-                </li>
-
-                <li class="minicart-item">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <img src="user/assets/images/product/3.jpg" alt="Product Images">
-                        </a>
-                    </div>
-                    <div class="product-content">
-                        <h6 class="title"><a href="single-product.html">Rich Dad Poor Dad</a></h6>
-
-                        <span class="quantity">1 * <span class="price">$50</span></span>
-                    </div>
-                    <div class="close-btn">
-                        <button class="rbt-round-btn"><i class="feather-x"></i></button>
-                    </div>
-                </li>
-
-                <li class="minicart-item">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <img src="user/assets/images/product/4.jpg" alt="Product Images">
-                        </a>
-                    </div>
-                    <div class="product-content">
-                        <h6 class="title"><a href="single-product.html">Momentum Theorem</a></h6>
-
-                        <span class="quantity">1 * <span class="price">$50</span></span>
-                    </div>
-                    <div class="close-btn">
-                        <button class="rbt-round-btn"><i class="feather-x"></i></button>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-
-        <div class="rbt-minicart-footer">
-            <hr class="mb--0">
-            <div class="rbt-cart-subttotal">
-                <p class="subtotal"><strong>Subtotal:</strong></p>
-                <p class="price">$121</p>
-            </div>
-            <hr class="mb--0">
-            <div class="rbt-minicart-bottom mt--20">
-                <div class="view-cart-btn">
-                    <a class="rbt-btn btn-border icon-hover w-100 text-center" href="#">
-                        <span class="btn-text">View Cart</span>
-                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                    </a>
-                </div>
-                <div class="checkout-btn mt--20">
-                    <a class="rbt-btn btn-gradient icon-hover w-100 text-center" href="#">
-                        <span class="btn-text">Checkout</span>
-                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-<!-- End Side Vav -->
 <a class="close_side_menu" href="javascript:void(0);"></a>
 
-<main class="rbt-main-wrapper">
+<main class="rbt-main-wrapper mt-5">
     <!-- Start Banner Area -->
     <div class="rbt-banner-area rbt-banner-1">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12 pb--120 pt--70">
                     <div class="content d-flex justify-content-center">
-                        <div class="inner">
+                        <div class="inner mb-5">
                             {{!-- <div class="rbt-new-badge rbt-new-badge-one">
                                 <span class="rbt-new-badge-icon">🏆</span> Your YouTube Automation Team
                             </div> --}}
-                            
-                            <div class="">
-                                <span  style="position: absolute; margin-left: -30px;"><h1 style="color: red; font-family: 'Poppins', sans-serif;">|</h1></span>
-                                <h1 class="" style="font-family: 'Poppins', sans-serif;">
-                             We're a global content creation agency 
-                             <br>
-                                 curating videos that enables you 
-                              <br>
-                               <div class="ani" style="">
-                                <h1 class="" style="color: red; font-size: 50px; font-family: 'Poppins', sans-serif;">Financial Freedom</h1>
-                                <h1 class="" style="color: red; font-size: 50px; font-family: 'Poppins', sans-serif;">Location Freedom</h1>
-                                <h1 class="" style="color: red; font-size: 50px; font-family: 'Poppins', sans-serif;">Time Freedom</h1>
+
+                            <div class="mb-5">
+
+                                <span style="position: absolute; margin-left: -30px;">
+                                    <h1 style="color: red; font-family: 'Poppins', sans-serif;">|</h1>
+                                </span>
+                                <h1 class="" style="font-family: 'Poppins', sans-serif; font-size: 52px;">
+                                    We're a global content creation agency
+                                    <br>
+                                    curating videos that enables you
+                                    <br>
+                                    <div class="ani" style="">
+                                        <h1 class=""
+                                            style="color: red; font-size: 50px; font-family: 'Poppins', sans-serif;">
+                                            Financial Freedom</h1>
+                                        <h1 class=""
+                                            style="color: red; font-size: 50px; font-family: 'Poppins', sans-serif;">
+                                            Location Freedom</h1>
+                                        <h1 class=""
+                                            style="color: red; font-size: 50px; font-family: 'Poppins', sans-serif;">
+                                            Time Freedom</h1>
+                                    </div>
+                                </h1>
+
                             </div>
-                            </h1>
-                              
-                            </div>
-                        
-                            
-                            <div class="w-100 d-flex justify-content-center">
-                                <video width="1000" height="720" autoplay loop muted>
-                                    <source src="user/assets/video/hai.mp4" type="video/mp4">
+                            <div class="video-container mt-5 ">
+                                <video autoplay loop muted style="margin-top: 100px;">
+                                    <source  src="user/assets/video/WebsiteVideo.mp4" type="video/mp4">
                                 </video>
                             </div>
-
                             <p class="description lh-base">
 
                             </p>
-                           
+
                         </div>
                         {{!-- <div class="shape-wrapper" id="scene">
 
@@ -245,163 +333,186 @@
     </div>
     <!-- End Banner Area -->
 
-    <div class="rbt-categories-area bg-color-white rbt-section-gapBottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title text-center">
-                        <span class="subtitle bg-primary-opacity">Driven By Passion</span>
-                        <h2 class="title">Our Services</h2>
+    {{!-- modal --}}
+    <form action="/getData" method="post">
+
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+            tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered ">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body w-100" style="  display: grid;
+                           place-items: center;">
+                        <p style="font-size: 52px;color: black;">I want to make video and visual <br> content for
+                        </p>
+                        <div class="form-group ms-5" style="position: absolute; margin-top: 79px;">
+                            <input placeholder="Business Man"
+                                style="padding-bottom: 23px; font-size: 52px; position: relative; color: #0578B4;margin-left: 109px;"
+                                size="8" name="email" type="text" />
+                            {{!-- <span class="focus-border"></span> --}}
+                        </div>
+
+                    </div>
+                    <div class="modal-footer ">
+                        <div class="btn-conteiner mt-5">
+                            <a class="btn-content" class="btn btn-lg btn-primary mt-5"
+                                data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <span class="btn-title">NEXT</span>
+                                <span class="icon-arrow">
+                                    <svg width="66px" height="43px" viewBox="0 0 66 43" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g id="arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <path id="arrow-icon-one"
+                                                d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z"
+                                                fill="#FFFFFF"></path>
+                                            <path id="arrow-icon-two"
+                                                d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z"
+                                                fill="#FFFFFF"></path>
+                                            <path id="arrow-icon-three"
+                                                d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z"
+                                                fill="#FFFFFF"></path>
+                                        </g>
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row g-5 mt--20">
-                <!-- Start Category Box Layout  -->
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <a class="rbt-cat-box rbt-cat-box-1 text-center">
-                        <div class="inner">
-                            <div class="icons">
-                                <img src="admin/assets/imgs/logo/Videos.png" alt="YouTubeAutomation">
-                            </div>
-                            <div class="content">
-                                <h5 class="title">YouTube Cashcow Videos</h5>
-                                {{!-- <div class="read-more-btn">
-                                    <span class="rbt-btn-link">25 Courses<i class="feather-arrow-right"></i></span>
-                                </div> --}}
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- End Category Box Layout  -->
+        </div>
 
-                <!-- Start Category Box Layout  -->
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <a class="rbt-cat-box rbt-cat-box-1 text-center">
-                        <div class="inner">
-                            <div class="icons">
-                                <img src="admin/assets/imgs/logo/Channel Management.png" alt="Youtube Cashcow">
-                            </div>
-                            <div class="content">
-                                <h5 class="title">Channel Management</h5>
-                                {{!-- <div class="read-more-btn">
-                                    <span class="rbt-btn-link">30 Courses<i class="feather-arrow-right"></i></span>
-                                </div> --}}
-                            </div>
+        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+            tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body w-100" style="  display: grid;
+                           place-items: center;">
+                        <p style="font-size: 52px;color: black;"> 2I want to make video and visual <br> content for
+                        </p>
+                        <div class="form-group ms-5" style="position: absolute; margin-top: 79px;">
+                            <input placeholder="Business Man"
+                                style="padding-bottom: 23px; font-size: 52px; position: relative; color: #0578B4;margin-left: 109px;"
+                                size="8" name="email" type="text" />
+                            {{!-- <span class="focus-border"></span> --}}
                         </div>
-                    </a>
-                </div>
-                <!-- End Category Box Layout  -->
 
-                <!-- Start Category Box Layout  -->
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <a class="rbt-cat-box rbt-cat-box-1 text-center">
-                        <div class="inner">
-                            <div class="icons">
-                                <img src="admin/assets/imgs/logo/Video idea Research.png" alt="YouTube Automation Team">
-                            </div>
-                            <div class="content">
-                                <h5 class="title">Viral Video Titles
-                                    {{!-- <div class="read-more-btn">
-                                        <span class="rbt-btn-link">20 Courses<i class="feather-arrow-right"></i></span>
-                                    </div> --}}
-                            </div>
+                    </div>
+                    <div class="modal-footer ">
+                        <div class="btn-conteiner mt-5">
+                            <a class="btn-content" class="btn btn-lg btn-primary mt-5"
+                                data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <span class="btn-title">NEXT</span>
+                                <span class="icon-arrow">
+                                    <svg width="66px" height="43px" viewBox="0 0 66 43" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g id="arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <path id="arrow-icon-one"
+                                                d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z"
+                                                fill="#FFFFFF"></path>
+                                            <path id="arrow-icon-two"
+                                                d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z"
+                                                fill="#FFFFFF"></path>
+                                            <path id="arrow-icon-three"
+                                                d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z"
+                                                fill="#FFFFFF"></path>
+                                        </g>
+                                    </svg>
+                                </span>
+                            </a>
                         </div>
-                    </a>
+                    </div>
                 </div>
-                <!-- End Category Box Layout  -->
-
-                <!-- Start Category Box Layout  -->
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <a class="rbt-cat-box rbt-cat-box-1 text-center">
-                        <div class="inner">
-                            <div class="icons">
-                                <img src="admin/assets/imgs/logo/Channel Arts.png" alt="Youtube Cashcow">
-                            </div>
-                            <div class="content">
-                                <h5 class="title">Banners , Logos & Dynamic Animation</h5>
-                                {{!-- <div class="read-more-btn">
-                                    <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
-                                </div> --}}
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- End Category Box Layout  -->
-
-                <!-- Start Category Box Layout  -->
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <a class="rbt-cat-box rbt-cat-box-1 text-center">
-                        <div class="inner">
-                            <div class="icons">
-                                <img src="admin/assets/imgs/logo/Metadata.png" alt="Youtube Cashcow">
-                            </div>
-                            <div class="content">
-                                <h5 class="title">SEO
-                                    {{!-- <div class="read-more-btn">
-                                        <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
-                                    </div> --}}
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- End Category Box Layout  -->
-
-                <!-- Start Category Box Layout  -->
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <a class="rbt-cat-box rbt-cat-box-1 text-center">
-                        <div class="inner">
-                            <div class="icons">
-                                <img src="admin/assets/imgs/logo/Thumbnails.png" alt="YouTube Automation Team">
-                            </div>
-                            <div class="content">
-                                <h5 class="title">High-CTR <br> Thumbnails</h5>
-                                {{!-- <div class="read-more-btn">
-                                    <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
-                                </div> --}}
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- End Category Box Layout  -->
-
-                <!-- Start Category Box Layout  -->
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <a class="rbt-cat-box rbt-cat-box-1 text-center">
-                        <div class="inner">
-                            <div class="icons">
-                                <img src="admin/assets/imgs/logo/clipboard.png" alt="Youtube Cashcow">
-                            </div>
-                            <div class="content">
-                                <h5 class="title">Niche Selection & Video Ideas</h5>
-                                {{!-- <div class="read-more-btn">
-                                    <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
-                                </div> --}}
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- End Category Box Layout  -->
-
-                <!-- Start Category Box Layout  -->
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <a class="rbt-cat-box rbt-cat-box-1 text-center">
-                        <div class="inner">
-                            <div class="icons">
-                                <img src="admin/assets/imgs/logo/Youtube Shorts.png" alt="YouTube Automation Team">
-                            </div>
-                            <div class="content">
-                                <h5 class="title">YouTube Shorts</h5>
-                                {{!-- <div class="read-more-btn">
-                                    <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
-                                </div> --}}
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- End Category Box Layout  -->
             </div>
         </div>
-    </div>
+
+        <div class="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+            tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body w-100" style="  display: grid;
+                           place-items: center;">
+                        <p style="font-size: 52px;color: black;"> 3I want to make video and visual <br> content for
+                        </p>
+                        <div class="form-group ms-5" style="position: absolute; margin-top: 79px;">
+                            <input placeholder="Business Man"
+                                style="padding-bottom: 23px; font-size: 52px; position: relative; color: #0578B4;margin-left: 109px;"
+                                size="8" name="email" type="text" />
+                            {{!-- <span class="focus-border"></span> --}}
+                        </div>
+
+                    </div>
+                    <div class="modal-footer ">
+                        <div class="btn-conteiner mt-5">
+                            <a class="btn-content" class="btn btn-lg btn-primary mt-5"
+                                data-bs-target="#exampleModalToggle4" data-bs-toggle="modal" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <span class="btn-title">NEXT</span>
+                                <span class="icon-arrow">
+                                    <svg width="66px" height="43px" viewBox="0 0 66 43" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g id="arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <path id="arrow-icon-one"
+                                                d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z"
+                                                fill="#FFFFFF"></path>
+                                            <path id="arrow-icon-two"
+                                                d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z"
+                                                fill="#FFFFFF"></path>
+                                            <path id="arrow-icon-three"
+                                                d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z"
+                                                fill="#FFFFFF"></path>
+                                        </g>
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="exampleModalToggle4" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+            tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body w-100" style="display: block ruby;">
+                        <p style="font-size: 52px;color: black;">May I help you? </p>
+                        <div class="form-group ms-5">
+                            <input placeholder="vidventures.yt@gmail.com" maxlength="20"
+                                style="padding-bottom: 30px; font-size: 52px; position: relative; color: #0578B4;"
+                                size="20" name="email" type="text" />
+                            {{!-- <span class="focus-border"></span> --}}
+                        </div>
+
+                    </div>
+                    <div class="modal-footer ">
+                        <div class="btn-conteiner mt-5">
+                            <button class="btn-content-final" class="btn btn-lg btn-primary mt-5">
+                                <span class="btn-title">Submit</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+
+    {{!-- modal --}}
 
 
 
@@ -432,7 +543,9 @@
                             <h2 class="title">Why <strong style="color: red;">Vidventures</strong> </h2>
                         </div>
 
-                        <p class="description mt--30">We bring valuable experience to the table. Our team has honed the skills and knowledge through countless projects, ensuring that we understand the intricacies of cashcow content creation.</p>
+                        <p class="description mt--30">We bring valuable experience to the table. Our team has honed the
+                            skills and knowledge through countless projects, ensuring that we understand the intricacies
+                            of cashcow content creation.</p>
 
                         <!-- Start Feature List  -->
 
@@ -958,34 +1071,94 @@
     </div>
     <!-- End Blog Style -->
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script>
+
+        //! header animation
+
         document.addEventListener('contextmenu', event => event.preventDefault());
-
-
         // Get all the spans
-const spans = document.querySelectorAll('.ani h1');
-// Loop through the spans and add a class to show them one by one
-let i = 0;
-const showNextSpan = () => {
-  // Remove the show class from all the spans
-  spans.forEach(span => {
-    span.classList.remove('show');
-  });
+        const spans = document.querySelectorAll('.ani h1');
+        // Loop through the spans and add a class to show them one by one
+        let i = 0;
+        const showNextSpan = () => {
+            // Remove the show class from all the spans
+            spans.forEach(span => {
+                span.classList.remove('show');
+            });
 
-  // Add the show class to the current span after a delay
-  setTimeout(() => {
-    spans[i].classList.add('show');
-    i++;
+            // Add the show class to the current span after a delay
+            setTimeout(() => {
+                spans[i].classList.add('show');
+                i++;
 
-    if (i >= spans.length) { // Check if i has reached the end of the array
-      i = 0; // Reset i to 0 if it has
-    }
+                if (i >= spans.length) { // Check if i has reached the end of the array
+                    i = 0; // Reset i to 0 if it has
+                }
 
-    setTimeout(showNextSpan, 1200); // Use a delay of 3000ms (2s fade-out + 1s delay)
-  }, 1000); // Use a delay of 1000ms (1s delay)
-}
+                setTimeout(showNextSpan, 1200); // Use a delay of 3000ms (2s fade-out + 1s delay)
+            }, 1000); // Use a delay of 1000ms (1s delay)
+        }
 
 
-// Call the function to start the animation
-showNextSpan();
+        // Call the function to start the animation
+        showNextSpan();
+
+         
+
+ //!tiggeering the modal window
+
+        var modalTriggered = false;
+        $(window).scroll(function () {
+            var scrollPosition = $(window).scrollTop();
+            var triggerPosition = 1152/* Specify the position at which you want to trigger the modal */;
+
+            if (!modalTriggered) {
+                if (scrollPosition >= triggerPosition) {
+                    $('#exampleModalToggle').modal('show');
+                    modalTriggered = true;
+                }
+            }
+
+        });
+
+// !modal data sending ajax request
+
+        const form = document.getElementById('myForm');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Create an XMLHttpRequest object
+            const xhr = new XMLHttpRequest();
+
+            // Configure the request
+            xhr.open('POST', '/submit');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            // Set up the callback function when the request is complete
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Show a popup message to the user
+                    alert('Thank you for your submission!');
+                } else {
+                    console.error('Error:', xhr.status);
+                }
+            };
+
+            // Get the form data and send it as JSON
+            const formData = new FormData(form);
+            const jsonData = {};
+
+            for (let entry of formData.entries()) {
+                jsonData[entry[0]] = entry[1];
+            }
+
+            xhr.send(JSON.stringify(jsonData));
+        });
+
+
+
     </script>

@@ -36,18 +36,18 @@ const getSession = (req, res) => {
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.EMAIL ,// your Gmail address
-    pass: process.env.EMAIL_PASSWORD // your Gmail password
+    user: process.env.EMAIL, // your Gmail address
+    pass: process.env.EMAIL_PASSWORD, // your Gmail password
   },
 });
 
 async function fetchInstagramPosts() {
   // Login to Instagram
-  ig.state.generateDevice('sampkle');
-  await ig.account.login('sampkle', '@narsmaster31');
+  ig.state.generateDevice("sampkle");
+  await ig.account.login("sampkle", "@narsmaster31");
 
   // Get user's media
-  const user = await ig.user.searchExact('sampkle');
+  const user = await ig.user.searchExact("sampkle");
   const userFeed = ig.feed.user(user.pk);
   const mediaList = await userFeed.items();
 
@@ -90,15 +90,11 @@ const loadHome = async (req, res, next) => {
 
   const review = await reviewModel.find({});
 
+  // !insta post
 
-  // !insta post 
-
-  fetchInstagramPosts()
-
-
+  fetchInstagramPosts();
 
   // !
-
 
   res.render("home", { login, session: getSession(req, res), review: review });
 };
@@ -130,7 +126,7 @@ const registerUser = async (req, res, next) => {
       const token = await otplib.authenticator.generate(secret);
       emailOtp = token;
 
-      const showEmail = email.slice(-13)
+      const showEmail = email.slice(-13);
       // Create a message object
       const message = {
         from: "vidventures.yt@gmail.com", // Sender address
@@ -337,7 +333,7 @@ const registerUser = async (req, res, next) => {
         }
         console.log("Email sent successfully to: ", info.messageId);
       });
-      res.render("otp", { login: true ,email:showEmail});
+      res.render("otp", { login: true, email: showEmail });
     } else {
       res.render("login.html", { message: "Account already exists" });
     }
@@ -377,9 +373,7 @@ const verifyUser = async (req, res) => {
     const userDate = await userModel.getUserByEmail(email);
 
     if (userDate) {
-
-      if(userDate.isVerified){
-
+      if (userDate.isVerified) {
         const passwordMatch = await bcrypt.compare(password, userDate.password);
 
         if (passwordMatch) {
@@ -389,20 +383,14 @@ const verifyUser = async (req, res) => {
           console.log(cartCount.length, "count");
           res.locals.count = cartCount.length;
           res.redirect("/");
-        }else{
-  
-          res.render("login",{message:"Invalid Password",})
-  
+        } else {
+          res.render("login", { message: "Invalid Password" });
         }
-
-      }else{
-
-        res.render("login",{message:"You Are Blocked By The Administrator",})
-  
-
+      } else {
+        res.render("login", {
+          message: "You Are Blocked By The Administrator",
+        });
       }
-
-    
     } else {
       res.send("user not found");
     }
@@ -565,10 +553,9 @@ const loadShop = async (req, res) => {
 const loadProductDetails = async (req, res) => {
   const product = await Product.getProduct(req.query.id);
 
-  const products = await Product.find({ _id: { $ne: req.query.id } }).limit(2)
+  const products = await Product.find({ _id: { $ne: req.query.id } }).limit(2);
 
-
-  res.render("productDetails", { session: true, product ,products});
+  res.render("productDetails", { session: true, product, products });
 };
 
 const addToCart = async (req, res) => {
@@ -614,18 +601,14 @@ const placeOrder = async (req, res) => {
   await order.save();
 };
 
-
-
 const stripePayment = async (req, res) => {
   const cartItems = await userModel
     .findById(req.session.user_id)
     .populate("cart.item.productId");
 
-    const oid = orderIdCreate.generate();
+  const oid = orderIdCreate.generate();
 
-    const user = await userModel.findById(req.session.user_id);
-
-   
+  const user = await userModel.findById(req.session.user_id);
 
   let line_items = [];
 
@@ -660,19 +643,17 @@ const stripePayment = async (req, res) => {
     cancel_url: "http://vidventuresyt.com/cancel",
   });
 
-  req.session.paymentString = randomstring.generate()
+  req.session.paymentString = randomstring.generate();
 
   order = new orderModel({
     products: user.cart,
     userId: req.session.user_id,
     status: "Confirm",
     orderId: oid,
-    paymentString:req.session.paymentString
+    paymentString: req.session.paymentString,
   });
 
   res.redirect(303, session.url);
-
-  
 };
 
 const updateCart = async (req, res) => {
@@ -692,13 +673,12 @@ const updateCart = async (req, res) => {
 
     const qtyChange = qty - cartItem.qty;
 
-    console.log(cartItem.price,'cart item quantity change')
-    console.log(cartItem.qty,'cart item quantity change',qty)
-
+    console.log(cartItem.price, "cart item quantity change");
+    console.log(cartItem.qty, "cart item quantity change", qty);
 
     cartItem.qty = qty;
-    console.log(typeof(productPrice),typeof(qty),'typeof')
-    cartItem.price = parseInt(productPrice)*parseInt(qty) ;
+    console.log(typeof productPrice, typeof qty, "typeof");
+    cartItem.price = parseInt(productPrice) * parseInt(qty);
 
     // recalculate the total price of the cart
     const totalPrice = user.cart.item.reduce(
@@ -726,8 +706,6 @@ const updateCart = async (req, res) => {
     res.status(500).send("Error updating cart item");
   }
 };
-
-
 
 const payment = async (req, res) => {
   res.render("payment");
@@ -797,19 +775,13 @@ const addInstruction = async (req, res) => {
   res.redirect(`/viewOrderDetails?id=${id}&productId=${productId}`);
 };
 
-
-const loadSuccess = async (req, res,next) => {
-
+const loadSuccess = async (req, res, next) => {
   try {
-    if(req.session.paymentString == order.paymentString){
-
-
-      const orderId = order.orderId
-      const date = order.createdAt
-      const fdate = date.toLocaleDateString('en-US')
-      const totaAmount = order.products.totalPrice
-
-
+    if (req.session.paymentString == order.paymentString) {
+      const orderId = order.orderId;
+      const date = order.createdAt;
+      const fdate = date.toLocaleDateString("en-US");
+      const totaAmount = order.products.totalPrice;
 
       const message = {
         from: "vidventures.yt@gmail.com", // Sender address
@@ -1030,39 +1002,30 @@ const loadSuccess = async (req, res,next) => {
         </html>`, // HTML body with a link
       };
 
+      await order.save();
 
-  
-     await order.save()
+      await transporter.sendMail(message, function (error, info) {
+        if (error) {
+          console.log("Error occurred while sending email: ", error.message);
+          return process.exit(1);
+        }
+        console.log("Email sent successfully to: ", info.messageId);
+      });
 
-     await transporter.sendMail(message, function (error, info) {
-      if (error) {
-        console.log("Error occurred while sending email: ", error.message);
-        return process.exit(1);
-      }
-      console.log("Email sent successfully to: ", info.messageId);
-    });
+      req.session.paymentString = null;
 
-     req.session.paymentString = null;
-  
-     res.render("success")
-  
-    }else{
-      res.redirect('/cart')
+      res.render("success");
+    } else {
+      res.redirect("/cart");
     }
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
-
-  
-
-}
+};
 
 const loadTerms = (req, res) => {
-
-
-res.render('terms')
-
-}
+  res.render("terms");
+};
 
 // =================================================================
 
