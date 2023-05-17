@@ -30,7 +30,8 @@ app.engine(
   hbs.engine({
     extname: "hbs",
     handlebars: allowInsecurePrototypeAccess(Handlebars),
-  })
+    defaultLayout: false}),
+  
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -134,10 +135,13 @@ adminRoute.engine(
 // ! page not done yet
 
 
-app.use((err,req, res, next) => {
-  res.status(500).render('admin/40')
+app.use((req, res, next) => {
+  res.status(404).render('user/404.hbs')
 })
-
+ 
+app.use((err,req, res, next) => {
+  res.status(500).render('user/404.hbs')
+})
 
 
 userRoute.use(express.static(path.join(__dirname, "public")));

@@ -1027,6 +1027,8 @@ const loadTerms = (req, res) => {
   res.render("terms");
 };
 
+
+
 // =================================================================
 
 module.exports = {

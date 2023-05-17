@@ -19861,17 +19861,17 @@ ul.testimonial-thumb-wrapper li a.active .thumb img {
   position: relative;
 }
 .scroll-animation.scroll-right-left {
-  -webkit-animation: scroll 80s linear infinite;
-  -moz-animation: scroll 80s linear infinite;
-  animation: scroll 80s linear infinite;
+  -webkit-animation: scroll 40s linear infinite;
+  -moz-animation: scroll 40s linear infinite;
+  animation: scroll 40s linear infinite;
   -webkit-animation-fill-mode: forwards;
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
 .scroll-animation.scroll-left-right {
-  -webkit-animation: scrollLeft 80s linear infinite;
-  -moz-animation: scrollLeft 80s linear infinite;
-  animation: scrollLeft 80s linear infinite;
+  -webkit-animation: scrollLeft 40s linear infinite;
+  -moz-animation: scrollLeft 40s linear infinite;
+  animation: scrollLeft 40s linear infinite;
   -webkit-animation-fill-mode: forwards;
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
