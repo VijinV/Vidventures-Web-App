@@ -272,6 +272,123 @@
             outline-offset: 0;
         }
     }
+
+    /*plan btn*/
+
+    .button {
+        position: relative;
+        width: 150px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        border: 1px solid #34974d;
+        background-color: #3aa856;
+        border-radius: 15px;
+    }
+
+    .button,
+    .button__icon,
+    .button__text {
+        transition: all 0.3s;
+    }
+
+    .button .button__text {
+        transform: translateX(30px);
+        color: #fff;
+        font-weight: 600;
+        font-size: 13px;
+        margin-left: -7px;
+    }
+
+    .button .button__icon {
+        position: absolute;
+        transform: translateX(109px);
+        height: 100%;
+        width: 39px;
+        background-color: #34974d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+    }
+
+    .button .svg {
+        width: 30px;
+        stroke: #fff;
+    }
+
+    .button:hover {
+        background: #34974d;
+    }
+
+    .button:hover .button__text {
+        color: transparent;
+    }
+
+    .button:hover .button__icon {
+        width: 148px;
+        transform: translateX(0);
+    }
+
+    .button:active .button__icon {
+        background-color: #2e8644;
+    }
+
+    .button:active {
+        border: 1px solid #2e8644;
+    }
+
+    .main_head {
+        font-size: 52px;
+    }
+
+    .main_head h1 {
+        font-size: 52px;
+        color: red;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    video {
+        margin-top: 100px;
+    }
+
+    .head_line {
+
+        position: absolute;
+        margin-left: -30px;
+    }
+
+
+    @media (min-width: 810px) and (max-width: 1080px) {
+
+        video {
+            margin-top: 33px;
+            width: 673px;
+        }
+
+        .head_line h1 {
+
+            margin-left: 13px;
+            margin-top: -2px;
+            font-size: 32px;
+
+        }
+
+        .main_head {
+            font-size: 32px;
+        }
+
+        .main_head h1 {
+            font-size: 32px;
+        }
+
+
+
+
+
+
+    }
 </style>
 
 <a class="close_side_menu" href="javascript:void(0);"></a>
@@ -290,30 +407,27 @@
 
                             <div class="mb-5">
 
-                                <span style="position: absolute; margin-left: -30px;">
+                                <span class="head_line">
                                     <h1 style="color: red; font-family: 'Poppins', sans-serif;">|</h1>
                                 </span>
-                                <h1 class="" style="font-family: 'Poppins', sans-serif; font-size: 52px;">
+                                <h1 class="main_head" style="font-family: 'Poppins', sans-serif; ">
                                     We're a global content creation agency
                                     <br>
                                     curating videos that enables you
                                     <br>
-                                    <div class="ani" style="">
-                                        <h1 class=""
-                                            style="color: red; font-size: 50px; font-family: 'Poppins', sans-serif;">
+                                    <div class="ani">
+                                        <h1>
                                             Financial Freedom</h1>
-                                        <h1 class=""
-                                            style="color: red; font-size: 50px; font-family: 'Poppins', sans-serif;">
+                                        <h1>
                                             Location Freedom</h1>
-                                        <h1 class=""
-                                            style="color: red; font-size: 50px; font-family: 'Poppins', sans-serif;">
+                                        <h1>
                                             Time Freedom</h1>
                                     </div>
                                 </h1>
 
                             </div>
                             <div class="video-container mt-5 ">
-                                <video autoplay loop muted style="margin-top: 100px;">
+                                <video autoplay loop muted>
                                     <source src="user/assets/video/WebsiteVideo.mp4" type="video/mp4">
                                 </video>
                             </div>
@@ -671,7 +785,8 @@
 
                         <!-- End Feature List  -->
                         <div class="about-btn mt--40">
-                            <a class="rbt-btn btn-gradient hover-icon-reverse" href="/Looks_like_the_page_is_on_vacation.It_left_no_forwarding_address.">
+                            <a class="rbt-btn btn-gradient hover-icon-reverse"
+                                href="/Looks_like_the_page_is_on_vacation.It_left_no_forwarding_address.">
                                 <span class="icon-reverse-wrapper">
                                     <span class="btn-text">More About Us</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
@@ -720,7 +835,207 @@
     </div>
     <!-- End Call To Action  -->
 
-    
+
+    {{!-- pricing tables --}}
+
+    <div class="rbt-pricing-area bg-color-extra2 rbt-section-gap">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Start Single Pricing  -->
+                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+                    <div class="pricing-table style-2">
+                        <div class="pricing-header">
+                            <h3 class="title">YouTube Shorts</h3>
+                            <span class="rbt-badge mb--35">Sparkle Plan</span>
+                            <div class="price-wrap">
+                                <div class="monthly-pricing" style="display: block;">
+                                    <span class="amount">$8.00</span>
+                                    <span class="duration">/ video</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pricing-btn">
+
+                            <button type="button" class="button">
+                                <span class="button__text">Add To Cart</span>
+                                <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round"
+                                        stroke-linecap="round" stroke="currentColor" height="24" fill="none"
+                                        class="svg">
+                                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                                    </svg></span>
+                            </button>
+                        </div>
+
+                        <div class="pricing-body">
+                            <ul class="plan-offer-list">
+                                <li><i class="feather-check"></i>150 words script</li>
+                                <li><i class="feather-check"></i>Human voice over</li>
+                                <li><i class="feather-check"></i>Standard Video &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    &nbsp; &nbsp; Editing</li>
+                             
+                                                                <li><i class="feather-check"></i>SEO included</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Pricing  -->
+
+                <!-- Start Single Pricing  -->
+                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+                    <div class="pricing-table style-2 active">
+                        <div class="pricing-header">
+
+                            <h3 class="title">4 to 5 minute Cashcow video</h3>
+                            <span class="rbt-badge mb--35">Silver Plan</span>
+                            <div class="price-wrap">
+
+                                <div class="monthly-pricing" style="display: block;">
+                                    <span class="amount">$35.50</span>
+                                    <span class="duration">/ video</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricing-btn ">
+                             <button type="button" class="button">
+                                <span class="button__text">Add To Cart</span>
+                                <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round"
+                                        stroke-linecap="round" stroke="currentColor" height="24" fill="none"
+                                        class="svg">
+                                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                                    </svg></span>
+                            </button>
+                        </div>
+
+                        <div class="pricing-body ">
+                            <ul class="plan-offer-list">
+                                <li><i class="feather-check"></i>1000 words script</li>
+                                <li><i class="feather-check"></i>Human voice over</li>
+                                <li><i class="feather-check"></i>Highly engaging &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    &nbsp; &nbsp;Video Editing</li>
+                                <li><i class="feather-check"></i>Customisable &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    &nbsp; &nbsp; &nbsp; &nbsp;Thumbnail</li>
+                                <li><i class="feather-check"></i>1 Revisions</li>
+                                <li><i class="feather-check"></i>SEO included</li>
+
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End Single Pricing  -->
+
+                <!-- Start Single Pricing  -->
+                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+                    <div class="pricing-table style-2 active">
+                        <div class="pricing-header">
+                            <div class="pricing-badge"><span>Popular</span></div>
+                            <h3 class="title">8 to 10 minute Cashcow video</h3>
+                            <span class="rbt-badge mb--35">Platinum Plan</span>
+                            <div class="price-wrap">
+
+                                <div class="monthly-pricing" style="display: block;">
+                                    <span class="amount">$55.00</span>
+                                    <span class="duration">/ video</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricing-btn">
+                             <button type="button" class="button">
+                                <span class="button__text">Add To Cart</span>
+                                <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round"
+                                        stroke-linecap="round" stroke="currentColor" height="24" fill="none"
+                                        class="svg">
+                                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                                    </svg></span>
+                            </button>
+                        </div>
+
+                        <div class="pricing-body">
+                            <ul class="plan-offer-list">
+                                <li><i class="feather-check"></i>1600 words script</li>
+                                <li><i class="feather-check"></i>Human voice over</li>
+                                <li><small class="ms-5">(multiple Options)</small></li>
+                                <li><i class="feather-check"></i> Advanced + VFX &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                   Video Editing</li>
+                                <li><i class="feather-check"></i>Customisable &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    &nbsp; &nbsp; &nbsp; &nbsp;Thumbnail</li>
+                                         <li><i class="feather-check"></i>2 Revisions</li>
+                                         <li><i class="feather-check"></i>SEO included</li>
+                                      
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End Single Pricing  -->
+
+                <!-- Start Single Pricing  -->
+                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+                    <div class="pricing-table style-2">
+                        <div class="pricing-header">
+                            <h3 class="title">8 to 10 minute Premium video</h3>
+                            <span class="rbt-badge mb--35">Epic Experience </span>
+                            <div class="price-wrap">
+
+                                <div class="monthly-pricing" style="display: block;">
+                                    <span class="amount">$98.50</span>
+                                    <span class="duration">/ video</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pricing-btn">
+                            <button type="button" class="button">
+                                <span class="button__text">Add To Cart</span>
+                                <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round"
+                                        stroke-linecap="round" stroke="currentColor" height="24" fill="none"
+                                        class="svg">
+                                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                                    </svg></span>
+                            </button>
+                        </div>
+
+                        <div class="pricing-body">
+                            <ul class="plan-offer-list">
+                                 <li><i class="feather-check"></i>1600 words script</li>
+                                <li><i class="feather-check"></i>Human voice over</li>
+                                <li><small class="ms-5">(multiple Options)</small></li>
+                                <li><i class="feather-check"></i> Cinematic + VFX &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    Video Editing</li>
+                                   <li><i class="feather-check"></i>Sound Effects &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (SFX)</li> 
+                                <li><i class="feather-check"></i>Premium &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;  &nbsp; Thumbnail</li>
+                                         <li><i class="feather-check"></i>3 Revisions</li>
+                                         <li><i class="feather-check"></i>SEO included</li>
+                                         <li><i class="feather-check"></i>Chat &amp; Call &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;Support</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End Single Pricing  -->
+
+            </div>
+        </div>
+    </div>
+
+
+    {{!-- end pricing tables --}}
+
+
     {{!-- testimonials --}}
     <div class="rbt-testimonial-area bg-color-extra2 rbt-section-gap overflow-hidden">
         <div class="wrapper">
@@ -756,7 +1071,7 @@
                                 <p class="subtitle-3">After the launch, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -780,7 +1095,7 @@
                                 <p class="subtitle-3">Histudy education, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -804,7 +1119,7 @@
                                 <p class="subtitle-3">Our educational, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -828,7 +1143,7 @@
                                 <p class="subtitle-3">People says about, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -851,7 +1166,7 @@
                                 <p class="subtitle-3">Like this histudy, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -875,7 +1190,7 @@
                                 <p class="subtitle-3">Educational template, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -899,7 +1214,7 @@
                                 <p class="subtitle-3">Online leaning, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -923,7 +1238,7 @@
                                 <p class="subtitle-3">Remote learning, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -947,7 +1262,7 @@
                                 <p class="subtitle-3">University managemnet, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -976,7 +1291,7 @@
                                 <p class="subtitle-3">After the launch, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -1000,7 +1315,7 @@
                                 <p class="subtitle-3">Histudy education, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -1024,7 +1339,7 @@
                                 <p class="subtitle-3">Our educational, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -1048,7 +1363,7 @@
                                 <p class="subtitle-3">People says about, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -1071,7 +1386,7 @@
                                 <p class="subtitle-3">Like this histudy, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -1095,7 +1410,7 @@
                                 <p class="subtitle-3">Educational template, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -1119,7 +1434,7 @@
                                 <p class="subtitle-3">Online leaning, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -1143,7 +1458,7 @@
                                 <p class="subtitle-3">Remote learning, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -1167,7 +1482,7 @@
                                 <p class="subtitle-3">University managemnet, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                class="feather-arrow-right"></i></a>
+                                        class="feather-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -1193,7 +1508,8 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="read-more-btn text-start text-md-end">
-                        <a class="rbt-btn btn-gradient hover-icon-reverse" href="/Looks_like_the_page_is_on_vacation.It_left_no_forwarding_address.">
+                        <a class="rbt-btn btn-gradient hover-icon-reverse"
+                            href="/Looks_like_the_page_is_on_vacation.It_left_no_forwarding_address.">
                             <div class="icon-reverse-wrapper">
                                 <span class="btn-text">See All Articles</span>
                                 <span class="btn-icon"><i class="feather-arrow-right"></i></span>
@@ -1304,20 +1620,20 @@
 
         //!tiggeering the modal window
 
-        var modalTriggered = false;
-        $(window).scroll(function () {
-            var scrollPosition = $(window).scrollTop();
-            var triggerPosition = 1152/* Specify the position at which you want to trigger the modal */;
-
-            if (!modalTriggered) {
-                if (scrollPosition >= triggerPosition) {
-                    $('#exampleModalToggle').modal('show');
-                    modalTriggered = true;
-                }
-            }
-
-        });
-
+        //    var modalTriggered = false;
+        //    $(window).scroll(function () {
+        //        var scrollPosition = $(window).scrollTop();
+        //        var triggerPosition = 1152/* Specify the position at which you want to trigger the modal */;
+        //
+        //        if (!modalTriggered) {
+        //            if (scrollPosition >= triggerPosition) {
+        //                $('#exampleModalToggle').modal('show');
+        //                modalTriggered = true;
+        //            }
+        //        }
+        //
+        //    });
+        //
         // !modal data sending ajax request
 
         const form = document.getElementById('myForm');
