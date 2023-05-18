@@ -404,18 +404,37 @@ const loadAddReview = async (req, res) => {
 };
 
 const addReview = (req, res) => {
-  const { name, channelName, review } = req.body;
-
-  const newReview = new reviewModel({
+ try {
+   const { name, channelName, review } = req.body;
+ 
+   let newReview
+ try {
+       newReview = new reviewModel({
+        name: name,
+        channelName: channelName,
+        review: review,
+        image: req.file.filename,
+      })
+    
+    newReview.save()
+      .then(() => {
+        res.redirect("/admin/review");
+      });
+ } catch (error) {
+  newReview = new reviewModel({
     name: name,
     channelName: channelName,
     review: review,
-    image: req.file.filename,
   })
-    .save()
-    .then(() => {
-      res.redirect("/admin/review");
-    });
+
+  newReview.save()
+      .then(() => {
+        res.redirect("/admin/review");
+      });
+ }
+ } catch (error) {
+  console.log(error);
+ }
 };
 
 const listReview = async (req, res) => {

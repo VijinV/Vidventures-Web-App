@@ -7,7 +7,7 @@ const reviewSchema = new mongoose.Schema({
     },
     channelName:{
         type:"String",
-        required: true
+        
     },
     review:{
         type:"String",
