@@ -63,8 +63,8 @@ route.get('/unListPosts',adminAuth.isLogin, adminController.unListPosts)
 route.get('/logout',adminAuth.logout)
 
 
-// POST method 
-
+// POST method  
+ 
 route.post("/login", adminAuth.isLogout, adminController.verifyAdmin);
 
 route.post("/addProduct", multer.upload, adminController.addProduct);
