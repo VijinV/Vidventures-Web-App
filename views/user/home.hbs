@@ -359,6 +359,37 @@
         margin-left: -30px;
     }
 
+    .modal-body {
+        display: grid;
+        place-items: center;
+    }
+
+    .modal-body p {
+
+        font-size: 52px;
+        color:
+    }
+
+    .modal-body div {
+
+        position: absolute;
+        margin-top: 79px;
+    }
+
+    .modal-body input {
+
+        padding-bottom: 23px;
+        font-size: 52px;
+        position: relative;
+        color: #0578B4;
+        margin-left: 109px;
+    }
+
+
+
+
+
+
 
     @media (min-width: 810px) and (max-width: 1080px) {
 
@@ -383,6 +414,81 @@
             font-size: 32px;
         }
 
+        .modal {
+            display: table;
+            width: 710px;
+            margin-left: 45px;
+            height: 311px;
+            top: 237px;
+        }
+
+        .modal-dialog {
+            height: 325px;
+            width: 690px;
+        }
+
+        .modal-content {
+            width: 692px;
+            height: 358px;
+        }
+
+        .modal-content p {
+            font-size: 39px;
+        }
+
+        .modal-body div {
+            margin-top: 66px;
+        }
+
+        .modal-body input {
+            font-size: 39px;
+            margin-left: 71px;
+        }
+
+    }
+
+
+    @media (max-width:480px){
+
+        video{
+            width: 347px;
+            margin-top: 41px;
+        }
+        .head_line{
+           display: none !important;
+        }
+        .main_head{
+            font-size: 28px;
+            line-height: 22px;
+            line-height: 34px;
+            font-family: 700px;
+        }
+        .ani{
+            height: 0;
+        }
+        .ani h1 {
+            font-size: 28px;
+            font-weight: 700;
+
+        }
+
+        .content_main{
+            margin-top: -66px;
+        }
+
+        .rbt-counterup-area{
+            margin-top: -252px;
+        }
+
+        .mobile_none {
+            display: none;
+        }
+        .front_main{
+            margin-top: -70px;
+        }
+
+
+
 
 
 
@@ -396,7 +502,7 @@
 <main class="rbt-main-wrapper mt-5">
     <!-- Start Banner Area -->
     <div class="rbt-banner-area rbt-banner-1">
-        <div class="container-fluid">
+        <div class="container-fluid front_main">
             <div class="row">
                 <div class="col-md-12 pb--120 pt--70">
                     <div class="content d-flex justify-content-center">
@@ -458,14 +564,11 @@
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body w-100" style="  display: grid;
-                           place-items: center;">
-                        <p style="font-size: 52px;color: black;">I want to make video and visual <br> content for
+                    <div class="modal-body w-100">
+                        <p style=" black;">I want to make video and visual <br> content for
                         </p>
-                        <div class="form-group ms-5" style="position: absolute; margin-top: 79px;">
-                            <input placeholder="Business Man"
-                                style="padding-bottom: 23px; font-size: 52px; position: relative; color: #0578B4;margin-left: 109px;"
-                                size="8" name="email" type="text" />
+                        <div class="form-group ms-5">
+                            <input placeholder="Business Man" style="" size="8" name="email" type="text" />
                             {{!-- <span class="focus-border"></span> --}}
                         </div>
 
@@ -631,12 +734,12 @@
 
     {{!-- counter --}}
 
-    <div class="rbt-counterup-area bg-color-extra2 rbt-section-gap">
+    <div class="rbt-counterup-area  rbt-section-gap">
         <div class="conter-style-2">
             <div class="container">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6">
-                        <div class="inner pl--50 pl_sm--0 pl_md--0">
+                        <div class="inner pl--50 pl_sm--0 pl_md--0 mobile_none">
                             <div class="section-title text-start">
                                 <span class="subtitle bg-pink-opacity">Why Choose Us</span>
                                 <h2 class="title">Creating A Community Of <br /> Life Long Learners.</h2>
@@ -802,7 +905,7 @@
     <!-- End About Area  -->
 
     <!-- Start Call To Action  -->
-    <div class="rbt-callto-action-area bg-color-extra2 rbt-section-gap">
+    <div class="rbt-callto-action-area  rbt-section-gap">
         <div class="rbt-callto-action rbt-cta-default style-2">
             <div class="container content-wrapper overflow-hidden">
                 <div class="row gy-5 align-items-center">
@@ -819,7 +922,7 @@
                     <div class="col-lg-4">
                         <div class="call-to-btn text-start text-lg-end position-relative" data-sal="slide-up"
                             data-sal-duration="400" data-sal-delay="400">
-                            <a class="rbt-btn rbt-switch-btn rbt-switch-y" href="https://wa.link/cac4zv">
+                            <a class="rbt-btn rbt-switch-btn rbt-switch-y" target="_blank" href="https://wa.link/cac4zv">
                                 <span data-text="Book a call">Book a call</span>
                             </a>
                             <div class="shape-text-image">
@@ -838,7 +941,7 @@
 
     {{!-- pricing tables --}}
 
-    <div class="rbt-pricing-area bg-color-extra2 rbt-section-gap">
+    <div class="rbt-pricing-area  rbt-section-gap">
         <div class="container">
             <div class="row g-5">
                 <!-- Start Single Pricing  -->
@@ -875,8 +978,8 @@
                                 <li><i class="feather-check"></i>Human voice over</li>
                                 <li><i class="feather-check"></i>Standard Video &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                     &nbsp; &nbsp; Editing</li>
-                             
-                                                                <li><i class="feather-check"></i>SEO included</li>
+
+                                <li><i class="feather-check"></i>SEO included</li>
 
                             </ul>
                         </div>
@@ -900,7 +1003,7 @@
                             </div>
                         </div>
                         <div class="pricing-btn ">
-                             <button type="button" class="button">
+                            <button type="button" class="button">
                                 <span class="button__text">Add To Cart</span>
                                 <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                         viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round"
@@ -947,7 +1050,7 @@
                             </div>
                         </div>
                         <div class="pricing-btn">
-                             <button type="button" class="button">
+                            <button type="button" class="button">
                                 <span class="button__text">Add To Cart</span>
                                 <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                         viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round"
@@ -964,13 +1067,14 @@
                                 <li><i class="feather-check"></i>1600 words script</li>
                                 <li><i class="feather-check"></i>Human voice over</li>
                                 <li><small class="ms-5">(multiple Options)</small></li>
-                                <li><i class="feather-check"></i> Advanced + VFX &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                   Video Editing</li>
+                                <li><i class="feather-check"></i> Advanced + VFX &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    &nbsp; &nbsp;
+                                    Video Editing</li>
                                 <li><i class="feather-check"></i>Customisable &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                     &nbsp; &nbsp; &nbsp; &nbsp;Thumbnail</li>
-                                         <li><i class="feather-check"></i>2 Revisions</li>
-                                         <li><i class="feather-check"></i>SEO included</li>
-                                      
+                                <li><i class="feather-check"></i>2 Revisions</li>
+                                <li><i class="feather-check"></i>SEO included</li>
+
 
                             </ul>
                         </div>
@@ -1009,18 +1113,21 @@
 
                         <div class="pricing-body">
                             <ul class="plan-offer-list">
-                                 <li><i class="feather-check"></i>1600 words script</li>
+                                <li><i class="feather-check"></i>1600 words script</li>
                                 <li><i class="feather-check"></i>Human voice over</li>
                                 <li><small class="ms-5">(multiple Options)</small></li>
-                                <li><i class="feather-check"></i> Cinematic + VFX &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                <li><i class="feather-check"></i> Cinematic + VFX &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    &nbsp;
                                     Video Editing</li>
-                                   <li><i class="feather-check"></i>Sound Effects &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (SFX)</li> 
+                                <li><i class="feather-check"></i>Sound Effects &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    &nbsp; &nbsp; &nbsp; (SFX)</li>
                                 <li><i class="feather-check"></i>Premium &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                    &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;  &nbsp; Thumbnail</li>
-                                         <li><i class="feather-check"></i>3 Revisions</li>
-                                         <li><i class="feather-check"></i>SEO included</li>
-                                         <li><i class="feather-check"></i>Chat &amp; Call &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                    &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;Support</li>
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Thumbnail</li>
+                                <li><i class="feather-check"></i>3 Revisions</li>
+                                <li><i class="feather-check"></i>SEO included</li>
+                                <li><i class="feather-check"></i>Chat &amp; Call &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    &nbsp;
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Support</li>
                             </ul>
                         </div>
 
@@ -1037,7 +1144,7 @@
 
 
     {{!-- testimonials --}}
-    <div class="rbt-testimonial-area bg-color-extra2 rbt-section-gap overflow-hidden">
+    <div class="rbt-testimonial-area  rbt-section-gap overflow-hidden">
         <div class="wrapper">
             <div class="container">
                 <div class="row">
@@ -1497,7 +1604,7 @@
 
 
     <!-- Start Blog Style -->
-    <div class="rbt-rbt-blog-area rbt-section-gap bg-color-extra2">
+    <div class="rbt-rbt-blog-area rbt-section-gap ">
         <div class="container">
             <div class="row g-5 align-items-center mb--30">
                 <div class="col-lg-6 col-md-6 col-12">
@@ -1620,20 +1727,20 @@
 
         //!tiggeering the modal window
 
-        //    var modalTriggered = false;
-        //    $(window).scroll(function () {
-        //        var scrollPosition = $(window).scrollTop();
-        //        var triggerPosition = 1152/* Specify the position at which you want to trigger the modal */;
-        //
-        //        if (!modalTriggered) {
-        //            if (scrollPosition >= triggerPosition) {
-        //                $('#exampleModalToggle').modal('show');
-        //                modalTriggered = true;
-        //            }
-        //        }
-        //
-        //    });
-        //
+        var modalTriggered = true;
+        $(window).scroll(function () {
+            var scrollPosition = $(window).scrollTop();
+            var triggerPosition = 1152/* Specify the position at which you want to trigger the modal */;
+
+            if (!modalTriggered) {
+                if (scrollPosition >= triggerPosition) {
+                    $('#exampleModalToggle').modal('show');
+                    modalTriggered = true;
+                }
+            }
+
+        });
+
         // !modal data sending ajax request
 
         const form = document.getElementById('myForm');
