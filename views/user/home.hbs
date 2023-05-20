@@ -384,12 +384,25 @@
         color: #0578B4;
         margin-left: 109px;
     }
-    .pricing-body li{
+
+    .pricing-body li {
         white-space: pre-line;
     }
-    .pricing-body span{
+
+    .pricing-body span {
         margin-left: 31px;
     }
+
+    .mobile_counter {
+        display: none;
+    }
+
+    .windows_counter {
+        padding-top: 65px;
+        padding-bottom: 56px;
+        background: #ffffff !important;
+    }
+
 
 
 
@@ -455,60 +468,80 @@
     }
 
 
-    @media (max-width:480px){
+    @media (max-width:480px) {
 
-        video{
+        video {
             width: 347px;
             margin-top: 41px;
         }
-        .head_line{
-           display: none !important;
+
+        .head_line {
+            display: none !important;
         }
-        .main_head{
+
+        .main_head {
             font-size: 28px;
             line-height: 22px;
             line-height: 35px;
             font-family: 700px;
         }
-        .ani{
+
+        .ani {
             height: 0;
         }
+
         .ani h1 {
             font-size: 28px;
             font-weight: 700;
 
         }
 
-        .content_main{
+        .content_main {
             margin-top: -66px;
         }
 
-        .rbt-counterup-area{
+        .rbt-counterup-area {
             margin-top: -252px;
         }
 
         .mobile_none {
             display: none;
         }
-        .front_main{
+
+        .front_main {
             margin-top: -70px;
         }
-        .rbt-about-area{
+
+        .rbt-about-area {
             margin-top: -102px;
         }
-        .rbt-callto-action-area{
+
+        .rbt-callto-action-area {
             margin-top: -118px;
         }
-        .rbt-pricing-area{
+
+        .rbt-pricing-area {
             margin-top: -103px;
         }
-        .pricing-btn{
+
+        .pricing-btn {
             margin-left: 74px;
         }
 
-         .pricing-body span{
-        margin-left: 0px;
-    }
+        .pricing-body span {
+            margin-left: 0px;
+        }
+
+        .windows_counter {
+            display: none;
+        }
+
+        .mobile_counter {
+
+            display: block;
+
+        }
+
 
     }
 </style>
@@ -549,7 +582,7 @@
 
                             </div>
                             <div class="video-container mt-5 ">
-                                <video id="myVideo" autoplay loop muted playsinline poster="admin/assets/imgs/logo/Product4-6.png.png">
+                                <video id="myVideo" autoplay loop muted playsinline>
                                     <source src="user/assets/video/WebsiteVideo.mp4" type="video/mp4">
                                 </video>
                             </div>
@@ -748,9 +781,9 @@
 
     {{!-- modal --}}
 
-    {{!-- counter --}}
+    {{!-- counter mobile--}}
 
-    <div class="rbt-counterup-area  rbt-section-gap">
+    <div class="rbt-counterup-area  rbt-section-gap mobile_counter">
         <div class="conter-style-2">
             <div class="container">
                 <div class="row g-5 align-items-center">
@@ -838,7 +871,73 @@
         </div>
     </div>
 
-    {{!-- coumter --}}
+    {{!-- coumter mobile--}}
+
+    {{!-- counter-windows --}}
+    <div class="rbt-counterup-area  windows_counter" >
+        <div class="conter-style-2">
+            <div class="container">
+                <div class="row g-5">
+                    <!-- Start Single Counter  -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 single-counter">
+                        <div class="rbt-counterup style-2">
+                            <div class="inner">
+                                <div class="content">
+                                    <h3 class="counter"><span class="odometer" data-count="500">00</span>
+                                    </h3>
+                                    <span class="subtitle">Learners &amp; counting</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Counter  -->
+
+                    <!-- Start Single Counter  -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 single-counter">
+                        <div class="rbt-counterup style-2">
+                            <div class="inner">
+                                <div class="content">
+                                    <h3 class="counter"><span class="odometer" data-count="800">00</span>
+                                    </h3>
+                                    <span class="subtitle">Courses & Video</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Counter  -->
+
+                    <!-- Start Single Counter  -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 single-counter">
+                        <div class="rbt-counterup style-2">
+                            <div class="inner">
+                                <div class="content">
+                                    <h3 class="counter"><span class="odometer" data-count="1000">00</span>
+                                    </h3>
+                                    <span class="subtitle">Certified Students</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Counter  -->
+
+                    <!-- Start Single Counter  -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 single-counter">
+                        <div class="rbt-counterup style-2">
+                            <div class="inner">
+                                <div class="content">
+                                    <h3 class="counter"><span class="odometer" data-count="100">00</span>
+                                    </h3>
+                                    <span class="subtitle">Certified Students</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Counter  -->
+                </div>
+            </div>
+        </div>
+    </div>
+    {{!-- counter-windows --}}
 
 
 
@@ -938,7 +1037,8 @@
                     <div class="col-lg-4">
                         <div class="call-to-btn text-start text-lg-end position-relative" data-sal="slide-up"
                             data-sal-duration="400" data-sal-delay="400">
-                            <a class="rbt-btn rbt-switch-btn rbt-switch-y" target="_blank" href="https://wa.link/cac4zv">
+                            <a class="rbt-btn rbt-switch-btn rbt-switch-y" target="_blank"
+                                href="https://wa.link/cac4zv">
                                 <span data-text="Book a call">Book a call</span>
                             </a>
                             <div class="shape-text-image">
@@ -1033,10 +1133,10 @@
                             <ul class="plan-offer-list">
                                 <li><i class="feather-check"></i>1000 words script</li>
                                 <li><i class="feather-check"></i>Human voice over</li>
-                                <li><i class="feather-check"></i>Highly engaging <span>Video Editing</span>  
-                                     </li>
-                                <li><i class="feather-check"></i>Customisable <span>Thumbnail</span>    
-                                       </li>
+                                <li><i class="feather-check"></i>Highly engaging <span>Video Editing</span>
+                                </li>
+                                <li><i class="feather-check"></i>Customisable <span>Thumbnail</span>
+                                </li>
                                 <li><i class="feather-check"></i>1 Revisions</li>
                                 <li><i class="feather-check"></i>SEO included</li>
 
@@ -1081,11 +1181,11 @@
                                 <li><i class="feather-check"></i>1600 words script</li>
                                 <li><i class="feather-check"></i>Human voice over</li>
                                 <li><small class="ms-5">(multiple Options)</small></li>
-                                <li><i class="feather-check"></i> Advanced + VFX     
-                                     <span style="margin-left: 31px;">Video Editing</span>
-                                    </li>
-                                <li><i class="feather-check"></i>Customisable <span>Thumbnail</span>  
-                                       </li>
+                                <li><i class="feather-check"></i> Advanced + VFX
+                                    <span style="margin-left: 31px;">Video Editing</span>
+                                </li>
+                                <li><i class="feather-check"></i>Customisable <span>Thumbnail</span>
+                                </li>
                                 <li><i class="feather-check"></i>2 Revisions</li>
                                 <li><i class="feather-check"></i>SEO included</li>
 
@@ -1130,19 +1230,19 @@
                                 <li><i class="feather-check"></i>1600 words script</li>
                                 <li><i class="feather-check"></i>Human voice over</li>
                                 <li><small class="ms-5">(multiple Options)</small></li>
-                                <li style="height: 45px;"><i class="feather-check"></i> Cinematic + VFX 
-                                <span style="margin-left: 31px;">Video Editing</span>    
-                                    
-                                    </li>
-                                <li><i class="feather-check"></i>Sound Effects</span>     
-                                      </li>
-                                <li><i class="feather-check"></i>Premium <span>Thumbnail</span>      
-                                            </li>
+                                <li style="height: 45px;"><i class="feather-check"></i> Cinematic + VFX
+                                    <span style="margin-left: 31px;">Video Editing</span>
+
+                                </li>
+                                <li><i class="feather-check"></i>Sound Effects</span>
+                                </li>
+                                <li><i class="feather-check"></i>Premium <span>Thumbnail</span>
+                                </li>
                                 <li><i class="feather-check"></i>3 Revisions</li>
                                 <li><i class="feather-check"></i>SEO included</li>
-                                <li><i class="feather-check"></i>Chat &amp; Call     
+                                <li><i class="feather-check"></i>Chat &amp; Call
                                     <span style="margin-left: 31px;">Support</span>
-                                         </li>
+                                </li>
                             </ul>
                         </div>
 
@@ -1791,8 +1891,8 @@
             xhr.send(JSON.stringify(jsonData));
         });
 
-          var video = document.getElementById("myVideo");
-          video.play();
+        var video = document.getElementById("myVideo");
+        video.play();
 
 
 
