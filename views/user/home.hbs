@@ -543,7 +543,49 @@
         }
 
 
+        .modal-content {
+
+            height: 236px;
+        }
+
+        .modal-content p {
+            font-size: 26px;
+        }
+
+        .modal-body {
+            height: 199px;
+        }
+
+        .modal-body div {
+            margin-top: 14px;
+        }
+
+        .modal-body input {
+            font-size: 26px;
+            margin-left: 31px;
+            padding-bottom: 3px;
+        }
+
+        .modal-footer {
+            padding: 0;
+            margin-top: -7px;
+
+        }
+
+        .modal-footer a {
+            font-size: 17px !important;
+            margin-top: -17px;
+        }
+
+        .email_input {
+            margin-top: -27px;
+            margin-left: 13px;
+        }
+
+
     }
+
+    @media (min-width: 480px) and (max-width: 810px) {}
 </style>
 
 <a class="close_side_menu" href="javascript:void(0);"></a>
@@ -614,7 +656,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body w-100">
-                        <p style=" black;">I want to make video and visual <br> content for
+                        <p >I want to make video and visual <br> content for
                         </p>
                         <div class="form-group ms-5">
                             <input placeholder="Business Man" style="" size="8" name="email" type="text" />
@@ -658,14 +700,11 @@
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body w-100" style="  display: grid;
-                           place-items: center;">
-                        <p style="font-size: 52px;color: black;"> 2I want to make video and visual <br> content for
+                    <div class="modal-body w-100">
+                        <p> I want to make video and visual <br> content for
                         </p>
-                        <div class="form-group ms-5" style="position: absolute; margin-top: 79px;">
-                            <input placeholder="Business Man"
-                                style="padding-bottom: 23px; font-size: 52px; position: relative; color: #0578B4;margin-left: 109px;"
-                                size="8" name="email" type="text" />
+                        <div class="form-group ms-5">
+                            <input placeholder="Business Man" size="8" name="email" type="text" />
                             {{!-- <span class="focus-border"></span> --}}
                         </div>
 
@@ -706,14 +745,11 @@
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body w-100" style="  display: grid;
-                           place-items: center;">
-                        <p style="font-size: 52px;color: black;"> 3I want to make video and visual <br> content for
+                    <div class="modal-body w-100">
+                        <p> I want to make video and visual <br> content for
                         </p>
-                        <div class="form-group ms-5" style="position: absolute; margin-top: 79px;">
-                            <input placeholder="Business Man"
-                                style="padding-bottom: 23px; font-size: 52px; position: relative; color: #0578B4;margin-left: 109px;"
-                                size="8" name="email" type="text" />
+                        <div class="form-group ms-5">
+                            <input placeholder="Business Man" size="8" name="email" type="text" />
                             {{!-- <span class="focus-border"></span> --}}
                         </div>
 
@@ -756,11 +792,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body w-100" style="display: block ruby;">
-                        <p style="font-size: 52px;color: black;">May I help you? </p>
+                        <p>May I help you? </p>
                         <div class="form-group ms-5">
-                            <input placeholder="vidventures.yt@gmail.com" maxlength="20"
-                                style="padding-bottom: 30px; font-size: 52px; position: relative; color: #0578B4;"
-                                size="20" name="email" type="text" />
+                            <input class="email_input" placeholder="vidventures.yt@gmail.com" maxlength="20" size="20"
+                                name="email" type="text" />
                             {{!-- <span class="focus-border"></span> --}}
                         </div>
 
@@ -874,7 +909,7 @@
     {{!-- coumter mobile--}}
 
     {{!-- counter-windows --}}
-    <div class="rbt-counterup-area  windows_counter" >
+    <div class="rbt-counterup-area  windows_counter">
         <div class="conter-style-2">
             <div class="container">
                 <div class="row g-5">
@@ -1842,7 +1877,7 @@
 
         //!tiggeering the modal window
 
-        var modalTriggered = true;
+        var modalTriggered = false;
         $(window).scroll(function () {
             var scrollPosition = $(window).scrollTop();
             var triggerPosition = 1152/* Specify the position at which you want to trigger the modal */;
