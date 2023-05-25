@@ -18932,6 +18932,29 @@ span.transparent-button:hover i {
   opacity: 0.6;
 }
 
+
+
+/* whatsapplogo */
+
+
+#whatsapp::before{
+
+  content: "";
+  
+
+}
+
+#whatsapp::after{
+
+  content: "";
+
+}
+
+
+
+
+/* end-whasapplogo  */
+
 /*----------------------
     Newsletter Styles  
 ------------------------*/
