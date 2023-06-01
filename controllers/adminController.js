@@ -7,6 +7,7 @@ const userModel = require("../models/userModel");
 const visitorsModel = require("../models/visitorsModel");
 const reviewModel = require("../models/reviewModel");
 const postModel = require("../models/postModel");
+const Form = require("../models/formData");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
@@ -940,8 +941,26 @@ const unListPosts = async (req, res) => {
   res.redirect("/admin/listPosts");
 };
 
+const loadFormData =  async(req, res) => {
+
+  const formData = await Form.find({}).sort({_id: -1})
+
+  res.render('formData', {formData})
+
+
+
+};
+
+
+
+
+
+
+
+
 
 module.exports = {
+  loadFormData,
   unListPosts,
   addPost,
   loadAddPost,

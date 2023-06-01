@@ -15,6 +15,11 @@
                         <span class="text">Dashboard</span>
                     </a>
                 </li>
+                 <li class="menu-item ">
+                    <a class="menu-link" href="/admin/lightbox"> <i class="icon material-icons md-assignment"></i>
+                        <span class="text">light box</span>
+                    </a>
+                </li>
                 <li class="menu-item ">
                     <a class="menu-link" href="/admin/product"> <i class="icon material-icons md-shopping_bag"></i>
                         <span class="text">Products</span>
@@ -63,7 +68,7 @@
                     <div class="submenu">
                         <a href="page-settings-1.html">Setting sample 1</a>
                         <a href="page-settings-2.html">Setting sample 2</a>
-                    </div>
+                    </div>  
                 </li>
             </ul>
             <br>
@@ -72,7 +77,7 @@
     </aside>
     <main class="main-wrap">
         <header class="main-header navbar">
-            {{!-- <div class="col-search">
+            <div class="col-search">
                 <form class="searchform">
                     <div class="input-group">
                         <input list="search_terms" type="text" class="form-control" placeholder="Search term">
@@ -85,8 +90,8 @@
                         <option value="Ahmed Hassan">
                     </datalist>
                 </form>
-            </div> --}}
-            {{!-- <div class="col-nav">
+            </div>
+            <div class="col-nav">
                 <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
                 <ul class="nav">
                     <li class="nav-item">
@@ -123,32 +128,31 @@
                         </div>
                     </li>
                 </ul>
-            </div> --}}
+            </div>
         </header>
 
-     <script>
-// Get the current active menu item from local storage
-var activeMenuItem = localStorage.getItem("activeMenuItem");
+    <script>
+    // Get the current active menu item from local storage
+    var activeMenuItem = localStorage.getItem("activeMenuItem");
 
-// If there's an active menu item, set it to active
-if (activeMenuItem) 
-    document.querySelector(".menu-item.active").classList.remove("active");
-    document.querySelector(activeMenuItem).classList.add("active");
-}
-
-// Add event listener to each menu item
-var menuItems = document.querySelectorAll(".menu-item");
-menuItems.forEach(function (menuItem) {
-    menuItem.addEventListener("click", function () {
-        // Remove active state from previous menu item
+    // If there's an active menu item, set it to active
+    if (activeMenuItem) {
         document.querySelector(".menu-item.active").classList.remove("active");
+        document.querySelector(activeMenuItem).classList.add("active");
+    }
 
-        // Set active state to clicked menu item
-        menuItem.classList.add("active");
+    // Add event listener to each menu item
+    var menuItems = document.querySelectorAll(".menu-item");
+    menuItems.forEach(function (menuItem) {
+        menuItem.addEventListener("click", function () {
+            // Remove active state from previous menu item
+            document.querySelector(".menu-item.active").classList.remove("active");
 
-        // Store the active menu item in local storage
-        localStorage.setItem("activeMenuItem", "#" + menuItem.getAttribute("id"));
+            // Set active state to the clicked menu item
+            menuItem.classList.add("active");
+
+            // Store the active menu item in local storage
+            localStorage.setItem("activeMenuItem", "#" + menuItem.getAttribute("id"));
+        });
     });
-});
 </script>
-

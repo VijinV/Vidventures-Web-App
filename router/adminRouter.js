@@ -60,6 +60,8 @@ route.get('/addPost',adminAuth.isLogin, adminController.loadAddPost)
 
 route.get('/unListPosts',adminAuth.isLogin, adminController.unListPosts)
 
+route.get('/lightbox',adminAuth.isLogin, adminController.loadFormData)
+
 route.get('/logout',adminAuth.logout)
 
 

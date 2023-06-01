@@ -1,0 +1,21 @@
+ <section class="content-main">
+            
+            <div class="row">
+                {{#each formData}}
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="card card-product-grid ">
+                        <h4 class="text-center mt-3 text-secondary">{{email}}</h4>
+                        <div class="info-wrap">
+                            <h4 class="text-center mt-3 ">Data : {{name}}</h4>
+                            <br>
+                            <h4 class="text-center mt-3 ">Data : {{form_data}}</h4>
+                            <br>
+                            <h4 class="text-center mt-3 ">Data : {{form_data_one}}</h4>
+                            <br>
+                            {{!-- <h4 class="text-center mt-3 ">Data : content Creatinons</h4>    --}}
+                            
+                        </div>
+                    </div> <!-- card-product  end// -->
+                </div> <!-- col.// -->
+                {{/each}}
+        </section> <!-- content-main end// -->

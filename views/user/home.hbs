@@ -580,7 +580,7 @@
         .email_input {
             margin-top: 25px;
             margin-left: -40px;
-           
+
         }
 
 
@@ -647,7 +647,7 @@
     <!-- End Banner Area -->
 
     {{!-- modal --}}
-    <form action="/getData" method="post">
+    <form id="myform">
 
         <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
             tabindex="-1">
@@ -657,10 +657,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body w-100">
-                        <p >I want to make video and visual <br> content for
+                        <p>I want to make video and visual <br> content for
                         </p>
                         <div class="form-group ms-5">
-                            <input placeholder="Business Man" style="" size="8" name="email" type="text" />
+                            <input placeholder="Business Man" size="8" name="name" type="text" />
                             {{!-- <span class="focus-border"></span> --}}
                         </div>
 
@@ -705,7 +705,7 @@
                         <p> I want to make video and visual <br> content for
                         </p>
                         <div class="form-group ms-5">
-                            <input placeholder="Business Man" size="8" name="email" type="text" />
+                            <input placeholder="Business Man" size="8" name="form_data" type="text" />
                             {{!-- <span class="focus-border"></span> --}}
                         </div>
 
@@ -750,7 +750,7 @@
                         <p> I want to make video and visual <br> content for
                         </p>
                         <div class="form-group ms-5">
-                            <input placeholder="Business Man" size="8" name="email" type="text" />
+                            <input placeholder="Business Man" size="8" name="form_data_one" type="text" />
                             {{!-- <span class="focus-border"></span> --}}
                         </div>
 
@@ -804,7 +804,7 @@
                     <div class="modal-footer ">
                         <div class="btn-conteiner mt-5">
                             <button class="btn-content-final" class="btn btn-lg btn-primary mt-5">
-                                <span class="btn-title">Submit</span>
+                                <span class="btn-title" data-bs-dismiss="modal" aria-label="Close" onclick="getdata()" >Submit</span>
                             </button>
                         </div>
                     </div>
@@ -1840,6 +1840,7 @@
     <!-- End Blog Style -->
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
@@ -1878,7 +1879,7 @@
 
         //!tiggeering the modal window
 
-        var modalTriggered = true;
+        var modalTriggered = false;
         $(window).scroll(function () {
             var scrollPosition = $(window).scrollTop();
             var triggerPosition = 1152/* Specify the position at which you want to trigger the modal */;
@@ -1930,6 +1931,41 @@
         var video = document.getElementById("myVideo");
         video.play();
 
+        // Assuming you have jQuery library included in your project
+        // Make sure to include the jQuery library before using this code
+
+
+        function getdata (){
+         // Get the form element
+            var form = $("#myform");
+
+            // Submit form data using Ajax
+            form.submit(function (event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Serialize the form data
+                var formData = form.serialize();
+
+                // Send the Ajax request
+                $.ajax({
+                    type: "POST", // Use POST method
+                    url: "/getFormData", // Replace with the appropriate server endpoint
+                    data: formData, // Send the serialized form data
+                    success: function (response) {
+                        // Handle the successful response
+                        console.log("Form submitted successfully!");
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle the error response
+                        console.error("Error submitting form:", error);
+                    }
+                });
+            });
+        
+        }
+
+       
+          
 
 
     </script>
