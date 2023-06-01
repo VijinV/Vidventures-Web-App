@@ -149,7 +149,7 @@ userRoute.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "public/admin")));
 
 mongoose.set("strictQuery", true);
-mongoose.connect(process.env.MONGO_URL () =>
+mongoose.connect(process.env.MONGO_URL, () =>
   console.log("Database connection established")
 );
 
