@@ -1092,8 +1092,8 @@ ol ul {
 .rbt-page-banner-wrapper .rbt-banner-image, .bg-gradient-9 {
   position: relative;
   z-index: 1;
-  /* background: linear-gradient(270deg, var(--color-secondary) 0%, var(--color-primary) 100%) !important; */
-  background: url("https://w7.pngwing.com/pngs/34/55/png-transparent-youtube-video-banner-23-january-youtube-heart-color-grass.png");
+  background: linear-gradient(270deg, var(--color-secondary) 0%, var(--color-primary) 100%) !important;
+  background: #f8f9fa;
 }
 .rbt-page-banner-wrapper .rbt-banner-image::after, .bg-gradient-9::after {
   background: linear-gradient(white 0%, rgba(255, 255, 255, 0.1) 100%);
