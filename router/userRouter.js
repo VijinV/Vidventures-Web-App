@@ -45,6 +45,8 @@ route.get('/addInstructions',userAuth.isLogin,userController.loadAddInstruction)
 
 route.get('/termsandconditions',userController.loadTerms)
 
+route.get('/blog',userController.loadBlog)
+
 
 
 // post 

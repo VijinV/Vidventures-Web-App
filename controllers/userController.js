@@ -1028,10 +1028,17 @@ const loadTerms = (req, res) => {
 };
 
 
+const loadBlog = (req, res) => {
+
+  res.render("blog");
+
+}
+
 
 // =================================================================
 
 module.exports = {
+  loadBlog,
   loadTerms,
   loadSuccess,
   addInstruction,

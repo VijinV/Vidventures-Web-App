@@ -1,4 +1,5 @@
 <!-- Start breadcrumb Area -->
+{{#if cartItem }}
 <div class="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1">
     <div class="container">
         <div class="row">
@@ -22,7 +23,7 @@
 <div class="rbt-cart-area bg-color-white rbt-section-gap">
     <div class="cart_area">
         <div class="container">
-            {{#if cartItem }}
+            
             <div class="row">
                 <div class="col-12">
                     <form action="#">
@@ -133,9 +134,9 @@
                     </div>
                 </div>
             </div>
-            {{else}}
+            
 
-            {{/if}}
+           
         </div>
     </div>
 </div>
@@ -145,6 +146,18 @@
         <hr class="rbt-separator m-0" />
     </div>
 </div>
+
+{{else}}
+<div style="display: grid; place-items: center; height: 100vh; margin-top: -50px;">
+<img style="width: 30%;" src="https://dduwxf.stripocdn.email/content/guids/CABINET_1751644d26c5b4ff136779ae1d3a2e40972d57d09ab6be4010954bd6591cbf64/images/108_copy.png" alt="" srcset="">
+<h2 style="position: absolute; margin-top: 55rem;">OOPS ! <span>Currently your cart is empty</span></h2>
+<p style="margin-top: 10rem;">Browse our collection of automation tools to find the perfect fit for your needs.
+ Get started by clicking the "Shop Now" button below.</p>
+<a class="btn btn-lg btn-primary" style=" border-radius: 10px; margin-top: -10rem; padding: 10px; height: 40px; width: 100px;" role="button" href="/shop">Shop Now</a>
+
+</div>
+
+{{/if}}
 <!-- Latest version of jQuery -->
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
