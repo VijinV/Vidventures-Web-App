@@ -119,7 +119,7 @@
 
 <!-- End Page Wrapper Area -->
 
- 
+
 
 
 
@@ -132,22 +132,50 @@
     </svg>
 </div>
 
- <div class="chat-button">
-        <a href="https://wa.link/cac4zv" target="_blank">
-            <img src="user/assets/images/logo/Whatsapp.svg" alt="WhatsApp" width="50">
-        </a>
-    </div>
+<div class="chat-button">
+    <a href="https://wa.link/cac4zv" target="_blank">
+        <img src="user/assets/images/logo/Whatsapp.svg" alt="WhatsApp" width="50">
+    </a>
+</div>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
 
- <style>
-        .chat-button {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            z-index: 9999;
-            cursor: pointer;
-        }
-    </style>
+<style>
+    .chat-button {
+        display: none;
+        position: fixed;
+        bottom: -100px;
+        right: 30px;
+        z-index: 9999;
+        cursor: pointer;
+        transition: opacity 1s ease-in-out;
+        animation: fadeIn 1s forwards;
+    }
 
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+
+
+<script>
+    window.addEventListener("scroll", function () {
+        var chatButton = document.querySelector(".chat-button");
+        var scrollHeight = window.innerHeight * 2; // 200vh
+
+        if (window.pageYOffset > scrollHeight) {
+            chatButton.style.display = "block";
+            chatButton.style.bottom = "100px";
+        } else {
+            chatButton.style.display = "none";
+            chatButton.style.bottom = "-100px";
+        }
+    });
+</script>
