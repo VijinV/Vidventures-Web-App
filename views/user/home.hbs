@@ -1046,8 +1046,8 @@
 
                         <!-- End Feature List  -->
                         <div class="about-btn mt--40">
-                            <a class="rbt-btn btn-gradient hover-icon-reverse"
-                                href="/Looks_like_the_page_is_on_vacation.It_left_no_forwarding_address.">
+                            <a onclick="scrollToSection()" class="rbt-btn btn-gradient hover-icon-reverse"
+                                >
                                 <span class="icon-reverse-wrapper">
                                     <span class="btn-text">What we do</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
@@ -1289,17 +1289,19 @@
                                     <span style="margin-left: 31px;">Support</span>
                                 </li>
                             </ul>
+                            
                         </div>
-
+ 
                     </div>
                 </div>
                 <!-- End Single Pricing  -->
+              
 
             </div>
         </div>
     </div>
 
-
+ <div id="whatwedo"></div>
     {{!-- end pricing tables --}}
 
     <style>
@@ -1339,7 +1341,7 @@
         }
     </style>
 
-    <div class="container text-center col-sm-12 col-md-12">
+    <div class="container text-center col-sm-12 col-md-12" >
         <div class="heading justify-content-center mb-5">
         <h2>This is <span class="" style="color: #6d21f2;">what we do</span></h2>
     </div>
@@ -2025,6 +2027,7 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+
     <script>
 
         //! header animation
@@ -2178,6 +2181,23 @@
                 });
             });
         }
+
+function scrollToSection() {
+  var target = document.getElementById('whatwedo');
+  if (target) {
+    var windowHeight = window.innerHeight;
+    var targetOffsetTop = target.offsetTop;
+    var targetHeight = target.offsetHeight;
+    
+    var scrollToPosition = targetOffsetTop - (windowHeight - targetHeight) /3 ;
+    
+    window.scrollTo({
+      top: scrollToPosition,
+      behavior: 'smooth', // Use 'auto' for instant scroll without animation
+      duration: 2000 // Adjust the scroll speed as needed
+    });
+  }
+}
 
 
 
