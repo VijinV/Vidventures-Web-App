@@ -182,6 +182,7 @@ const addProduct = async (req, res) => {
       discountedPrice,
       image,
       link,
+      list,
       sdescription,
     } = req.body;
 
@@ -193,6 +194,7 @@ const addProduct = async (req, res) => {
       mrp: mrp,
       discountedPrice: discountedPrice,
       image: req.file.filename,
+      list:list,
       link: link,
       sdescription: sdescription,
     };
@@ -223,6 +225,7 @@ const editProduct = (req, res) => {
     image,
     paymentId,
     link,
+    list,
     sdescription,
   } = req.body;
   Products.findByIdAndUpdate(
@@ -234,6 +237,7 @@ const editProduct = (req, res) => {
         discountedPrice: discountedPrice,
         mrp: mrp,
         link: link,
+        list,list,
         sdescription: sdescription,
       },
     }

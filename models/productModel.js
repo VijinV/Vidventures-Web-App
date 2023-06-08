@@ -10,7 +10,6 @@ const productSchema = new mongoose.Schema({
     },
     description:{
         type:String,
-        required:true,
     },
     mrp:{
         type:Number,
@@ -19,6 +18,10 @@ const productSchema = new mongoose.Schema({
     discountedPrice:{
         type:Number,
         required:true,
+    },
+    list:{
+      type:Array,
+      required:true,
     },
     image:{
         type:String,

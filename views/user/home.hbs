@@ -1309,66 +1309,81 @@
             width: 150px !important;
             border-style: dashed !important;
             border-radius: 30px !important;
-            border-color: rgb(17, 31, 228) !important;
+            border-color: #6d21f2 !important;
             transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out !important;
 
         }
 
         .cpbtn:hover {
-            background-color: rgb(112, 114, 210) !important;
-            color: white !important;
+            background-color: rgba(112, 114, 210, 0.3) !important;
+            color: rgb(0, 0, 0) !important;
             border: none !important;
         }
-        .content{
+
+        .content {
             display: none;
             color: #1d1d1d;
         }
+
+        .content-active {
+            display: block;
+            color: #1d1d1d;
+        }
+
+        .cpbtn-active {
+            background-color: #6d21f2 !important;
+            border: none !important;
+            height: 50px !important;
+            width: 150px !important;
+            border-radius: 30px !important;
+            color: #e8e8e8;
+        }
     </style>
 
-    <div class="container text-center ">
-        <div class="heading justify-content-center">
-            <h2>This is <span class="" style="color: #6d21f2;">what we do</span></h2>
-        </div>
+    <div class="container text-center col-sm-12 col-md-12">
+        <div class="heading justify-content-center mb-5">
+        <h2>This is <span class="" style="color: #6d21f2;">what we do</span></h2>
+    </div>
 
-        <div class="btn-group grid gap-4">
-            <button class="cpbtn" id="content_one" onclick="content()">
-                &#x1F3AF; Strategize
-            </button>
-            <button class="cpbtn" id="content_two">
-                &#x1F3AC; Create
-            </button>
-            <button class="cpbtn" id="content_three">
-                &#x270D;&#x1F3FB; Edit
-            </button>
-            <button class="cpbtn" id="content_four">
-                &#x1F680; Grow
-            </button>
-        </div>
+    <div class="btn-group grid gap-4 mt-5 col-sm-12   col-md-12 d-flex flex-wrap justify-content-center"> <!-- Added "d-flex", "flex-wrap", and "justify-content-center" classes -->
+        <button class="cpbtn-active col-sm-6  col-md-12" id="content_one" onclick="content()">
+            &#x1F3AF; Strategize
+        </button>
+        <button class="cpbtn col-sm-6  col-md-12 " id="content_two" onclick="content()">
+            &#x1F3AC; Create
+        </button>
+        <button class="cpbtn col-sm-6  col-md-12 " id="content_three" onclick="content()">
+            &#x270D;&#x1F3FB; Edit
+        </button>
+        <button class="cpbtn col-sm-6  col-md-12 " id="content_four" onclick="content()">
+            &#x1F680; Grow
+        </button>
+    </div>
 
         <div class="content-group text-center mt-5">
-            <div style="width: 43%; display: block;" class="content  mx-auto"  id="content_one">
+            <div style="width: 43%;" class="content-active  mx-auto" id="div_content_one">
                 <!-- Add "mx-auto" class for center alignment -->
                 <p class="justify-content-center"> 1 We will research exactly what kind of content your customers love
                     to consume, and design a content strategy for videos that will reach your target viewers, and get
                     them excited about your videos.</p>
             </div>
-            <div style="width: 30%;" class="content  mx-auto" id="content_two">
+            <div style="width: 43%;" class="content  mx-auto" id="div_content_two">
                 <!-- Add "mx-auto" class for center alignment -->
-                <h5 class="justify-content-center"> 2 We will research exactly what kind of content your customers love
+                <p class="justify-content-center"> 2 We will research exactly what kind of content your customers love
                     to consume, and design a content strategy for videos that will reach your target viewers, and get
-                    them excited about your videos.</h5>
+                    them excited about your videos.</p>
             </div>
-            <div style="width: 30%;" class="content  mx-auto" id="content_three">
+            <div style="width: 43%;" class="content  mx-auto" id="div_content_three">
                 <!-- Add "mx-auto" class for center alignment -->
-                <h5 class="justify-content-center"> 3 We will research exactly what kind of content your customers love
+                <p class="justify-content-center"> 3 We will research exactly what kind of content your customers love
                     to consume, and design a content strategy for videos that will reach your target viewers, and get
-                    them excited about your videos.</h5>
+                    them excited about your videos.</p>
             </div>
-            <div style="width: 30%;" class="content  mx-auto" id="content_four">
+            <div style="width: 43%;" class="content  mx-auto" id="div_content_four">
                 <!-- Add "mx-auto" class for center alignment -->
-                <h5 class="justify-content-center"> 4 We will research exactly what kind of content your customers love
+                <p class="justify-content-center"> 4 We will research exactly what kind of content your customers love
                     to consume, and design a content strategy for videos that will reach your target viewers, and get
-                    them excited about your videos.</h5>
+                    them excited about your videos.</p>
             </div>
         </div>
 
@@ -1833,6 +1848,93 @@
 
     {{!-- testimonials --}}
 
+    {{!-- faq --}}
+
+    <div class="container text-center ">
+        <div class="heading justify-content-center mb-5">
+            <h2>In case you’re <span class="" style="color: #6d21f2;">wondering.</span></h2>
+        </div>
+
+        <div class="container col-md-6">
+            <div class="rbt-accordion-style rbt-accordion-04 accordion">
+                <div class="accordion" id="accordionExamplec3">
+                    <div class="accordion-item card">
+                        <h2 class="accordion-header card-header" id="headingThree1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
+                                What is Histudy ? How does it work?
+                            </button>
+                        </h2>
+                        <div id="collapseThree1" class="accordion-collapse collapse "
+                            aria-labelledby="headingThree1" data-bs-parent="#accordionExamplec3">
+                            <div class="accordion-body card-body">
+                                You can run Histudy easily. Any School, University, College can be use this histudy
+                                education template for their educational purpose. A university can be run their online
+                                leaning management system by histudy education template.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item card">
+                        <h2 class="accordion-header card-header" id="headingThree2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree2" aria-expanded="false" aria-controls="collapseThree2">
+                                How can I get the customer support?
+                            </button>
+                        </h2>
+                        <div id="collapseThree2" class="accordion-collapse collapse" aria-labelledby="headingThree2"
+                            data-bs-parent="#accordionExamplec3">
+                            <div class="accordion-body card-body">
+                                After purchasing the product need you any support you can be share with
+                                us with sending mail to rainbowit10@gmail.com.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item card">
+                        <h2 class="accordion-header card-header" id="headingThree3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree3" aria-expanded="false" aria-controls="collapseThree3">
+                                Can I get update regularly and For how long do I get updates?
+                            </button>
+                        </h2>
+                        <div id="collapseThree3" class="accordion-collapse collapse" aria-labelledby="headingThree3"
+                            data-bs-parent="#accordionExamplec3">
+                            <div class="accordion-body card-body">
+                                Yes, We will get update the Histudy. And you can get it any time. Next
+                                time we will comes with more feature. You can be get update for
+                                unlimited times. Our dedicated team works for update.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item card">
+                        <h2 class="accordion-header card-header" id="headingThree4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree4" aria-expanded="false" aria-controls="collapseThree4">
+                                15 Things To Know About Education?
+                            </button>
+                        </h2>
+                        <div id="collapseThree4" class="accordion-collapse collapse" aria-labelledby="headingThree4"
+                            data-bs-parent="#accordionExamplec3">
+                            <div class="accordion-body card-body">
+                                If you're looking for random paragraphs, you've come to the right place. When a random
+                                word or a random sentence isn't quite enough, the next logical step is to find a random
+                                paragraph.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    {{!-- faq --}}
+
 
 
     <!-- Start Blog Style -->
@@ -2044,21 +2146,39 @@
             });
 
         }
-function content() {
-  let buttons = document.querySelectorAll('.cpbtn');
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      let buttonId = button.id;
-       let targetDiv = document.getElementById(buttonId);
-      if (targetDiv) {
-        targetDiv.style.display = "block";
-      }
-    });
-  });
-}
 
 
+        function content() {
+            const buttons = document.querySelectorAll('.cpbtn');
 
+            buttons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const buttonId = button.id;
+                    const newButton = document.getElementById(buttonId);
+                    const activeButtons = document.getElementsByClassName('cpbtn-active');
+                    const divID = `div_${buttonId}`;
+
+                    console.log(divID);
+
+                    const targetDiv = document.getElementById(divID);
+                    const activeDiv = document.querySelector('.content-active');
+
+                    Array.from(activeButtons).forEach((activeButton) => {
+                        activeButton.classList.remove('cpbtn-active');
+                        activeButton.classList.add('cpbtn');
+                    });
+
+                    newButton.classList.remove('cpbtn');
+                    newButton.classList.add('cpbtn-active');
+
+                    activeDiv.classList.remove('content-active');
+                    activeDiv.classList.add('content');
+
+                    targetDiv.classList.remove('content');
+                    targetDiv.classList.add('content-active');
+                });
+            });
+        }
 
 
 

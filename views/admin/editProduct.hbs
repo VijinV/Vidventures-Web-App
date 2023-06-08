@@ -31,6 +31,23 @@
                                     <label class="form-label">Full description</label>
                                     <input placeholder="Type here" value="{{product.description}}" name="description" class="form-control" rows="4"></input>
                                 </div>
+                                 <div class="container mt-4">
+                                    
+                             <div id="items">
+                                <div class="mb-4">
+                                    <label for="product_name" class="form-label">List</label>
+                                    {{#each product.list}}
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Type here" name="list" value="{{this}}" class="form-control">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" onclick="addNewInput()"><i class="bi bi-plus-lg"></i></span>
+                                        </div>
+                                    </div>
+                                                                {{/each}}
+
+                                </div>
+                            </div>
+                        </div>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-4">

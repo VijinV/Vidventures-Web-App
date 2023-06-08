@@ -1,81 +1,139 @@
 <section class="content-main">
     <form action="/admin/addProduct" method="post" enctype="multipart/form-data">
-            <div class="row">
-                <div class="col-9">
-               
+        <div class="row">
+            <div class="col-9">
 
-                    <div class="content-header">
-                        <h2 class="content-title">Add New Product</h2>
-                        <div>
-                            {{!-- <button class="btn btn-light rounded font-sm mr-5 text-body hover-up">Save to draft</button> --}}
-                            <button type="submit" class="btn btn-md rounded font-sm hover-up">Publich</button>
-                        </div>
+
+                <div class="content-header">
+                    <h2 class="content-title">Add New Product</h2>
+                    <div>
+                        {{!-- <button class="btn btn-light rounded font-sm mr-5 text-body hover-up">Save to
+                            draft</button> --}}
+                        <button type="submit" class="btn btn-md rounded font-sm hover-up">Publich</button>
                     </div>
-                   
                 </div>
-                <div class="col-lg-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <h4></h4>
+
+            </div>
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4></h4>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="mb-4">
+                            <label for="product_name" class="form-label">Product Name</label>
+                            <input type="text" placeholder="Type here" name="name" class="form-control"
+                                id="product_name">
                         </div>
-                        <div class="card-body">
-                            
+                        <div class="mb-4">
+                            <label for="product_name" class="form-label">Short Description</label>
+                            <input type="text" placeholder="Type here" name="sdescription" class="form-control"
+                                id="product_name">
+                        </div>
+                        <div class="container mt-4">
+                            <div id="items">
                                 <div class="mb-4">
-                                    <label for="product_name" class="form-label">Product Name</label>
-                                    <input type="text" placeholder="Type here" name="name" class="form-control" id="product_name">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="product_name" class="form-label">Short Description</label>
-                                    <input type="text" placeholder="Type here" name="sdescription" class="form-control" id="product_name">
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label">Full description</label>
-                                    <textarea placeholder="Type here" name="description" class="form-control" rows="4"></textarea>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="mb-4">
-                                            <label class="form-label">Maximum Retail price</label>
-                                            <div class="row gx-2">
-                                                <input placeholder="$" type="text" name="mrp" class="form-control">
-                                            </div>
+                                    <label for="product_name" class="form-label">List</label>
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Type here" name="list" class="form-control">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" onclick="addNewInput()"><i class="bi bi-plus-lg"></i></span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-4">
-                                            <label class="form-label">Promotional price</label>
-                                            <input placeholder="$" type="text" name="discountedPrice" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label class="form-label">Currency</label>
-                                        <select class="form-select">
-                                            <option> USD </option>
-                                        </select>
-                                    </div>
                                 </div>
-                                
-                        </div>
-                    </div> <!-- card end// -->
-                </div>
-                <div class="col-lg-3">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <h4>Media</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="input-upload">
-                                <img src="assets/imgs/theme/upload.svg" alt="">
-                                <input class="form-control" name="image" type="file">
                             </div>
                         </div>
-                        
-                    </div> <!-- card end// -->
-                   
-                </div>
-            </div>
-             </form>
-            
+                        <div class="mb-4">
+                            <label class="form-label">Full description</label>
+                            <textarea placeholder="Type here" name="description" class="form-control"
+                                rows="4"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="mb-4">
+                                    <label class="form-label">Maximum Retail price</label>
+                                    <div class="row gx-2">
+                                        <input placeholder="$" type="text" name="mrp" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="mb-4">
+                                    <label class="form-label">Promotional price</label>
+                                    <input placeholder="$" type="text" name="discountedPrice" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="form-label">Currency</label>
+                                <select class="form-select">
+                                    <option> USD </option>
+                                </select>
+                            </div>
+                        </div>
 
-           
-        </section> <!-- content-main end// -->
+                    </div>
+                </div> <!-- card end// -->
+            </div>
+            <div class="col-lg-3">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>Media</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-upload">
+                            <img src="assets/imgs/theme/upload.svg" alt="">
+                            <input class="form-control" name="image" type="file">
+                        </div>
+                    </div>
+
+                </div> <!-- card end// -->
+
+            </div>
+        </div>
+    </form>
+
+
+
+</section> <!-- content-main end// -->
+
+<script>
+    function addNewInput() {
+        var itemsDiv = document.getElementById("items");
+        var newDiv = document.createElement("div");
+        newDiv.classList.add("mb-4");
+
+        var label = document.createElement("label");
+        label.setAttribute("for", "product_name");
+        label.classList.add("form-label");
+        label.innerHTML = "List";
+
+        var inputGroup = document.createElement("div");
+        inputGroup.classList.add("input-group");
+
+        var input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("placeholder", "Type here");
+        input.setAttribute("name", "list");
+        input.classList.add("form-control");
+
+        var appendDiv = document.createElement("div");
+        appendDiv.classList.add("input-group-append");
+
+        var plusSpan = document.createElement("span");
+        plusSpan.classList.add("input-group-text");
+        plusSpan.onclick = addNewInput;
+
+        var plusIcon = document.createElement("i");
+        plusIcon.classList.add("bi", "bi-plus-lg");
+        
+
+        plusSpan.appendChild(plusIcon);
+        appendDiv.appendChild(plusSpan);
+        inputGroup.appendChild(input);
+        inputGroup.appendChild(appendDiv);
+        newDiv.appendChild(label);
+        newDiv.appendChild(inputGroup);
+        itemsDiv.appendChild(newDiv);
+    }
+</script>
