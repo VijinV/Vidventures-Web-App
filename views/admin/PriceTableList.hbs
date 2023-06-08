@@ -1,0 +1,49 @@
+ 
+ <div class="card mb-4">
+     
+                <div class="card-body">
+                    <div class="content-header">
+                <div>
+                    <h2 class="content-title card-title">Price Table</h2>
+                </div>
+                <div>
+                    {{!-- <a href="#" class="btn btn-light rounded font-md">Export</a>
+                    <a href="#" class="btn btn-light rounded  font-md">Import</a> --}}
+                    <a href="/admin/addProduct" class="btn btn-primary btn-sm rounded">Create new</a>
+                </div>
+            </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Plan</th>
+                                    <th>Special Name</th>
+                                    <th>price</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each priceTableList}}
+                                <tr>
+                                    <td width="40%">
+                                        <a href="#" class="itemside">
+                                            <div class="info pl-3">
+                                                <h6 class="mb-0 title">{{title}}</h6>
+                                                <small class="text-muted"></small>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>{{planName}}</td>
+                                    <td>{{price}}</td>
+                                    <td>
+                                        <a class="btn btn-primary" href="/admin/editPlan">Edit</a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table> <!-- table-responsive.// -->
+                    </div>
+                </div> <!-- card-body end// -->
+            </div> <!-- card end// -->
+          

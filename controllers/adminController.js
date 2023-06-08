@@ -9,6 +9,8 @@ const reviewModel = require("../models/reviewModel");
 const postModel = require("../models/postModel");
 const Form = require("../models/formData");
 const nodemailer = require("nodemailer");
+const priceTable = require("../models/priceTable");
+const { response } = require("../router/adminRouter");
 require("dotenv").config();
 
 // nodemailer configuration to send email when the product is completed
@@ -128,7 +130,7 @@ const loadDashboard = async (req, res, next) => {
 };
 
 const loadLogin = (req, res, next) => {
-  res.render("login",{login:true});
+  res.render("login", { login: true });
 };
 
 const verifyAdmin = async (req, res, next) => {
@@ -194,7 +196,7 @@ const addProduct = async (req, res) => {
       mrp: mrp,
       discountedPrice: discountedPrice,
       image: req.file.filename,
-      list:list,
+      list: list,
       link: link,
       sdescription: sdescription,
     };
@@ -237,7 +239,8 @@ const editProduct = (req, res) => {
         discountedPrice: discountedPrice,
         mrp: mrp,
         link: link,
-        list,list,
+        list,
+        list,
         sdescription: sdescription,
       },
     }
@@ -409,37 +412,35 @@ const loadAddReview = async (req, res) => {
 };
 
 const addReview = (req, res) => {
- try {
-   const { name, channelName, review } = req.body;
- 
-   let newReview
- try {
-       newReview = new reviewModel({
+  try {
+    const { name, channelName, review } = req.body;
+
+    let newReview;
+    try {
+      newReview = new reviewModel({
         name: name,
         channelName: channelName,
         review: review,
         image: req.file.filename,
-      })
-    
-    newReview.save()
-      .then(() => {
-        res.redirect("/admin/review");
       });
- } catch (error) {
-  newReview = new reviewModel({
-    name: name,
-    channelName: channelName,
-    review: review,
-  })
 
-  newReview.save()
-      .then(() => {
+      newReview.save().then(() => {
         res.redirect("/admin/review");
       });
- }
- } catch (error) {
-  console.log(error);
- }
+    } catch (error) {
+      newReview = new reviewModel({
+        name: name,
+        channelName: channelName,
+        review: review,
+      });
+
+      newReview.save().then(() => {
+        res.redirect("/admin/review");
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const listReview = async (req, res) => {
@@ -860,7 +861,7 @@ const blockCord = async (req, res) => {
 };
 
 const listPost = async (req, res) => {
-  const post = await postModel.find().sort({_id:-1});
+  const post = await postModel.find().sort({ _id: -1 });
 
   res.render("postList", { post });
 };
@@ -945,25 +946,49 @@ const unListPosts = async (req, res) => {
   res.redirect("/admin/listPosts");
 };
 
-const loadFormData =  async(req, res) => {
+const loadFormData = async (req, res) => {
+  const formData = await Form.find({}).sort({ _id: -1 });
 
-  const formData = await Form.find({}).sort({_id: -1})
+  res.render("formData", { formData });
+};
 
-  res.render('formData', {formData})
+const loadPriceTableList = async (req, res) => {
 
+   try {
+    
+    // const priceTableList = await priceTable.find().sort({ _id: -1 });
 
+    const priceTableList = [{title:'hai',planName:'silver',price:'39284',list:['sdfsf','dfssf']}]
+    res.render("PriceTableList", { priceTableList });
+
+   } catch (error) {
+    
+   }
 
 };
 
+const addPriceTableList = async (req, res) => {
+  try {
+    const { title, planName, price, list } = req.body;
+
+    const priceTable = new priceTable({
+      title,
+      planName,
+      price,
+      list,
+    });
+
+    await priceTable.save();
+
+    res.redirect('/pricetable')
 
 
-
-
-
-
-
+  } catch (error) {}
+};
 
 module.exports = {
+  addPriceTableList,
+  loadPriceTableList,
   loadFormData,
   unListPosts,
   addPost,
