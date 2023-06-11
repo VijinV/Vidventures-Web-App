@@ -1,0 +1,388 @@
+Date : 2023-06-10 21:10:16
+Directory : /home/master/Vidventures WebApp.
+Total : 294 files,  107700 codes, 3215 comments, 12309 blanks, all 123224 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| CSS        |         21 |     49,330 |      1,047 |      6,994 |     57,371 |
+| SCSS       |        122 |     26,279 |        972 |      3,235 |     30,486 |
+| XML        |         43 |     14,165 |          6 |         29 |     14,200 |
+| Handlebars |         43 |      6,854 |        565 |        886 |      8,305 |
+| JavaScript |         61 |      5,730 |        622 |      1,140 |      7,492 |
+| JSON       |          2 |      5,180 |          0 |          2 |      5,182 |
+| HTML       |          1 |        136 |          0 |         12 |        148 |
+| YAML       |          1 |         26 |          3 |         11 |         40 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                   | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                      |        294 |    107,700 |      3,215 |     12,309 |    123,224 |
+| . (Files)                                                                                              |          3 |      5,301 |          7 |         35 |      5,343 |
+| .github                                                                                                |          1 |         26 |          3 |         11 |         40 |
+| .github/workflows                                                                                      |          1 |         26 |          3 |         11 |         40 |
+| config                                                                                                 |         10 |        132 |         51 |         64 |        247 |
+| controllers                                                                                            |          5 |      1,952 |        114 |        366 |      2,432 |
+| middlewares                                                                                            |          2 |         53 |          0 |         20 |         73 |
+| models                                                                                                 |         10 |        476 |          4 |         78 |        558 |
+| public                                                                                                 |        218 |     92,789 |      2,464 |     10,734 |    105,987 |
+| public/admin                                                                                           |         20 |     16,416 |        364 |      2,963 |     19,743 |
+| public/admin/assets                                                                                    |         20 |     16,416 |        364 |      2,963 |     19,743 |
+| public/admin/assets/css                                                                                |          6 |     15,085 |        183 |      2,765 |     18,033 |
+| public/admin/assets/css (Files)                                                                        |          1 |          8 |          0 |          0 |          8 |
+| public/admin/assets/css/vendors                                                                        |          5 |     15,077 |        183 |      2,765 |     18,025 |
+| public/admin/assets/imgs                                                                               |          6 |        170 |          4 |          2 |        176 |
+| public/admin/assets/imgs/icons                                                                         |          2 |         32 |          2 |          0 |         34 |
+| public/admin/assets/imgs/logo                                                                          |          1 |          4 |          0 |          0 |          4 |
+| public/admin/assets/imgs/theme                                                                         |          3 |        134 |          2 |          2 |        138 |
+| public/admin/assets/js                                                                                 |          8 |      1,161 |        177 |        196 |      1,534 |
+| public/admin/assets/js (Files)                                                                         |          2 |          1 |         99 |          5 |        105 |
+| public/admin/assets/js/vendors                                                                         |          6 |      1,160 |         78 |        191 |      1,429 |
+| public/user                                                                                            |        198 |     76,373 |      2,100 |      7,771 |     86,244 |
+| public/user/assets                                                                                     |        198 |     76,373 |      2,100 |      7,771 |     86,244 |
+| public/user/assets/css                                                                                 |         15 |     34,245 |        864 |      4,229 |     39,338 |
+| public/user/assets/css (Files)                                                                         |          1 |     25,573 |        805 |      2,223 |     28,601 |
+| public/user/assets/css/plugins                                                                         |         11 |      8,397 |         50 |      1,967 |     10,414 |
+| public/user/assets/css/vendor                                                                          |          3 |        275 |          9 |         39 |        323 |
+| public/user/assets/fonts                                                                               |          5 |      7,216 |          0 |          4 |      7,220 |
+| public/user/assets/fonts (Files)                                                                       |          2 |      2,947 |          0 |          1 |      2,948 |
+| public/user/assets/fonts/fontawesome-free                                                              |          3 |      4,269 |          0 |          3 |      4,272 |
+| public/user/assets/fonts/fontawesome-free/webfonts                                                     |          3 |      4,269 |          0 |          3 |      4,272 |
+| public/user/assets/images                                                                              |         32 |      6,779 |          2 |         23 |      6,804 |
+| public/user/assets/images/banner                                                                       |          3 |          7 |          0 |          2 |          9 |
+| public/user/assets/images/bg                                                                           |          1 |          3 |          0 |          1 |          4 |
+| public/user/assets/images/icons                                                                        |         12 |        178 |          0 |          8 |        186 |
+| public/user/assets/images/logo                                                                         |          1 |          2 |          0 |          0 |          2 |
+| public/user/assets/images/shape                                                                        |         10 |      6,532 |          2 |          8 |      6,542 |
+| public/user/assets/images/splash                                                                       |          5 |         57 |          0 |          4 |         61 |
+| public/user/assets/images/splash/bg                                                                    |          5 |         57 |          0 |          4 |         61 |
+| public/user/assets/js                                                                                  |         23 |      1,718 |        262 |        268 |      2,248 |
+| public/user/assets/js (Files)                                                                          |          1 |        889 |         33 |         92 |      1,014 |
+| public/user/assets/js/vendor                                                                           |         22 |        829 |        229 |        176 |      1,234 |
+| public/user/assets/scss                                                                                |        123 |     26,415 |        972 |      3,247 |     30,634 |
+| public/user/assets/scss (Files)                                                                        |          1 |         82 |        135 |         19 |        236 |
+| public/user/assets/scss/blog                                                                           |          5 |        682 |         27 |        105 |        814 |
+| public/user/assets/scss/default                                                                        |         11 |      4,284 |        231 |        891 |      5,406 |
+| public/user/assets/scss/elements                                                                       |         48 |     10,385 |        257 |      1,037 |     11,679 |
+| public/user/assets/scss/footer                                                                         |          4 |        205 |         17 |         27 |        249 |
+| public/user/assets/scss/header                                                                         |         18 |      3,612 |        137 |        519 |      4,268 |
+| public/user/assets/scss/header (Files)                                                                 |         13 |      2,356 |         83 |        353 |      2,792 |
+| public/user/assets/scss/header/common                                                                  |          3 |      1,132 |         48 |        127 |      1,307 |
+| public/user/assets/scss/header/headermiddle                                                            |          1 |         38 |          3 |         20 |         61 |
+| public/user/assets/scss/header/topoffer                                                                |          1 |         86 |          3 |         19 |        108 |
+| public/user/assets/scss/shop                                                                           |          6 |        887 |         27 |        129 |      1,043 |
+| public/user/assets/scss/template                                                                       |         28 |      6,024 |        138 |        503 |      6,665 |
+| public/user/assets/scss/variation-page                                                                 |          2 |        254 |          3 |         17 |        274 |
+| router                                                                                                 |          2 |        117 |          7 |        115 |        239 |
+| views                                                                                                  |         43 |      6,854 |        565 |        886 |      8,305 |
+| views/admin                                                                                            |         17 |      1,857 |        223 |        190 |      2,270 |
+| views/layout                                                                                           |          2 |        125 |          0 |         27 |        152 |
+| views/partials                                                                                         |          6 |      1,114 |         97 |        105 |      1,316 |
+| views/partials/admin                                                                                   |          2 |        182 |          0 |         12 |        194 |
+| views/partials/user                                                                                    |          4 |        932 |         97 |         93 |      1,122 |
+| views/user                                                                                             |         18 |      3,758 |        245 |        564 |      4,567 |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                               | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /home/master/Vidventures WebApp./.github/workflows/node.js.yml                                         | YAML       |         26 |          3 |         11 |         40 |
+| /home/master/Vidventures WebApp./app.js                                                                | JavaScript |        121 |          7 |         33 |        161 |
+| /home/master/Vidventures WebApp./config/cloudinary.js                                                  | JavaScript |         19 |          5 |         11 |         35 |
+| /home/master/Vidventures WebApp./config/conn.js                                                        | JavaScript |          6 |          0 |          4 |         10 |
+| /home/master/Vidventures WebApp./config/email.js                                                       | JavaScript |         25 |          3 |          6 |         34 |
+| /home/master/Vidventures WebApp./config/instaFetch.js                                                  | JavaScript |         27 |         32 |         21 |         80 |
+| /home/master/Vidventures WebApp./config/invoice.js                                                     | JavaScript |          4 |          8 |          8 |         20 |
+| /home/master/Vidventures WebApp./config/multer.js                                                      | JavaScript |         25 |          0 |          4 |         29 |
+| /home/master/Vidventures WebApp./config/passport.js                                                    | JavaScript |          8 |          2 |          2 |         12 |
+| /home/master/Vidventures WebApp./config/payment.js                                                     | JavaScript |          2 |          0 |          3 |          5 |
+| /home/master/Vidventures WebApp./config/test.js                                                        | JavaScript |          6 |          0 |          2 |          8 |
+| /home/master/Vidventures WebApp./config/whatsapp.js                                                    | JavaScript |         10 |          1 |          3 |         14 |
+| /home/master/Vidventures WebApp./controllers/adminController.js                                        | JavaScript |        828 |         42 |        160 |      1,030 |
+| /home/master/Vidventures WebApp./controllers/dashboard.js                                              | JavaScript |        112 |         24 |         41 |        177 |
+| /home/master/Vidventures WebApp./controllers/productController.js                                      | JavaScript |         49 |          2 |         17 |         68 |
+| /home/master/Vidventures WebApp./controllers/userController.js                                         | JavaScript |        915 |         24 |        128 |      1,067 |
+| /home/master/Vidventures WebApp./controllers/userHome.js                                               | JavaScript |         48 |         22 |         20 |         90 |
+| /home/master/Vidventures WebApp./middlewares/adminAuth.js                                              | JavaScript |         23 |          0 |         10 |         33 |
+| /home/master/Vidventures WebApp./middlewares/userAuth.js                                               | JavaScript |         30 |          0 |         10 |         40 |
+| /home/master/Vidventures WebApp./models/couponModel.js                                                 | JavaScript |         53 |          0 |          9 |         62 |
+| /home/master/Vidventures WebApp./models/formData.js                                                    | JavaScript |         16 |          0 |          3 |         19 |
+| /home/master/Vidventures WebApp./models/orderModel.js                                                  | JavaScript |         94 |          2 |         10 |        106 |
+| /home/master/Vidventures WebApp./models/ordermodel2.js                                                 | JavaScript |         43 |          2 |          6 |         51 |
+| /home/master/Vidventures WebApp./models/postModel.js                                                   | JavaScript |         19 |          0 |          4 |         23 |
+| /home/master/Vidventures WebApp./models/priceTable.js                                                  | JavaScript |         20 |          0 |          3 |         23 |
+| /home/master/Vidventures WebApp./models/productModel.js                                                | JavaScript |         72 |          0 |         13 |         85 |
+| /home/master/Vidventures WebApp./models/reviewModel.js                                                 | JavaScript |         22 |          0 |          5 |         27 |
+| /home/master/Vidventures WebApp./models/userModel.js                                                   | JavaScript |        121 |          0 |         19 |        140 |
+| /home/master/Vidventures WebApp./models/visitorsModel.js                                               | JavaScript |         16 |          0 |          6 |         22 |
+| /home/master/Vidventures WebApp./package-lock.json                                                     | JSON       |      5,131 |          0 |          1 |      5,132 |
+| /home/master/Vidventures WebApp./package.json                                                          | JSON       |         49 |          0 |          1 |         50 |
+| /home/master/Vidventures WebApp./public/admin/assets/css/main.css                                      | CSS        |          8 |          0 |          0 |          8 |
+| /home/master/Vidventures WebApp./public/admin/assets/css/vendors/bootstrap.css                         | CSS        |     10,488 |         30 |      1,239 |     11,757 |
+| /home/master/Vidventures WebApp./public/admin/assets/css/vendors/material-icon-round.css               | CSS        |      4,347 |          6 |      1,439 |      5,792 |
+| /home/master/Vidventures WebApp./public/admin/assets/css/vendors/normalize.css                         | CSS        |        147 |        129 |         75 |        351 |
+| /home/master/Vidventures WebApp./public/admin/assets/css/vendors/perfect-scrollbar.css                 | CSS        |         87 |         18 |         12 |        117 |
+| /home/master/Vidventures WebApp./public/admin/assets/css/vendors/select2.min.css                       | CSS        |          8 |          0 |          0 |          8 |
+| /home/master/Vidventures WebApp./public/admin/assets/imgs/icons/stars-active.svg                       | XML        |         16 |          1 |          0 |         17 |
+| /home/master/Vidventures WebApp./public/admin/assets/imgs/icons/starts-disable.svg                     | XML        |         16 |          1 |          0 |         17 |
+| /home/master/Vidventures WebApp./public/admin/assets/imgs/logo/logoMain.svg                            | XML        |          4 |          0 |          0 |          4 |
+| /home/master/Vidventures WebApp./public/admin/assets/imgs/theme/favicon.svg                            | XML        |         19 |          1 |          1 |         21 |
+| /home/master/Vidventures WebApp./public/admin/assets/imgs/theme/logo.svg                               | XML        |        114 |          1 |          1 |        116 |
+| /home/master/Vidventures WebApp./public/admin/assets/imgs/theme/upload.svg                             | XML        |          1 |          0 |          0 |          1 |
+| /home/master/Vidventures WebApp./public/admin/assets/js/custom-chart.js                                | JavaScript |          0 |         99 |          5 |        104 |
+| /home/master/Vidventures WebApp./public/admin/assets/js/main.js                                        | JavaScript |          1 |          0 |          0 |          1 |
+| /home/master/Vidventures WebApp./public/admin/assets/js/vendors/bootstrap.bundle.min.js                | JavaScript |          1 |          6 |          0 |          7 |
+| /home/master/Vidventures WebApp./public/admin/assets/js/vendors/chart.js                               | JavaScript |          2 |         11 |          1 |         14 |
+| /home/master/Vidventures WebApp./public/admin/assets/js/vendors/jquery-3.6.0.min.js                    | JavaScript |          1 |          1 |          1 |          3 |
+| /home/master/Vidventures WebApp./public/admin/assets/js/vendors/jquery.fullscreen.min.js               | JavaScript |         33 |         19 |          3 |         55 |
+| /home/master/Vidventures WebApp./public/admin/assets/js/vendors/perfect-scrollbar.js                   | JavaScript |      1,122 |         40 |        186 |      1,348 |
+| /home/master/Vidventures WebApp./public/admin/assets/js/vendors/select2.min.js                         | JavaScript |          1 |          1 |          0 |          2 |
+| /home/master/Vidventures WebApp./public/user/assets/css/plugins/animation.css                          | CSS        |      2,753 |         11 |        525 |      3,289 |
+| /home/master/Vidventures WebApp./public/user/assets/css/plugins/bootstrap-select.min.css               | CSS        |          1 |          5 |          0 |          6 |
+| /home/master/Vidventures WebApp./public/user/assets/css/plugins/euclid-circulara.css                   | CSS        |         80 |          0 |         11 |         91 |
+| /home/master/Vidventures WebApp./public/user/assets/css/plugins/feather.css                            | CSS        |        818 |          0 |          2 |        820 |
+| /home/master/Vidventures WebApp./public/user/assets/css/plugins/fontawesome.min.css                    | CSS        |      4,023 |          6 |      1,307 |      5,336 |
+| /home/master/Vidventures WebApp./public/user/assets/css/plugins/jquery-ui.css                          | CSS        |          1 |          4 |          0 |          5 |
+| /home/master/Vidventures WebApp./public/user/assets/css/plugins/magnify.css                            | CSS        |        408 |          7 |         69 |        484 |
+| /home/master/Vidventures WebApp./public/user/assets/css/plugins/magnigy-popup.min.css                  | CSS        |        310 |          6 |         51 |        367 |
+| /home/master/Vidventures WebApp./public/user/assets/css/plugins/odometer.css                           | CSS        |          1 |          0 |          0 |          1 |
+| /home/master/Vidventures WebApp./public/user/assets/css/plugins/sal.css                                | CSS        |          1 |          0 |          1 |          2 |
+| /home/master/Vidventures WebApp./public/user/assets/css/plugins/swiper.css                             | CSS        |          1 |         11 |          1 |         13 |
+| /home/master/Vidventures WebApp./public/user/assets/css/style.css                                      | CSS        |     25,573 |        805 |      2,223 |     28,601 |
+| /home/master/Vidventures WebApp./public/user/assets/css/vendor/bootstrap.min.css                       | CSS        |          2 |          4 |          0 |          6 |
+| /home/master/Vidventures WebApp./public/user/assets/css/vendor/slick-theme.css                         | CSS        |        170 |          4 |         25 |        199 |
+| /home/master/Vidventures WebApp./public/user/assets/css/vendor/slick.css                               | CSS        |        103 |          1 |         14 |        118 |
+| /home/master/Vidventures WebApp./public/user/assets/fonts/Feather.svg                                  | XML        |        276 |          0 |          0 |        276 |
+| /home/master/Vidventures WebApp./public/user/assets/fonts/fontawesome-free/webfonts/fa-brands-400.svg  | XML        |      1,184 |          0 |          1 |      1,185 |
+| /home/master/Vidventures WebApp./public/user/assets/fonts/fontawesome-free/webfonts/fa-regular-400.svg | XML        |        467 |          0 |          1 |        468 |
+| /home/master/Vidventures WebApp./public/user/assets/fonts/fontawesome-free/webfonts/fa-solid-900.svg   | XML        |      2,618 |          0 |          1 |      2,619 |
+| /home/master/Vidventures WebApp./public/user/assets/fonts/fontawesome-webfont.svg                      | XML        |      2,671 |          0 |          1 |      2,672 |
+| /home/master/Vidventures WebApp./public/user/assets/images/banner/offer-badge-shape.svg                | XML        |          3 |          0 |          1 |          4 |
+| /home/master/Vidventures WebApp./public/user/assets/images/banner/wave.svg                             | XML        |          1 |          0 |          0 |          1 |
+| /home/master/Vidventures WebApp./public/user/assets/images/banner/white-shape.svg                      | XML        |          3 |          0 |          1 |          4 |
+| /home/master/Vidventures WebApp./public/user/assets/images/bg/banner-bg-shape-1.svg                    | XML        |          3 |          0 |          1 |          4 |
+| /home/master/Vidventures WebApp./public/user/assets/images/icons/arrow-right.svg                       | XML        |          1 |          0 |          0 |          1 |
+| /home/master/Vidventures WebApp./public/user/assets/images/icons/badge-bg-shape.svg                    | XML        |        116 |          0 |          1 |        117 |
+| /home/master/Vidventures WebApp./public/user/assets/images/icons/dashboard.svg                         | XML        |          3 |          0 |          1 |          4 |
+| /home/master/Vidventures WebApp./public/user/assets/images/icons/elite.svg                             | XML        |          1 |          0 |          0 |          1 |
+| /home/master/Vidventures WebApp./public/user/assets/images/icons/hand-emojji.svg                       | XML        |          1 |          0 |          0 |          1 |
+| /home/master/Vidventures WebApp./public/user/assets/images/icons/logout.svg                            | XML        |          5 |          0 |          1 |          6 |
+| /home/master/Vidventures WebApp./public/user/assets/images/icons/offer-badge-bg-color.svg              | XML        |          9 |          0 |          1 |         10 |
+| /home/master/Vidventures WebApp./public/user/assets/images/icons/offer-badge-bg-image.svg              | XML        |         10 |          0 |          1 |         11 |
+| /home/master/Vidventures WebApp./public/user/assets/images/icons/offer-badge-bg.svg                    | XML        |          3 |          0 |          1 |          4 |
+| /home/master/Vidventures WebApp./public/user/assets/images/icons/quote.svg                             | XML        |         11 |          0 |          0 |         11 |
+| /home/master/Vidventures WebApp./public/user/assets/images/icons/settings.svg                          | XML        |          4 |          0 |          1 |          5 |
+| /home/master/Vidventures WebApp./public/user/assets/images/icons/tree-shape.svg                        | XML        |         14 |          0 |          1 |         15 |
+| /home/master/Vidventures WebApp./public/user/assets/images/logo/Whatsapp.svg                           | XML        |          2 |          0 |          0 |          2 |
+| /home/master/Vidventures WebApp./public/user/assets/images/shape/bg-image-2.svg                        | XML        |      6,175 |          1 |          0 |      6,176 |
+| /home/master/Vidventures WebApp./public/user/assets/images/shape/dots-white.svg                        | XML        |          3 |          0 |          1 |          4 |
+| /home/master/Vidventures WebApp./public/user/assets/images/shape/dots.svg                              | XML        |        260 |          0 |          1 |        261 |
+| /home/master/Vidventures WebApp./public/user/assets/images/shape/france.svg                            | XML        |          6 |          0 |          1 |          7 |
+| /home/master/Vidventures WebApp./public/user/assets/images/shape/germany.svg                           | XML        |          6 |          0 |          1 |          7 |
+| /home/master/Vidventures WebApp./public/user/assets/images/shape/italy.svg                             | XML        |          6 |          0 |          1 |          7 |
+| /home/master/Vidventures WebApp./public/user/assets/images/shape/japan.svg                             | XML        |          5 |          0 |          1 |          6 |
+| /home/master/Vidventures WebApp./public/user/assets/images/shape/quote.svg                             | XML        |         18 |          1 |          0 |         19 |
+| /home/master/Vidventures WebApp./public/user/assets/images/shape/south-korea.svg                       | XML        |         24 |          0 |          1 |         25 |
+| /home/master/Vidventures WebApp./public/user/assets/images/shape/united-kingdom.svg                    | XML        |         29 |          0 |          1 |         30 |
+| /home/master/Vidventures WebApp./public/user/assets/images/splash/bg/bg-1.svg                          | XML        |          1 |          0 |          0 |          1 |
+| /home/master/Vidventures WebApp./public/user/assets/images/splash/bg/left-right-line-1.svg             | XML        |         14 |          0 |          1 |         15 |
+| /home/master/Vidventures WebApp./public/user/assets/images/splash/bg/left-right-line-small.svg         | XML        |         14 |          0 |          1 |         15 |
+| /home/master/Vidventures WebApp./public/user/assets/images/splash/bg/left-right-line.svg               | XML        |         14 |          0 |          1 |         15 |
+| /home/master/Vidventures WebApp./public/user/assets/images/splash/bg/right-left-line.svg               | XML        |         14 |          0 |          1 |         15 |
+| /home/master/Vidventures WebApp./public/user/assets/js/main.js                                         | JavaScript |        889 |         33 |         92 |      1,014 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/backtotop.js                             | JavaScript |         31 |          0 |          3 |         34 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/bootstrap-select.min.js                  | JavaScript |          1 |          6 |          1 |          8 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/bootstrap.min.js                         | JavaScript |          1 |          5 |          1 |          7 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/countdown.js                             | JavaScript |          1 |          0 |          0 |          1 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/easypie.js                               | JavaScript |        226 |         93 |         54 |        373 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/imageloaded.js                           | JavaScript |          1 |          0 |          0 |          1 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/isotop.js                                | JavaScript |          1 |          0 |          0 |          1 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/jquery-appear.js                         | JavaScript |         82 |         34 |         35 |        151 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/jquery-one-page-nav.js                   | JavaScript |        141 |         40 |         42 |        223 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/jquery-ui.js                             | JavaScript |          1 |          4 |          3 |          8 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/jquery.js                                | JavaScript |          3 |          1 |          0 |          4 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/magnify-popup.min.js                     | JavaScript |          1 |          3 |          0 |          4 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/magnify.min.js                           | JavaScript |          1 |          3 |          0 |          4 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/modernizr.min.js                         | JavaScript |          1 |          2 |          3 |          6 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/odometer.js                              | JavaScript |          1 |          1 |          0 |          2 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/paralax-scroll.js                        | JavaScript |        177 |          5 |          4 |        186 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/paralax.min.js                           | JavaScript |          1 |          0 |          1 |          2 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/sal.js                                   | JavaScript |          1 |          0 |          1 |          2 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/swiper.js                                | JavaScript |          1 |         11 |          2 |         14 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/text-type.js                             | JavaScript |        154 |          9 |         22 |        185 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/waypoint.min.js                          | JavaScript |          1 |         10 |          4 |         15 |
+| /home/master/Vidventures WebApp./public/user/assets/js/vendor/wow.js                                   | JavaScript |          1 |          2 |          0 |          3 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/blog/_blog-details.scss                       | SCSS       |        326 |         14 |         42 |        382 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/blog/_blog.scss                               | SCSS       |         14 |          3 |         24 |         41 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/blog/_post-default.scss                       | SCSS       |        126 |          4 |         10 |        140 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/blog/_sidebar.scss                            | SCSS       |        151 |          3 |          8 |        162 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/blog/_unit-test.scss                          | SCSS       |         65 |          3 |         21 |         89 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/default/_animations.scss                      | SCSS       |         91 |          1 |         18 |        110 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/default/_edu-common.scss                      | SCSS       |        604 |         50 |        103 |        757 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/default/_extend.scss                          | SCSS       |        334 |         27 |         97 |        458 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/default/_forms.scss                           | SCSS       |        259 |         19 |         50 |        328 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/default/_mixins.scss                          | SCSS       |         28 |          0 |          2 |         30 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/default/_reset.scss                           | SCSS       |        293 |          4 |         57 |        354 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/default/_shortcode.scss                       | SCSS       |        513 |         36 |        114 |        663 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/default/_spacing.scss                         | SCSS       |        508 |          3 |        142 |        653 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/default/_text-animation.scss                  | SCSS       |      1,128 |         58 |        205 |      1,391 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/default/_typography.scss                      | SCSS       |        398 |          9 |         48 |        455 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/default/_variables.scss                       | SCSS       |        128 |         24 |         55 |        207 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_404.scss                            | SCSS       |         19 |          3 |         22 |         44 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_about.scss                          | SCSS       |        134 |          4 |         30 |        168 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_accordion.scss                      | SCSS       |        272 |          9 |         62 |        343 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_advance-tab.scss                    | SCSS       |        299 |         10 |         16 |        325 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_backtotop.scss                      | SCSS       |        109 |          3 |         11 |        123 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_badge.scss                          | SCSS       |        194 |         18 |         20 |        232 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_brand.scss                          | SCSS       |        152 |          5 |         12 |        169 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_brands.scss                         | SCSS       |        117 |          1 |          4 |        122 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_breadcrumb.scss                     | SCSS       |        297 |         16 |         47 |        360 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_button.scss                         | SCSS       |        792 |         26 |        118 |        936 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_callto-action.scss                  | SCSS       |        197 |          6 |         23 |        226 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_card-example.scss                   | SCSS       |        503 |          0 |         27 |        530 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_card.scss                           | SCSS       |        558 |          3 |         39 |        600 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_cart.scss                           | SCSS       |        372 |          6 |         26 |        404 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_category-box.scss                   | SCSS       |        382 |          3 |         33 |        418 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_category.scss                       | SCSS       |         54 |          3 |          7 |         64 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_check-blog-section.scss             | SCSS       |         64 |          0 |          0 |         64 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_checkout.scss                       | SCSS       |        168 |          9 |         19 |        196 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_connect-area.scss                   | SCSS       |        105 |          0 |          0 |        105 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_contact.scss                        | SCSS       |        155 |          1 |          6 |        162 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_countdown.scss                      | SCSS       |         45 |          3 |          1 |         49 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_counterdown-area.scss               | SCSS       |         97 |          0 |          0 |         97 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_counterup.scss                      | SCSS       |        343 |          7 |         39 |        389 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_course-filter.scss                  | SCSS       |        328 |          9 |         40 |        377 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_course-meta.scss                    | SCSS       |        137 |          4 |         11 |        152 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_feature.scss                        | SCSS       |        136 |          3 |         17 |        156 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_image-gallery.scss                  | SCSS       |         64 |          3 |         24 |         91 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_instagram.scss                      | SCSS       |         67 |          3 |          9 |         79 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_list.scss                           | SCSS       |        324 |         13 |         28 |        365 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_modal.scss                          | SCSS       |         82 |          3 |          8 |         93 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_newsletterform.scss                 | SCSS       |         92 |          7 |         13 |        112 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_pagination.scss                     | SCSS       |         45 |          3 |          0 |         48 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_portfolio.scss                      | SCSS       |        150 |          6 |         24 |        180 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_pricingtable.scss                   | SCSS       |        319 |          7 |          7 |        333 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_progressbar.html                    | HTML       |        136 |          0 |         12 |        148 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_progressbar.scss                    | SCSS       |        142 |          6 |         12 |        160 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_search.scss                         | SCSS       |        197 |          6 |         28 |        231 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_section-title.scss                  | SCSS       |        136 |          3 |         18 |        157 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_service.scss                        | SCSS       |        397 |          9 |         25 |        431 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_slider.scss                         | SCSS       |         14 |          0 |          3 |         17 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_social.scss                         | SCSS       |        125 |          3 |          8 |        136 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_split.scss                          | SCSS       |         67 |          3 |          1 |         71 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_swiper.scss                         | SCSS       |        262 |         10 |         42 |        314 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_teacher-section.scss                | SCSS       |        122 |          0 |          0 |        122 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_team.scss                           | SCSS       |        776 |          7 |         52 |        835 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_testimonial.scss                    | SCSS       |        563 |          9 |         71 |        643 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_testimonials.scss                   | SCSS       |        204 |          1 |          9 |        214 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/elements/_video.scss                          | SCSS       |         72 |          3 |         13 |         88 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/footer/_back-to-top.scss                      | SCSS       |          0 |          3 |          1 |          4 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/footer/_copyright.scss                        | SCSS       |         42 |          3 |          4 |         49 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/footer/_dark.scss                             | SCSS       |         55 |          4 |         12 |         71 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/footer/_footer.scss                           | SCSS       |        108 |          7 |         10 |        125 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/_header-common.scss                    | SCSS       |         96 |          4 |         24 |        124 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/_header.scss                           | SCSS       |        236 |          6 |         50 |        292 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/_headertop.scss                        | SCSS       |        245 |          9 |         37 |        291 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/_headertopbar.scss                     | SCSS       |         67 |          3 |          4 |         74 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/_mega-menu.scss                        | SCSS       |          0 |          3 |         22 |         25 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/_mobilemenu.scss                       | SCSS       |        281 |          3 |         11 |        295 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/_nav.scss                              | SCSS       |        558 |         25 |         58 |        641 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/_offcanbas.scss                        | SCSS       |        194 |          6 |         59 |        259 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/_offcanvas.scss                        | SCSS       |        354 |         12 |         45 |        411 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/_offertopbar.scss                      | SCSS       |         67 |          3 |          4 |         74 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/_one-page-navigation.scss              | SCSS       |         81 |          3 |         11 |         95 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/_search.scss                           | SCSS       |        124 |          3 |         27 |        154 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/_social-share.scss                     | SCSS       |         53 |          3 |          1 |         57 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/common/_header-common.scss             | SCSS       |        774 |         36 |         90 |        900 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/common/_headertop.scss                 | SCSS       |        291 |          9 |         33 |        333 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/common/_offertopbar.scss               | SCSS       |         67 |          3 |          4 |         74 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/headermiddle/_headermid.scss           | SCSS       |         38 |          3 |         20 |         61 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/header/topoffer/_offertopbar.scss             | SCSS       |         86 |          3 |         19 |        108 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/shop/_cart.scss                               | SCSS       |        372 |          6 |         26 |        404 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/shop/_checkout.scss                           | SCSS       |        169 |          9 |         19 |        197 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/shop/_minicart.scss                           | SCSS       |         81 |          3 |          8 |         92 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/shop/_my-account.scss                         | SCSS       |        100 |          3 |         35 |        138 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/shop/_product-details.scss                    | SCSS       |        157 |          3 |         22 |        182 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/shop/_shop.scss                               | SCSS       |          8 |          3 |         19 |         30 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/style.scss                                    | SCSS       |         82 |        135 |         19 |        236 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_about-us.scss                       | SCSS       |        178 |          0 |          0 |        178 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_banner.scss                         | SCSS       |      1,414 |         46 |        136 |      1,596 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_blog-details.scss                   | SCSS       |        363 |          0 |          0 |        363 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_connect-area.scss                   | SCSS       |          5 |          0 |          0 |          5 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_contact-page.scss                   | SCSS       |        128 |          0 |          0 |        128 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_contact.scss                        | SCSS       |         48 |          3 |         15 |         66 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_course-action-bottom.scss           | SCSS       |         57 |          0 |          4 |         61 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_course-details.scss                 | SCSS       |        348 |         21 |         36 |        405 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_course-sidebar.scss                 | SCSS       |        117 |          4 |         11 |        132 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_course-slidebar.scss                | SCSS       |        146 |          0 |          0 |        146 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_error-page.scss                     | SCSS       |         26 |          0 |          1 |         27 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_events-details.scss                 | SCSS       |         92 |          0 |          1 |         93 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_events-page.scss                    | SCSS       |          8 |          0 |          0 |          8 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_grid-course.scss                    | SCSS       |         23 |          0 |          0 |         23 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_instructor-dashboard.scss           | SCSS       |         82 |          6 |         11 |         99 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_list-course.scss                    | SCSS       |         23 |          0 |          0 |         23 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_login-page.scss                     | SCSS       |        124 |          0 |          0 |        124 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_my-account.scss                     | SCSS       |        100 |          3 |         35 |        138 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_preview.scss                        | SCSS       |      1,416 |         34 |        165 |      1,615 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_product-details.scss                | SCSS       |        148 |          3 |         22 |        173 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_profile-page.scss                   | SCSS       |        106 |          0 |          0 |        106 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_register-page.scss                  | SCSS       |        158 |          0 |          0 |        158 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_shop-details.scss                   | SCSS       |        259 |          0 |          0 |        259 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_shop-page.scss                      | SCSS       |        160 |          0 |          5 |        165 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_shop.scss                           | SCSS       |          8 |          3 |         19 |         30 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_sidebar.scss                        | SCSS       |        221 |         15 |         42 |        278 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_single-zoom-section.scss            | SCSS       |         68 |          0 |          0 |         68 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/template/_teacher-details.scss                | SCSS       |        198 |          0 |          0 |        198 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/variation-page/_color.scss                    | SCSS       |          7 |          3 |          9 |         19 |
+| /home/master/Vidventures WebApp./public/user/assets/scss/variation-page/_demo-page.scss                | SCSS       |        247 |          0 |          8 |        255 |
+| /home/master/Vidventures WebApp./router/adminRouter.js                                                 | JavaScript |         45 |          1 |         46 |         92 |
+| /home/master/Vidventures WebApp./router/userRouter.js                                                  | JavaScript |         72 |          6 |         69 |        147 |
+| /home/master/Vidventures WebApp./views/admin/PriceTableList.hbs                                        | Handlebars |         44 |          2 |          3 |         49 |
+| /home/master/Vidventures WebApp./views/admin/addPost.hbs                                               | Handlebars |         88 |          4 |          9 |        101 |
+| /home/master/Vidventures WebApp./views/admin/addPriceTable.hbs                                         | Handlebars |        118 |          2 |         19 |        139 |
+| /home/master/Vidventures WebApp./views/admin/addProduct.hbs                                            | Handlebars |        118 |          2 |         19 |        139 |
+| /home/master/Vidventures WebApp./views/admin/addReview.hbs                                             | Handlebars |         67 |         27 |         15 |        109 |
+| /home/master/Vidventures WebApp./views/admin/coordinators.hbs                                          | Handlebars |         70 |          6 |          4 |         80 |
+| /home/master/Vidventures WebApp./views/admin/coupon.hbs                                                | Handlebars |         89 |          9 |          2 |        100 |
+| /home/master/Vidventures WebApp./views/admin/dashboard.hbs                                             | Handlebars |        399 |         38 |         17 |        454 |
+| /home/master/Vidventures WebApp./views/admin/editProduct.hbs                                           | Handlebars |         90 |          1 |         10 |        101 |
+| /home/master/Vidventures WebApp./views/admin/formData.hbs                                              | Handlebars |         18 |          1 |          3 |         22 |
+| /home/master/Vidventures WebApp./views/admin/login.hbs                                                 | Handlebars |         25 |         17 |          0 |         42 |
+| /home/master/Vidventures WebApp./views/admin/order.hbs                                                 | Handlebars |        265 |          0 |         52 |        317 |
+| /home/master/Vidventures WebApp./views/admin/postList.hbs                                              | Handlebars |         74 |         11 |          7 |         92 |
+| /home/master/Vidventures WebApp./views/admin/product.hbs                                               | Handlebars |        104 |         35 |         13 |        152 |
+| /home/master/Vidventures WebApp./views/admin/review.hbs                                                | Handlebars |         82 |         39 |         10 |        131 |
+| /home/master/Vidventures WebApp./views/admin/users.hbs                                                 | Handlebars |         90 |          6 |          4 |        100 |
+| /home/master/Vidventures WebApp./views/admin/viewOrder.hbs                                             | Handlebars |        116 |         23 |          3 |        142 |
+| /home/master/Vidventures WebApp./views/layout/adminLayout.hbs                                          | Handlebars |         39 |          0 |         12 |         51 |
+| /home/master/Vidventures WebApp./views/layout/userLayout.hbs                                           | Handlebars |         86 |          0 |         15 |        101 |
+| /home/master/Vidventures WebApp./views/partials/admin/footer.hbs                                       | Handlebars |         27 |          0 |          3 |         30 |
+| /home/master/Vidventures WebApp./views/partials/admin/header.hbs                                       | Handlebars |        155 |          0 |          9 |        164 |
+| /home/master/Vidventures WebApp./views/partials/user/footer.hbs                                        | Handlebars |        157 |          7 |         22 |        186 |
+| /home/master/Vidventures WebApp./views/partials/user/header.hbs                                        | Handlebars |        306 |         90 |         33 |        429 |
+| /home/master/Vidventures WebApp./views/partials/user/loginNav.hbs                                      | Handlebars |        469 |          0 |         37 |        506 |
+| /home/master/Vidventures WebApp./views/partials/user/noNav.hbs                                         | Handlebars |          0 |          0 |          1 |          1 |
+| /home/master/Vidventures WebApp./views/user/404.hbs                                                    | Handlebars |         85 |          0 |         14 |         99 |
+| /home/master/Vidventures WebApp./views/user/aboutUs.hbs                                                | Handlebars |        144 |         16 |         16 |        176 |
+| /home/master/Vidventures WebApp./views/user/addInstruction.hbs                                         | Handlebars |         46 |          1 |          7 |         54 |
+| /home/master/Vidventures WebApp./views/user/blog.hbs                                                   | Handlebars |        224 |          0 |         20 |        244 |
+| /home/master/Vidventures WebApp./views/user/cart.hbs                                                   | Handlebars |        204 |          0 |         28 |        232 |
+| /home/master/Vidventures WebApp./views/user/contact.hbs                                                | Handlebars |         51 |          3 |          0 |         54 |
+| /home/master/Vidventures WebApp./views/user/faq.hbs                                                    | Handlebars |        208 |          1 |         14 |        223 |
+| /home/master/Vidventures WebApp./views/user/home.hbs                                                   | Handlebars |      1,883 |         25 |        296 |      2,204 |
+| /home/master/Vidventures WebApp./views/user/login.hbs                                                  | Handlebars |         87 |         20 |         11 |        118 |
+| /home/master/Vidventures WebApp./views/user/otp.hbs                                                    | Handlebars |        128 |          1 |         26 |        155 |
+| /home/master/Vidventures WebApp./views/user/payment.hbs                                                | Handlebars |         11 |          0 |          0 |         11 |
+| /home/master/Vidventures WebApp./views/user/productDetails.hbs                                         | Handlebars |        112 |         28 |         29 |        169 |
+| /home/master/Vidventures WebApp./views/user/shop.hbs                                                   | Handlebars |         72 |         39 |          9 |        120 |
+| /home/master/Vidventures WebApp./views/user/success.hbs                                                | Handlebars |        190 |          0 |         30 |        220 |
+| /home/master/Vidventures WebApp./views/user/terms.hbs                                                  | Handlebars |         33 |          0 |          9 |         42 |
+| /home/master/Vidventures WebApp./views/user/userProfile.hbs                                            | Handlebars |        197 |          3 |         31 |        231 |
+| /home/master/Vidventures WebApp./views/user/verifyEmail.hbs                                            | Handlebars |          0 |          0 |          1 |          1 |
+| /home/master/Vidventures WebApp./views/user/viewOrderDetails.hbs                                       | Handlebars |         83 |        108 |         23 |        214 |
+| Total                                                                                                  |            |    107,700 |      3,215 |     12,309 |    123,224 |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
