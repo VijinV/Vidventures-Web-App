@@ -1097,7 +1097,69 @@
     </div>
     <!-- End Call To Action  -->
 
+<style>
+  /* Hide all list items by default */
+.pricing-body ul.plan-offer-list li {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
+/* Display the first four list items */
+.pricing-body ul.plan-offer-list li:nth-child(-n+4) {
+  opacity: 1;
+}
+
+/* Show hidden list items on hover */
+.pricing-body ul.plan-offer-list:hover li.hidden-li {
+  opacity: 1;
+}
+
+/* Add fade-in animation */
+.pricing-body ul.plan-offer-list li {
+  transition-delay: 0.2s;
+}
+
+.pricing-body ul.plan-offer-list li:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+.pricing-body ul.plan-offer-list li:nth-child(2) {
+  transition-delay: 0.4s;
+}
+
+.pricing-body ul.plan-offer-list li:nth-child(3) {
+  transition-delay: 0.6s;
+}
+
+.pricing-body ul.plan-offer-list li:nth-child(4) {
+  transition-delay: 0.8s;
+}
+.plan1{
+    height: 56rem;
+     transition: opacity 0.5s ease;
+}
+.plan1:hover{
+     height: 66rem;
+     opacity: 1;
+}
+.plan2{
+    height: 56rem;
+     transition: opacity 0.5s ease;
+}
+.plan3{
+    height: 56rem;
+     transition: opacity 0.5s ease;
+}
+
+.plan2:hover{
+
+height: 69rem;
+}
+.plan3:hover{
+    height: 77rem;
+}
+
+</style>
     {{!-- pricing tables --}}
 
     <div class="rbt-pricing-area  rbt-section-gap">
@@ -1146,54 +1208,48 @@
 
                 <!-- Start Single Pricing  -->
                 <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-                    <div class="pricing-table style-2 active">
-                        <div class="pricing-header">
-
-                            <h3 class="title">4 to 5 minute Cashcow video</h3>
-                            <span class="rbt-badge mb--35">Silver Plan</span>
-                            <div class="price-wrap">
-
-                                <div class="monthly-pricing" style="display: block;">
-                                    <span class="amount">$29.90</span>
-                                    <span class="duration">/ video</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pricing-btn ">
-                            <button type="button" class="button">
-                                <span class="button__text">Add To Cart</span>
-                                <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round"
-                                        stroke-linecap="round" stroke="currentColor" height="24" fill="none"
-                                        class="svg">
-                                        <line y2="19" y1="5" x2="12" x1="12"></line>
-                                        <line y2="12" y1="12" x2="19" x1="5"></line>
-                                    </svg></span>
-                            </button>
-                        </div>
-
-                        <div class="pricing-body ">
-                            <ul class="plan-offer-list">
-                                <li><i class="feather-check"></i>1000 words script</li>
-                                <li><i class="feather-check"></i>Human voice over</li>
-                                <li><i class="feather-check"></i>Highly engaging <span>Video Editing</span>
-                                </li>
-                                <li><i class="feather-check"></i>Customisable <span>Thumbnail</span>
-                                </li>
-                                <li><i class="feather-check"></i>1 Revisions</li>
-                                <li><i class="feather-check"></i>SEO included</li>
-
-
-                            </ul>
-                        </div>
-
-                    </div>
+    <div class="pricing-table style-2 active plan1">
+        <div class="pricing-header">
+            <h3 class="title">4 to 5 minute Cashcow video</h3>
+            <span class="rbt-badge mb--35">Silver Plan</span>
+            <div class="price-wrap">
+                <div class="monthly-pricing" style="display: block;">
+                    <span class="amount">$29.90</span>
+                    <span class="duration">/ video</span>
                 </div>
+            </div>
+        </div>
+        <div class="pricing-btn">
+            <button type="button" class="button">
+                <span class="button__text">Add To Cart</span>
+                <span class="button__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                        <line y2="19" y1="5" x2="12" x1="12"></line>
+                        <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                </span>
+            </button>
+        </div>
+        <div class="pricing-body">
+            <ul class="plan-offer-list">
+                <li><i class="feather-check"></i>1000 words script</li>
+                <li><i class="feather-check"></i>Human voice over</li>
+                 <li ><i class="feather-check"></i>1 Revisions</li>
+                 <li ><i class="feather-check"></i>SEO included</li>
+                <li class="hidden-li" ><i class="feather-check"></i>Highly engaging <span>Video Editing</span></li>
+                <li class="hidden-li"><i class="feather-check"></i>Customisable <span>Thumbnail</span></li>
+            </ul>
+            
+    </div>
+        </div>
+        
+</div>
+
                 <!-- End Single Pricing  -->
 
                 <!-- Start Single Pricing  -->
                 <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-                    <div class="pricing-table style-2 active">
+                    <div class="pricing-table style-2 active plan2">
                         <div class="pricing-header">
                             <div class="pricing-badge"><span>Popular</span></div>
                             <h3 class="title">8 to 10 minute Cashcow video</h3>
@@ -1223,16 +1279,14 @@
                             <ul class="plan-offer-list">
                                 <li><i class="feather-check"></i>1600 words script</li>
                                 <li><i class="feather-check"></i>Human voice over</li>
-                                <li><small class="ms-5">(multiple Options)</small></li>
-                                <li><i class="feather-check"></i> Advanced + VFX
-                                    <span style="margin-left: 31px;">Video Editing</span>
-                                </li>
-                                <li><i class="feather-check"></i>Customisable <span>Thumbnail</span>
-                                </li>
                                 <li><i class="feather-check"></i>2 Revisions</li>
                                 <li><i class="feather-check"></i>SEO included</li>
-
-
+                                <li class="hidden-li"><small class="ms-5">(multiple Options)</small></li>
+                                <li class="hidden-li"><i class="feather-check"></i> Advanced + VFX
+                                    <span style="margin-left: 31px;">Video Editing</span>
+                                </li>
+                                <li class="hidden-li"><i class="feather-check"></i>Customisable <span>Thumbnail</span>
+                                </li>
                             </ul>
                         </div>
 
@@ -1242,7 +1296,7 @@
 
                 <!-- Start Single Pricing  -->
                 <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-                    <div class="pricing-table style-2">
+                    <div class="pricing-table style-2 plan3">
                         <div class="pricing-header">
                             <h3 class="title">8 to 10 minute Premium video</h3>
                             <span class="rbt-badge mb--35">Epic Experience </span>
@@ -1272,18 +1326,18 @@
                             <ul class="plan-offer-list">
                                 <li><i class="feather-check"></i>1600 words script</li>
                                 <li><i class="feather-check"></i>Human voice over</li>
-                                <li><small class="ms-5">(multiple Options)</small></li>
-                                <li style="height: 45px;"><i class="feather-check"></i> Cinematic + VFX
-                                    <span style="margin-left: 31px;">Video Editing</span>
-
-                                </li>
-                                <li><i class="feather-check"></i>Sound Effects</span>
-                                </li>
-                                <li><i class="feather-check"></i>Premium <span>Thumbnail</span>
-                                </li>
                                 <li><i class="feather-check"></i>3 Revisions</li>
                                 <li><i class="feather-check"></i>SEO included</li>
-                                <li><i class="feather-check"></i>Chat &amp; Call
+                                <li class="hidden-li"><small class="ms-5">(multiple Options)</small></li>
+                                <li class="hidden-li"><i class="feather-check"></i> Cinematic + VFX
+                                    <span style="margin-left: 31px;">Video Editing</span>
+                                </li>
+                                <li class="hidden-li mt-0"><i class="feather-check"></i>Sound Effects</span>
+                                </li>
+                                <li class="hidden-li"><i class="feather-check"></i>Premium <span>Thumbnail</span>
+                                </li>
+                                
+                                <li class="hidden-li"><i class="feather-check"></i>Chat &amp; Call
                                     <span style="margin-left: 31px;">Support</span>
                                 </li>
                             </ul>
