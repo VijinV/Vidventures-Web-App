@@ -1444,7 +1444,7 @@ height: 69rem;
 
 
     {{!-- testimonials --}}
-    <div class="rbt-testimonial-area  rbt-section-gap overflow-hidden" style="display: none;">
+    <div class="rbt-testimonial-area  rbt-section-gap overflow-hidden" style="display: block;">
         <div class="wrapper">
             <div class="container">
                 <div class="row">
@@ -1461,31 +1461,32 @@ height: 69rem;
         <div class="scroll-animation-wrapper mt--50">
             <div class="scroll-animation scroll-right-left">
 
+                {{#each review}}
+
                 <!-- Start Single Testimonial  -->
                 <div class="single-column-20">
                     <div class="rbt-testimonial-box">
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="assets/images/testimonial/client-01.png" alt="Clint Images">
+                                    <img src="admin/assets/ProductImages/{{image}}" alt="youtube cashcow ">
                                 </div>
                                 <div class="client-info">
-                                    <h5 class="title">Martha Maldonado</h5>
-                                    <span>Executive Chairman <i>@ Google</i></span>
+                                    <h5 class="title">{{name}}</h5>
+                                    <span>{{channelName}} <i>@ Youtube</i></span>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">After the launch, vulputate at sapien sit amet,
-                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                        class="feather-arrow-right"></i></a>
+                                <p class="subtitle-3">{{review}}</p>
+                                {{!-- <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                        class="feather-arrow-right"></i></a> --}}
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- End Single Testimonial  -->
-
-                <!-- Start Single Testimonial  -->
+                {{/each}}
+                {{!-- <!-- Start Single Testimonial  -->
                 <div class="single-column-20">
                     <div class="rbt-testimonial-box">
                         <div class="inner">
@@ -1674,38 +1675,40 @@ height: 69rem;
                         </div>
                     </div>
                 </div>
-                <!-- End Single Testimonial  -->
+                <!-- End Single Testimonial  --> --}}
             </div>
         </div>
 
         <div class="scroll-animation-wrapper mt--30">
             <div class="scroll-animation scroll-left-right">
 
+                {{#each sorted}}
                 <!-- Start Single Testimonial  -->
                 <div class="single-column-20">
                     <div class="rbt-testimonial-box">
                         <div class="inner">
                             <div class="clint-info-wrapper">
                                 <div class="thumb">
-                                    <img src="assets/images/testimonial/client-01.png" alt="Clint Images">
+                                    <img src="admin/assets/ProductImages/{{image}}" alt="youtube cashcow ">
                                 </div>
                                 <div class="client-info">
-                                    <h5 class="title">Martha Maldonado</h5>
-                                    <span>Executive Chairman <i>@ Google</i></span>
+                                    <h5 class="title">{{name}}</h5>
+                                    <span>{{channelName}} <i>@ Youtube</i></span>
                                 </div>
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">After the launch, vulputate at sapien sit amet,
-                                    auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
-                                <a class="rbt-btn-link" href="#">Read Project Case Study<i
-                                        class="feather-arrow-right"></i></a>
+                                <p class="subtitle-3">{{review}}</p>
+                                {{!-- <a class="rbt-btn-link" href="#">Read Project Case Study<i
+                                        class="feather-arrow-right"></i></a> --}}
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- End Single Testimonial  -->
 
-                <!-- Start Single Testimonial  -->
+                {{/each}}
+
+                {{!-- <!-- Start Single Testimonial  -->
                 <div class="single-column-20">
                     <div class="rbt-testimonial-box">
                         <div class="inner">
@@ -1894,7 +1897,7 @@ height: 69rem;
                         </div>
                     </div>
                 </div>
-                <!-- End Single Testimonial  -->
+                <!-- End Single Testimonial  --> --}}
             </div>
         </div>
     </div>

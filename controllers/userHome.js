@@ -43,7 +43,10 @@ let instPost = [];
 //   fetchInstagramPosts()
 
 const loadHome = async (req, res, next) => {
-  const review = await reviewModel.find({});
+  const review = await reviewModel.find({}).limit(9)
+  const sorted = await reviewModel.find({}).sort({_id:-1}).limit(9)
+
+  console.log(review);
 
   const post = await postModel
     .find({ isAvailable: true })
@@ -61,6 +64,7 @@ const loadHome = async (req, res, next) => {
     review: review,
     post,
     posts,
+    sorted
   });
 };
 

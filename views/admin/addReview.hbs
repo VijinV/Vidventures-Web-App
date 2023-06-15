@@ -24,40 +24,16 @@
                                     <label for="product_name" class="form-label">User Name</label>
                                     <input type="text" value="{{review.name}}" placeholder="Type here" name="name" class="form-control" id="product_name">
                                 </div>
+                                <input type="hidden" value="{{review._id}}" name="id">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Channel Name</label>
                                     <input type="text" value="{{review.channelName}}" placeholder="Type here" name="channelName" class="form-control" id="product_name">
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Review</label>
-                                    <textarea  placeholder="Type here" name="review" class="form-control" rows="4">{{review.review}}</textarea>
+                                    <textarea onkeyup="validateReview()"  placeholder="Type here" name="review" class="form-control" rows="4">{{review.review}}</textarea>
+                                    <small style="color: red;" class="error"></small>
                                 </div>
-                                {{!-- <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="mb-4">
-                                            <label class="form-label">Maximum Retail price</label>
-                                            <div class="row gx-2">
-                                                <input placeholder="$" type="text" name="mrp" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-4">
-                                            <label class="form-label">Promotional price</label>
-                                            <input placeholder="$" type="text" name="discountedPrice" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label class="form-label">Currency</label>
-                                        <select class="form-select">
-                                            <option> USD </option>
-                                        </select>
-                                    </div>
-                                </div> --}}
-                                {{!-- <div class="mb-4">
-                                    <label for="product_name" class="form-label">Google Drive Link</label>
-                                    <input type="text" placeholder="Type here" name="link" class="form-control" id="link">
-                                </div> --}}
                                
                         </div>
                     </div> <!-- card end// -->
@@ -71,11 +47,10 @@
                             <div class="input-upload">
                                 {{#if review}}
                                <img src="assets/ProductImages/{{review.image}}" >
-
                                 {{else}}
                                 <img src="assets/imgs/theme/upload.svg" alt="">
                                 {{/if}}
-                                <input onchange="validateFile()" id="myFile" class="form-control" name="image" type="file" accept=".png, .jpg, .jpeg, .gif" size="2048">
+                                <input onchange="validateFile()" id="myFile" value="{{review.image}}" class="form-control" name="image" type="file" accept=".png, .jpg, .jpeg, .gif" size="2048">
                                 <small class="text-danger" id="alert"></small>
                             </div>
                         </div>
@@ -106,4 +81,20 @@ function validateFile() {
   alertElement.textContent = ''; // clear the error message
   return true; // allow form submission
 }
+function validateReview() {
+    let small = document.querySelector('.error');
+  var textarea = document.querySelector('textarea[name="review"]');
+  var review = textarea.value.trim();
+
+  if (review.length > 130) {
+    // Display an error message or perform any other action
+    small.innerHTML = "Only 130 Characters are allowed"
+    return false; // Prevent form submission
+  }else{
+    small.innerHTML = ""
+    return true; // Proceed with form submission
+  }
+  
+}
+
 </script>

@@ -414,35 +414,92 @@ const loadAddReview = async (req, res) => {
   } catch (error) {}
 };
 
-const addReview = (req, res) => {
+// const addReview = (req, res) => {
+//   try {
+//     const { name, channelName, review } = req.body;
+
+//     let newReview;
+//     try {
+//       newReview = new reviewModel({
+//         name: name,
+//         channelName: channelName,
+//         review: review,
+//         image: req.file.filename,
+//       });
+
+//       newReview.save().then(() => {
+//         res.redirect("/admin/review");
+//       });
+//     } catch (error) {
+//       newReview = new reviewModel({
+//         name: name,
+//         channelName: channelName,
+//         review: review,
+//       });
+
+//       newReview.save().then(() => {
+//         res.redirect("/admin/review");
+//       });
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+const addReview = async (req, res) => {
   try {
-    const { name, channelName, review } = req.body;
+    const { name, channelName, review, id } = req.body;
 
-    let newReview;
-    try {
-      newReview = new reviewModel({
+    if (!id) {
+      console.log("adding review");
+
+      const newReview = new reviewModel({
         name: name,
         channelName: channelName,
         review: review,
-        image: req.file.filename,
+        image: req.file ? req.file.filename : null,
       });
 
-      newReview.save().then(() => {
-        res.redirect("/admin/review");
-      });
-    } catch (error) {
-      newReview = new reviewModel({
-        name: name,
-        channelName: channelName,
-        review: review,
-      });
+      await newReview.save();
 
-      newReview.save().then(() => {
-        res.redirect("/admin/review");
-      });
+      res.redirect('/admin/review');
+    } else {
+      if (req.file) {
+        console.log("updating review");
+        await reviewModel.findByIdAndUpdate(
+          { _id: id },
+          {
+            $set: {
+              name: name,
+              channelName: channelName,
+              review: review,
+              image: req.file.filename,
+            },
+          }
+        ).then(() => {
+          res.redirect('/admin/review');
+        });
+      } else {
+        console.log("No file uploaded for update");
+      
+        await reviewModel.findByIdAndUpdate(
+          { _id: id },
+          {
+            $set: {
+              name: name,
+              channelName: channelName,
+              review: review,
+            },
+          }
+        ).then(() => {
+          res.redirect('/admin/review');
+        });
+      
+      }
     }
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
+    // Handle other potential errors here
   }
 };
 
