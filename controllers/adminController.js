@@ -219,34 +219,37 @@ const loadEditProduct = async (req, res) => {
 };
 
 const editProduct = (req, res) => {
-  const {
-    name,
-    description,
-    discountedPrice,
-    mrp,
-    image,
-    paymentId,
-    link,
-    list,
-    sdescription,
-  } = req.body;
-  Products.findByIdAndUpdate(
-    { _id: req.body.id },
-    {
-      $set: {
-        name: name,
-        description: description,
-        discountedPrice: discountedPrice,
-        mrp: mrp,
-        link: link,
-        list,
-        list,
-        sdescription: sdescription,
-      },
-    }
-  ).then(() => {
-    res.redirect("/admin/product");
-  });
+ try {
+   const {
+     name,
+     description,
+     discountedPrice,
+     mrp,
+     link,
+     list,
+     sdescription,
+   } = req.body;
+   const image = req.file.filename
+   Products.findByIdAndUpdate(
+     { _id: req.body.id },
+     {
+       $set: {
+         name: name,
+         description: description,
+         discountedPrice: discountedPrice,
+         mrp: mrp,
+         link: link,
+         list,
+         image:image,
+         sdescription: sdescription,
+       },
+     }
+   ).then(() => {
+     res.redirect("/admin/product");
+   }).catch((error)=>console.log(error));
+ } catch (error) {
+  console.log(error.message);
+ }
 };
 
 const ListProduct = async (req, res) => {

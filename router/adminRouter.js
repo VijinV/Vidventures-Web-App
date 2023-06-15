@@ -73,7 +73,7 @@ route.post("/login", adminAuth.isLogout, adminController.verifyAdmin);
 
 route.post("/addProduct", multer.upload, adminController.addProduct);
 
-route.post('/editProduct',adminController.editProduct)
+route.post('/editProduct',multer.upload,adminController.editProduct)
 
 route.post('/coupon',adminAuth.isLogin,adminController.addCoupon)
 
