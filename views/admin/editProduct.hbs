@@ -99,3 +99,45 @@
 
            
         </section> <!-- content-main end// -->
+
+
+        <script>
+    function addNewInput() {
+        var itemsDiv = document.getElementById("items");
+        var newDiv = document.createElement("div");
+        newDiv.classList.add("mb-4");
+
+        var label = document.createElement("label");
+        label.setAttribute("for", "product_name");
+        label.classList.add("form-label");
+        label.innerHTML = "List";
+
+        var inputGroup = document.createElement("div");
+        inputGroup.classList.add("input-group");
+
+        var input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("placeholder", "Type here");
+        input.setAttribute("name", "list");
+        input.classList.add("form-control");
+
+        var appendDiv = document.createElement("div");
+        appendDiv.classList.add("input-group-append");
+
+        var plusSpan = document.createElement("span");
+        plusSpan.classList.add("input-group-text");
+        plusSpan.onclick = addNewInput;
+
+        var plusIcon = document.createElement("i");
+        plusIcon.classList.add("bi", "bi-plus-lg");
+        
+
+        plusSpan.appendChild(plusIcon);
+        appendDiv.appendChild(plusSpan);
+        inputGroup.appendChild(input);
+        inputGroup.appendChild(appendDiv);
+        newDiv.appendChild(label);
+        newDiv.appendChild(inputGroup);
+        itemsDiv.appendChild(newDiv);
+    }
+</script>
