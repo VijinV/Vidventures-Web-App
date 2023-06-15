@@ -1065,17 +1065,30 @@ const loadBlogDetails = async (req, res) => {
   try {
     
     const id = req.query.id
+    const postType = req.query.postType
 
-    const post = await postModel.findById({_id: id})
+    if (postType !== "Blog") {
+      const post = await postModel.findById({_id: id})
+  
+      const posts = await postModel
+        .find({ isAvailable: true, postType: "Story", _id: { $ne: id } })
+        .sort({ _id: -1 })
+        .limit(3);
+        res.render("blogDetails",{post,posts});
+    } else {
+      
+      const post = await postModel.findById({_id: id})
+  
+      const posts = await postModel
+        .find({ isAvailable: true, postType: "Blog", _id: { $ne: id } })
+        .sort({ _id: -1 })
+        .limit(3);
+        res.render("blogDetails",{post,posts});
 
-    const posts = await postModel
-      .find({ isAvailable: true, postType: "Story", _id: { $ne: id } })
-      .sort({ _id: -1 })
-      .limit(3);
-
+    }
 
     
-    res.render("blogDetails",{post,posts});
+    
 
   } catch (error) {
     
