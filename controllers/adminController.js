@@ -879,7 +879,7 @@ const loadAddPost = async (req, res) => {
 };
 
 const addPost = async (req, res) => {
-  const { name, link, id } = req.body;
+  const { author,heading,caption,content,id } = req.body;
 
   if (id) {
     try {
@@ -888,9 +888,11 @@ const addPost = async (req, res) => {
           { _id: id },
           {
             $set: {
-              name: name,
-              link: link,
+              author: author,
+              heading: heading,
               image: req.file.filename,
+              caption:caption,
+              content: content
             },
           }
         );
@@ -900,16 +902,20 @@ const addPost = async (req, res) => {
         { _id: id },
         {
           $set: {
-            name: name,
-            link: link,
+            author: author,
+            heading: heading,
+            caption:caption,
+              content: content
           },
         }
       );
     }
   } else {
     const post = new postModel({
-      name: name,
-      link: link,
+      author: author,
+            heading: heading,
+            caption:caption,
+              content: content,
       image: req.file.filename,
     });
 

@@ -7,10 +7,7 @@
           <h2 class="content-title">Add Blog</h2>
           <div>
             {{! <button class="btn btn-light rounded font-sm mr-5 text-body hover-up">Save to draft</button> }}
-            <button
-              type="submit"
-              class="btn btn-md rounded font-sm hover-up"
-            >Publish</button>
+            <button type="submit" class="btn btn-md rounded font-sm hover-up">Publish</button>
           </div>
         </div>
 
@@ -25,31 +22,20 @@
             <input type="hidden" name="id" value="{{post._id}}" />
 
             <div class="mb-4">
-              <label for="product_name" class="form-label">User Name</label>
-              <input
-                type="text"
-                value="{{post.name}}"
-                placeholder="Type here"
-                name="name"
-                class="form-control"
-                id="product_name"
-              />
+              <label for="product_name" class="form-label">Author Name</label>
+              <input type="text" value="{{post.author}}" placeholder="Type here" name="author" class="form-control"
+                id="product_name" />
             </div>
             <div class="mb-4">
-              <label for="product_name" class="form-label">Channel Name</label>
-              <input
-                type="text"
-                value="{{post.link}}"
-                placeholder="Type here"
-                name="link"
-                class="form-control"
-                id="product_name"
-              />
+              <label for="product_name" class="form-label">Heading</label>
+              <input type="text" value="{{post.heading}}" placeholder="Type here" name="heading" class="form-control"
+                id="product_name" />
             </div>
-            {{!-- <div class="mb-4">
-                                    <label class="form-label">Review</label>
-                                    <textarea  placeholder="Type here" name="review" class="form-control" rows="4">{{review.review}}</textarea>
-                                </div> --}}
+            
+            <div class="mb-4">
+              <label class="form-label">Content</label>
+              <textarea placeholder="Type here" name="content" class="form-control" rows="4">{{post.content}}</textarea>
+            </div>
 
           </div>
         </div>
@@ -62,20 +48,18 @@
           </div>
           <div class="card-body">
             <div class="input-upload">
+              <div class="mb-4">
+                <label for="product_name" class="form-label">Caption</label>
+                <input type="text" value="{{post.caption}}" placeholder="Type here" name="caption" class="form-control"
+                  id="product_name" />
+              </div>
               {{#if review}}
-                <img src="assets/ProductImages/{{post.image}}" />
+              <img src="assets/ProductImages/{{post.image}}" />
               {{else}}
-                <img src="assets/imgs/theme/upload.svg" alt="" />
+              <img src="assets/imgs/theme/upload.svg" alt="" />
               {{/if}}
-              <input
-                onchange="validateFile()"
-                id="myFile"
-                class="form-control"
-                name="image"
-                type="file"
-                accept=".png, .jpg, .jpeg, .gif"
-                size="2048"
-              />
+              <input onchange="validateFile()" id="myFile" class="form-control" name="image" type="file"
+                accept=".png, .jpg, .jpeg, .gif" size="2048" />
               <small class="text-danger" id="alert"></small>
             </div>
           </div>
@@ -91,11 +75,12 @@
 <!-- content-main end// -->
 
 <script>
-  function validateFile() { var fileInput = document.getElementById('myFile');
-  var fileSize = fileInput.files[0].size; // size in bytes var alertElement =
-  document.getElementById('alert'); if (fileSize > 2000000) { // 2KB in bytes
-  alertElement.textContent = 'File size must be less than or equal to 2MB.';
-  fileInput.value = ""; // clear the file input to allow re-selection return
-  false; // prevent form submission } alertElement.textContent = ''; // clear
+  function validateFile() {
+    var fileInput = document.getElementById('myFile');
+    var fileSize = fileInput.files[0].size; // size in bytes var alertElement =
+    document.getElementById('alert'); if (fileSize > 2000000) { // 2KB in bytes
+      alertElement.textContent = 'File size must be less than or equal to 2MB.';
+      fileInput.value = ""; // clear the file input to allow re-selection return
+      false; // prevent form submission } alertElement.textContent = ''; // clear
   the error message return true; // allow form submission }
 </script>

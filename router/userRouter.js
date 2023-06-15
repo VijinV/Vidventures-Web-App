@@ -47,6 +47,8 @@ route.get('/termsandconditions',userController.loadTerms)
 
 route.get('/blog',userController.loadBlog)
 
+route.get('/blogDetails',userController.loadBlogDetails)
+
 
 
 // post 
@@ -123,6 +125,32 @@ route.post('/create-checkout-session', async (req, res) => {
 
   route.post('/getFormData',userHome.formData)
   
+
+
+  // Route to handle the webhook events
+route.post('/stripe-webhook', async (req, res) => {
+  // Retrieve the event data from the request body
+  const event = req.body;
+
+  // Handle the event based on its type
+  switch (event.type) {
+    case 'payment_intent.succeeded':
+      // Payment succeeded, process the order or update the status
+      const paymentIntent = event.data.object;
+      // Your code here
+      console.log('Payment succeeded:', paymentIntent);
+      break;
+    case 'payment_intent.payment_failed':
+      // Payment failed, handle the failure
+      // Your code here
+      console.log('Payment failed:', event.data.object);
+      break;
+    // Add other event types as needed
+  }
+
+  // Return a response to acknowledge receipt of the event
+  res.sendStatus(200);
+});
 
 
 

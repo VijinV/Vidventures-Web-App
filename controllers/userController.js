@@ -622,7 +622,7 @@ const stripePayment = async (req, res) => {
 
     line_object = {
       price_data: {
-        currency: "usd",
+        currency: "inr",
         product_data: {
           name: name,
           images: [
@@ -655,6 +655,10 @@ const stripePayment = async (req, res) => {
 
   res.redirect(303, session.url);
 };
+
+
+
+
 
 const updateCart = async (req, res) => {
   try {
@@ -1028,9 +1032,23 @@ const loadTerms = (req, res) => {
 };
 
 
-const loadBlog = (req, res) => {
+const loadBlog = async (req, res) => {
 
   res.render("blog");
+
+}
+
+const loadBlogDetails = async (req, res) => {
+
+
+  try {
+    
+    res.render("blogDetails");
+
+  } catch (error) {
+    
+  }
+
 
 }
 
@@ -1038,6 +1056,7 @@ const loadBlog = (req, res) => {
 // =================================================================
 
 module.exports = {
+  loadBlogDetails,
   loadBlog,
   loadTerms,
   loadSuccess,
