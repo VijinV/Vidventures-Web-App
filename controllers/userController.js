@@ -15,6 +15,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const reviewModel = require("../models/reviewModel");
 const productModel = require("../models/productModel");
 const randomstring = require("randomstring");
+const postModel = require("../models/postModel");
 
 const orderIdCreate = require("order-id")("key", {
   prefix: "5000",
@@ -1037,7 +1038,24 @@ const loadTerms = (req, res) => {
 
 const loadBlog = async (req, res) => {
 
-  res.render("blog");
+ try {
+   const post = await postModel.findOne({
+     isAvailable: true,
+     postType: "Story"
+   }).sort({ _id: -1 });
+   
+
+
+
+   const posts = await postModel
+   .find({ isAvailable: true, postType: "Story" })
+   .sort({ _id: -1 })
+   .limit(3);
+ 
+   res.render("blog",{post,posts});
+ } catch (error) {
+  console.error(error.message);
+ }
 
 }
 
@@ -1046,7 +1064,18 @@ const loadBlogDetails = async (req, res) => {
 
   try {
     
-    res.render("blogDetails");
+    const id = req.query.id
+
+    const post = await postModel.findById({_id: id})
+
+    const posts = await postModel
+      .find({ isAvailable: true, postType: "Story", _id: { $ne: id } })
+      .sort({ _id: -1 })
+      .limit(3);
+
+
+    
+    res.render("blogDetails",{post,posts});
 
   } catch (error) {
     

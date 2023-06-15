@@ -1,18 +1,18 @@
     <div class="rbt-overlay-page-wrapper">
         <div class="breadcrumb-image-container breadcrumb-style-max-width">
             <div class="breadcrumb-image-wrapper">
-                <img src="assets/images/bg/bg-image-10.jpg" alt="Education Images">
+                {{!-- <img src="assets/images/bg/bg-image-10.jpg" alt="Education Images"> --}}
             </div>
             <div class="breadcrumb-content-top text-center">
                 <ul class="meta-list justify-content-center mb--10">
                     <li class="list-item">
                         <div class="author-info">
-                            <a href="#"><strong>Jone Song</strong></a> in <a href="#"><strong>Design</strong></a>
+                            <a href="#"><strong>{{post.author}}</strong></a> in <a href="#"><strong>Vidventures</strong></a>
                         </div>
                     </li>
                     
                 </ul>
-                <h1 class="title">Skills That You Can Learn From Education.</h1>
+                <h1 class="title">{{post.heading}}</h1>
             </div>
         </div>
 
@@ -21,11 +21,11 @@
                 <div class="content">
                     <div class="post-thumbnail mb--30 position-relative wp-block-image alignwide">
                         <figure>
-                            <img src="assets/images/blog/blog-single-03.png" alt="Blog Images">
-                            <figcaption style="font-style: italic;">Business and core management app are for enterprise.</figcaption>
+                            <img src="admin/assets/ProductImages/{{post.image}}" alt="Blog Images">
+                            <figcaption style="font-style: italic;">{{post.caption}}</figcaption>
                         </figure>
                     </div>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered strike out text alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum.</p>
+                    <p>{{post.content}}</p>
 
 {{!-- 
                     <p>Apple today named eight app and game developers receiving an Apple Design Award, each one selected for being thoughtful and creative. Apple Design Award winners bring distinctive new ideas to life and demonstrate deep mastery of Apple technology. The apps spring up from developers large and small, in every part of the world, and provide users with new ways of working.</p>
@@ -36,10 +36,7 @@
 
                    
 
-                    <p>For more information on the apps and games, visit the <a href="#">App Store</a>.</p>
-
-
-                   
+                    <p>For more information on the apps and games, visit the <a href="#">Instagram</a>.</p>
 
                     <!-- Social Share Block  -->
                     <div class="social-share-block">
@@ -77,56 +74,24 @@
                         <h4 class="title">Similar Post</h4>
                     </div>
 
+{{#each posts}}
                     <!-- Start Single Card  -->
                     <div class="rbt-card card-list variation-02 rbt-hover mt--30">
                         <div class="rbt-card-img">
-                            <a href="blog-details.html">
-                                <img src="assets/images/blog/blog-card-02.jpg" alt="Card image"> </a>
+                            <a href="/blogDetails/?id={{_id}}">
+                                <img src="admin/assets/ProductImages/{{image}}" alt="Card image"> </a>
                         </div>
                         <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="blog-details.html">Why Is Education So Famous?</a>
+                            <h5 class="rbt-card-title"><ahref="/blogDetails/?id={{_id}}">{{heading}}</ahref=>
                             </h5>
                             <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="blog-details.html">Read
+                                <a class="transparent-button"href="/blogDetails/?id={{_id}}">Read
                                     Article<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
                             </div>
                         </div>
                     </div>
                     <!-- End Single Card  -->
-
-                    <!-- Start Single Card  -->
-                    <div class="rbt-card card-list variation-02 rbt-hover mt--30">
-                        <div class="rbt-card-img">
-                            <a href="blog-details.html">
-                                <img src="assets/images/blog/blog-card-03.jpg" alt="Card image"> </a>
-                        </div>
-                        <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="blog-details.html">Difficult Things About
-                                    Education.</a></h5>
-                            <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="blog-details.html">Read
-                                    Article<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Card  -->
-
-                    <!-- Start Single Card  -->
-                    <div class="rbt-card card-list variation-02 rbt-hover mt--30">
-                        <div class="rbt-card-img">
-                            <a href="blog-details.html">
-                                <img src="assets/images/blog/blog-card-04.jpg" alt="Card image"> </a>
-                        </div>
-                        <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="blog-details.html">Education Is So Famous, But
-                                    Why?</a></h5>
-                            <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="blog-details.html">Read
-                                    Article<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Card  -->
+{{/each}}
 
                 </div>
             </div>
