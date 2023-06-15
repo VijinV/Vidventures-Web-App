@@ -31,7 +31,21 @@
               <input type="text" value="{{post.heading}}" placeholder="Type here" name="heading" class="form-control"
                 id="product_name" />
             </div>
-            
+
+            <div class="mb-4">
+              <label class="form-label">Post Type</label>
+              <select name="postType" class="form-select">
+                {{#if post}}
+                <option>{{postType}}</option>
+                <option>Story</option>
+                <option>Blog</option>
+                {{else}}
+                <option>Story</option>
+                <option>Blog</option>
+                {{/if}}
+              </select>
+            </div>
+
             <div class="mb-4">
               <label class="form-label">Content</label>
               <textarea placeholder="Type here" name="content" class="form-control" rows="4">{{post.content}}</textarea>

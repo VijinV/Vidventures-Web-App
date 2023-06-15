@@ -13,6 +13,8 @@ const postSchema = new mongoose.Schema({
      },
     heading:{
         type:"String", 
+     },postType:{
+        type:"String",
      },
     isAvailable:{
         type:"Boolean",

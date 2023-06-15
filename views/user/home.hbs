@@ -1995,7 +1995,7 @@ height: 69rem;
 
 
     <!-- Start Blog Style -->
-    <div class="rbt-rbt-blog-area rbt-section-gap " style="display: none;">
+    <div class="rbt-rbt-blog-area rbt-section-gap " style="display: block;">
         <div class="container">
             <div class="row g-5 align-items-center mb--30">
                 <div class="col-lg-6 col-md-6 col-12">
@@ -2020,19 +2020,20 @@ height: 69rem;
             <!-- Start Card Area -->
             <div class="row row--15">
                 <!-- Start Single Card  -->
-                {{#each post}}
+                
+                
                 <div class="col-lg-6 col-md-12 col-sm-12 col-12 mt--30" data-sal-delay="150" data-sal="slide-up"
                     data-sal-duration="800">
                     <div class="rbt-card variation-02 height-330 rbt-hover">
                         <div class="rbt-card-img">
-                            <a href="{{link}}">
-                                <img src="assets/ProductImages/{{image}}" alt="">
+                            <a>
+                                <img src="admin/assets/ProductImages/{{post.image}}" alt="cashcow blog">
                         </div>
                         <div class="rbt-card-body">
-                            <h3 class="rbt-card-title"><a href="{{link}}">{{name}}</a></h3>
+                            <h3 class="rbt-card-title"><a>{{post.heading}}</a></h3>
                             {{!-- <p class="rbt-card-text">It is a long established fact that a reader.</p> --}}
                             <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="{{link}}">Learn More<i><svg width="17" height="12"
+                                <a class="transparent-button" >Learn More<i><svg width="17" height="12"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g stroke="#27374D" fill="none" fill-rule="evenodd">
                                                 <path d="M10.614 0l5.629 5.629-5.63 5.629" />
@@ -2043,7 +2044,7 @@ height: 69rem;
                         </div>
                     </div>
                 </div>
-                {{/each}}
+               
                 <!-- End Single Card  -->
                 <div class="col-lg-6 col-md-12 col-sm-12 col-12 mt--30" data-sal-delay="150" data-sal="slide-up"
                     data-sal-duration="800">
@@ -2052,12 +2053,12 @@ height: 69rem;
                     <div class="rbt-card card-list variation-02 rbt-hover">
                         <div class="rbt-card-img">
                             <a href="{{link}}">
-                                <img src="assets/ProductImages/{{image}}" alt="Card image"> </a>
+                                <img src="admin/assets/ProductImages/{{image}}" alt="Card image"> </a>
                         </div>
                         <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="{{link}}">{{name}}</a></h5>
+                            <h5 class="rbt-card-title"><a href="{{link}}">{{heading}}</a></h5>
                             <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="{{link}}">Read Article<i><svg width="17" height="12"
+                                <a class="transparent-button">Read Article<i><svg width="17" height="12"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g stroke="#27374D" fill="none" fill-rule="evenodd">
                                                 <path d="M10.614 0l5.629 5.629-5.63 5.629" />

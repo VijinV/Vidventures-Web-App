@@ -921,9 +921,9 @@ const blockCord = async (req, res) => {
 };
 
 const listPost = async (req, res) => {
-  const post = await postModel.find().sort({ _id: -1 });
+  const post = await postModel.find({postType:"Story"}).sort({ _id: -1 });
 
-  res.render("postList", { post });
+  res.render("postList", { post, type:"Story" });
 };
 
 const loadAddPost = async (req, res) => {
@@ -939,7 +939,7 @@ const loadAddPost = async (req, res) => {
 };
 
 const addPost = async (req, res) => {
-  const { author,heading,caption,content,id } = req.body;
+  const { author,heading,caption,content,id,postType } = req.body;
 
   if (id) {
     try {
@@ -952,7 +952,8 @@ const addPost = async (req, res) => {
               heading: heading,
               image: req.file.filename,
               caption:caption,
-              content: content
+              content: content,
+              postType: postType
             },
           }
         );
@@ -965,7 +966,8 @@ const addPost = async (req, res) => {
             author: author,
             heading: heading,
             caption:caption,
-              content: content
+              content: content,
+              postType:postType
           },
         }
       );
@@ -977,12 +979,17 @@ const addPost = async (req, res) => {
             caption:caption,
               content: content,
       image: req.file.filename,
+      postType:postType
     });
 
     await post.save();
   }
-
+if(postType === "Blog"){
+  res.redirect("/admin/listBlogs");
+}else{
   res.redirect("/admin/listPosts");
+}
+  
 };
 
 const unListPosts = async (req, res) => {
@@ -1052,7 +1059,23 @@ const addPriceTableList = async (req, res) => {
   } catch (error) {}
 };
 
+const loadBlog = async (req, res) => {
+
+  try {
+
+    const post = await postModel.find({postType:"Blog"}).sort({ _id: -1 });
+
+   res.render("postList", { post, type:"Blog" });
+    
+  } catch (error) {
+    console.log(error.message);
+  }
+
+
+}
+
 module.exports = {
+  loadBlog,
   addPriceTableList,
   loadPriceTableList,
   loadFormData,

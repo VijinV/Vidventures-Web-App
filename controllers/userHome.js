@@ -46,18 +46,21 @@ const loadHome = async (req, res, next) => {
   const review = await reviewModel.find({}).limit(9)
   const sorted = await reviewModel.find({}).sort({_id:-1}).limit(9)
 
-  console.log(review);
 
-  const post = await postModel
-    .find({ isAvailable: true })
-    .sort({ _id: -1 })
-    .limit(1);
+  const post = await postModel.findOne({
+    isAvailable: true,
+    postType: "Blog"
+  }).sort({ _id: -1 });
+  
 
   const posts = await postModel
-    .find({ isAvailable: true })
-    .skip(1)
-    .sort({ _id: -1 })
-    .limit(3);
+  .find({ isAvailable: true, postType: "Blog" })
+  .sort({ _id: -1 })
+  .skip(1)
+  .limit(3);
+
+console.log(posts)
+    // const Post = await postModel.find().then((res)=>console.log(res))
   res.render("home", {
     login,
     session: getSession(req, res),

@@ -64,6 +64,8 @@ route.get('/lightbox',adminAuth.isLogin, adminController.loadFormData)
 
 route.get('/addPriceTableList',adminAuth.isLogin,adminController.loadPriceTableList)
 
+route.get('/listBlogs',adminAuth.isLogin,adminController.loadBlog)
+
 route.get('/logout',adminAuth.logout)
 
 
