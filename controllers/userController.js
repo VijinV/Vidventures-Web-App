@@ -551,11 +551,14 @@ const loadShop = async (req, res) => {
 };
 
 const loadProductDetails = async (req, res) => {
-  const product = await Product.getProduct(req.query.id);
+  const product = await Product.getProduct(req.query.id)
+  const list = product.list
+  const listWithoutEmpty =list.filter(element => element !== '');
 
+  console.log(listWithoutEmpty)
   const products = await Product.find({ _id: { $ne: req.query.id } }).limit(2);
 
-  res.render("productDetails", { session: true, product, products });
+  res.render("productDetails", { session: true, product, products ,list:listWithoutEmpty});
 };
 
 const addToCart = async (req, res) => {
