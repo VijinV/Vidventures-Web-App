@@ -588,7 +588,7 @@
 
     }
 
-    @media only screen and (min-width: 300px) and (max-width: 480px) {
+    @media (min-width: 300px) and (max-width: 480px) {
     #down_arrow {
         left: 15rem;
     }
@@ -598,6 +598,33 @@
     #edit{
           margin-left: 3.1rem;
     }
+       .plan1 {
+            height: 56rem;
+            transition: height 0.5s ease, opacity 0.5s ease;
+        }
+
+        #plan1:hover {
+            height: 58rem;
+            opacity: 1;
+        }
+
+        .plan2 {
+            height: 56rem;
+            transition: height 0.5s ease, opacity 0.5s ease;
+        }
+
+        .plan3 {
+            height: 56rem;
+            transition: height 0.5s ease, opacity 0.5s ease;
+        }
+
+        #plan2:hover {
+            height: 61rem;
+        }
+
+        #plan3:hover {
+            height: 70rem;
+        }
 }
 
 
@@ -1220,7 +1247,7 @@
 
                 <!-- Start Single Pricing  -->
                 <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-                    <div class="pricing-table style-2 active plan1">
+                    <div id="plan1" class="pricing-table style-2 active plan1">
                         <div class="pricing-header">
                             <h3 class="title">4 to 5 minute Cashcow video</h3>
                             <span class="rbt-badge mb--35">Silver Plan</span>
@@ -1297,7 +1324,7 @@
 
                 <!-- Start Single Pricing  -->
                 <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-                    <div class="pricing-table style-2 active plan2">
+                    <div id="plan2" class="pricing-table style-2 active plan2">
                         <div class="pricing-header">
                             <div class="pricing-badge"><span>Popular</span></div>
                             <h3 class="title">8 to 10 minute Cashcow video</h3>
@@ -1349,7 +1376,7 @@
 
                 <!-- Start Single Pricing  -->
                 <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-                    <div class="pricing-table style-2 plan3">
+                    <div id="plan3" class="pricing-table style-2 plan3">
                         <div class="pricing-header">
                             <h3 class="title">8 to 10 minute Premium video</h3>
                             <span class="rbt-badge mb--35">Epic Experience </span>
