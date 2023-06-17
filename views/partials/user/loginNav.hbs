@@ -45,103 +45,16 @@ backdrop-filter: blur(9px);
                         </ul>
                     </nav>
                 </div>
-                <div class="header-right">
+                 <div class="header-right">
 
                     <!-- Navbar Icons -->
                     <ul class="quick-access">
 
                         <li class="access-icon rbt-mini-cart">
-                            <a class="rbt-round-btn"
-                                href="/Looks_like_the_page_is_on_vacation.It_left_no_forwarding_address.">
-                                <i class="feather-shopping-cart"></i>
-                            </a>
+
                         </li>
-
-                        <li class="account-access rbt-user-wrapper d-none d-xl-block">
-                            <a href="#"><i class="feather-user"></i>Dashboard</a>
-                            <div class="rbt-user-menu-list-wrapper">
-                                <div class="inner">
-
-                                    <ul class="user-list-wrapper">
-                                        <li>
-                                            <a href="/profile">
-                                                <i class="feather-home"></i>
-                                                <span>My Dashboard</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/profile">
-                                                <i class="feather-clock"></i>
-                                                <span>Order History</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/profile">
-                                                <i class="feather-message-square"></i>
-                                                <span>FAQ ?</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <hr class="mt--10 mb--10">
-                                    <ul class="user-list-wrapper">
-                                        <li>
-                                            <a href="instructor-settings.html">
-                                                <i class="feather-settings"></i>
-                                                <span>Settings</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/logout">
-                                                <i class="feather-log-out"></i>
-                                                <span>Logout</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="access-icon rbt-user-wrapper d-block d-xl-none">
-                            <a class="rbt-round-btn" href="#"><i class="feather-user"></i></a>
-                            <div class="rbt-user-menu-list-wrapper">
-                                <div class="inner">
-
-                                    <ul class="user-list-wrapper">
-                                        <li>
-                                            <a href="/profile">
-                                                <i class="feather-home"></i>
-                                                <span>My Dashboard</span>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="/profile">
-                                                <i class="feather-clock"></i>
-                                                <span>Order History</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/profile">
-                                                <i class="feather-message-square"></i>
-                                                <span>FAQ ?</span>
-                                            </a>
-                                        </li>
-
-
-                                    </ul>
-                                    <hr class="mt--10 mb--10">
-                                    <ul class="user-list-wrapper">
-                                        <li>
-                                            <a href="/logout">
-                                                <i class="feather-log-out"></i>
-                                                <span>Logout</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-
+                        <li class="account-access rbt-user-wrapper d-none d-xl-block"> <a href="/login"><i
+                                    class="feather-user"></i>Login</a> </li>
                     </ul>
 
                     <!-- Start Mobile-Menu-Bar -->
@@ -150,6 +63,11 @@ backdrop-filter: blur(9px);
                             <button class="hamberger-button rbt-round-btn">
                                 <i class="feather-menu"></i>
                             </button>
+                        </div>
+                        <div class="cart">
+                            <a class="rbt-round-btn" href="/cart">
+                                <i class="feather-shopping-cart"></i>
+                            </a>
                         </div>
                     </div>
                     <!-- Start Mobile-Menu-Bar -->
@@ -504,3 +422,22 @@ backdrop-filter: blur(9px);
 
     </div>
 </div>
+
+
+<style>
+    .cart {
+        display: none;
+    }
+
+
+    @media (min-width: 300px) and (max-width: 480px) {
+
+        .cart {
+            display: block;
+
+            position: absolute;
+            top: 10px;
+            right: 46px;
+        }
+    }
+</style>
