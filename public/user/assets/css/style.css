@@ -11281,7 +11281,7 @@ ul.rbt-dropdown-menu.currency-menu li .sub-menu {
 }
 @media only screen and (max-width: 575px) {
   .rbt-user-wrapper .rbt-user-menu-list-wrapper {
-    left: 20px;
+    /* left: 20px; */
     right: 20px;
     width: auto;
   }
