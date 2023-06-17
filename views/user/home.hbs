@@ -583,8 +583,23 @@
 
         }
 
+        
+
 
     }
+
+    @media only screen and (min-width: 300px) and (max-width: 480px) {
+    #down_arrow {
+        left: 15rem;
+    }
+    #hidden-li{
+        opacity: 1;
+    }
+    #edit{
+          margin-left: 3.1rem;
+    }
+}
+
 
     @media (min-width: 480px) and (max-width: 810px) {}
 </style>
@@ -1097,21 +1112,21 @@
     <!-- End Call To Action  -->
     <style>
         /* Add animation to the hidden list items */
-.pricing-table .hidden-li {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
+        .pricing-table .hidden-li {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
 
-/* Show the hidden list items when the parent pricing table is hovered */
-.pricing-table:hover .hidden-li {
-    opacity: 1;
-}
+        /* Show the hidden list items when the parent pricing table is hovered */
+        .pricing-table:hover .hidden-li {
+            opacity: 1;
+        }
 
-/* Add animation to the down arrow icon */
-.down_arrow.active {
-    transform: rotate(180deg);
-    transition: transform 0.5s ease;
-}
+        /* Add animation to the down arrow icon */
+        .down_arrow.active {
+            transform: rotate(180deg);
+            transition: transform 0.5s ease;
+        }
 
 
 
@@ -1235,13 +1250,13 @@
                                 <li><i class="feather-check"></i>Human voice over</li>
                                 <li><i class="feather-check"></i>1 Revisions</li>
                                 <li><i class="feather-check"></i>SEO included</li>
-                                <li class="hidden-li"><i class="feather-check"></i>Highly engaging <span>Video
-                                        Editing</span></li>
+                                <li id="hidden-li" class="hidden-li"><i class="feather-check"></i>Highly engaging <span>Video
+                                      <span id="edit" > Editing</span> </span></li>
                                 <li class="hidden-li"><i class="feather-check"></i>Customisable <span>Thumbnail</span>
                                 </li>
 
                             </ul>
-                            <div class="down_arrow">
+                            <div id="down_arrow" class="down_arrow">
                                 <span>
                                     <i class="bi bi-chevron-compact-down"></i>
                                 </span>
@@ -1314,14 +1329,14 @@
                                 <li><i class="feather-check"></i>Human voice over</li>
                                 <li><i class="feather-check"></i>2 Revisions</li>
                                 <li><i class="feather-check"></i>SEO included</li>
-                                <li class="hidden-li"><small class="ms-5">(multiple Options)</small></li>
+                                <li id="hidden-li" class="hidden-li"><small class="ms-5">(multiple Options)</small></li>
                                 <li class="hidden-li"><i class="feather-check"></i> Advanced + VFX
                                     <span style="margin-left: 31px;">Video Editing</span>
                                 </li>
                                 <li class="hidden-li"><i class="feather-check"></i>Customisable <span>Thumbnail</span>
                                 </li>
                             </ul>
-                            <div class="down_arrow down_arrow55">
+                            <div id="down_arrow" class="down_arrow down_arrow55">
                                 <span>
                                     <i class="bi bi-chevron-compact-down"></i>
                                 </span>
@@ -1366,7 +1381,7 @@
                                 <li><i class="feather-check"></i>Human voice over</li>
                                 <li><i class="feather-check"></i>3 Revisions</li>
                                 <li><i class="feather-check"></i>SEO included</li>
-                                <li class="hidden-li"><small class="ms-5">(multiple Options)</small></li>
+                                <li id="hidden-li" class="hidden-li"><small class="ms-5">(multiple Options)</small></li>
                                 <li class="hidden-li"><i class="feather-check"></i> Cinematic + VFX
                                     <span style="margin-left: 31px;">Video Editing</span>
                                 </li>
@@ -1379,7 +1394,7 @@
                                     <span style="margin-left: 31px;">Support</span>
                                 </li>
                             </ul>
-                            <div class="down_arrow down_arrow98">
+                            <div id="down_arrow" class="down_arrow down_arrow98">
                                 <span>
                                     <i class="bi bi-chevron-compact-down"></i>
                                 </span>
