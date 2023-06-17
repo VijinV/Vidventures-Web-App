@@ -27,25 +27,24 @@ backdrop-filter: blur(9px);
                             </li>
 
                             <li class="with-megamenu has-menu-child-item">
-                                <a
-                                    href="/shop">Services</a>
+                                <a href="/shop">Services</a>
                             </li>
 
-                             <li class="with-megamenu has-menu-child-item">
+                            <li class="with-megamenu has-menu-child-item">
                                 <a href="/blog">Success Stories</a>
                             </li>
                             <li class="with-megamenu has-menu-child-item">
                                 <a href="/about">About Us
                                 </a>
                             </li>
-                             <li class="with-megamenu has-menu-child-item">
+                            <li class="with-megamenu has-menu-child-item">
                                 <a href="/contact">Contact </a>
                             </li>
 
-                            
-                           
 
-                           
+
+
+
 
 
 
@@ -58,17 +57,8 @@ backdrop-filter: blur(9px);
                     <!-- Navbar Icons -->
                     <ul class="quick-access">
 
-
                         <li class="access-icon rbt-mini-cart">
-                            <a class="rbt-round-btn" href="/cart">
-                                <i class="feather-shopping-cart"></i>
-                            </a>
-                        </li>
-
-                        <li class="account-access rbt-user-wrapper d-none d-xl-block">
-                            <a href="/login"><i
-                                    class="feather-user"></i>Login</a>
-
+                            
                         </li>
                     </ul>
 
@@ -78,6 +68,11 @@ backdrop-filter: blur(9px);
                             <button class="hamberger-button rbt-round-btn">
                                 <i class="feather-menu"></i>
                             </button>
+                        </div>
+                        <div class="cart">
+<a class="rbt-round-btn" href="/cart">
+                                <i class="feather-shopping-cart"></i>
+                            </a>
                         </div>
                     </div>
                     <!-- Start Mobile-Menu-Bar -->
@@ -431,3 +426,22 @@ backdrop-filter: blur(9px);
 
     </div>
 </div>
+
+
+<style>
+    .cart{
+        display: none;
+    }
+
+
+@media (min-width: 300px) and (max-width: 480px) {
+
+    .cart{
+        display: block;
+
+    position: absolute;
+top: 10px;
+right: 46px;
+    }
+}
+</style>
