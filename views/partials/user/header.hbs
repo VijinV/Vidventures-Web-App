@@ -58,8 +58,10 @@ backdrop-filter: blur(9px);
                     <ul class="quick-access">
 
                         <li class="access-icon rbt-mini-cart">
-                            
+
                         </li>
+                        <li class="account-access rbt-user-wrapper d-none d-xl-block"> <a href="/login"><i
+                                    class="feather-user"></i>Login</a> </li>
                     </ul>
 
                     <!-- Start Mobile-Menu-Bar -->
@@ -70,7 +72,7 @@ backdrop-filter: blur(9px);
                             </button>
                         </div>
                         <div class="cart">
-<a class="rbt-round-btn" href="/cart">
+                            <a class="rbt-round-btn" href="/cart">
                                 <i class="feather-shopping-cart"></i>
                             </a>
                         </div>
@@ -429,19 +431,19 @@ backdrop-filter: blur(9px);
 
 
 <style>
-    .cart{
+    .cart {
         display: none;
     }
 
 
-@media (min-width: 300px) and (max-width: 480px) {
+    @media (min-width: 300px) and (max-width: 480px) {
 
-    .cart{
-        display: block;
+        .cart {
+            display: block;
 
-    position: absolute;
-top: 10px;
-right: 46px;
+            position: absolute;
+            top: 10px;
+            right: 46px;
+        }
     }
-}
 </style>
