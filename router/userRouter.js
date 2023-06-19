@@ -49,6 +49,8 @@ route.get('/blog',userController.loadBlog)
 
 route.get('/blogDetails',userController.loadBlogDetails)
 
+route.get('/privacypolicy',userController.loadPrivacy)
+
 
 
 // post 

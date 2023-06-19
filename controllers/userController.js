@@ -1097,12 +1097,23 @@ const loadBlogDetails = async (req, res) => {
 
 }
 
+const loadPrivacy = async (req, res) => {
+  try {
+    
+    res.render('privacy')
+
+  } catch (error) {
+    
+  }
+}
+
 
 
 
 // =================================================================
 
 module.exports = {
+  loadPrivacy,
   loadBlogDetails,
   loadBlog,
   loadTerms,
