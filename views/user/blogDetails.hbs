@@ -25,8 +25,9 @@
                             <figcaption style="font-style: italic;">{{post.caption}}</figcaption>
                         </figure>
                     </div>
-                    <p>{{post.content}}</p>
-
+                   {{#each split}}
+                   <p>{{this}}</p>
+                   {{/each}}
 {{!-- 
                     <p>Apple today named eight app and game developers receiving an Apple Design Award, each one selected for being thoughtful and creative. Apple Design Award winners bring distinctive new ideas to life and demonstrate deep mastery of Apple technology. The apps spring up from developers large and small, in every part of the world, and provide users with new ways of working.</p>
 

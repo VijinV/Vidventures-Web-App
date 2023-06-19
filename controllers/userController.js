@@ -1074,7 +1074,10 @@ const loadBlogDetails = async (req, res) => {
         .find({ isAvailable: true, postType: "Story", _id: { $ne: id } })
         .sort({ _id: -1 })
         .limit(3);
-        res.render("blogDetails",{post,posts});
+        const split = post.content.split(/\n\s*\n/);
+        res.render("blogDetails",{post,posts,split});
+
+       
     } else {
       
       const post = await postModel.findById({_id: id})
@@ -1083,7 +1086,11 @@ const loadBlogDetails = async (req, res) => {
         .find({ isAvailable: true, postType: "Blog", _id: { $ne: id } })
         .sort({ _id: -1 })
         .limit(3);
-        res.render("blogDetails",{post,posts});
+
+        const split = post.content.split(/\n\s*\n/);
+
+        res.render("blogDetails",{post,posts,split});
+        
 
     }
 
@@ -1107,12 +1114,21 @@ const loadPrivacy = async (req, res) => {
   }
 }
 
+const loadOurStory = async (req, res) => {
+  try {
+    res.render ('ourStory')
+  } catch (error) {
+    
+  }
+}
+
 
 
 
 // =================================================================
 
 module.exports = {
+  loadOurStory,
   loadPrivacy,
   loadBlogDetails,
   loadBlog,

@@ -1,0 +1,167 @@
+<div class="rbt-overlay-page-wrapper">
+    <div class="breadcrumb-image-container breadcrumb-style-max-width">
+        <div class="breadcrumb-image-wrapper">
+            {{!-- <img src="assets/images/bg/bg-image-10.jpg" alt="Education Images"> --}}
+        </div>
+        <div class="breadcrumb-content-top text-center">
+            {{!-- <ul class="meta-list justify-content-center mb--10">
+                <li class="list-item">
+                    <div class="author-info">
+                        <a href="#"><strong>{{post.author}}</strong></a> in <a href="#"><strong>Vidventures</strong></a>
+                    </div>
+                </li>
+
+            </ul> --}}
+            <h1 class="title">The Extraordinary Journey of Our Company</h1>
+        </div>
+    </div>
+
+    <div class="rbt-blog-details-area rbt-section-gapBottom breadcrumb-style-max-width">
+        <div class="blog-content-wrapper rbt-article-content-wrapper">
+            <div class="content">
+                <div class="post-thumbnail mb--30 position-relative wp-block-image alignwide">
+                    {{!-- <figure>
+                        <img src="admin/assets/ProductImages/{{post.image}}" alt="Blog Images">
+                        <figcaption style="font-style: italic;">{{post.caption}}</figcaption>
+                    </figure> --}}
+                </div>
+                <p>Our remarkable journey began in the year 2021 when our founder discovered a golden opportunity
+                    nestled within the realm of YouTube automation. Thus, our content creation company was born,
+                    embarking on a transformative path that would captivate audiences and shape the future of online
+                    entertainment.</p>
+
+
+                <p>Drawing upon a wealth of expertise accumulated over the course of a decade, we honed our craft in the
+                    art of content creation. We understood the nuances, the intricacies, and the pulse of what truly
+                    captivated viewers. But we truly found our calling in the realm of YouTube content creation. Two and
+                    a half years of relentless dedication, experimentation, and boundless creativity allowed us to
+                    unravel the secrets of success in the cashcow video category.
+                </p>
+
+
+
+                <p>At the heart of our mission was a steadfast commitment to producing high-quality content that
+                    surpassed expectations and catapulted channels to unprecedented heights. With each video we crafted,
+                    we breathed life into stories, infused them with emotion, and left an indelible impact on those who
+                    clicked that elusive "play" button.</p>
+                <p>Our efforts did not go unnoticed. The trust and loyalty bestowed upon us by our customers became the
+                    cornerstone of our success. As we collaborated closely with channel owners, we understood their
+                    aspirations, dreams, and desires for content that would entertain and engage on a profound level.
+
+
+                </p>
+                <p>And so, our company became a catalyst for their ambitions, generating over $3 million USD from
+                    YouTube for our cherished customers. Together, we shattered barriers, defied expectations, and
+                    unleashed the true potential of their channels. We witnessed the transformative power of organic
+                    content that spoke directly to the hearts and minds of viewers, forging a bond that transcended
+                    fleeting trends and algorithmic whims.
+                    But our journey did not end there. Fuelled by a relentless pursuit of excellence, we continued to
+                    push boundaries, innovate, and redefine what it meant to be a content creator in the digital age. We
+                    embraced emerging technologies, harnessed the power of data-driven insights, and constantly evolved
+                    to meet the ever-changing needs of our dynamic audience.
+                    Our commitment to our customers remains unwavering. We strive to be not just a content creation
+                    company but a trusted partner, a beacon of inspiration, and a catalyst for their success. Together,
+                    we forge ahead, navigating uncharted territories and crafting content that stands the test of time.
+                </p>
+                <p>We invite you to join us on this extraordinary journey. Together, let us illuminate screens, spark
+                    imagination, and build a loyal community of viewers who will forever remain captivated by the magic
+                    we create. Welcome to a world where dreams become a reality, where creativity knows no bounds, and
+                    where your content finds its true purpose. Welcome to our content creation company, where loyalty is
+                    earned, and inspiration is ignited.
+                </p>
+
+
+
+                <p>For more information on the apps and games, visit the <a href="#">Instagram</a>.</p>
+
+                <!-- Social Share Block  -->
+                <div class="social-share-block">
+
+                    <ul class="social-icon social-default transparent-with-border">
+                        <li><a id="share-button" onclick="share()">
+                                <i class="bi bi-share"></i>
+                            </a>
+                        </li>
+                        <li><a href="https://www.facebook.com/">
+                                <i class="feather-facebook"></i>
+                            </a>
+                        </li>
+                        <li><a href="https://www.twitter.com">
+                                <i class="feather-twitter"></i>
+                            </a>
+                        </li>
+                        <li><a href="https://www.instagram.com/">
+                                <i class="feather-instagram"></i>
+                            </a>
+                        </li>
+                        <li><a href="https://www.linkdin.com/">
+                                <i class="feather-linkedin"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+            </div>
+            <div class="related-post pt--60">
+                <div class="section-title text-start mb--40">
+                    <span class="subtitle bg-primary-opacity">Related Post</span>
+                    <h4 class="title">Similar Post</h4>
+                </div>
+
+                {{#each posts}}
+                <!-- Start Single Card  -->
+                <div class="rbt-card card-list variation-02 rbt-hover mt--30">
+                    <div class="rbt-card-img">
+                        <a href="/blogDetails/?id={{_id}}">
+                            <img src="admin/assets/ProductImages/{{image}}" alt="Card image"> </a>
+                    </div>
+                    <div class="rbt-card-body">
+                        <h5 class="rbt-card-title">
+                            <ahref=" /blogDetails/?id={{_id}}">{{heading}}</ahref=>
+                        </h5>
+                        <div class="rbt-card-bottom">
+                            <a class="transparent-button" href="/blogDetails/?id={{_id}}">Read
+                                Article<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg">
+                                        <g stroke="#27374D" fill="none" fill-rule="evenodd">
+                                            <path d="M10.614 0l5.629 5.629-5.63 5.629" />
+                                            <path stroke-linecap="square" d="M.663 5.572h14.594" />
+                                        </g>
+                                    </svg></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Card  -->
+                {{/each}}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #share-button:hover {
+        color: aliceblue;
+    }
+</style>
+
+<script>
+
+
+    function share() {
+        console.log('hai')
+        if (navigator.share) {
+            navigator.share({
+                title: 'Example Title',
+                text: 'Check out this amazing content!',
+                url: 'https://www.example.com'
+            })
+                .then(() => console.log('Successfully shared'))
+                .catch((error) => console.log('Error sharing:', error));
+        } else {
+            console.log('Web Share API not supported.');
+        }
+    }
+
+</script>
