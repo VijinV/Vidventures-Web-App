@@ -1,332 +1,337 @@
-
 <!-- Start breadcrumb Area -->
 
-<form action="">
+<form action="/paymentPage" method="post">
 
-{{#if cartItem }}
-<div class="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcrumb-inner text-center">
-                    <h2 class="title">Cart</h2>
-                    <ul class="page-list">
-                        <li class="rbt-breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li>
-                            <div class="icon-right"><i class="feather-chevron-right"></i></div>
-                        </li>
-                        <li class="rbt-breadcrumb-item active">Cart</li>
-                    </ul>
+    {{#if cartItem }}
+    <div class="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-inner text-center">
+                        <h2 class="title">Cart</h2>
+                        <ul class="page-list">
+                            <li class="rbt-breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li>
+                                <div class="icon-right"><i class="feather-chevron-right"></i></div>
+                            </li>
+                            <li class="rbt-breadcrumb-item active">Cart</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- End Breadcrumb Area -->
+    <!-- End Breadcrumb Area -->
 
-<div class="rbt-cart-area bg-color-white rbt-section-gap">
-    <div class="cart_area">
-        <div class="container">
+    <div class="rbt-cart-area bg-color-white rbt-section-gap">
+        <div class="cart_area">
+            <div class="container">
 
-            <div class="row">
-                <div class="col-12">
-                    <form action="#">
-                        <!-- Cart Table -->
-                        <div class="cart-table table-responsive mb--60">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th class="pro-thumbnail">Image</th>
-                                        <th class="pro-title">Product</th>
-                                        <th class="pro-price">Price</th>
-                                        <th class="pro-quantity">Quantity</th>
-                                        {{! <th class="pro-subtotal">Total</th> }}
-                                        <th class="pro-remove">Remove</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                <div class="row">
+                    <div class="col-12">
+                        <form action="#">
+                            <!-- Cart Table -->
+                            <div class="cart-table table-responsive mb--60">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="pro-thumbnail">Image</th>
+                                            <th class="pro-title">Product</th>
+                                            <th class="pro-price">Price</th>
+                                            <th class="pro-quantity">Quantity</th>
+                                            {{! <th class="pro-subtotal">Total</th> }}
+                                            <th class="pro-remove">Remove</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                                    {{#each cartItem}}
-                                    <tr>
-                                        <td class="pro-thumbnail"><a href="#"><img
-                                                    src="admin/assets/ProductImages/{{productId.image}}"
-                                                    alt="Product" /></a></td>
-                                        <td class="pro-title"><a href="#">{{productId.name}}</a></td>
-                                        <td class="pro-price"><span>${{productId.discountedPrice}}</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="pro-qty w-100">
-                                                <a class="minus-btn ms-2 me 3"><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="24" height="24" viewBox="0 0 24 24">
-                                                        <path fill="currentColor" d="M19 12.998H5v-2h14z" />
-                                                    </svg></a>
+                                        {{#each cartItem}}
+                                        <tr>
+                                            <td class="pro-thumbnail"><a href="#"><img
+                                                        src="admin/assets/ProductImages/{{productId.image}}"
+                                                        alt="Product" /></a></td>
+                                            <td class="pro-title"><a href="#">{{productId.name}}</a></td>
+                                            <td class="pro-price"><span>${{productId.discountedPrice}}</span></td>
+                                            <td class="pro-quantity">
+                                                <div class="pro-qty w-100">
+                                                    <a class="minus-btn ms-2 me 3"><svg
+                                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                            viewBox="0 0 24 24">
+                                                            <path fill="currentColor" d="M19 12.998H5v-2h14z" />
+                                                        </svg></a>
 
-                                                <input id="cartqty" class="qty-input w-100" type="number"
-                                                    value="{{qty}}" data-product-id="{{productId._id}}" min="1" />
-                                                <a class="plus-btn ms-3 me-2"><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="24" height="24" viewBox="0 0 24 24">
-                                                        <path fill="currentColor"
-                                                            d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6h-2Z" />
-                                                    </svg></a>
-                                            </div>
-                                        </td>
-                                        <small class="text-danger" id="small"></small>
-                                        <td class="pro-remove"><a href="/removeFromCart?id={{productId._id}}"><i
-                                                    class="feather-x"></i></a></td>
-                                    </tr>
-                                    {{/each}}
+                                                    <input id="cartqty" class="qty-input w-100" type="number"
+                                                        value="{{qty}}" data-product-id="{{productId._id}}" min="1" />
+                                                    <a class="plus-btn ms-3 me-2"><svg
+                                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                            viewBox="0 0 24 24">
+                                                            <path fill="currentColor"
+                                                                d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6h-2Z" />
+                                                        </svg></a>
+                                                </div>
+                                            </td>
+                                            <small class="text-danger" id="small"></small>
+                                            <td class="pro-remove"><a href="/removeFromCart?id={{productId._id}}"><i
+                                                        class="feather-x"></i></a></td>
+                                        </tr>
+                                        {{/each}}
 
 
 
-                                </tbody>
-                            </table>
-                        </div>
-                    </form>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
 
-                    <style>
-                        .addmore {
-                            border-collapse: collapse;
-                            border: none;
-                        }
+                        <style>
+                            .addmore {
+                                border-collapse: collapse;
+                                border: none;
+                            }
 
-                        .addmore td {
+                            .addmore td {
 
-                            border: none;
+                                border: none;
 
-                        }
+                            }
 
-                        .addmore tr {
-                            justify-content: space-between;
-                        }
+                            .addmore tr {
+                                justify-content: space-between;
+                            }
 
-                        .addmore tr td {
-                            margin-top: 10px;
-                        }
+                            .addmore tr td {
+                                margin-top: 10px;
+                            }
 
-                        .addmore tr .pro-quantity {
-                            margin-top: 0;
-                        }
+                            .addmore tr .pro-quantity {
+                                margin-top: 0;
+                            }
 
-                        .checkbox-container {
-                            display: inline-block;
-                            position: relative;
-                            padding-left: 30px;
-                            margin-bottom: 15px;
-                            cursor: pointer;
-                            font-size: 18px;
-                        }
+                            .checkbox-container {
+                                display: inline-block;
+                                position: relative;
+                                padding-left: 30px;
+                                margin-bottom: 15px;
+                                cursor: pointer;
+                                font-size: 18px;
+                            }
 
-                        .styled-checkbox {
-                            position: absolute;
-                            opacity: 0;
-                            cursor: pointer;
-                        }
+                            .styled-checkbox {
+                                position: absolute;
+                                opacity: 0;
+                                cursor: pointer;
+                            }
 
-                        .checkmark {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            height: 20px;
-                            width: 20px;
-                            background-color: #eee;
-                        }
+                            .checkmark {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                height: 20px;
+                                width: 20px;
+                                background-color: #eee;
+                            }
 
-                        .styled-checkbox:checked+.checkmark {
-                            background-color: blue;
-                        }
+                            .styled-checkbox:checked+.checkmark {
+                                background-color: blue;
+                            }
 
-                        .checkmark:after {
-                            content: "";
-                            position: absolute;
-                            display: none;
-                        }
+                            .checkmark:after {
+                                content: "";
+                                position: absolute;
+                                display: none;
+                            }
 
-                        .styled-checkbox:checked+.checkmark:after {
-                            display: block;
-                        }
+                            .styled-checkbox:checked+.checkmark:after {
+                                display: block;
+                            }
 
-                        .checkmark:after {
-                            left: 7px;
-                            top: 3px;
-                            width: 5px;
-                            height: 10px;
-                            border: solid white;
-                            border-width: 0 2px 2px 0;
-                            transform: rotate(45deg);
-                        }
-                    </style>
+                            .checkmark:after {
+                                left: 7px;
+                                top: 3px;
+                                width: 5px;
+                                height: 10px;
+                                border: solid white;
+                                border-width: 0 2px 2px 0;
+                                transform: rotate(45deg);
+                            }
+                        </style>
 
-                    <div class="row g-5">
+                        <div class="row g-5">
 
-                        <div class="col-lg-6 col-12">
-                            <!-- Discount Coupon -->
-                            <div class="discount-coupon edu-bg-shade">
-                                <div class="section-title text-start">
-                                    <h4 class="title mb--30">Add More</h4>
-                                </div>
-                                <div class="addmoreitems">
-                                    <table class="addmore">
-                                        <thead>
-                                            <tr>
+                            <div class="col-lg-6 col-12">
+                                <!-- Discount Coupon -->
+                                <div class="discount-coupon edu-bg-shade">
+                                    <div class="section-title text-start">
+                                        <h4 class="title mb--30">Add More</h4>
+                                    </div>
+                                    <div class="addmoreitems">
+                                        <table class="addmore">
+                                            <thead>
+                                                <tr>
 
-                                                <th></th>
-                                                <th style="position: absolute;
+                                                    <th></th>
+                                                    <th style="position: absolute;
     margin-left: -5rem;
     margin-top: -2rem;">Total</th>
 
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="d-flex">
-                                                <td class="align-middle">
-                                                    <label class="checkbox-container">
-                                                        <input type="checkbox" class="styled-checkbox">
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </td>
-                                                <td class="pro-title"><a href="#">Yt Shorts</a></td>
-                                                <td class="pro-quantity" style="margin-left: 7rem;">
-                                                    <div style="margin-left: 1rem ;" class="pro-qty">
-                                                        <a onclick="shortsminus()" class="minus-btn ms-2 me-3"><svg
-                                                                xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24">
-                                                                <path fill="currentColor" d="M19 12.998H5v-2h14z" />
-                                                            </svg></a>
-                                                        <input id="shorts" class="qty-input" type="number" value="0" />
-                                                        <a onclick="shortsadd()" class="plus-btn ms-3 me-2"><svg
-                                                                xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24">
-                                                                <path fill="currentColor"
-                                                                    d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6h-2Z" />
-                                                            </svg></a>
-                                                    </div>
-                                                </td>
-                                                <td>$ 8</td>
-                                                <td id="shorts-total">$ 0</td>
-                                            </tr>
-                                            <tr class="d-flex">
-                                                <td class="align-middle">
-                                                    <label class="checkbox-container">
-                                                        <input type="checkbox" class="styled-checkbox">
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </td>
-                                                <td class="pro-title"><a href="#">Premium Thumbnail</a></td>
-                                                <td class="pro-quantity" style="margin-left: -1rem;">
-                                                    <div class="pro-qty">
-                                                        <a id="Thumnailminus" class="minus-btn ms-2 me-3"><svg
-                                                                xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24">
-                                                                <path fill="currentColor" d="M19 12.998H5v-2h14z" />
-                                                            </svg></a>
-                                                        <input id="thumb" class="qty-input" type="number" value="0" />
-                                                        <a id="thumbnailpuls" class="plus-btn ms-3 me-2"><svg
-                                                                xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24">
-                                                                <path fill="currentColor"
-                                                                    d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6h-2Z" />
-                                                            </svg></a>
-                                                    </div>
-                                                </td>
-                                                <td>$ 5</td>
-                                                <td id="thumbtotal">$ 0</td>
-                                            </tr>
-                                            <tr class="d-flex">
-                                                <td class="align-middle">
-                                                    <label class="checkbox-container">
-                                                        <input type="checkbox" class="styled-checkbox">
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </td>
-                                                <td class="pro-title"><a href="#">Channel Management</a></td>
-                                                <td class="pro-quantity"></td>
-                                               <td></td>
-                                               <td></td>
-                                               <td></td>
-                                                <td>$ 150 </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                {{!-- <form action="#">
-                                    <div class="row">
-                                        <div class="col-md-6 col-12 mb--25">
-                                            <input type="text" placeholder="Coupon Code">
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="d-flex">
+                                                    <td class="align-middle">
+                                                        <label class="checkbox-container">
+                                                            <input name="shorts" value="shorts" type="checkbox" class="styled-checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </td>
+                                                    <td class="pro-title"><a href="#">Yt Shorts</a></td>
+                                                    <td class="pro-quantity" style="margin-left: 7rem;">
+                                                        <div style="margin-left: 1rem ;" class="pro-qty">
+                                                            <a onclick="shortsminus()" class="minus-btn ms-2 me-3"><svg
+                                                                    xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24">
+                                                                    <path fill="currentColor" d="M19 12.998H5v-2h14z" />
+                                                                </svg></a>
+                                                            <input name="shortsQty" id="shorts" class="qty-input" type="number"
+                                                                value="0" />
+                                                            <a onclick="shortsadd()" class="plus-btn ms-3 me-2"><svg
+                                                                    xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24">
+                                                                    <path fill="currentColor"
+                                                                        d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6h-2Z" />
+                                                                </svg></a>
+                                                        </div>
+                                                    </td>
+                                                    <td>$ 8</td>
+                                                    <td id="shorts-total">$ 0</td>
+                                                </tr>
+                                                <tr class="d-flex">
+                                                    <td class="align-middle">
+                                                        <label class="checkbox-container">
+                                                            <input value="thumbnail" name="thumbnail" type="checkbox" class="styled-checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </td>
+                                                    <td class="pro-title"><a href="#">Premium Thumbnail</a></td>
+                                                    <td class="pro-quantity" style="margin-left: -1rem;">
+                                                        <div class="pro-qty">
+                                                            <a id="Thumnailminus" class="minus-btn ms-2 me-3"><svg
+                                                                    xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24">
+                                                                    <path fill="currentColor" d="M19 12.998H5v-2h14z" />
+                                                                </svg></a>
+                                                            <input name="thumbnailQty" id="thumb" class="qty-input" type="number"
+                                                                value="0" />
+                                                            <a id="thumbnailpuls" class="plus-btn ms-3 me-2"><svg
+                                                                    xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24">
+                                                                    <path fill="currentColor"
+                                                                        d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6h-2Z" />
+                                                                </svg></a>
+                                                        </div>
+                                                    </td>
+                                                    <td>$ 5</td>
+                                                    <td id="thumbtotal">$ 0</td>
+                                                </tr>
+                                                <tr class="d-flex">
+                                                    <td class="align-middle">
+                                                        <label class="checkbox-container">
+                                                            <input name="channelManagement" value="channel" type="checkbox" class="styled-checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </td>
+                                                    <td class="pro-title"><a href="#">Channel Management</a></td>
+                                                    <td class="pro-quantity"></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>$ 150 </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    {{!-- <form action="#">
+                                        <div class="row">
+                                            <div class="col-md-6 col-12 mb--25">
+                                                <input type="text" placeholder="Coupon Code">
+                                            </div>
+                                            <div class="col-md-6 col-12 mb--25">
+                                                <button class="rbt-btn btn-gradient hover-icon-reverse btn-sm">
+                                                    <span class="icon-reverse-wrapper">
+                                                        <span class="btn-text">Apply Code</span>
+                                                        <span class="btn-icon"><i
+                                                                class="feather-arrow-right"></i></span>
+                                                        <span class="btn-icon"><i
+                                                                class="feather-arrow-right"></i></span>
+                                                    </span>
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 col-12 mb--25">
-                                            <button class="rbt-btn btn-gradient hover-icon-reverse btn-sm">
-                                                <span class="icon-reverse-wrapper">
-                                                    <span class="btn-text">Apply Code</span>
-                                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form> --}}
-                            </div>
-                        </div>
-                        <!-- Cart Summary -->
-
-                        <div class="col-lg-5 offset-lg-1 col-12">
-                            <div class="cart-summary">
-                                <div class="cart-summary-wrap">
-                                    <div class="section-title text-start">
-                                        <h4 class="title mb--30">Cart Summary</h4>
-                                    </div>
-                                    <p>Add on <span id="addon">$ 33</span> </p>
-                                    <p>Sub Total <span class="subtotal">${{totalPrice}}</span></p>
-                                    {{! <p>Shipping Cost <span>$00.00</span></p> }}
-                                    <h2>Grand Total <span class="subtotal">${{totalPrice}}</span></h2>
-                                </div>
-
-                                <div class="cart-submit-btn-group">
-                                    <div class="single-button w-100">
-                                        <form action="/checkout" method="post">
-
-                                            <button type="submit"
-                                                class="rbt-btn btn-gradient rbt-switch-btn rbt-switch-y w-100">
-                                                <span data-text="Checkout">Checkout</span>
-                                            </button>
-
-                                        </form>
-
-                                    </div>
+                                    </form> --}}
                                 </div>
                             </div>
-                        </div>
+                            <!-- Cart Summary -->
 
+                            <div class="col-lg-5 offset-lg-1 col-12">
+                                <div class="cart-summary">
+                                    <div class="cart-summary-wrap">
+                                        <div class="section-title text-start">
+                                            <h4 class="title mb--30">Cart Summary</h4>
+                                        </div>
+                                        <p>Add on <span id="addon">$ 33</span> </p>
+                                        <p>Sub Total <span class="subtotal">${{totalPrice}}</span></p>
+                                        {{! <p>Shipping Cost <span>$00.00</span></p> }}
+                                        <h2>Grand Total <span class="subtotal">${{totalPrice}}</span></h2>
+                                    </div>
+
+                                    <div class="cart-submit-btn-group">
+                                        <div class="single-button w-100">
+
+
+                                                <button type="submit"
+                                                    class="rbt-btn btn-gradient rbt-switch-btn rbt-switch-y w-100">
+                                                    <span data-text="Checkout">Checkout</span>
+                                                </button>
+
+                                          
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
+
+
+
             </div>
-
-
-
         </div>
     </div>
-</div>
 
-<div class="rbt-separator-mid">
-    <div class="container">
-        <hr class="rbt-separator m-0" />
+    <div class="rbt-separator-mid">
+        <div class="container">
+            <hr class="rbt-separator m-0" />
+        </div>
     </div>
-</div>
 
-{{else}}
-<div style="display: grid; place-items: center; height: 100vh; margin-top: -50px;">
-    <img style="width: 30rem;"
-        src="https://dduwxf.stripocdn.email/content/guids/CABINET_1751644d26c5b4ff136779ae1d3a2e40972d57d09ab6be4010954bd6591cbf64/images/108_copy.png"
-        alt="" srcset="">
-    <h2 style="position: absolute; margin-top: 10rem;">OOPS ! <span>Currently your cart is empty</span></h2>
-    <p style="margin-top: 10rem;">Browse our collection of automation tools to find the perfect fit for your needs.
-        Get started by clicking the "Shop Now" button below.</p>
-    <a class="btn btn-lg btn-primary"
-        style=" border-radius: 10px; margin-top: -10rem; padding: 10px; height: 40px; width: 100px;" role="button"
-        href="/shop">Shop Now</a>
+    {{else}}
+    <div style="display: grid; place-items: center; height: 100vh; margin-top: -50px;">
+        <img style="width: 30rem;"
+            src="https://dduwxf.stripocdn.email/content/guids/CABINET_1751644d26c5b4ff136779ae1d3a2e40972d57d09ab6be4010954bd6591cbf64/images/108_copy.png"
+            alt="" srcset="">
+        <h2 style="position: absolute; margin-top: 10rem;">OOPS ! <span>Currently your cart is empty</span></h2>
+        <p style="margin-top: 10rem;">Browse our collection of automation tools to find the perfect fit for your needs.
+            Get started by clicking the "Shop Now" button below.</p>
+        <a class="btn btn-lg btn-primary"
+            style=" border-radius: 10px; margin-top: -10rem; padding: 10px; height: 40px; width: 100px;" role="button"
+            href="/shop">Shop Now</a>
 
-</div>
+    </div>
 
-{{/if}}
+    {{/if}}
 
 </form>
 <!-- Latest version of jQuery -->
@@ -352,7 +357,10 @@
                 qtyInput.value--;
                 const productId = qtyInput.getAttribute('data-product-id');
                 const newQuantity = qtyInput.value;
-                updateCartItem(productId, newQuantity);
+                if (productId) {
+                    updateCartItem(productId, newQuantity);
+                }
+
             }
         });
 
@@ -361,7 +369,9 @@
             qtyInput.value++;
             const productId = qtyInput.getAttribute('data-product-id');
             const newQuantity = qtyInput.value;
-            updateCartItem(productId, newQuantity);
+            if (productId) {
+                updateCartItem(productId, newQuantity);
+            }
         });
     });
 
@@ -437,9 +447,9 @@
             const totalPrice = 8 * newvalue
             total.innerHTML = totalPrice
 
-        }else{
+        } else {
 
-             
+
             total.innerHTML = 8
 
         }
@@ -448,9 +458,9 @@
     }
 
 
-      function Thumbnailadd() {
+    function Thumbnailadd() {
 
-     console.log('clicked')
+        console.log('clicked')
         const inputvalue = document.getElementById('thumb').value
 
         const total = document.getElementById('thumbtotal')
@@ -482,60 +492,60 @@
 
             const totalPrice = 8 * newvalue
             total.innerHTML = totalPrice
-            
 
-        }else{
 
-             
+        } else {
+
+
             total.innerHTML = 8
 
         }
         updateAddonValue();
 
     }
-const thumbnailMinus = document.querySelector('#Thumnailminus');
-const thumbnailpuls = document.querySelector('#thumbnailpuls')
+    const thumbnailMinus = document.querySelector('#Thumnailminus');
+    const thumbnailpuls = document.querySelector('#thumbnailpuls')
 
-thumbnailMinus.addEventListener('click', Thumbnailminus);
+    thumbnailMinus.addEventListener('click', Thumbnailminus);
 
 
-thumbnailpuls.addEventListener('click', Thumbnailadd);
+    thumbnailpuls.addEventListener('click', Thumbnailadd);
 
-// Get the necessary elements
-const shortsTotal = document.querySelector('#shorts-total');
-const thumbTotal = document.querySelector('#thumbtotal');
-const addon = document.querySelector('#addon');
+    // Get the necessary elements
+    const shortsTotal = document.querySelector('#shorts-total');
+    const thumbTotal = document.querySelector('#thumbtotal');
+    const addon = document.querySelector('#addon');
 
-// Create a function to update the addon value
-function updateAddonValue() {
-  // Get the values from the shorts-total and thumbtotal elements
-  const shortsValue = shortsTotal.textContent;
-  const thumbValue = thumbTotal.textContent;
+    // Create a function to update the addon value
+    function updateAddonValue() {
+        // Get the values from the shorts-total and thumbtotal elements
+        const shortsValue = shortsTotal.textContent;
+        const thumbValue = thumbTotal.textContent;
 
-  console.log(shortsValue)
-   
-  
-  // Remove the "$" sign and convert to numbers
-  const shortsNumber = Number(shortsValue.slice(2));
-  
-  const thumbNumber = Number(thumbValue.slice(2));
- 
- 
-  // Calculate the total value
-  const totalValue = shortsNumber + thumbNumber;
-  
-  // Update the addon element with the new value
-  addon.textContent = `$ ${totalValue}`;
+        console.log(shortsValue)
 
-  console.log(totalValue)
-}
 
-// Call the updateAddonValue function initially
-updateAddonValue();
+        // Remove the "$" sign and convert to numbers
+        const shortsNumber = Number(shortsValue.slice(2));
+
+        const thumbNumber = Number(thumbValue.slice(2));
+
+
+        // Calculate the total value
+        const totalValue = shortsNumber + thumbNumber;
+
+        // Update the addon element with the new value
+        addon.textContent = `$ ${totalValue}`;
+
+        console.log(totalValue)
+    }
+
+    // Call the updateAddonValue function initially
+    updateAddonValue();
 
 
 </script>
 
 
 
-{{!-- TODO plus and minus has be shown in the cart total section  --}}
+{{!-- TODO plus and minus has be shown in the cart total section --}}

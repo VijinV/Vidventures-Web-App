@@ -356,7 +356,7 @@ const verifyUserEmail = (req, res) => {
     if (otp == emailOtp) {
       newUser.isVerified = true;
 
-      newUser.save(() => {});
+      newUser.save(() => { });
 
       req.session.user_id = newUser._id;
 
@@ -364,7 +364,7 @@ const verifyUserEmail = (req, res) => {
     } else {
       res.render("otp", { message: "otp not valid", login: true });
     }
-  } catch (error) {}
+  } catch (error) { }
 };
 
 const verifyUser = async (req, res) => {
@@ -395,7 +395,7 @@ const verifyUser = async (req, res) => {
     } else {
       res.send("user not found");
     }
-  } catch (error) {}
+  } catch (error) { }
 };
 
 const viewOrderDetail = async (req, res) => {
@@ -554,12 +554,12 @@ const loadShop = async (req, res) => {
 const loadProductDetails = async (req, res) => {
   const product = await Product.getProduct(req.query.id)
   const list = product.list
-  const listWithoutEmpty =list.filter(element => element !== '');
+  const listWithoutEmpty = list.filter(element => element !== '');
 
   console.log(listWithoutEmpty)
   const products = await Product.find({ _id: { $ne: req.query.id } }).limit(2);
 
-  res.render("productDetails", { session: true, product, products ,list:listWithoutEmpty});
+  res.render("productDetails", { session: true, product, products, list: listWithoutEmpty });
 };
 
 const addToCart = async (req, res) => {
@@ -626,7 +626,7 @@ const stripePayment = async (req, res) => {
 
     line_object = {
       price_data: {
-        currency: "inr",
+        currency: "usd",
         product_data: {
           name: name,
           images: [
@@ -1036,24 +1036,24 @@ const loadTerms = (req, res) => {
 
 const loadBlog = async (req, res) => {
 
- try {
-   const post = await postModel.findOne({
-     isAvailable: true,
-     postType: "Story"
-   }).sort({ _id: -1 });
-   
+  try {
+    const post = await postModel.findOne({
+      isAvailable: true,
+      postType: "Story"
+    }).sort({ _id: -1 });
 
 
 
-   const posts = await postModel
-   .find({ isAvailable: true, postType: "Story" })
-   .sort({ _id: -1 })
-   .limit(3);
- 
-   res.render("blog",{post,posts});
- } catch (error) {
-  console.error(error.message);
- }
+
+    const posts = await postModel
+      .find({ isAvailable: true, postType: "Story" })
+      .sort({ _id: -1 })
+      .limit(3);
+
+    res.render("blog", { post, posts });
+  } catch (error) {
+    console.error(error.message);
+  }
 
 }
 
@@ -1061,42 +1061,42 @@ const loadBlogDetails = async (req, res) => {
 
 
   try {
-    
+
     const id = req.query.id
     const postType = req.query.postType
 
     if (postType !== "Blog") {
-      const post = await postModel.findById({_id: id})
-  
+      const post = await postModel.findById({ _id: id })
+
       const posts = await postModel
         .find({ isAvailable: true, postType: "Story", _id: { $ne: id } })
         .sort({ _id: -1 })
         .limit(3);
-        const split = post.content.split(/\n\s*\n/);
-        res.render("blogDetails",{post,posts,split});
+      const split = post.content.split(/\n\s*\n/);
+      res.render("blogDetails", { post, posts, split });
 
-       
+
     } else {
-      
-      const post = await postModel.findById({_id: id})
-  
+
+      const post = await postModel.findById({ _id: id })
+
       const posts = await postModel
         .find({ isAvailable: true, postType: "Blog", _id: { $ne: id } })
         .sort({ _id: -1 })
         .limit(3);
 
-        const split = post.content.split(/\n\s*\n/);
+      const split = post.content.split(/\n\s*\n/);
 
-        res.render("blogDetails",{post,posts,split});
-        
+      res.render("blogDetails", { post, posts, split });
+
 
     }
 
-    
-    
+
+
 
   } catch (error) {
-    
+
   }
 
 
@@ -1104,26 +1104,100 @@ const loadBlogDetails = async (req, res) => {
 
 const loadPrivacy = async (req, res) => {
   try {
-    
+
     res.render('privacy')
 
   } catch (error) {
-    
+
   }
 }
 
 const loadOurStory = async (req, res) => {
   try {
-    res.render ('ourStory')
+    res.render('ourStory')
   } catch (error) {
-    
+
   }
 }
 
 
 const payment = async (req, res) => {
-  res.render("payment");
+
+  try {
+
+    //  geting the details of addon and calculating them 
+
+    const { shorts, thumbnail, shortsQty, thumbnailQty, channelManagement } = req.body;
+
+    const array = [shorts, thumbnail, channelManagement];
+    const newArray = array.filter(element => element !== undefined);
+
+    let shortsPrice;
+    let thumbnailPrice;
+    let channelManagementPrice;
+
+    //calculating the price 
+
+    if (shorts) {
+      shortsPrice = parseInt(shortsQty) * 8
+    } else {
+      shortsPrice = 0
+    }
+
+    if (thumbnail) {
+
+      thumbnailPrice = parseInt(thumbnailQty) * 5
+
+    } else {
+      thumbnailPrice = 0
+    }
+
+    if (channelManagement) {
+
+      channelManagementPrice = 150
+
+    } else {
+      channelManagement = 0
+    }
+
+
+
+    console.log('shorts', shortsPrice)
+    console.log('thumbanil', thumbnailPrice)
+    console.log('chanl', channelManagementPrice)
+
+    const session = req.session
+
+    //getting cart items
+    const cartItems = await userModel
+    .findById(session.user_id)
+    .populate("cart.item.productId");
+
+    const odi = orderIdCreate.generate(); // generating order id 
+    const user = await userModel.findById(session.user_id); // getting user details
+
+
+
+
+
+
+
+
+
+
+    res.render("payment");
+  } catch (error) {
+
+  }
+
+
+
+
+
 };
+
+
+
 
 
 

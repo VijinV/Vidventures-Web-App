@@ -137,14 +137,5 @@
         itemsDiv.appendChild(newDiv);
     }
 
-    function validateFile() {
-    var fileInput = document.getElementById('myFile');
-    var fileSize = fileInput.files[0].size; // size in bytes var alertElement =
-    document.getElementById('alert'); if (fileSize > 2000000) { // 2KB in bytes
-      alertElement.textContent = 'File size must be less than or equal to 2MB.';
-      fileInput.value = ""; // clear the file input to allow re-selection return
-      false; // prevent form submission } alertElement.textContent = ''; // clear
-  the error message return true; // allow form submission }
-    }
-  }
+    
 </script>
