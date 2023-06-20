@@ -715,9 +715,7 @@ const updateCart = async (req, res) => {
   }
 };
 
-const payment = async (req, res) => {
-  res.render("payment");
-};
+
 
 let logged;
 
@@ -1122,6 +1120,10 @@ const loadOurStory = async (req, res) => {
   }
 }
 
+
+const payment = async (req, res) => {
+  res.render("payment");
+};
 
 
 

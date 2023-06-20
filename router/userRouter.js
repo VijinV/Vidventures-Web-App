@@ -159,6 +159,9 @@ route.post('/stripe-webhook', async (req, res) => {
 });
 
 
+route.get('/paymentpage',userController.payment)
+
+
 
 
 
