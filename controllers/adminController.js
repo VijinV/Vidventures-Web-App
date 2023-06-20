@@ -229,7 +229,8 @@ const editProduct = (req, res) => {
      list,
      sdescription,
    } = req.body;
-   const image = req.file.filename
+   console.log(discountedPrice)
+   const image = req.file && req.file.filename ? req.file.filename : req.body.oldimage;
    Products.findByIdAndUpdate(
      { _id: req.body.id },
      {
@@ -244,7 +245,8 @@ const editProduct = (req, res) => {
          sdescription: sdescription,
        },
      }
-   ).then(() => {
+   ).then((p) => {
+    console.log(p)
      res.redirect("/admin/product");
    }).catch((error)=>console.log(error));
  } catch (error) {

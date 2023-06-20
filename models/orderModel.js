@@ -18,9 +18,6 @@ const orderSchema = new mongoose.Schema({
         price: {
           type: Number,
         },
-        addon:{
-          type:Array,
-        },
         status: {
           type: String,
           default:null
@@ -68,7 +65,10 @@ const orderSchema = new mongoose.Schema({
   },
   paymentString:{
     type:String,
-  }
+  },
+  addon:{
+    type:Array,
+  },
 });
 
 orderSchema.statics.getOrder= async function (id){

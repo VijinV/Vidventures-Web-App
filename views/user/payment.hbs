@@ -54,7 +54,7 @@
                                 <input type="text" placeholder="Phone number">
                             </div>
 
-                           
+
 
                             <div class="col-12 mb--20">
                                 <label>Address*</label>
@@ -118,13 +118,30 @@
                             <h4>Product <span>Total</span></h4>
 
                             <ul>
-                                <li>Samsome Notebook Pro 5 X 01 <span>$295.00</span></li>
-                                <li>Aquet Drone D 420 X 02 <span>$550.00</span></li>
-                                <li>Play Station X 22 X 01 <span>$295.00</span></li>
-                                <li>Roxxe Headphone Z 75 X 01 <span>$110.00</span></li>
+
+
+
+                                {{#each cartItem}}
+                                <li> {{productId.name}} X {{qty}} <span>${{multi qty productId.discountedPrice}}</span>
+                                </li>
+                                {{/each}}
+                                <p>
+
+                                <h4 class="mt-5">Add on</h4>
+                                {{#if shortsobj}}
+                                <li> Shorts X {{shortsobj.shorts}} <span>${{shortsobj.totalPrice}}</span></li>
+                                {{/if}}
+                                {{#if thumbnailobj}}
+                                <li>Premium Thumbnail X {{thumbnailobj.thumbnail}}
+                                    <span>${{thumbnailobj.totalPrice}}</span></li>
+                                {{/if}}
+                                {{#if channelManagementobj}}
+                                <li>Channel Management X 1 Month <span>${{channelManagementobj.totalPrice}}</span></li>
+                                {{/if}}
+                                </p>
                             </ul>
 
-                            <p>Sub Total <span>$1250.00</span></p>
+                            <p>Sub Total <span>${{subtotal}}</span></p>
                             <p>Shipping Fee <span>$00.00</span></p>
 
                             <h4 class="mt--30">Grand Total <span>$1250.00</span></h4>
@@ -162,9 +179,9 @@
                             </div>
 
 
-                            
 
-                           
+
+
 
                             <div class="single-method">
                                 <input type="checkbox" id="accept_terms">
@@ -213,5 +230,5 @@
             });
 
         })
-        .catch(error => console.log('Error:', error));  ;
+        .catch(error => console.log('Error:', error));;
 </script>

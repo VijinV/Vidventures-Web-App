@@ -618,9 +618,11 @@ const stripePayment = async (req, res) => {
 
   let line_object;
 
-  await cartItems.cart.item.forEach((item) => {
+
+  cartItems.cart.item.forEach((item) => {
     let name = item.productId.name;
     let price = item.productId.discountedPrice * 100;
+    let newimage = item.productId.image
 
     console.log(name, price);
 
@@ -630,7 +632,7 @@ const stripePayment = async (req, res) => {
         product_data: {
           name: name,
           images: [
-            "https://lh3.googleusercontent.com/p/AF1QipNl0KL5RiHkyjn6GWNcFtnyav2-cNug_A4AfWYO=s680-w680-h510",
+            `https://www.vidventuresyt.com/admin/assets/ProductImages/${newimage}`,
           ],
         },
         unit_amount: price,
@@ -639,6 +641,7 @@ const stripePayment = async (req, res) => {
     };
     line_items.push(line_object);
   });
+
 
   const session = await stripe.checkout.sessions.create({
     line_items: line_items,
@@ -651,6 +654,7 @@ const stripePayment = async (req, res) => {
 
   order = new orderModel({
     products: user.cart,
+    addon: addon,
     userId: req.session.user_id,
     status: "Confirm",
     orderId: oid,
@@ -1127,72 +1131,186 @@ const payment = async (req, res) => {
 
     //  geting the details of addon and calculating them 
 
-    const { shorts, thumbnail, shortsQty, thumbnailQty, channelManagement } = req.body;
+    let { shorts, thumbnail, shortsQty, thumbnailQty, channelManagement } = req.body;
 
     const array = [shorts, thumbnail, channelManagement];
     const newArray = array.filter(element => element !== undefined);
 
-    let shortsPrice;
-    let thumbnailPrice;
-    let channelManagementPrice;
+
+
+
+    const userSession = req.session
+
+    //getting cart items
+    const cartItem = await userModel.getCartItems(req.session.user_id);
+    // const user = await this.findById(userId).populate('cart.item.productId');
+    const cart = await userModel.findById({ _id: userSession.user_id }).populate('cart.item.productId')
+    const totalPrice = await userModel.getCartTotalPrice(req.session.user_id);
+
+    console.log(cart.item)
 
     //calculating the price 
 
+    let shortsobj;
+    let thumbnailobj;
+    let channelManagementobj;
+    let addOnTotalPrice = 0;
+    let shortsPrice = 0;
+    let thumbnailPrice = 0;
+    let channelManagementPrice = 0;
+
+
+
+
     if (shorts) {
-      shortsPrice = parseInt(shortsQty) * 8
+
+
+      if (shortsQty > 0) {
+        shortsPrice = (parseInt(shortsQty) * 8)
+  
+        shortsobj = {
+          shorts: shortsQty,
+          totalPrice: shortsPrice
+        }
+  
+        addOnTotalPrice += shortsPrice;
+  
+      } else {
+        shortsPrice = null
+      }
     } else {
-      shortsPrice = 0
+      shortsPrice = null
     }
 
     if (thumbnail) {
 
-      thumbnailPrice = parseInt(thumbnailQty) * 5
+     if (thumbnailQty > 0) {
+       thumbnailPrice = parseInt(thumbnailQty) * 5
+ 
+ 
+       thumbnailobj = {
+         thumbnail: thumbnailQty,
+         totalPrice: thumbnailPrice
+       }
+ 
+       addOnTotalPrice += thumbnailPrice;
+     } else {
+      thumbnailPrice = null
+     }
 
     } else {
-      thumbnailPrice = 0
+      thumbnailPrice = null
     }
 
     if (channelManagement) {
 
       channelManagementPrice = 150
 
+      channelManagementobj = {
+        channelManagement: 1,
+        totalPrice: channelManagementPrice
+      }
+
+
+      addOnTotalPrice += channelManagementPrice;
+
     } else {
-      channelManagement = 0
+      channelManagement = null
     }
 
+    let subtotal = parseInt(addOnTotalPrice) + parseInt(totalPrice)
+
+    console.log(addOnTotalPrice, totalPrice)
+
+    console.log(subtotal)
+
+    // payment line items
+
+    // if (shorts) {
+    //   shortsPrice = (parseInt(shortsQty) * 8) * 100;
+    //   line_object = {
+    //     price_data: {
+    //       currency: "usd",
+    //       product_data: {
+    //         name: 'shorts',
+    //         images: [
+    //           "https://lh3.googleusercontent.com/p/AF1QipNl0KL5RiHkyjn6GWNcFtnyav2-cNug_A4AfWYO=s680-w680-h510",
+    //         ],
+    //       },
+    //       unit_amount: shortsPrice,
+    //     },
+    //     quantity: shortsQty,
+    //   };
+    //   addonobj = {
+    //     shorts: shortsQty
+    //   }
+    //   addon.push(addonobj)
+    //   line_items.push(line_object);
+    // } else {
+    //   shortsPrice = null
+    // }
+
+    // if (thumbnail) {
+
+    //   thumbnailPrice = parseInt(thumbnailQty) * 5
+
+    //   line_object = {
+    //     price_data: {
+    //       currency: "usd",
+    //       product_data: {
+    //         name: 'Premium Thumbnail',
+    //         images: [
+    //           "https://lh3.googleusercontent.com/p/AF1QipNl0KL5RiHkyjn6GWNcFtnyav2-cNug_A4AfWYO=s680-w680-h510",
+    //         ],
+    //       },
+    //       unit_amount: thumbnailPrice,
+    //     },
+    //     quantity: thumbnailQty,
+    //   };
+    //   addonobj = {
+    //     thumbnail: thumbnailQty
+    //   }
+    //   addon.push(addonobj)
+    //   line_items.push(line_object);
+
+    // } else {
+    //   thumbnailPrice = null
+    // }
+
+    // if (channelManagement) {
+
+    //   channelManagementPrice = 150
 
 
-    console.log('shorts', shortsPrice)
-    console.log('thumbanil', thumbnailPrice)
-    console.log('chanl', channelManagementPrice)
-
-    const session = req.session
-
-    //getting cart items
-    const cartItems = await userModel
-    .findById(session.user_id)
-    .populate("cart.item.productId");
-
-    const odi = orderIdCreate.generate(); // generating order id 
-    const user = await userModel.findById(session.user_id); // getting user details
-
-
-
-
-
-
-
+    //   line_object = {
+    //     price_data: {
+    //       currency: "usd",
+    //       product_data: {
+    //         name: 'Channel Management',
+    //         images: [
+    //           "https://lh3.googleusercontent.com/p/AF1QipNl0KL5RiHkyjn6GWNcFtnyav2-cNug_A4AfWYO=s680-w680-h510",
+    //         ],
+    //       },
+    //       unit_amount: thumbnailPrice,
+    //     },
+    //     quantity: 1,
+    //   };
+    //   addonobj = {
+    //     channelManagement: 1
+    //   }
+    //   addon.push(addonobj)
+    //   line_items.push(line_object);
 
 
+    // } else {
+    //   channelManagement = null
+    // }
+    // cartItem, totalPrice ,session: true  => response
 
-    res.render("payment");
+    res.render("payment", { cart, cartItem, totalPrice, session: true, shortsobj, thumbnailobj, channelManagementobj, subtotal });
   } catch (error) {
-
+    console.log(error.message);
   }
-
-
-
-
 
 };
 
