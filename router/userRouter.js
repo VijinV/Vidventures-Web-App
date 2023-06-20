@@ -53,6 +53,8 @@ route.get('/privacypolicy',userController.loadPrivacy)
 
 route.get('/ourstory',userController.loadOurStory)
 
+route.get('/homepage',(req, res) => {res.redirect('/')})
+
 
 
 // post 
