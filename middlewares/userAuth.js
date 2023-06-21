@@ -7,6 +7,7 @@ const isLogin = async (req, res, next) => {
   const userData = await userModel.getUserById(req.session.user_id)
 
   if(userData.isVerified){   
+    console.log(userData,'verified user', userData.isVerified)
     next();
   }
   else{

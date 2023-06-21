@@ -32,7 +32,6 @@
             eduJs.radialProgress();
             eduJs.marqueImage();
             eduJs.popupMobileMenu();
-            eduJs.headerSticky();
             eduJs.qtyBtn();
             eduJs.checkoutPage();
             eduJs.offCanvas();

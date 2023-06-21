@@ -2241,36 +2241,36 @@
 
         const form = document.getElementById('myForm');
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Create an XMLHttpRequest object
-            const xhr = new XMLHttpRequest();
-
-            // Configure the request
-            xhr.open('POST', '/submit');
-            xhr.setRequestHeader('Content-Type', 'application/json');
-
-            // Set up the callback function when the request is complete
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    // Show a popup message to the user
-                    alert('Thank you for your submission!');
-                } else {
-                    console.error('Error:', xhr.status);
-                }
-            };
-
-            // Get the form data and send it as JSON
-            const formData = new FormData(form);
-            const jsonData = {};
-
-            for (let entry of formData.entries()) {
-                jsonData[entry[0]] = entry[1];
-            }
-
-            xhr.send(JSON.stringify(jsonData));
-        });
+    //    form.addEventListener('submit', (e) => {
+    //        e.preventDefault();
+//
+    //        // Create an XMLHttpRequest object
+    //        const xhr = new XMLHttpRequest();
+//
+    //        // Configure the request
+    //        xhr.open('POST', '/submit');
+    //        xhr.setRequestHeader('Content-Type', 'application/json');
+//
+    //        // Set up the callback function when the request is complete
+    //        xhr.onload = function () {
+    //            if (xhr.status === 200) {
+    //                // Show a popup message to the user
+    //                alert('Thank you for your submission!');
+    //            } else {
+    //                console.error('Error:', xhr.status);
+    //            }
+    //        };
+//
+    //        // Get the form data and send it as JSON
+    //        const formData = new FormData(form);
+    //        const jsonData = {};
+//
+    //        for (let entry of formData.entries()) {
+    //            jsonData[entry[0]] = entry[1];
+    //        }
+//
+    //        xhr.send(JSON.stringify(jsonData));
+    //    });
 
         var video = document.getElementById("myVideo");
         video.play();

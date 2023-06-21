@@ -20,6 +20,7 @@ const postModel = require("../models/postModel");
 const orderIdCreate = require("order-id")("key", {
   prefix: "5000",
 });
+let logged;
 
 let message;
 
@@ -356,7 +357,7 @@ const verifyUserEmail = (req, res) => {
     if (otp == emailOtp) {
       newUser.isVerified = true;
 
-      newUser.save(() => { });
+      newUser.save(() => {});
 
       req.session.user_id = newUser._id;
 
@@ -364,7 +365,7 @@ const verifyUserEmail = (req, res) => {
     } else {
       res.render("otp", { message: "otp not valid", login: true });
     }
-  } catch (error) { }
+  } catch (error) {}
 };
 
 const verifyUser = async (req, res) => {
@@ -395,7 +396,7 @@ const verifyUser = async (req, res) => {
     } else {
       res.send("user not found");
     }
-  } catch (error) { }
+  } catch (error) {}
 };
 
 const viewOrderDetail = async (req, res) => {
@@ -552,14 +553,19 @@ const loadShop = async (req, res) => {
 };
 
 const loadProductDetails = async (req, res) => {
-  const product = await Product.getProduct(req.query.id)
-  const list = product.list
-  const listWithoutEmpty = list.filter(element => element !== '');
+  const product = await Product.getProduct(req.query.id);
+  const list = product.list;
+  const listWithoutEmpty = list.filter((element) => element !== "");
 
-  console.log(listWithoutEmpty)
+  console.log(listWithoutEmpty);
   const products = await Product.find({ _id: { $ne: req.query.id } }).limit(2);
 
-  res.render("productDetails", { session: true, product, products, list: listWithoutEmpty });
+  res.render("productDetails", {
+    session: true,
+    product,
+    products,
+    list: listWithoutEmpty,
+  });
 };
 
 const addToCart = async (req, res) => {
@@ -604,69 +610,6 @@ const placeOrder = async (req, res) => {
 
   await order.save();
 };
-
-const stripePayment = async (req, res) => {
-  const cartItems = await userModel
-    .findById(req.session.user_id)
-    .populate("cart.item.productId");
-
-  const oid = orderIdCreate.generate();
-
-  const user = await userModel.findById(req.session.user_id);
-
-  let line_items = [];
-
-  let line_object;
-
-
-  cartItems.cart.item.forEach((item) => {
-    let name = item.productId.name;
-    let price = item.productId.discountedPrice * 100;
-    let newimage = item.productId.image
-
-    console.log(name, price);
-
-    line_object = {
-      price_data: {
-        currency: "usd",
-        product_data: {
-          name: name,
-          images: [
-            `https://www.vidventuresyt.com/admin/assets/ProductImages/${newimage}`,
-          ],
-        },
-        unit_amount: price,
-      },
-      quantity: item.qty,
-    };
-    line_items.push(line_object);
-  });
-
-
-  const session = await stripe.checkout.sessions.create({
-    line_items: line_items,
-    mode: "payment",
-    success_url: "http://vidventuresyt.com/success",
-    cancel_url: "http://vidventuresyt.com/cancel",
-  });
-
-  req.session.paymentString = randomstring.generate();
-
-  order = new orderModel({
-    products: user.cart,
-    addon: addon,
-    userId: req.session.user_id,
-    status: "Confirm",
-    orderId: oid,
-    paymentString: req.session.paymentString,
-  });
-
-  res.redirect(303, session.url);
-};
-
-
-
-
 
 const updateCart = async (req, res) => {
   try {
@@ -720,8 +663,6 @@ const updateCart = async (req, res) => {
 };
 
 
-
-let logged;
 
 const loadAbout = async (req, res) => {
   if (req.session.user_id) {
@@ -787,6 +728,7 @@ const addInstruction = async (req, res) => {
 
 const loadSuccess = async (req, res, next) => {
   try {
+    
     if (req.session.paymentString == order.paymentString) {
       const orderId = order.orderId;
       const date = order.createdAt;
@@ -796,8 +738,8 @@ const loadSuccess = async (req, res, next) => {
       const message = {
         from: "vidventures.yt@gmail.com", // Sender address
         to: req.session.user_email, // List of recipients
-        subject: "Vidventures OTP VERIFICATION", // Subject line
-        text: "Hello, this is a test email sent from Node.js using Nodemailer!", // Plain text body
+        subject: "Order Confirm", // Subject line
+        text: "Order Confirm", // Plain text body
         html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" style="font-family:arial, 'helvetica neue', helvetica, sans-serif">
         <head>
@@ -1025,8 +967,6 @@ const loadSuccess = async (req, res, next) => {
       req.session.paymentString = null;
 
       res.render("success");
-    } else {
-      res.redirect("/cart");
     }
   } catch (err) {
     console.log(err);
@@ -1037,17 +977,14 @@ const loadTerms = (req, res) => {
   res.render("terms");
 };
 
-
 const loadBlog = async (req, res) => {
-
   try {
-    const post = await postModel.findOne({
-      isAvailable: true,
-      postType: "Story"
-    }).sort({ _id: -1 });
-
-
-
+    const post = await postModel
+      .findOne({
+        isAvailable: true,
+        postType: "Story",
+      })
+      .sort({ _id: -1 });
 
     const posts = await postModel
       .find({ isAvailable: true, postType: "Story" })
@@ -1058,19 +995,15 @@ const loadBlog = async (req, res) => {
   } catch (error) {
     console.error(error.message);
   }
-
-}
+};
 
 const loadBlogDetails = async (req, res) => {
-
-
   try {
-
-    const id = req.query.id
-    const postType = req.query.postType
+    const id = req.query.id;
+    const postType = req.query.postType;
 
     if (postType !== "Blog") {
-      const post = await postModel.findById({ _id: id })
+      const post = await postModel.findById({ _id: id });
 
       const posts = await postModel
         .find({ isAvailable: true, postType: "Story", _id: { $ne: id } })
@@ -1078,11 +1011,8 @@ const loadBlogDetails = async (req, res) => {
         .limit(3);
       const split = post.content.split(/\n\s*\n/);
       res.render("blogDetails", { post, posts, split });
-
-
     } else {
-
-      const post = await postModel.findById({ _id: id })
+      const post = await postModel.findById({ _id: id });
 
       const posts = await postModel
         .find({ isAvailable: true, postType: "Blog", _id: { $ne: id } })
@@ -1092,64 +1022,45 @@ const loadBlogDetails = async (req, res) => {
       const split = post.content.split(/\n\s*\n/);
 
       res.render("blogDetails", { post, posts, split });
-
-
     }
-
-
-
-
-  } catch (error) {
-
-  }
-
-
-}
+  } catch (error) {}
+};
 
 const loadPrivacy = async (req, res) => {
   try {
-
-    res.render('privacy')
-
-  } catch (error) {
-
-  }
-}
+    res.render("privacy");
+  } catch (error) {}
+};
 
 const loadOurStory = async (req, res) => {
   try {
-    res.render('ourStory')
-  } catch (error) {
-
-  }
-}
-
+    res.render("ourStory");
+  } catch (error) {}
+};
 
 const payment = async (req, res) => {
-
   try {
+    //  geting the details of addon and calculating them
 
-    //  geting the details of addon and calculating them 
-
-    let { shorts, thumbnail, shortsQty, thumbnailQty, channelManagement } = req.body;
+    let { shorts, thumbnail, shortsQty, thumbnailQty, channelManagement } =
+      req.body;
 
     const array = [shorts, thumbnail, channelManagement];
-    const newArray = array.filter(element => element !== undefined);
+    const newArray = array.filter((element) => element !== undefined);
 
-
-
-
-    const userSession = req.session
+    const userSession = req.session;
 
     //getting cart items
     const cartItem = await userModel.getCartItems(req.session.user_id);
     // const user = await this.findById(userId).populate('cart.item.productId');
-    const cart = await userModel.findById({ _id: userSession.user_id }).populate('cart.item.productId')
+    const cart = await userModel
+      .findById({ _id: userSession.user_id })
+      .populate("cart.item.productId");
     const totalPrice = await userModel.getCartTotalPrice(req.session.user_id);
 
-    console.log(cart.item)
+    console.log(cart.item);
 
-    //calculating the price 
+    //calculating the price
 
     let shortsobj;
     let thumbnailobj;
@@ -1158,71 +1069,62 @@ const payment = async (req, res) => {
     let shortsPrice = 0;
     let thumbnailPrice = 0;
     let channelManagementPrice = 0;
-
-
-
+    let addon = false;
 
     if (shorts) {
-
-
       if (shortsQty > 0) {
-        shortsPrice = (parseInt(shortsQty) * 8)
-  
+        shortsPrice = parseInt(shortsQty) * 8;
+
         shortsobj = {
           shorts: shortsQty,
-          totalPrice: shortsPrice
-        }
-  
+          totalPrice: shortsPrice,
+        };
+
         addOnTotalPrice += shortsPrice;
-  
+        addon = true;
       } else {
-        shortsPrice = null
+        shortsPrice = null;
       }
     } else {
-      shortsPrice = null
+      shortsPrice = null;
     }
 
     if (thumbnail) {
+      if (thumbnailQty > 0) {
+        thumbnailPrice = parseInt(thumbnailQty) * 5;
 
-     if (thumbnailQty > 0) {
-       thumbnailPrice = parseInt(thumbnailQty) * 5
- 
- 
-       thumbnailobj = {
-         thumbnail: thumbnailQty,
-         totalPrice: thumbnailPrice
-       }
- 
-       addOnTotalPrice += thumbnailPrice;
-     } else {
-      thumbnailPrice = null
-     }
+        thumbnailobj = {
+          thumbnail: thumbnailQty,
+          totalPrice: thumbnailPrice,
+        };
 
+        addOnTotalPrice += thumbnailPrice;
+        addon = true;
+      } else {
+        thumbnailPrice = null;
+      }
     } else {
-      thumbnailPrice = null
+      thumbnailPrice = null;
     }
 
     if (channelManagement) {
-
-      channelManagementPrice = 150
+      channelManagementPrice = 150;
 
       channelManagementobj = {
         channelManagement: 1,
-        totalPrice: channelManagementPrice
-      }
-
+        totalPrice: channelManagementPrice,
+      };
 
       addOnTotalPrice += channelManagementPrice;
+      addon = true;
 
     } else {
-      channelManagement = null
+      channelManagement = null;
     }
 
-    let subtotal = parseInt(addOnTotalPrice) + parseInt(totalPrice)
+    let subtotal = parseInt(addOnTotalPrice) + parseInt(totalPrice);
 
-    console.log(addOnTotalPrice, totalPrice)
 
-    console.log(subtotal)
 
     // payment line items
 
@@ -1281,7 +1183,6 @@ const payment = async (req, res) => {
 
     //   channelManagementPrice = 150
 
-
     //   line_object = {
     //     price_data: {
     //       currency: "usd",
@@ -1301,23 +1202,192 @@ const payment = async (req, res) => {
     //   addon.push(addonobj)
     //   line_items.push(line_object);
 
-
     // } else {
     //   channelManagement = null
     // }
     // cartItem, totalPrice ,session: true  => response
 
-    res.render("payment", { cart, cartItem, totalPrice, session: true, shortsobj, thumbnailobj, channelManagementobj, subtotal });
+    res.render("payment", {
+      cart,
+      cartItem,
+      totalPrice,
+      session: true,
+      shortsobj,
+      thumbnailobj,
+      channelManagementobj,
+      subtotal,
+      addon
+    });
   } catch (error) {
     console.log(error.message);
   }
-
 };
 
+const stripePayment = async (req, res) => {
+  const {
+    line1,
+    line2,
+    city,
+    state,
+    postal_code,
+    country,
+    name,
+    email,
+    mobile,
+    shortsqty,
+    shortsTotal,
+    thumbnailqty,
+    thumbnail,
+    channelTotal,
+  } = req.body;
 
+  const address = {
+    name,
+    mobile,
+    email,
+    line1,
+    line2,
+    city,
+    state,
+    postal_code,
+    country,
+  };
 
+  const cartItems = await userModel
+    .findById(req.session.user_id)
+    .populate("cart.item.productId");
 
+  const oid = orderIdCreate.generate();
 
+  const user = await userModel.findById(req.session.user_id);
+
+  let line_items = [];
+
+  let line_object;
+
+  cartItems.cart.item.forEach((item) => {
+    let name = item.productId.name;
+    let price = item.productId.discountedPrice * 100;
+    let newimage = item.productId.image;
+
+    line_object = {
+      price_data: {
+        currency: "inr",
+        product_data: {
+          name: name,
+          images: [
+            `https://www.vidventuresyt.com/admin/assets/ProductImages/${newimage}`,
+          ],
+        },
+        unit_amount: price,
+      },
+      quantity: item.qty,
+    };
+    line_items.push(line_object);
+  });
+
+  // add on items
+
+  // payment line items
+
+  // shortsqty,shortsTotal,thumbnailqty,thumbnail,channelTotal
+
+  //converting shorts into line items
+
+  if (shortsqty) {
+    shortsPrice = 8 * 100;
+    line_object = {
+      price_data: {
+        currency: "usd",
+        product_data: {
+          name: "shorts",
+          images: [
+            "https://lh3.googleusercontent.com/p/AF1QipNl0KL5RiHkyjn6GWNcFtnyav2-cNug_A4AfWYO=s680-w680-h510",
+          ],
+        },
+        unit_amount: shortsPrice,
+      },
+      quantity: parseInt(shortsqty),
+    };
+    line_items.push(line_object);
+  } else {
+    shortsPrice = null;
+  }
+
+  //converting thumbnail to line items
+  if (thumbnailqty) {
+    thumbnailPrice = 5 * 100;
+
+    line_object = {
+      price_data: {
+        currency: "usd",
+        product_data: {
+          name: "Premium Thumbnail",
+          images: [
+            "https://lh3.googleusercontent.com/p/AF1QipNl0KL5RiHkyjn6GWNcFtnyav2-cNug_A4AfWYO=s680-w680-h510",
+          ],
+        },
+        unit_amount: thumbnailPrice,
+      },
+      quantity: parseInt(thumbnailqty),
+    };
+    line_items.push(line_object);
+  } else {
+    thumbnailPrice = null;
+  }
+
+  //converting channelManagement to line_items
+
+  if (channelTotal) {
+    channelManagementPrice = 150 * 100;
+
+    line_object = {
+      price_data: {
+        currency: "usd",
+        product_data: {
+          name: "Channel Management",
+          images: [
+            "https://lh3.googleusercontent.com/p/AF1QipNl0KL5RiHkyjn6GWNcFtnyav2-cNug_A4AfWYO=s680-w680-h510",
+          ],
+        },
+        unit_amount: channelManagementPrice,
+      },
+      quantity: 1,
+    };
+    line_items.push(line_object);
+  } else {
+    channelManagement = null;
+  }
+
+  const session = await stripe.checkout.sessions.create({
+    line_items: line_items,
+    mode: "payment",
+    // success_url: "http://vidventuresyt.com/success",
+    // cancel_url: "http://vidventuresyt.com/cancel",
+    success_url: "http://localhost:3000/success",
+    cancel_url: "http://localhost:3000/cancel",
+  });
+
+  // const session = await stripe.checkout.sessions.create({
+  //   line_items: line_items,
+  //   mode: "payment",
+  //   success_url: "http://vidventuresyt.com/success",
+  //   cancel_url: "http://vidventuresyt.com/cancel",
+  // });
+
+  req.session.paymentString = randomstring.generate();
+
+  order = new orderModel({
+    products: user.cart,
+    userId: req.session.user_id,
+    status: "Confirm",
+    orderId: oid,
+    address: address,
+    paymentString: req.session.paymentString,
+  });
+
+  res.redirect(303, session.url);
+};
 
 // =================================================================
 

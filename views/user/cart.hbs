@@ -170,9 +170,7 @@
                                                 <tr>
 
                                                     <th></th>
-                                                    <th style="position: absolute;
-    margin-left: -5rem;
-    margin-top: -2rem;">Total</th>
+                                                    <th style="position: absolute;margin-left: -5rem;margin-top: -2rem;">Total</th>
 
 
                                                 </tr>
@@ -181,7 +179,8 @@
                                                 <tr class="d-flex">
                                                     <td class="align-middle">
                                                         <label class="checkbox-container">
-                                                            <input name="shorts" value="shorts" type="checkbox" class="styled-checkbox">
+                                                            <input name="shorts" value="shorts" type="checkbox"
+                                                                class="styled-checkbox">
                                                             <span class="checkmark"></span>
                                                         </label>
                                                     </td>
@@ -193,8 +192,8 @@
                                                                     height="24" viewBox="0 0 24 24">
                                                                     <path fill="currentColor" d="M19 12.998H5v-2h14z" />
                                                                 </svg></a>
-                                                            <input name="shortsQty" id="shorts" class="qty-input" type="number"
-                                                                value="0" />
+                                                            <input name="shortsQty" id="shorts" class="qty-input"
+                                                                type="number" value="0" />
                                                             <a onclick="shortsadd()" class="plus-btn ms-3 me-2"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="24"
                                                                     height="24" viewBox="0 0 24 24">
@@ -209,7 +208,8 @@
                                                 <tr class="d-flex">
                                                     <td class="align-middle">
                                                         <label class="checkbox-container">
-                                                            <input value="thumbnail" name="thumbnail" type="checkbox" class="styled-checkbox">
+                                                            <input value="thumbnail" name="thumbnail" type="checkbox"
+                                                                class="styled-checkbox">
                                                             <span class="checkmark"></span>
                                                         </label>
                                                     </td>
@@ -221,8 +221,8 @@
                                                                     height="24" viewBox="0 0 24 24">
                                                                     <path fill="currentColor" d="M19 12.998H5v-2h14z" />
                                                                 </svg></a>
-                                                            <input name="thumbnailQty" id="thumb" class="qty-input" type="number"
-                                                                value="0" />
+                                                            <input name="thumbnailQty" id="thumb" class="qty-input"
+                                                                type="number" value="0" />
                                                             <a id="thumbnailpuls" class="plus-btn ms-3 me-2"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="24"
                                                                     height="24" viewBox="0 0 24 24">
@@ -237,7 +237,8 @@
                                                 <tr class="d-flex">
                                                     <td class="align-middle">
                                                         <label class="checkbox-container">
-                                                            <input name="channelManagement" value="channel" type="checkbox" class="styled-checkbox">
+                                                            <input name="channelManagement" value="channel"
+                                                                type="checkbox" class="styled-checkbox">
                                                             <span class="checkmark"></span>
                                                         </label>
                                                     </td>
@@ -289,12 +290,12 @@
                                         <div class="single-button w-100">
 
 
-                                                <button type="submit"
-                                                    class="rbt-btn btn-gradient rbt-switch-btn rbt-switch-y w-100">
-                                                    <span data-text="Checkout">Checkout</span>
-                                                </button>
+                                            <button type="submit"
+                                                class="rbt-btn btn-gradient rbt-switch-btn rbt-switch-y w-100">
+                                                <span data-text="Checkout">Checkout</span>
+                                            </button>
 
-                                          
+
 
                                         </div>
                                     </div>
@@ -391,6 +392,8 @@
         xhr.send(JSON.stringify({ productId, quantity }));
     }
 
+   let newPrice = 0;
+
     function updateCartItem(productId, qty) {
         $.ajax({
             url: '/updateQuantity',
@@ -400,7 +403,7 @@
                 // update subtotal and  grand total
                 console.log(data);
                 const productPrice = data.productPrice;
-                const newPrice = productPrice * qty;
+                     newPrice = productPrice * qty;
                 $('#price').text(newPrice);
                 $('.subtotal').text(data.subtotal);
                 // $('#totalart').text(data.grandTotal); 
@@ -411,7 +414,7 @@
         });
     }
 
-
+const priceTag = document.querySelector('#price')
     // addon 
 
     function shortsadd() {
@@ -425,8 +428,9 @@
 
         const totalPrice = 8 * value
 
-
         console.log(totalPrice);
+
+        newPrice += totalPrice
 
         total.innerHTML = totalPrice
         updateAddonValue();
@@ -468,7 +472,7 @@
         const value = parseInt(inputvalue) + 1
         console.log(value)
 
-        const totalPrice = 8 * value
+        const totalPrice = 5 * value
 
 
         console.log(totalPrice);
@@ -490,7 +494,7 @@
 
         if (newvalue > 1) {
 
-            const totalPrice = 8 * newvalue
+            const totalPrice = 5* newvalue
             total.innerHTML = totalPrice
 
 
