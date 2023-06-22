@@ -216,19 +216,25 @@
                                                     <td class="pro-title"><a href="#">Premium Thumbnail</a></td>
                                                     <td class="pro-quantity" style="margin-left: -1rem;">
                                                         <div class="pro-qty">
+
                                                             <a id="Thumnailminus" class="minus-btn ms-2 me-3"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="24"
                                                                     height="24" viewBox="0 0 24 24">
                                                                     <path fill="currentColor" d="M19 12.998H5v-2h14z" />
                                                                 </svg></a>
+
+                                                                
                                                             <input name="thumbnailQty" id="thumb" class="qty-input"
                                                                 type="number" value="0" />
+
+
                                                             <a id="thumbnailpuls" class="plus-btn ms-3 me-2"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="24"
                                                                     height="24" viewBox="0 0 24 24">
                                                                     <path fill="currentColor"
                                                                         d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6h-2Z" />
                                                                 </svg></a>
+
                                                         </div>
                                                     </td>
                                                     <td>$ 5</td>
@@ -494,14 +500,14 @@ const priceTag = document.querySelector('#price')
 
         if (newvalue > 1) {
 
-            const totalPrice = 5* newvalue
+            const totalPrice = 5 * newvalue
             total.innerHTML = totalPrice
 
 
         } else {
 
 
-            total.innerHTML = 8
+            total.innerHTML = 5
 
         }
         updateAddonValue();

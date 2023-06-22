@@ -65,6 +65,10 @@ input[type="number"] {
 
 <link rel="manifest" href="/user/assets/mainfest.json">
 
+<script>
+    
+</script>
+
 </head>
 
 <body class="rbt-header-sticky">
@@ -91,7 +95,7 @@ input[type="number"] {
 
 <script>
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('user/assets/service-worker.js', {
+        navigator.serviceWorker.register('service-worker.js', {
             scope: '/'
         });
     }
