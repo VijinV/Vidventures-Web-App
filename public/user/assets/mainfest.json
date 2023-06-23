@@ -31,6 +31,11 @@
         }
       ],
     "display": "fullscreen",
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "apple-touch-startup-image": {
+      "src": "path/to/splash.png",
+      "sizes": "2048x2732",
+      "type": "image/png"
+    }
   }
   
