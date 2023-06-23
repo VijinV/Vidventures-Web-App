@@ -1082,7 +1082,9 @@ const loadAddCareer = async (req, res) => {
   try {
 
     id = req.query.id ?? null;
-    const career = await careerModel.find({ _id: id });
+    const career = await careerModel.findOne({ _id: id });
+    console.log(career)
+        
     res.render("addCareer", { career })
 
   } catch (error) {
@@ -1095,7 +1097,9 @@ const careerList = async (req, res) => {
 
     const careerList = await careerModel.find().sort({ _id: -1 });
 
-    res.render("careerlist", { careerList })
+    console.log(careerList)
+
+    res.render("careerlist", { job:careerList })
   } catch (error) {
 
   }
@@ -1104,9 +1108,10 @@ const careerList = async (req, res) => {
 const addCareer = async (req, res) => {
   try {
 
-    const { Title, subTitle, description, requirements, link } = req.body
-
+    const { Title, subTitle, description, list, link } = req.body
+console.log('addCareer')
     const id = req.body.id ?? null;
+    
 
     if (id) {
 
@@ -1114,10 +1119,10 @@ const addCareer = async (req, res) => {
         _id: id,
       }, {
         $set: {
-          Title,
+          title:Title,
           subTitle,
           description,
-          requirements,
+          requirements:list,
           link,
         }
       }).then(()=> res.redirect('/admin/careers'))
@@ -1126,39 +1131,42 @@ const addCareer = async (req, res) => {
 
       const career = new careerModel({
 
-        Title,
+        title:Title,
         subTitle,
         description,
-        requirements,
+        requirements:list,
         link,
       })
 
-      career.save().then(() => res.redirect('/admin/careers'))
+      career.save().then(() =>{
+        res.redirect('/admin/careers')
+        console.log('career added')
+      } )
 
     }
   } catch (error) {
 
+    console.log(error.message)
+
   }
 }
 
-const listCareers = async (req,res)=>{
+const listCareers = async (req, res) => {
   try {
-    
     const id = req.query.id || null;
-    const Career = await careerModel.findByIdAndUpdate({ _id: id })
+    const career = await careerModel.findOne({ _id: id });
+    console.log('search', id, 'careers', career.isAvailable);
 
+    const updatedAvailability = !career.isAvailable;
+    await careerModel.findByIdAndUpdate({ _id: id }, { $set: { isAvailable: updatedAvailability } });
 
-     if (Career.isAvaliable) {
-      await careerModel.findByIdAndUpdate({ _id: id },{$set:{isAvaliable:false}}).then(()=>res.redirect('/admin/careers'))
-     } else {
-       await careerModel.findByIdAndUpdate({ _id: id },{$set:{isAvaliable:true}}).then(()=>res.redirect('/admin/careers'))
-     }
-
-
+    res.redirect('/admin/careers');
+    console.log(updatedAvailability ? 'true' : 'false');
   } catch (error) {
-    
+    // Handle error
   }
-}
+};
+
 
 module.exports = {
   listCareers,

@@ -5,23 +5,23 @@ const couponSchema = new mongoose.Schema({
 
     name:{
         type:String,
-        required:true,
+        
     },
     description:{
         type:String,
-        required:true,
+        
     },
     maximumDiscount:{
         type:Number,
-        required:true,
+        
     },
     discountPercentage:{
         type:Number,
-        required:true
+        
     },
     expirationDate:{
         type:Date,
-        required:true
+        
     },
     isAvailable:{
         type:Boolean,

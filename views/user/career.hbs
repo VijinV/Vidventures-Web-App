@@ -2,71 +2,55 @@
 <div class="rbt-dashboard-area rbt-section-overlayping-top rbt-section-gapBottom mt-5">
     <div class="container mt-5">
         <div class="row mt-5">
-            <div class="col-lg-12 mt--30">
-                <div class="profile-content rbt-shadow-box">
-                    <h4 class="rbt-title-style-3">Biography</h4>
-                    <div class="row g-5">
-                        <div class="col-lg-8">
-                            <p class="mt--10 mb--20">I'm the Front-End Developer for #Rainbow IT in Bangladesh, OR. I
-                                have serious passion for UI effects, animations and creating intuitive, dynamic user
-                                experiences.</p>
-                        </div>
-                        <div class="col-lg-2 offset-lg-2">
-                            <div class="feature-sin best-seller-badge text-end h-100">
-                                {{!-- <span class="rbt-badge-2 w-100 text-center badge-full-height">
-                                    <span class="image"><img src="assets/images/icons/card-icon-1.png"
-                                            alt="Best Seller Icon"></span> Bestseller
-                                </span> --}}
-                                {{!-- <button class="rbt-btn btn-border" type="button" data-target="#exampleModalCenter"
-                                    data-toggle="modal">Apply Now</button> --}}
+         {{#each job}}
+<div class="col-lg-12 mt--30">
+    <div class="profile-content rbt-shadow-box">
+        <h4 class="rbt-title-style-3">{{title}}</h4>
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <p class="mt--10 mb--20">{{subTitle}}</p>
+            </div>
+            <div class="col-lg-2 offset-lg-2">
+                <div class="feature-sin best-seller-badge text-end h-100">
+                    <button class="trigger-button" data-modal-id="myModal{{@index}}">Open Modal</button>
 
-                                <!-- Button to trigger the modal -->
-                                <button class="trigger-button">Open Modal</button>
-
-                                <!-- The modal -->
-                                <div id="myModal" class="mymodal">
-                                    <!-- Modal content -->
-                                    <div class="modal-content">
-                                        <div class="btn">
-                                            <span class="close">&times;</span>
-                                        </div>
-                                        <div class="modal-heading">
-                                            <h1>Apply now</h1>
-                                            <h5>2 + Year Experience</h5>
-                                        </div>
-                                        <div class="modal-description">
-                                            <h4>Job Description</h4>
-                                            <p>
-                                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
-                                                quas laborum fugit, tempora ullam a alias reiciendis et eligendi modi
-                                                aliquid fugiat quam eos debitis, velit labore. Voluptatum, mollitia
-                                                autem!
-                                            </p>
-                                        </div>
-                                        <div class="modal-req">
-                                            <h4>Requirements</h4>
-                                            <ul>
-                                                <li>Lorem ipsum dolor sit amet consectetur adipisicing </li>
-                                                <li>elit. Necessitatibus eos quos</li>
-                                                <li>doloribus, saepe architecto beatae voluptatum.</li>
-                                                <li> Sit reprehenderit id saepe libero itaque culpa corrupti</li>
-                                                <li>eos aliquam. Aspernatur reprehenderit totam ducimus!</li>
-                                            </ul>
-                                        </div>
-                                        <div class="apply-btn">
-                                            <button class="btn btn-primary apply-btn">Apply Now</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-
+                    <!-- The modal -->
+                    <div id="myModal{{@index}}" class="mymodal">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <div class="btn">
+                                <span class="close">&times;</span>
+                            </div>
+                            <div class="modal-heading">
+                                <h1>{{title}}</h1>
+                                <h5>{{subTitle}}</h5>
+                            </div>
+                            <div class="modal-description">
+                                <h4>Job Description</h4>
+                                <p>
+                                    {{description}}
+                                </p>
+                            </div>
+                            <div class="modal-req">
+                                <h4>Requirements</h4>
+                                <ul>
+                                    {{#each requirements}}
+                                    <li>{{this}}</li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                            <div class="apply-btn">
+                                <a href="{{link}}" target="_blank" class="btn btn-primary apply-btn">Apply Now</a>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+{{/each}}
+
         </div>
     </div>
 </div>
@@ -151,30 +135,34 @@
 </style>
 
 
-
 <script>
-    // Get the modal element
-    var modal = document.getElementById("myModal");
+    // Get all trigger buttons
+    var buttons = document.getElementsByClassName("trigger-button");
 
-    // Get the button that triggers the modal
-    var btn = document.getElementsByClassName("trigger-button")[0];
-
-    // Get the close button element
-    var closeBtn = document.getElementsByClassName("close")[0];
+    // Get all modals
+    var modals = document.getElementsByClassName("mymodal");
 
     // Function to open the modal
     function openModal() {
+        var modalId = this.getAttribute("data-modal-id");
+        var modal = document.getElementById(modalId);
         modal.style.display = "block";
     }
 
     // Function to close the modal
     function closeModal() {
+        var modal = this.closest(".mymodal");
         modal.style.display = "none";
     }
 
     // Event listener for button click
-    btn.addEventListener("click", openModal);
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", openModal);
+    }
 
     // Event listener for close button click
-    closeBtn.addEventListener("click", closeModal);
+    var closeButtons = document.getElementsByClassName("close");
+    for (var j = 0; j < closeButtons.length; j++) {
+        closeButtons[j].addEventListener("click", closeModal);
+    }
 </script>

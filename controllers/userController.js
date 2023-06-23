@@ -16,6 +16,7 @@ const reviewModel = require("../models/reviewModel");
 const productModel = require("../models/productModel");
 const randomstring = require("randomstring");
 const postModel = require("../models/postModel");
+const CarrerModel = require("../models/careerModel");
 
 const orderIdCreate = require("order-id")("key", {
   prefix: "5000",
@@ -1394,9 +1395,12 @@ const stripePayment = async (req, res) => {
   res.redirect(303, session.url);
 };
 
-const careerPage = (req, res) => {
+const careerPage = async (req, res) => {
   try {
-    res.render('career')
+    
+    const job = await CarrerModel.find({isAvailable:true}).sort({_id:-1})
+
+    res.render('career',{job})
   } catch (error) {
     
   }

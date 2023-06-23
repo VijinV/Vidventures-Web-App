@@ -6,30 +6,30 @@ const productSchema = new mongoose.Schema({
 
     name:{
         type:String,
-        required:true,
+        
     },
     description:{
         type:String,
     },
     mrp:{
         type:Number,
-        required:true,
+        
     }, 
     discountedPrice:{
         type:Number,
-        required:true,
+        
     },
     list:{
       type:Array,
-      required:true,
+      
     },
     image:{
         type:String,
-        required:true,
+        
     },
     isAvailable:{
         type:Boolean,
-        required:true,
+        
         default:false,
     },
     sdescription:{

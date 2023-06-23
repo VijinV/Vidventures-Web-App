@@ -1,0 +1,121 @@
+<section class="content-main">
+    <form  method="post" action="/admin/createJob">
+        <div class="row">
+            <div class="col-9">
+
+
+                <div class="content-header">
+                    <h2 class="content-title">Add new job</h2>
+                    <div>
+                        {{!-- <button class="btn btn-light rounded font-sm mr-5 text-body hover-up">Save to
+                            draft</button> --}}
+                        <button type="submit" class="btn btn-md rounded font-sm hover-up">Publish</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4></h4>
+                    </div>
+                    <div class="card-body">
+                        <input type="hidden" value="{{career._id}}" name="id">
+
+                        <div class="mb-4">
+                            <label for="product_name" class="form-label">Job Title</label>
+                            <input type="text" placeholder="Type here" value="{{career.title}}" name="Title" class="form-control"
+                                id="product_name">
+                        </div>
+                        <div class="mb-4">
+                            <label for="product_name" class="form-label">caption</label>
+                            <input type="text" value="{{career.subTitle}}" placeholder="Type here" name="subTitle" class="form-control"
+                                id="product_name">
+                        </div>
+                        <div class="container mt-4">
+                            <div id="items">
+                                <div class="mb-4">
+                                    <label for="product_name" class="form-label">Requirements</label>
+                                    {{#if career.requirements }}
+                                    {{#each career.requirements}}
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Type here" value="{{this}}" name="list" class="form-control">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" onclick="addNewInput()"><i class="bi bi-plus-lg"></i></span>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+                                    {{else}}
+                                 <div class="input-group">
+                                        <input type="text" placeholder="Type here" name="list" class="form-control">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" onclick="addNewInput()"><i class="bi bi-plus-lg"></i></span>
+                                        </div>
+                                    </div>
+
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Description</label>
+                            <textarea placeholder="Type here" name="description" class="form-control"
+                                rows="4">{{career.description}}</textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="product_name" class="form-label">Link</label>
+                            <input type="text" value="{{career.link}}" placeholder="Type here" name="link" class="form-control"
+                                id="product_name">
+                        </div>
+
+                    </div>
+                </div> <!-- card end// -->
+            </div>
+      
+        </div>
+    </form>
+
+</section> <!-- content-main end// -->
+
+<script>
+    function addNewInput() {
+        var itemsDiv = document.getElementById("items");
+        var newDiv = document.createElement("div");
+        newDiv.classList.add("mb-4");
+
+        var label = document.createElement("label");
+        label.setAttribute("for", "product_name");
+        label.classList.add("form-label");
+        label.innerHTML = "";
+
+        var inputGroup = document.createElement("div");
+        inputGroup.classList.add("input-group");
+
+        var input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("placeholder", "Type here");
+        input.setAttribute("name", "list");
+        input.classList.add("form-control");
+
+        var appendDiv = document.createElement("div");
+        appendDiv.classList.add("input-group-append");
+
+        var plusSpan = document.createElement("span");
+        plusSpan.classList.add("input-group-text");
+        plusSpan.onclick = addNewInput;
+
+        var plusIcon = document.createElement("i");
+        plusIcon.classList.add("bi", "bi-plus-lg");
+        
+
+        plusSpan.appendChild(plusIcon);
+        appendDiv.appendChild(plusSpan);
+        inputGroup.appendChild(input);
+        inputGroup.appendChild(appendDiv);
+        newDiv.appendChild(label);
+        newDiv.appendChild(inputGroup);
+        itemsDiv.appendChild(newDiv);
+    }
+
+    
+</script>

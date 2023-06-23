@@ -68,6 +68,12 @@ route.get('/listBlogs',adminAuth.isLogin,adminController.loadBlog)
 
 route.get('/careers',adminAuth.isLogin, adminController.careerList)
 
+route.get('/createJob',adminAuth.isLogin,adminController.loadAddCareer)
+
+route.get('/editCareer',adminAuth.isLogin,adminController.loadAddCareer)
+
+route.get('/openJob',adminAuth.isLogin,adminController.listCareers)
+
 route.get('/logout',adminAuth.logout)
 
 
@@ -88,6 +94,8 @@ route.post('/addReview',adminAuth.isLogin,multer.upload,adminController.addRevie
 route.post('/addDriveLink',adminAuth.isLogin,adminController.DeliverOrder)
 
 route.post('/addPost',adminAuth.isLogin,multer.upload,adminController.addPost)
+route.post('/createJob',adminAuth.isLogin,adminController.addCareer)
+
 
 
 
