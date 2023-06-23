@@ -13848,7 +13848,7 @@ Button Area
   outline: none;
   cursor: pointer;
   position: relative;
-  z-index: 10;
+  z-index: 0;
   color: var(--color-heading);
   box-shadow: 0 10px 13px 0 rgba(209, 211, 237, 0.39);
   border-radius: 0;

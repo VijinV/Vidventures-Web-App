@@ -45,7 +45,7 @@ route.get('/addInstructions',userAuth.isLogin,userController.loadAddInstruction)
 
 route.get('/termsandconditions',userController.loadTerms)
 
-route.get('/blog',userController.loadBlog)
+route.get('/successstories',userController.loadBlog)
 
 route.get('/blogDetails',userController.loadBlogDetails)
 
@@ -54,6 +54,8 @@ route.get('/privacypolicy',userController.loadPrivacy)
 route.get('/ourstory',userController.loadOurStory)
 
 route.get('/homepage',(req, res) => {res.redirect('/')})
+
+route.get('/blog',userController.loadPosts)
 
 
 
@@ -162,6 +164,7 @@ route.post('/stripe-webhook', async (req, res) => {
 route.get('/paymentpage',userController.payment)
 route.post('/paymentpage',userController.payment)
 
+route.get('/career',userController.careerPage)
 
 
 

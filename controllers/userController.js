@@ -990,8 +990,13 @@ const loadBlog = async (req, res) => {
       .find({ isAvailable: true, postType: "Story" })
       .sort({ _id: -1 })
       .limit(3);
+      const postlist = await postModel
+      .find({ isAvailable: true, postType: "Story" })
+      .sort({ _id: -1 })
+      .skip(4)
+    
 
-    res.render("blog", { post, posts });
+    res.render("blog", { post, posts ,postlist});
   } catch (error) {
     console.error(error.message);
   }
@@ -1389,9 +1394,50 @@ const stripePayment = async (req, res) => {
   res.redirect(303, session.url);
 };
 
+const careerPage = (req, res) => {
+  try {
+    res.render('career')
+  } catch (error) {
+    
+  }
+};
+
+const loadPosts = async (req, res) => {
+try {
+  
+  const post = await postModel.findOne({
+    isAvailable: true,
+    postType: "Blog"
+  }).sort({ _id: -1 });
+  
+
+  const posts = await postModel
+  .find({ isAvailable: true, postType: "Blog" })
+  .sort({ _id: -1 })
+  .skip(1)
+  .limit(3);
+  
+  const postlist = await postModel
+  .find({ isAvailable: true, postType: "Blog" })
+  .sort({ _id: -1 })
+  .skip(4)
+
+  res.render('blog', {
+      posts,
+      postlist,
+      post
+    });
+
+} catch (error) {
+  
+}
+}
+
 // =================================================================
 
 module.exports = {
+  loadPosts,
+  careerPage,
   loadOurStory,
   loadPrivacy,
   loadBlogDetails,

@@ -66,6 +66,8 @@ route.get('/addPriceTableList',adminAuth.isLogin,adminController.loadPriceTableL
 
 route.get('/listBlogs',adminAuth.isLogin,adminController.loadBlog)
 
+route.get('/careers',adminAuth.isLogin, adminController.careerList)
+
 route.get('/logout',adminAuth.logout)
 
 

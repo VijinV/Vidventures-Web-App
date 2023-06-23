@@ -1,0 +1,180 @@
+<!-- Start Card Style -->
+<div class="rbt-dashboard-area rbt-section-overlayping-top rbt-section-gapBottom mt-5">
+    <div class="container mt-5">
+        <div class="row mt-5">
+            <div class="col-lg-12 mt--30">
+                <div class="profile-content rbt-shadow-box">
+                    <h4 class="rbt-title-style-3">Biography</h4>
+                    <div class="row g-5">
+                        <div class="col-lg-8">
+                            <p class="mt--10 mb--20">I'm the Front-End Developer for #Rainbow IT in Bangladesh, OR. I
+                                have serious passion for UI effects, animations and creating intuitive, dynamic user
+                                experiences.</p>
+                        </div>
+                        <div class="col-lg-2 offset-lg-2">
+                            <div class="feature-sin best-seller-badge text-end h-100">
+                                {{!-- <span class="rbt-badge-2 w-100 text-center badge-full-height">
+                                    <span class="image"><img src="assets/images/icons/card-icon-1.png"
+                                            alt="Best Seller Icon"></span> Bestseller
+                                </span> --}}
+                                {{!-- <button class="rbt-btn btn-border" type="button" data-target="#exampleModalCenter"
+                                    data-toggle="modal">Apply Now</button> --}}
+
+                                <!-- Button to trigger the modal -->
+                                <button class="trigger-button">Open Modal</button>
+
+                                <!-- The modal -->
+                                <div id="myModal" class="mymodal">
+                                    <!-- Modal content -->
+                                    <div class="modal-content">
+                                        <div class="btn">
+                                            <span class="close">&times;</span>
+                                        </div>
+                                        <div class="modal-heading">
+                                            <h1>Apply now</h1>
+                                            <h5>2 + Year Experience</h5>
+                                        </div>
+                                        <div class="modal-description">
+                                            <h4>Job Description</h4>
+                                            <p>
+                                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
+                                                quas laborum fugit, tempora ullam a alias reiciendis et eligendi modi
+                                                aliquid fugiat quam eos debitis, velit labore. Voluptatum, mollitia
+                                                autem!
+                                            </p>
+                                        </div>
+                                        <div class="modal-req">
+                                            <h4>Requirements</h4>
+                                            <ul>
+                                                <li>Lorem ipsum dolor sit amet consectetur adipisicing </li>
+                                                <li>elit. Necessitatibus eos quos</li>
+                                                <li>doloribus, saepe architecto beatae voluptatum.</li>
+                                                <li> Sit reprehenderit id saepe libero itaque culpa corrupti</li>
+                                                <li>eos aliquam. Aspernatur reprehenderit totam ducimus!</li>
+                                            </ul>
+                                        </div>
+                                        <div class="apply-btn">
+                                            <button class="btn btn-primary apply-btn">Apply Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    /* Styling for the modal */
+    .mymodal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100% !important;
+        height: 100vh !important;
+        overflow: hidden ;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        margin-top: 10rem !important;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 100%;
+        max-width: 45%;
+        text-align: start;
+        padding: auto;
+        border-radius: 10px;
+    }
+
+    .modal-heading {
+        margin-bottom: 30px;
+    }
+
+    .mymodal h4 {
+        text-decoration: underline;
+        margin-bottom: 20px;
+    }
+
+    .modal-description {
+        margin-bottom: 20px;
+    }
+
+ @media (min-width: 300px) and (max-width: 480px){
+.modal-content{
+    max-width: 90%;
+    top: 2px !important;
+    overflow: auto;
+}
+.mymodal{
+    overflow: auto;
+}
+
+ }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    /* Styling for the button */
+    .trigger-button {
+        padding: 10px 20px;
+        color: black;
+        border: rgb(195, 191, 191) 0.5px solid;
+        cursor: pointer;
+        border-radius: 7px;
+
+    }
+
+    .trigger-button:hover {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    .apply-btn{
+ padding: 10px 20px;
+    }
+</style>
+
+
+
+<script>
+    // Get the modal element
+    var modal = document.getElementById("myModal");
+
+    // Get the button that triggers the modal
+    var btn = document.getElementsByClassName("trigger-button")[0];
+
+    // Get the close button element
+    var closeBtn = document.getElementsByClassName("close")[0];
+
+    // Function to open the modal
+    function openModal() {
+        modal.style.display = "block";
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    // Event listener for button click
+    btn.addEventListener("click", openModal);
+
+    // Event listener for close button click
+    closeBtn.addEventListener("click", closeModal);
+</script>

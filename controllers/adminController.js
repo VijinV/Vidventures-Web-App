@@ -9,6 +9,7 @@ const reviewModel = require("../models/reviewModel");
 const postModel = require("../models/postModel");
 const Form = require("../models/formData");
 const nodemailer = require("nodemailer");
+const careerModel = require("../models/careerModel");
 const priceTable = require("../models/priceTable");
 const { response } = require("../router/adminRouter");
 require("dotenv").config();
@@ -162,7 +163,7 @@ const loadUser = async (req, res, next) => {
 
       res.render("users", { users });
     });
-  } catch (error) {}
+  } catch (error) { }
 };
 
 const loadProduct = async (req, res) => {
@@ -219,39 +220,39 @@ const loadEditProduct = async (req, res) => {
 };
 
 const editProduct = (req, res) => {
- try {
-   const {
-     name,
-     description,
-     discountedPrice,
-     mrp,
-     link,
-     list,
-     sdescription,
-   } = req.body;
-   console.log(discountedPrice)
-   const image = req.file && req.file.filename ? req.file.filename : req.body.oldimage;
-   Products.findByIdAndUpdate(
-     { _id: req.body.id },
-     {
-       $set: {
-         name: name,
-         description: description,
-         discountedPrice: discountedPrice,
-         mrp: mrp,
-         link: link,
-         list,
-         image:image,
-         sdescription: sdescription,
-       },
-     }
-   ).then((p) => {
-    console.log(p)
-     res.redirect("/admin/product");
-   }).catch((error)=>console.log(error));
- } catch (error) {
-  console.log(error.message);
- }
+  try {
+    const {
+      name,
+      description,
+      discountedPrice,
+      mrp,
+      link,
+      list,
+      sdescription,
+    } = req.body;
+    console.log(discountedPrice)
+    const image = req.file && req.file.filename ? req.file.filename : req.body.oldimage;
+    Products.findByIdAndUpdate(
+      { _id: req.body.id },
+      {
+        $set: {
+          name: name,
+          description: description,
+          discountedPrice: discountedPrice,
+          mrp: mrp,
+          link: link,
+          list,
+          image: image,
+          sdescription: sdescription,
+        },
+      }
+    ).then((p) => {
+      console.log(p)
+      res.redirect("/admin/product");
+    }).catch((error) => console.log(error));
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 const ListProduct = async (req, res) => {
@@ -279,7 +280,7 @@ const ListProduct = async (req, res) => {
     }
 
     res.redirect("/admin/product");
-  } catch (error) {}
+  } catch (error) { }
 };
 
 const blockUser = async (req, res) => {
@@ -413,7 +414,7 @@ const loadAddReview = async (req, res) => {
     } else {
       res.render("addReview");
     }
-  } catch (error) {}
+  } catch (error) { }
 };
 
 // const addReview = (req, res) => {
@@ -483,7 +484,7 @@ const addReview = async (req, res) => {
         });
       } else {
         console.log("No file uploaded for update");
-      
+
         await reviewModel.findByIdAndUpdate(
           { _id: id },
           {
@@ -496,7 +497,7 @@ const addReview = async (req, res) => {
         ).then(() => {
           res.redirect('/admin/review');
         });
-      
+
       }
     }
   } catch (error) {
@@ -528,7 +529,7 @@ const listReview = async (req, res) => {
           res.redirect("/admin/review");
         });
     }
-  } catch (error) {}
+  } catch (error) { }
 };
 
 const deleteReview = async (req, res) => {
@@ -536,7 +537,7 @@ const deleteReview = async (req, res) => {
     await reviewModel
       .findByIdAndDelete({ _id: req.query.id })
       .then(() => res.redirect("/admin/review"));
-  } catch (error) {}
+  } catch (error) { }
 };
 
 const listOrders2 = async (req, res) => {
@@ -923,9 +924,9 @@ const blockCord = async (req, res) => {
 };
 
 const listPost = async (req, res) => {
-  const post = await postModel.find({postType:"Story"}).sort({ _id: -1 });
+  const post = await postModel.find({ postType: "Story" }).sort({ _id: -1 });
 
-  res.render("postList", { post, type:"Story" });
+  res.render("postList", { post, type: "Story" });
 };
 
 const loadAddPost = async (req, res) => {
@@ -941,7 +942,7 @@ const loadAddPost = async (req, res) => {
 };
 
 const addPost = async (req, res) => {
-  const { author,heading,caption,content,id,postType } = req.body;
+  const { author, heading, caption, content, id, postType } = req.body;
 
   if (id) {
     try {
@@ -953,7 +954,7 @@ const addPost = async (req, res) => {
               author: author,
               heading: heading,
               image: req.file.filename,
-              caption:caption,
+              caption: caption,
               content: content,
               postType: postType
             },
@@ -967,9 +968,9 @@ const addPost = async (req, res) => {
           $set: {
             author: author,
             heading: heading,
-            caption:caption,
-              content: content,
-              postType:postType
+            caption: caption,
+            content: content,
+            postType: postType
           },
         }
       );
@@ -977,21 +978,21 @@ const addPost = async (req, res) => {
   } else {
     const post = new postModel({
       author: author,
-            heading: heading,
-            caption:caption,
-              content: content,
+      heading: heading,
+      caption: caption,
+      content: content,
       image: req.file.filename,
-      postType:postType
+      postType: postType
     });
 
     await post.save();
   }
-if(postType === "Blog"){
-  res.redirect("/admin/listBlogs");
-}else{
-  res.redirect("/admin/listPosts");
-}
-  
+  if (postType === "Blog") {
+    res.redirect("/admin/listBlogs");
+  } else {
+    res.redirect("/admin/listPosts");
+  }
+
 };
 
 const unListPosts = async (req, res) => {
@@ -1029,16 +1030,16 @@ const loadFormData = async (req, res) => {
 
 const loadPriceTableList = async (req, res) => {
 
-   try {
-    
+  try {
+
     // const priceTableList = await priceTable.find().sort({ _id: -1 });
 
-    const priceTableList = [{title:'hai',planName:'silver',price:'39284',list:['sdfsf','dfssf']}]
+    const priceTableList = [{ title: 'hai', planName: 'silver', price: '39284', list: ['sdfsf', 'dfssf'] }]
     res.render("PriceTableList", { priceTableList });
 
-   } catch (error) {
-    
-   }
+  } catch (error) {
+
+  }
 
 };
 
@@ -1058,17 +1059,17 @@ const addPriceTableList = async (req, res) => {
     res.redirect('/pricetable')
 
 
-  } catch (error) {}
+  } catch (error) { }
 };
 
 const loadBlog = async (req, res) => {
 
   try {
 
-    const post = await postModel.find({postType:"Blog"}).sort({ _id: -1 });
+    const post = await postModel.find({ postType: "Blog" }).sort({ _id: -1 });
 
-   res.render("postList", { post, type:"Blog" });
-    
+    res.render("postList", { post, type: "Blog" });
+
   } catch (error) {
     console.log(error.message);
   }
@@ -1076,7 +1077,94 @@ const loadBlog = async (req, res) => {
 
 }
 
+const loadAddCareer = async (req, res) => {
+
+  try {
+
+    id = req.query.id ?? null;
+    const career = await careerModel.find({ _id: id });
+    res.render("addCareer", { career })
+
+  } catch (error) {
+
+  }
+
+}
+const careerList = async (req, res) => {
+  try {
+
+    const careerList = await careerModel.find().sort({ _id: -1 });
+
+    res.render("careerlist", { careerList })
+  } catch (error) {
+
+  }
+}
+
+const addCareer = async (req, res) => {
+  try {
+
+    const { Title, subTitle, description, requirements, link } = req.body
+
+    const id = req.body.id ?? null;
+
+    if (id) {
+
+      const career = await careerModel.findByIdAndUpdate({
+        _id: id,
+      }, {
+        $set: {
+          Title,
+          subTitle,
+          description,
+          requirements,
+          link,
+        }
+      }).then(()=> res.redirect('/admin/careers'))
+
+    } else {
+
+      const career = new careerModel({
+
+        Title,
+        subTitle,
+        description,
+        requirements,
+        link,
+      })
+
+      career.save().then(() => res.redirect('/admin/careers'))
+
+    }
+  } catch (error) {
+
+  }
+}
+
+const listCareers = async (req,res)=>{
+  try {
+    
+    const id = req.query.id || null;
+    const Career = await careerModel.findByIdAndUpdate({ _id: id })
+
+
+     if (Career.isAvaliable) {
+      await careerModel.findByIdAndUpdate({ _id: id },{$set:{isAvaliable:false}}).then(()=>res.redirect('/admin/careers'))
+     } else {
+       await careerModel.findByIdAndUpdate({ _id: id },{$set:{isAvaliable:true}}).then(()=>res.redirect('/admin/careers'))
+     }
+
+
+  } catch (error) {
+    
+  }
+}
+
 module.exports = {
+  listCareers,
+  loadAddCareer,
+  careerList,
+  addCareer,
   loadBlog,
   addPriceTableList,
   loadPriceTableList,

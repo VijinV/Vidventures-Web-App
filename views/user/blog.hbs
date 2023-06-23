@@ -71,35 +71,7 @@
                     </div>
                     <!-- End Single Card  -->
                     {{/each}}
-                    {{!-- <!-- Start Single Card  -->
-                    <div class="rbt-card card-list variation-02 rbt-hover mt--30">
-                        <div class="rbt-card-img">
-                            <a href="blog-details.html">
-                                <img src="assets/images/blog/blog-card-03.jpg" alt="Card image"> </a>
-                        </div>
-                        <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="blog-details.html">Difficult Things About Education.</a></h5>
-                            <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="blog-details.html">Read Article<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Card  -->
-
-                    <!-- Start Single Card  -->
-                    <div class="rbt-card card-list variation-02 rbt-hover mt--30">
-                        <div class="rbt-card-img">
-                            <a href="blog-details.html">
-                                <img src="assets/images/blog/blog-card-04.jpg" alt="Card image"> </a>
-                        </div>
-                        <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="blog-details.html">Education Is So Famous, But Why?</a></h5>
-                            <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="blog-details.html">Read Article<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Card  --> --}}
+                   
                 </div>
             </div>
             <!-- End Card Area -->
@@ -107,119 +79,27 @@
             <!-- Start Card Area -->
             <div class="row g-5 mt--15">
 
-                <!-- Start Single Card  -->
-                <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                    <div class="rbt-card variation-02 rbt-hover">
-                        <div class="rbt-card-img">
-                            <a href="blog-details.html">
-                                <img src="assets/images/blog/blog-grid-01.jpg" alt="Card image"> </a>
-                        </div>
-                        <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="blog-details.html">The Latest Trend In Education.</a></h5>
-                            <p class="rbt-card-text">It is a long established fact that a reader.</p>
-                            <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="blog-details.html">Learn
-                                    More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Card  -->
+            {{#each postlist}}
 
                 <!-- Start Single Card  -->
                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                     <div class="rbt-card variation-02 rbt-hover">
                         <div class="rbt-card-img">
-                            <a href="blog-details.html">
-                                <img src="assets/images/blog/blog-grid-02.jpg" alt="Card image"> </a>
+                            <a  href="/blogDetails/?id={{_id}}">
+                                <imgsrc="admin/assets/ProductImages/{{image}}" alt="Card image"> </a>
                         </div>
                         <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="blog-details.html">The Modern Rules Of Education.</a></h5>
-                            <p class="rbt-card-text">It is a long established fact that a reader.</p>
+                            <h5 class="rbt-card-title"><a href="/blogDetails/?id={{_id}}">{{heading}}</a></h5>
+                            <p class="rbt-card-text"></p>
                             <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="blog-details.html">Learn
-                                    More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
+                                <a class="transparent-button"  href="/blogDetails/?id={{_id}}">Read Article<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- End Single Card  -->
+                {{/each}}
 
-                <!-- Start Single Card  -->
-                <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                    <div class="rbt-card variation-02 rbt-hover">
-                        <div class="rbt-card-img">
-                            <a href="blog-details.html">
-                                <img src="assets/images/blog/blog-grid-03.jpg" alt="Card image"> </a>
-                        </div>
-                        <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="blog-details.html">Why Is Education So Famous?</a></h5>
-                            <p class="rbt-card-text">It is a long established fact that a reader.</p>
-                            <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="blog-details.html">Learn
-                                    More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Card  -->
-
-                <!-- Start Single Card  -->
-                <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                    <div class="rbt-card variation-02 rbt-hover">
-                        <div class="rbt-card-img">
-                            <a href="blog-details.html">
-                                <img src="assets/images/blog/blog-grid-04.jpg" alt="Card image"> </a>
-                        </div>
-                        <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="blog-details.html">Industry Insiders Say Education.</a></h5>
-                            <p class="rbt-card-text">Industry a long established that a reader.</p>
-                            <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="blog-details.html">Learn
-                                    More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Card  -->
-
-                <!-- Start Single Card  -->
-                <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                    <div class="rbt-card variation-02 rbt-hover">
-                        <div class="rbt-card-img">
-                            <a href="blog-details.html">
-                                <img src="assets/images/blog/blog-grid-05.jpg" alt="Card image"> </a>
-                        </div>
-                        <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="blog-details.html">Make You Love And Hate Education.</a></h5>
-                            <p class="rbt-card-text">Make a long established fact a reader.</p>
-                            <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="blog-details.html">Learn
-                                    More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Card  -->
-
-                <!-- Start Single Card  -->
-                <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                    <div class="rbt-card variation-02 rbt-hover">
-                        <div class="rbt-card-img">
-                            <a href="blog-details.html">
-                                <img src="assets/images/blog/blog-grid-06.jpg" alt="Card image"> </a>
-                        </div>
-                        <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="blog-details.html">Education Only A Handful Of People.</a></h5>
-                            <p class="rbt-card-text">Education established fact that a reader.</p>
-                            <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="blog-details.html">Learn
-                                    More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Card  -->
             </div>
             <!-- End Card Area -->
 
