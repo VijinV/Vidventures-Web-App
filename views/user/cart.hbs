@@ -702,10 +702,11 @@ grandTotalPrice()
             addonTag.innerHTML = addOnTotal
 
         } else {
+            const minusprice = inputvalue * 5
             input.value = 0;
             const totalPrice = 0;
             total.innerHTML = totalPrice;
-            addOnTotal -= 5;
+            addOnTotal -= minusprice;
             addonTag.innerHTML = addOnTotal
         }
         grandTotalPrice()
@@ -720,21 +721,23 @@ grandTotalPrice()
         const total = document.getElementById('shorts-total');
         const value = parseInt(inputvalue) + 1;
 
-        
+        console.log(checkbox.checked)
 
         if (checkbox.checked) {
             input.value = 1
             const totalPrice = 8 * 1;
             total.innerHTML = totalPrice;
-
             addOnTotal += 8;
             addonTag.innerHTML = addOnTotal
+            console.loe('if')
         } else {
+            const minusprice = (value * 8) -8
+            console.log(minusprice)
             input.value = 0
             const totalPrice = 0;
             total.innerHTML = totalPrice;
-
-            addOnTotal -= 8;
+            console.log('else')
+            addOnTotal -= minusprice;
             addonTag.innerHTML = addOnTotal
         }
 grandTotalPrice()
