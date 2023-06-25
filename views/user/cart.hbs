@@ -160,7 +160,7 @@
 
                             <div class="col-lg-6 col-12">
                                 <!-- Discount Coupon -->
-                                <div class="discount-coupon edu-bg-shade">
+                                <div class="discount-coupon edu-bg-shade cardheight">
                                     <div class="section-title text-start">
                                         <h4 class="title mb--30">Add More</h4>
                                     </div>
@@ -170,15 +170,14 @@
                                                 <tr>
 
                                                     <th></th>
-                                                    <th
-                                                        style="position: absolute;margin-left: -5rem;margin-top: -2rem;">
+                                                    <th style="position: absolute;margin-left: -5rem;margin-top: -2rem;" id="addmoreTotalname">
                                                         Total</th>
 
 
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr class="d-flex">
+                                            <tbody id="addmoreTable">
+                                                <tr class="d-flex tableaddmore"  >
                                                     <td class="align-middle">
                                                         <label class="checkbox-container">
                                                             <input onchange="shortsOnChange()" name="shorts" value="shorts" type="checkbox"
@@ -188,8 +187,8 @@
                                                         
                                                     </td>
                                                     <td class="pro-title"><a href="#">Yt Shorts</a></td>
-                                                    <td class="pro-quantity" style="margin-left: 7rem;">
-                                                        <div style="margin-left: 1rem ;" class="pro-qty">
+                                                    <td class="pro-quantity">
+                                                        <div  class="pro-qty">
                                                             <a onclick="shortsminus()" class="minus-btn ms-2 me-3"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="24"
                                                                     height="24" viewBox="0 0 24 24">
@@ -205,10 +204,10 @@
                                                                 </svg></a>
                                                         </div>
                                                     </td>
-                                                    <td>$ 8</td>
+                                                    <td class="priceofsingle">$ 8</td>
                                                     <td id="shorts-total">$ 0</td>
                                                 </tr>
-                                                <tr class="d-flex">
+                                                <tr class="d-flex tableaddmore">
                                                     <td class="align-middle">
                                                         <label class="checkbox-container">
                                                             <input onchange="thumbnailonchange()" value="thumbnail" name="thumbnail" type="checkbox"
@@ -216,8 +215,8 @@
                                                             <span class="checkmark"></span>
                                                         </label>
                                                     </td>
-                                                    <td class="pro-title"><a href="#">Premium Thumbnail</a></td>
-                                                    <td class="pro-quantity" style="margin-left: -1rem;">
+                                                    <td class="pro-title preminum"><a href="#">Premium Thumbnail</a></td>
+                                                    <td class="pro-quantity thumbproqty" >
                                                         <div class="pro-qty">
 
                                                             <a id="Thumnailminus" onclick="Thumbnailminus()"
@@ -242,11 +241,11 @@
 
                                                         </div>
                                                     </td>
-                                                    <td>$ 5</td>
+                                                    <td class="priceofsingle">$ 5</td>
                                                     <td id="thumbtotal">$ 0</td>
                                                 </tr>
-                                                <tr class="d-flex">
-                                                    <td class="align-middle">
+                                                <tr class="d-flex ">
+                                                    <td class="align-middle ">
                                                         <label class="checkbox-container">
                                                             <input id="channelManagement"
                                                                 onchange="channelManagementClick()"
@@ -255,12 +254,12 @@
                                                             <span class="checkmark"></span>
                                                         </label>
                                                     </td>
-                                                    <td class="pro-title"><a href="#">Channel Management</a></td>
+                                                    <td class="pro-title channelmngmt"><a href="#">Channel Management</a></td>
                                                     <td class="pro-quantity"></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
-                                                    <td>$ 150 </td>
+                                                    <td class="channelmanagementTotalprice">$ 150 </td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -348,6 +347,122 @@
     {{/if}}
 
 </form>
+
+<style>
+
+
+#addmoreTable tr {
+
+flex-direction: row;
+position: relative;
+
+}
+
+#addmoreTable tr .pro-title{
+    position: relative ;
+    margin-left: 0;
+    font-weight: 600
+}
+
+#addmoreTable tr .pro-quantity {
+    margin-left: 7rem;
+}
+#addmoreTable tr .thumbproqty{
+     margin-left: -20px;
+}
+
+
+#addmoreTable tr .pro-qty {
+   margin-left: 1rem ;
+}
+
+#addmoreTable tr #shorts-total {
+    position: relative;
+}
+
+
+
+
+
+
+
+      @media (min-width: 300px) and (max-width: 480px) {
+
+#addmoreTable tr {
+
+flex-direction: column;
+position: relative;
+
+}
+
+#addmoreTable tr .pro-title{
+    position: absolute !important;
+    margin-left: 100px ;
+    font-weight: bolder
+}
+
+#addmoreTable tr .pro-quantity {
+    margin-bottom: 50px;
+}
+
+#addmoreTable tr .pro-qty {
+    margin-left: 1 rem !important;
+}
+
+#addmoreTable tr #shorts-total {
+    position: absolute;
+    bottom: 8px;
+    right: 50%;
+    font-weight: bold;
+}
+
+
+#addmoreTable tr #thumbtotal {
+     position: absolute;
+    bottom: 8px;
+    right: 50%;
+     font-weight: bold;
+}
+
+#addmoreTable tr .preminum{
+
+margin-left: 63px !important;
+
+}
+
+#addmoreTotalname{
+    display: none;
+}
+
+.tableaddmore{
+    border-bottom: 2px solid #ebe6e6;
+    
+}
+
+.channelmanagementTotalprice{
+    position: absolute;
+    right: 10px !important;
+}
+
+.channelmngmt{
+    margin-left: 50px !important;
+     font-weight: bold;
+}
+
+.priceofsingle{
+    position: absolute;
+    right: 10px !important;
+}
+
+.cardheight{
+    height: 51rem;
+}
+
+
+
+
+      }
+</style>
 <!-- Latest version of jQuery -->
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
