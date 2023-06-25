@@ -181,10 +181,11 @@
                                                 <tr class="d-flex">
                                                     <td class="align-middle">
                                                         <label class="checkbox-container">
-                                                            <input name="shorts" value="shorts" type="checkbox"
+                                                            <input onchange="shortsOnChange()" name="shorts" value="shorts" type="checkbox"
                                                                 class="styled-checkbox">
                                                             <span class="checkmark"></span>
                                                         </label>
+                                                        
                                                     </td>
                                                     <td class="pro-title"><a href="#">Yt Shorts</a></td>
                                                     <td class="pro-quantity" style="margin-left: 7rem;">
@@ -210,7 +211,7 @@
                                                 <tr class="d-flex">
                                                     <td class="align-middle">
                                                         <label class="checkbox-container">
-                                                            <input value="thumbnail" name="thumbnail" type="checkbox"
+                                                            <input onchange="thumbnailonchange()" value="thumbnail" name="thumbnail" type="checkbox"
                                                                 class="styled-checkbox">
                                                             <span class="checkmark"></span>
                                                         </label>
@@ -247,8 +248,10 @@
                                                 <tr class="d-flex">
                                                     <td class="align-middle">
                                                         <label class="checkbox-container">
-                                                            <input name="channelManagement" value="channel"
-                                                                type="checkbox" class="styled-checkbox">
+                                                            <input id="channelManagement"
+                                                                onchange="channelManagementClick()"
+                                                                name="channelManagement" value="channel" type="checkbox"
+                                                                class="styled-checkbox">
                                                             <span class="checkmark"></span>
                                                         </label>
                                                     </td>
@@ -291,9 +294,9 @@
                                             <h4 class="title mb--30">Cart Summary</h4>
                                         </div>
                                         <p>Add on <span> <span id="addon">0</span></span> </p>
-                                        <p>Sub Total <span class="subtotal">${{totalPrice}}</span></p>
+                                        <p>Sub Total <span class="subtotal">{{totalPrice}}</span></p>
                                         {{! <p>Shipping Cost <span>$00.00</span></p> }}
-                                        <h2>Grand Total <span class="grandTotal">${{totalPrice}}</span></h2>
+                                        <h2>Grand Total <span class="grandTotal">{{totalPrice}}</span></h2>
                                     </div>
 
                                     <div class="cart-submit-btn-group">
@@ -355,7 +358,7 @@
     const qtyInputs = document.querySelectorAll('.qty-input');
     const minusBtns = document.querySelectorAll('.minus-btn');
     const plusBtns = document.querySelectorAll('.plus-btn');
-
+    let grandTotal = 0;
     let CartTotal = 0;
     let addOnTotalTag = document.querySelector('#addon')
 
@@ -423,6 +426,7 @@
                 $('#price').text(CartTotal);
                 $('.subtotal').text(data.subtotal);
                 // $('#totalart').text(data.grandTotal); 
+                grandTotalPrice()
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
@@ -435,73 +439,206 @@
     let addonTag = document.querySelector('#addon')
 
     function shortsadd() {
+        const checkbox = document.querySelector('input[name="shorts"]');
         const inputvalue = document.getElementById('shorts').value;
         const total = document.getElementById('shorts-total');
         const value = parseInt(inputvalue) + 1;
-        console.log(value);
 
         const totalPrice = 8 * value;
         total.innerHTML = totalPrice;
-
+        checkbox.checked = true;
         addOnTotal += 8;
         addonTag.innerHTML = addOnTotal
+        grandTotalPrice()
     }
 
+    let shortsclicked = 0;
+
     function shortsminus() {
+        const checkbox = document.querySelector('input[name="shorts"]');
+        const input = document.getElementById('shorts')
         const inputvalue = document.getElementById('shorts').value;
         const total = document.getElementById('shorts-total');
         const newvalue = parseInt(inputvalue) - 1;
 
+
         if (newvalue > 1) {
+            shortsclicked = 0;
             const totalPrice = 8 * newvalue;
             total.innerHTML = totalPrice;
             addOnTotal -= 8; // Subtract 8 from addOnTotal
             addonTag.innerHTML = addOnTotal
+            checkbox.checked = true;
+
         } else {
-            totalPrice = 8;
-            addOnTotal = 8; // Subtract 8 from addOnTotal
-            total.innerHTML = 8;
-            addonTag.innerHTML = addOnTotal
+            console.log(shortsclicked, 'shortsclicked')
+            if (shortsclicked == 1) {
+                totalPrice = 0;
+                addOnTotal -= 8; // Subtract 8 from addOnTotal
+                total.innerHTML = 0;
+                addonTag.innerHTML = addOnTotal
+                input.value = 0
+                checkbox.checked = false;
+                console.log('zero')
+                shortsclicked++
+
+            } else if (shortsclicked == 0) {
+                shortsclicked++
+                console.log(shortsclicked, 'shortsclicked')
+                totalPrice = 8;
+                addOnTotal -= 8; // Subtract 8 from addOnTotal
+                total.innerHTML = 8;
+                addonTag.innerHTML = addOnTotal
+                console.log('notzero')
+
+            }
+
+
         }
+        grandTotalPrice()
     }
 
 
     function Thumbnailadd() {
-        console.log('clicked');
+        const checkbox = document.querySelector('input[name="thumbnail"]');
         const inputvalue = document.getElementById('thumb').value;
         const total = document.getElementById('thumbtotal');
         const value = parseInt(inputvalue) + 1;
-        console.log(value);
+
+        checkbox.checked = true;
 
         const totalPrice = 5 * value;
-        console.log(totalPrice);
+
 
         total.innerHTML = totalPrice;
 
         addOnTotal += 5;
         addonTag.innerHTML = addOnTotal
+        grandTotalPrice()
     }
 
+
+
+    let thumnailclick = 0;
+
     function Thumbnailminus() {
-        console.log('clicked');
+        const checkbox = document.querySelector('input[name="thumbnail"]');
         const inputvalue = document.getElementById('thumb').value;
         const total = document.getElementById('thumbtotal');
+        const input = document.getElementById('thumb')
         const newvalue = parseInt(inputvalue) - 1;
 
         if (newvalue > 1) {
+            thumnailclick = 0;
             const totalPrice = 5 * newvalue;
             total.innerHTML = totalPrice;
             addOnTotal -= 5;
             addonTag.innerHTML = addOnTotal
+            thumnailclick = 0
         } else {
-            total.innerHTML = 5;
-            addOnTotal += 5;
-            addonTag.innerHTML = addOnTotal
+
+            if (thumnailclick == 1) {
+
+                total.innerHTML = 0;
+                addOnTotal -= 5;
+                addonTag.innerHTML = addOnTotal
+                input.value = 0
+                checkbox.checked = false;
+                console.log('1')
+                thumnailclick++;
+            } else if (thumnailclick == 0) {
+                thumnailclick++;
+                total.innerHTML = 5;
+                addOnTotal -= 5;
+                addonTag.innerHTML = addOnTotal
+                console.log('2')
+            }
+
+        }
+grandTotalPrice()
+
+    }
+
+    function channelManagementClick() {
+        const checkbox = document.querySelector('input[name="channelManagement"]');
+        const checkboxValue = 150
+
+        if (checkbox.checked) {
+            // Set the total value to the checkbox value
+            addOnTotal += 150; // Add checkbox value to addOnTotal
+        } else {
+            // Clear the total value
+            addOnTotal -= checkboxValue; // Subtract checkbox value from addOnTotal
         }
 
-        addOnTotal -= 5;
-        addonTag.innerHTML = addOnTotal
+        addonTag.innerHTML = addOnTotal; // Update the addon total
+        grandTotalPrice()
     }
+
+    function thumbnailonchange() {
+        const checkbox = document.querySelector('input[name="thumbnail"]');
+        const inputvalue = document.getElementById('thumb').value;
+        const input = document.getElementById('thumb')
+        const total = document.getElementById('thumbtotal');
+        const value = parseInt(inputvalue) + 1;
+        if (checkbox.checked) {
+            input.value = 1;
+            const totalPrice = 5 * 1;
+            total.innerHTML = totalPrice;
+            addOnTotal += 5;
+            addonTag.innerHTML = addOnTotal
+
+        } else {
+            input.value = 0;
+            const totalPrice = 0;
+            total.innerHTML = totalPrice;
+            addOnTotal -= 5;
+            addonTag.innerHTML = addOnTotal
+        }
+        grandTotalPrice()
+
+    }
+
+    function shortsOnChange() {
+
+        const checkbox = document.querySelector('input[name="shorts"]');
+        const inputvalue = document.getElementById('shorts').value;
+        const input = document.getElementById('shorts')
+        const total = document.getElementById('shorts-total');
+        const value = parseInt(inputvalue) + 1;
+
+        
+
+        if (checkbox.checked) {
+            input.value = 1
+            const totalPrice = 8 * 1;
+            total.innerHTML = totalPrice;
+
+            addOnTotal += 8;
+            addonTag.innerHTML = addOnTotal
+        } else {
+            input.value = 0
+            const totalPrice = 0;
+            total.innerHTML = totalPrice;
+
+            addOnTotal -= 8;
+            addonTag.innerHTML = addOnTotal
+        }
+grandTotalPrice()
+
+    }
+
+function grandTotalPrice() {
+    const total = document.querySelector('.grandTotal');
+    const totalPriceElement = document.querySelector('.subtotal');
+    const totalPrice = parseFloat(totalPriceElement.textContent);
+    console.log(totalPriceElement)
+    const grandTotal = totalPrice + addOnTotal;
+    total.textContent = grandTotal.toFixed(2);
+}
+
+
+
 
 
 
