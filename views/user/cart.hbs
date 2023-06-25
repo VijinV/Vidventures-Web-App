@@ -170,7 +170,9 @@
                                                 <tr>
 
                                                     <th></th>
-                                                    <th style="position: absolute;margin-left: -5rem;margin-top: -2rem;">Total</th>
+                                                    <th
+                                                        style="position: absolute;margin-left: -5rem;margin-top: -2rem;">
+                                                        Total</th>
 
 
                                                 </tr>
@@ -217,18 +219,20 @@
                                                     <td class="pro-quantity" style="margin-left: -1rem;">
                                                         <div class="pro-qty">
 
-                                                            <a id="Thumnailminus" class="minus-btn ms-2 me-3"><svg
+                                                            <a id="Thumnailminus" onclick="Thumbnailminus()"
+                                                                class="minus-btn ms-2 me-3"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="24"
                                                                     height="24" viewBox="0 0 24 24">
                                                                     <path fill="currentColor" d="M19 12.998H5v-2h14z" />
                                                                 </svg></a>
 
-                                                                
+
                                                             <input name="thumbnailQty" id="thumb" class="qty-input"
                                                                 type="number" value="0" />
 
 
-                                                            <a id="thumbnailpuls" class="plus-btn ms-3 me-2"><svg
+                                                            <a id="thumbnailpuls" onclick="Thumbnailadd()"
+                                                                class="plus-btn ms-3 me-2"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="24"
                                                                     height="24" viewBox="0 0 24 24">
                                                                     <path fill="currentColor"
@@ -286,10 +290,10 @@
                                         <div class="section-title text-start">
                                             <h4 class="title mb--30">Cart Summary</h4>
                                         </div>
-                                        <p>Add on <span id="addon">$ 33</span> </p>
+                                        <p>Add on <span> <span id="addon">0</span></span> </p>
                                         <p>Sub Total <span class="subtotal">${{totalPrice}}</span></p>
                                         {{! <p>Shipping Cost <span>$00.00</span></p> }}
-                                        <h2>Grand Total <span class="subtotal">${{totalPrice}}</span></h2>
+                                        <h2>Grand Total <span class="grandTotal">${{totalPrice}}</span></h2>
                                     </div>
 
                                     <div class="cart-submit-btn-group">
@@ -352,6 +356,11 @@
     const minusBtns = document.querySelectorAll('.minus-btn');
     const plusBtns = document.querySelectorAll('.plus-btn');
 
+    let CartTotal = 0;
+    let addOnTotalTag = document.querySelector('#addon')
+
+    let addOnTotal = 0;
+
 
     // Loop through each input field and add event listeners to the corresponding plus/minus buttons
     qtyInputs.forEach((qtyInput, index) => {
@@ -398,7 +407,7 @@
         xhr.send(JSON.stringify({ productId, quantity }));
     }
 
-   let newPrice = 0;
+    let newPrice = 0;
 
     function updateCartItem(productId, qty) {
         $.ajax({
@@ -409,8 +418,9 @@
                 // update subtotal and  grand total
                 console.log(data);
                 const productPrice = data.productPrice;
-                     newPrice = productPrice * qty;
-                $('#price').text(newPrice);
+                newPrice = productPrice * qty;
+                CartTotal += newPrice;
+                $('#price').text(CartTotal);
                 $('.subtotal').text(data.subtotal);
                 // $('#totalart').text(data.grandTotal); 
             },
@@ -420,138 +430,81 @@
         });
     }
 
-const priceTag = document.querySelector('#price')
     // addon 
 
+    let addonTag = document.querySelector('#addon')
+
     function shortsadd() {
+        const inputvalue = document.getElementById('shorts').value;
+        const total = document.getElementById('shorts-total');
+        const value = parseInt(inputvalue) + 1;
+        console.log(value);
 
-        const inputvalue = document.getElementById('shorts').value
+        const totalPrice = 8 * value;
+        total.innerHTML = totalPrice;
 
-        const total = document.getElementById('shorts-total')
-
-        const value = parseInt(inputvalue) + 1
-        console.log(value)
-
-        const totalPrice = 8 * value
-
-        console.log(totalPrice);
-
-        newPrice += totalPrice
-
-        total.innerHTML = totalPrice
-        updateAddonValue();
-
-
+        addOnTotal += 8;
+        addonTag.innerHTML = addOnTotal
     }
 
     function shortsminus() {
-
-        const inputvalue = document.getElementById('shorts').value
-
-        const total = document.getElementById('shorts-total')
-
-        const newvalue = parseInt(inputvalue) - 1
+        const inputvalue = document.getElementById('shorts').value;
+        const total = document.getElementById('shorts-total');
+        const newvalue = parseInt(inputvalue) - 1;
 
         if (newvalue > 1) {
-
-            const totalPrice = 8 * newvalue
-            total.innerHTML = totalPrice
-
+            const totalPrice = 8 * newvalue;
+            total.innerHTML = totalPrice;
+            addOnTotal -= 8; // Subtract 8 from addOnTotal
+            addonTag.innerHTML = addOnTotal
         } else {
-
-
-            total.innerHTML = 8
-
+            totalPrice = 8;
+            addOnTotal = 8; // Subtract 8 from addOnTotal
+            total.innerHTML = 8;
+            addonTag.innerHTML = addOnTotal
         }
-        updateAddonValue();
-
     }
 
 
     function Thumbnailadd() {
+        console.log('clicked');
+        const inputvalue = document.getElementById('thumb').value;
+        const total = document.getElementById('thumbtotal');
+        const value = parseInt(inputvalue) + 1;
+        console.log(value);
 
-        console.log('clicked')
-        const inputvalue = document.getElementById('thumb').value
-
-        const total = document.getElementById('thumbtotal')
-
-        const value = parseInt(inputvalue) + 1
-        console.log(value)
-
-        const totalPrice = 5 * value
-
-
+        const totalPrice = 5 * value;
         console.log(totalPrice);
 
-        total.innerHTML = totalPrice
-        updateAddonValue();
+        total.innerHTML = totalPrice;
 
-
+        addOnTotal += 5;
+        addonTag.innerHTML = addOnTotal
     }
 
     function Thumbnailminus() {
-
-        console.log('clicked')
-        const inputvalue = document.getElementById('thumb').value
-
-        const total = document.getElementById('thumbtotal')
-
-        const newvalue = parseInt(inputvalue) - 1
+        console.log('clicked');
+        const inputvalue = document.getElementById('thumb').value;
+        const total = document.getElementById('thumbtotal');
+        const newvalue = parseInt(inputvalue) - 1;
 
         if (newvalue > 1) {
-
-            const totalPrice = 5 * newvalue
-            total.innerHTML = totalPrice
-
-
+            const totalPrice = 5 * newvalue;
+            total.innerHTML = totalPrice;
+            addOnTotal -= 5;
+            addonTag.innerHTML = addOnTotal
         } else {
-
-
-            total.innerHTML = 5
-
+            total.innerHTML = 5;
+            addOnTotal += 5;
+            addonTag.innerHTML = addOnTotal
         }
-        updateAddonValue();
 
-    }
-    const thumbnailMinus = document.querySelector('#Thumnailminus');
-    const thumbnailpuls = document.querySelector('#thumbnailpuls')
-
-    thumbnailMinus.addEventListener('click', Thumbnailminus);
-
-
-    thumbnailpuls.addEventListener('click', Thumbnailadd);
-
-    // Get the necessary elements
-    const shortsTotal = document.querySelector('#shorts-total');
-    const thumbTotal = document.querySelector('#thumbtotal');
-    const addon = document.querySelector('#addon');
-
-    // Create a function to update the addon value
-    function updateAddonValue() {
-        // Get the values from the shorts-total and thumbtotal elements
-        const shortsValue = shortsTotal.textContent;
-        const thumbValue = thumbTotal.textContent;
-
-        console.log(shortsValue)
-
-
-        // Remove the "$" sign and convert to numbers
-        const shortsNumber = Number(shortsValue.slice(2));
-
-        const thumbNumber = Number(thumbValue.slice(2));
-
-
-        // Calculate the total value
-        const totalValue = shortsNumber + thumbNumber;
-
-        // Update the addon element with the new value
-        addon.textContent = `$ ${totalValue}`;
-
-        console.log(totalValue)
+        addOnTotal -= 5;
+        addonTag.innerHTML = addOnTotal
     }
 
-    // Call the updateAddonValue function initially
-    updateAddonValue();
+
+
 
 
 </script>

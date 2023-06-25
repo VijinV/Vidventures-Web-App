@@ -60,10 +60,16 @@
                                 </a>
                                 
                                 {{/if}}
-                                {{!-- <a  onclick="deleteRecord('{{_id}}')" class="btn btn-sm font-sm btn-danger rounded">
-                                    <i class="material-icons md-delete_forever"></i> Delete
+                                {{#if type}}
+                                <a  onclick="deleteRecord('{{_id}}')" class="btn btn-sm font-sm btn-danger rounded">
+                                    <i class="material-icons md-delete_forever"></i> Delete 
                                 </a>
-                                 --}}
+                                {{else}}
+                                  <a  onclick="deleteStory('{{_id}}')" class="btn btn-sm font-sm btn-danger rounded">
+                                    <i class="material-icons md-delete_forever"></i> Delete  
+                                </a>
+                                {{/if}}
+                                
                             </div>
                         </div> <!-- row .// -->
                     </article> 
@@ -85,7 +91,27 @@ function deleteRecord(recordId) {
     .then((willDelete) => {
         if (willDelete) {
             // User confirmed deletion, perform deletion logic
-            window.location.href = "/admin/dltReview?id=" + recordId;
+            window.location.href = "/admin/deletePost?id=" + recordId;
+        } else {
+            // User cancelled deletion
+            swal("Your record is safe!");
+        }
+    });
+}
+
+
+function deleteStory(recordId) {
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this record!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            // User confirmed deletion, perform deletion logic
+            window.location.href = "/admin/deleteStory?id=" + recordId;
         } else {
             // User cancelled deletion
             swal("Your record is safe!");

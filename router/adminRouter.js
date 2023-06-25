@@ -74,6 +74,10 @@ route.get('/editCareer',adminAuth.isLogin,adminController.loadAddCareer)
 
 route.get('/openJob',adminAuth.isLogin,adminController.listCareers)
 
+route.get('/deletePost',adminAuth.isLogin,adminController.deleteBlog)
+
+route.get('/deleteStory',adminAuth.isLogin,adminController.deleteStory)
+
 route.get('/logout',adminAuth.logout)
 
 

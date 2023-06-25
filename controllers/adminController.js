@@ -1167,8 +1167,36 @@ const listCareers = async (req, res) => {
   }
 };
 
+const deleteBlog = async (req, res) =>{
+try {
+  
+  const id = req.query.id;
+
+  await postModel.findByIdAndDelete(id).then(()=>res.redirect('/admin/listBlogs'))
+
+} catch (error) {
+  
+}
+
+}
+
+const deleteStory = async (req, res) =>{
+  try {
+    
+    const id = req.query.id;
+  
+    await postModel.findByIdAndDelete(id).then(()=>res.redirect('/admin/listPosts'))
+  
+  } catch (error) {
+    
+  }
+  
+  }
+
 
 module.exports = {
+  deleteStory,
+  deleteBlog,
   listCareers,
   loadAddCareer,
   careerList,
