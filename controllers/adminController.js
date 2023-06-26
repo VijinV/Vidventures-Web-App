@@ -190,6 +190,8 @@ const addProduct = async (req, res) => {
     } = req.body;
 
     console.log(req.file.path);
+    const formattedDiscountedPrice = Number(Number(discountedPrice).toFixed(2)); // Format to 2 decimal points as a number
+
 
     const product = {
       name: name,
@@ -230,7 +232,12 @@ const editProduct = (req, res) => {
       list,
       sdescription,
     } = req.body;
-    console.log(discountedPrice)
+    
+    console.log(discountedPrice);
+
+    const formattedDiscountedPrice = Number(Number(discountedPrice).toFixed(2)); // Format to 2 decimal points as a number
+   
+
     const image = req.file && req.file.filename ? req.file.filename : req.body.oldimage;
     Products.findByIdAndUpdate(
       { _id: req.body.id },
@@ -247,7 +254,7 @@ const editProduct = (req, res) => {
         },
       }
     ).then((p) => {
-      console.log(p)
+      
       res.redirect("/admin/product");
     }).catch((error) => console.log(error));
   } catch (error) {

@@ -64,6 +64,7 @@ const userSchema = new mongoose.Schema({
     },
   },
 });
+
 userSchema.methods.addToCart = async function (product) {
   let cart = this.cart;
 
