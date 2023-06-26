@@ -53,12 +53,6 @@ async function fetchInstagramPosts() {
   const user = await ig.user.searchExact("sampkle");
   const userFeed = ig.feed.user(user.pk);
   const mediaList = await userFeed.items();
-
-  // Log the media URLs
-  for (const media of mediaList) {
-    console.log(media.image_versions2.candidates[0].url);
-    console.log(`Description: ${media.caption.text}`);
-  }
 }
 
 const loadHome = async (req, res, next) => {
@@ -383,7 +377,7 @@ const verifyUser = async (req, res) => {
           req.session.user_id = userDate._id;
           req.session.user_email = userDate.email;
           cartCount = await userModel.getCartItems(req.session.user_id);
-          console.log(cartCount.length, "count");
+          
           res.locals.count = cartCount.length;
           res.redirect("/");
         } else {
@@ -454,7 +448,7 @@ const loadProfile = async (req, res) => {
 
     let data = [];
 
-    // orderDetails.forEach((item) => {console.log(item.status)})
+    
 
     await orderDetails.forEach((item) => {
       let id = item._id;
@@ -519,7 +513,7 @@ const editProfile = async (req, res) => {
           },
         }
       );
-      console.log("success");
+      
       res.redirect("/profile");
     } else {
       await userModel.findByIdAndUpdate(
@@ -531,7 +525,7 @@ const editProfile = async (req, res) => {
           },
         }
       );
-      console.log("success password not changed");
+     
       res.redirect("/profile");
     }
   } catch (error) {
@@ -558,7 +552,7 @@ const loadProductDetails = async (req, res) => {
   const list = product.list;
   const listWithoutEmpty = list.filter((element) => element !== "");
 
-  console.log(listWithoutEmpty);
+
   const products = await Product.find({ _id: { $ne: req.query.id } }).limit(2);
 
   res.render("productDetails", {
@@ -574,7 +568,7 @@ const addToCart = async (req, res) => {
     userSession = req.session;
     const userData = await userModel.findById({ _id: userSession.user_id });
     const productData = await Product.getProduct(req.query.id);
-    await userData.addToCart(productData);
+    await userData.addToCart(productData).then((data)=>{console.log('cart added to cart', data)})
     res.redirect("/cart");
   } catch (error) {
     console.log(error.message);
@@ -611,7 +605,6 @@ const placeOrder = async (req, res) => {
 
   await order.save();
 };
-
 const updateCart = async (req, res) => {
   try {
     const { productId, qty } = req.body;
@@ -629,32 +622,23 @@ const updateCart = async (req, res) => {
 
     const qtyChange = qty - cartItem.qty;
 
-    console.log(cartItem.price, "cart item quantity change");
-    console.log(cartItem.qty, "cart item quantity change", qty);
-
     cartItem.qty = qty;
-    console.log(typeof productPrice, typeof qty, "typeof");
-    cartItem.price = parseInt(productPrice) * parseInt(qty);
+    cartItem.price = (productPrice * qty).toFixed(2); // Round to 2 decimal places
 
-    // recalculate the total price of the cart
-    const totalPrice = user.cart.item.reduce(
-      (acc, item) => acc + item.price,
-      0
-    );
-    user.cart.totalPrice = totalPrice;
+    // Recalculate the total price of the cart
+    const totalPrice = user.cart.item.reduce((acc, item) => {
+      return acc + parseFloat(item.price); // Convert to float for accurate addition
+    }, 0);
+    user.cart.totalPrice = totalPrice.toFixed(2); // Round to 2 decimal places
 
-    // mark the cart and totalPrice fields as modified
-    user.markModified("cart");
-    user.markModified("cart.totalPrice");
+    // Save the updated user document
+    await user.save();
 
-    // save the updated user document
-    await user.save().then((data) => {
-      console.log(data);
-    });
-
-    // send the updated subtotal and grand total back to the client
-    const subtotal = user.cart.item.reduce((acc, item) => acc + item.price, 0);
-    const grandTotal = subtotal + 45;
+    // Send the updated subtotal and grand total back to the client
+    const subtotal = user.cart.item.reduce((acc, item) => {
+      return acc + parseFloat(item.price); // Convert to float for accurate addition
+    }, 0).toFixed(2); // Round to 2 decimal places
+    const grandTotal = (parseFloat(subtotal) + 45).toFixed(2); // Round to 2 decimal places
 
     res.json({ subtotal, grandTotal, productPrice, qtyChange });
   } catch (err) {
@@ -662,6 +646,7 @@ const updateCart = async (req, res) => {
     res.status(500).send("Error updating cart item");
   }
 };
+
 
 
 
@@ -693,8 +678,7 @@ const loadAddInstruction = async (req, res) => {
     }
   });
 
-  console.log(productId, "productId");
-
+ 
   res.render("addInstruction", {
     session: getSession(req, res),
     id: id,
@@ -716,7 +700,7 @@ const addInstruction = async (req, res) => {
     thumbnail: thumbnail,
   };
 
-  console.log(productId);
+
 
   const order = await orderModel.findOneAndUpdate(
     { _id: id, "products.item": { $elemMatch: { productId: productId } } },
@@ -1064,8 +1048,7 @@ const payment = async (req, res) => {
       .populate("cart.item.productId");
     const totalPrice = await userModel.getCartTotalPrice(req.session.user_id);
 
-    console.log(cart.item);
-
+   
     //calculating the price
 
     let shortsobj;

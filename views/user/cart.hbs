@@ -99,7 +99,7 @@
                                             <th class="pro-price">Price</th>
                                             <th class="pro-quantity">Quantity</th>
                                             {{! <th class="pro-subtotal">Total</th> }}
-                                            <th class="pro-remove">Remove</th>
+                                            <th class="pro-remove"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -132,7 +132,7 @@
                                             <td class="removebtn text-danger"><a class="text-danger"
                                                     href="/removeFromCart?id={{productId._id}}">Remove</a></td>
                                             <small class="text-danger" id="small"></small>
-                                            <td class="pro-remove"><a href="/removeFromCart?id={{productId._id}}"><i
+                                            <td style="display: none;" class="pro-remove"><a href="/removeFromCart?id={{productId._id}}"><i
                                                         class="feather-x"></i></a></td>
                                         </tr>
                                         {{/each}}
@@ -324,7 +324,7 @@
                                                             Management</a></td>
                                                     <td class="pro-quantity"></td>
                                                     <td class="hidemb"></td>
-                                                    <td class="hidemb"></td>
+                                                    <td class="hidembmon">1 Month</td>
                                                     <td class="hidemb"></td>
                                                     <td class="channelmanagementTotalprice">$ 150 </td>
                                                 </tr>
@@ -342,7 +342,7 @@
                                                         <span class="btn-text">Apply Code</span>
                                                         <span class="btn-icon"><i
                                                                 class="feather-arrow-right"></i></span>
-                                                        <span class="btn-icon"><i
+                                                        <span clcheckchass="btn-icon"><i
                                                                 class="feather-arrow-right"></i></span>
                                                     </span>
                                                 </button>
@@ -416,6 +416,7 @@
 </form>
 
 <style>
+
     #addmoreTable tr {
 
         flex-direction: row;
@@ -430,7 +431,7 @@
     }
 
     #addmoreTable tr .pro-quantity {
-        margin-left: 7rem;
+        margin-left: 7rem !important;
     }
 
 
@@ -522,6 +523,9 @@
         }
         .checkch{
             margin-top: 22px !important;
+        }
+        .hidembmon{
+            display: none !important;
         }
         
 

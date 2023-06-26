@@ -64,30 +64,33 @@ const userSchema = new mongoose.Schema({
     },
   },
 });
-
 userSchema.methods.addToCart = async function (product) {
   let cart = this.cart;
 
   const isExisting = cart.item.findIndex((item) => {
-    return new String(item.productId).trim() === new String(product._id).trim();
+    return String(item.productId).trim() === String(product._id).trim();
   });
 
-  if (isExisting >= 0) {
+  if (isExisting !== -1) {
     cart.item[isExisting].qty += 1;
   } else {
     cart.item.push({
       productId: product._id,
       qty: 1,
-      price:product.discountedPrice
+      price: product.discountedPrice
     });
   }
 
-  if (isNaN(cart.totalPrice)) {
-    cart.totalPrice = 0;
-  }
-  cart.totalPrice += parseInt(product.discountedPrice);
+  cart.totalPrice = cart.item.reduce((total, item) => {
+    return total + (item.qty * item.price);
+  }, 0);
+
+  console.log(cart.totalPrice, 'price', product.discountedPrice, 'price');
   return this.save();
 };
+
+
+
 
 
 userSchema.methods.removeFromCart = async function (productId) {
