@@ -588,7 +588,7 @@
 
     }
 
-    @media (min-width: 300px) and (max-width: 480px) {
+    @media (min-width: 300px) and (max-width: 480px) {  
     #down_arrow {
         left: 17rem;
         top: 47rem;
@@ -1051,10 +1051,10 @@
                     <div class="inner pl--50 pl_sm--0 pl_md--0">
                         <div class="section-title text-start">
                             {{!-- <span class="subtitle bg-coral-opacity">Why YouTube Automation</span> --}}
-                            <h2 class="title">Why <strong style="color: red;">Vidventures</strong> </h2>
+                            <h2  class="title font-500">Why <span style="color: red;">Vidventures</span> </h2>
                         </div>
 
-                        <p class="description mt--30">We bring valuable experience to the table. Our team has honed the
+                        <p class="feature-description " style="margin-top: 13px !important;">We bring valuable experience to the table. Our team has honed the
                             skills and knowledge through countless projects, ensuring that we understand the intricacies
                             of cashcow content creation.</p>
 
@@ -1113,10 +1113,10 @@
                     <div class="col-lg-8">
                         <div class="inner">
                             <div class="content text-left text-dark" style="display: block;">
-                                <h4 class="title" data-sal="slide-up" data-sal-duration="400" data-sal-delay="200">
-                                   If you require additional information about our services or would like to explore our portfolio further, Contact Vidventures today, and let's create remarkable videos that make a real impact on your business.</h4>
-                                <h5 class="subtitle" data-sal="slide-up" data-sal-duration="400" data-sal-delay="300">
-                                    Schedule a call with our expert team today &#128521;</h5>
+                                <p class="title" data-sal="slide-up" data-sal-duration="400" data-sal-delay="200">
+                                   If you require additional information about our services or would like to explore our portfolio further, Contact Vidventures today, and let's create remarkable videos that make a real impact on your business.</p>
+                                <h6 class="subtitle" data-sal="slide-up" data-sal-duration="400" data-sal-delay="300">
+                                    Schedule a call with our expert team today &#128521;</h6>
                             </div>
                         </div>
                     </div>
@@ -1554,17 +1554,21 @@
         .cpbtn {
             height: 50px !important;
             width: 150px !important;
-            border-style: dashed !important;
-            border-radius: 30px !important;
-            border-color: #6d21f2 !important;
+           
+            border: none;
+             background-color: rgba(112, 114, 210, 0.3) !important;
+             border-radius: 30px !important;
             transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out !important;
 
         }
 
         .cpbtn:hover {
-            background-color: rgba(112, 114, 210, 0.3) !important;
+          /*  background-color: rgba(112, 114, 210, 0.3) !important; */
             color: rgb(0, 0, 0) !important;
             border: none !important;
+             border-style: dashed !important;
+            border-radius: 30px !important;
+            border-color: #6d21f2 !important; 
         }
 
         .content {
@@ -1589,11 +1593,14 @@
             height: 60px !important;
             width: 60px !important;
         }
+        .font-500 {
+    font-weight: 500;
+}
     </style>
 
     <div class="container text-center col-sm-12 col-md-12">
         <div class="heading justify-content-center mb-5">
-            <h2>This is <span class="" style="color: #6d21f2;">what we do</span></h2>
+            <h2 style="font-weight: 500;">This is <span class="" style="color: #6d21f2;">what we do</span></h2>
         </div>
 
    <div class="btn-group grid gap-4 mt-5 col-sm-12 col-md-12 d-flex flex-wrap justify-content-center">
@@ -1641,7 +1648,7 @@
                     <div class="col-lg-12">
                         <div class="section-title text-center">
                             <span class="subtitle bg-primary-opacity">Testimonials</span>
-                            <h2 class="title">Listen to Our Valued Clients</h2>
+                            <h2 class="title font-500" >Listen to Our Valued Clients</h2>
                         </div>
 
                     </div>
@@ -2098,7 +2105,7 @@
 
     <div class="container text-center" style="margin-bottom: 100px;">
         <div class="heading justify-content-center mb-5">
-            <h2>Got Questions? <span class="" style="color: #6d21f2;">Find Answers in our FAQ</span></h2>
+            <h2 class="font-500">Got Questions? <span class="" style="color: #6d21f2;">Find Answers in our FAQ</span></h2>
         </div>
 
         <div class="container col-md-7">
@@ -2208,7 +2215,7 @@
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="section-title">
                         <span class="subtitle bg-pink-opacity">Blog Post</span>
-                        <h2 class="title">Post Popular Post.</h2>
+                        <h2 class="title font-500"> Popular Post.</h2>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
@@ -2236,7 +2243,7 @@
                                 <img src="admin/assets/ProductImages/{{post.image}}" alt="cashcow blog">
                         </div>
                         <div class="rbt-card-body">
-                            <h3 class="rbt-card-title"><a>{{post.heading}}</a></h3>
+                            <h3 class="rbt-card-title font-500"><a>{{post.heading}}</a></h3>
                             {{!-- <p class="rbt-card-text">It is a long established fact that a reader.</p> --}}
                             <div class="rbt-card-bottom">
                                 <a class="transparent-button">Learn More<i><svg width="17" height="12"
@@ -2262,7 +2269,7 @@
                                 <img src="admin/assets/ProductImages/{{image}}" alt="Card image"> </a>
                         </div>
                         <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="{{link}}">{{heading}}</a></h5>
+                            <h5 class="rbt-card-title font-500 "><a class="font-500" href="{{link}}">{{heading}}</a></h5>
                             <div class="rbt-card-bottom">
                                 <a class="transparent-button">Read Article<i><svg width="17" height="12"
                                             xmlns="http://www.w3.org/2000/svg">

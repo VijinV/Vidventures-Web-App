@@ -2,59 +2,79 @@
 <div class="rbt-dashboard-area rbt-section-overlayping-top rbt-section-gapBottom mt-5">
     <div class="container mt-5">
         <div class="row mt-5">
-         {{#each job}}
-<div class="col-lg-12 mt--30">
-    <div class="profile-content rbt-shadow-box">
-        <h4 class="rbt-title-style-3">{{title}}</h4>
-        <div class="row g-5">
-            <div class="col-lg-8">
-                <p class="mt--10 mb--20">{{subTitle}}</p>
-            </div>
-            <div class="col-lg-2 offset-lg-2">
-                <div class="feature-sin best-seller-badge text-end h-100">
-                    <button class="trigger-button" data-modal-id="myModal{{@index}}">Open Modal</button>
+            {{#each job}}
+            <div class="col-lg-12 mt--30 cardonhover">
+                <div class="profile-content rbt-shadow-box">
+                    <h2 class="rbt-title-style-3 titletxt" style="border-bottom: 0;">{{title}}</h2>
+                    <div class="row g-5">
+                        <div class="col-lg-8 subtxt ">
+                            <p class="mt--10 mb--20">{{subTitle}}</p>
+                        </div>
+                        <div class="col-lg-2 offset-lg-2">
+                            <div class="feature-sin best-seller-badge text-end h-100">
+                                <button class="trigger-button" data-modal-id="myModal{{@index}}">Apply now</button>
 
-                    <!-- The modal -->
-                    <div id="myModal{{@index}}" class="mymodal">
-                        <!-- Modal content -->
-                        <div class="modal-content">
-                            <div class="btn">
-                                <span class="close">&times;</span>
-                            </div>
-                            <div class="modal-heading">
-                                <h1>{{title}}</h1>
-                                <h5>{{subTitle}}</h5>
-                            </div>
-                            <div class="modal-description">
-                                <h4>Job Description</h4>
-                                <p>
-                                    {{description}}
-                                </p>
-                            </div>
-                            <div class="modal-req">
-                                <h4>Requirements</h4>
-                                <ul>
-                                    {{#each requirements}}
-                                    <li>{{this}}</li>
-                                    {{/each}}
-                                </ul>
-                            </div>
-                            <div class="apply-btn">
-                                <a href="{{link}}" target="_blank" class="btn btn-primary apply-btn">Apply Now</a>
+                                <!-- The modal -->
+                                <div id="myModal{{@index}}" class="mymodal">
+                                    <!-- Modal content -->
+                                    <div class="modal-content">
+                                        <div class="btn">
+                                            <span class="close">&times;</span>
+                                        </div>
+                                        <div class="modal-heading">
+                                            <h2>{{title}}</h2>
+                                            <h6>{{subTitle}}</h6>
+                                        </div>
+                                        <div class="modal-description">
+                                            <h4>Job Description</h4>
+                                            <p>
+                                                {{description}}
+                                            </p>
+                                        </div>
+                                        <div class="modal-req">
+                                            <h4>Requirements</h4>
+                                            <ul>
+                                                {{#each requirements}}
+                                                <li>{{this}}</li>
+                                                {{/each}}
+                                            </ul>
+                                        </div>
+                                        <div class="apply-btn">
+                                            <a href="{{link}}" target="_blank" class="btn btn-primary apply-btn trigger-button">Apply
+                                                Now</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-{{/each}}
+            {{/each}}
 
         </div>
     </div>
 </div>
 <style>
+    .subtxt {
+        margin-top: 53px;
+    }
+
+    .rbt-shadow-box {
+        padding: 57px !important;
+        padding-left: 81px !important;
+        padding-bottom: 35px !important;
+    }
+
+    .titletxt {
+        border-bottom: 0;
+        margin-top: -10px;
+        margin-left: -1px;
+        position: absolute;
+        font-size: 3rem;
+        font-weight: 500
+    }
+
     /* Styling for the modal */
     .mymodal {
         display: none;
@@ -64,7 +84,7 @@
         top: 0;
         width: 100% !important;
         height: 100vh !important;
-        overflow: hidden ;
+        overflow: auto;
         background-color: rgba(0, 0, 0, 0.5);
     }
 
@@ -72,7 +92,7 @@
         background-color: #fefefe;
         margin: 15% auto;
         margin-top: 10rem !important;
-        padding: 20px;
+        padding: 33px;
         border: 1px solid #888;
         width: 100%;
         max-width: 45%;
@@ -85,26 +105,54 @@
         margin-bottom: 30px;
     }
 
+    .modal-heading h2 {
+        font-size: 4rem;
+    font-weight: 500;
+    }
+    .modal-heading h6 {
+        
+    margin-top: -19px;
+    margin-left: 7px;
+    font-weight: 400;
+
+    }
+
     .mymodal h4 {
-        text-decoration: underline;
+        text-decoration: none;
         margin-bottom: 20px;
+        font-weight: 500;
+        font-size: 1.8rem;
+        color:#0d6efd ;
     }
 
     .modal-description {
         margin-bottom: 20px;
     }
+    .modal-description p {
+        font-size: 16px;
+    }
 
- @media (min-width: 300px) and (max-width: 480px){
-.modal-content{
-    max-width: 90%;
-    top: 2px !important;
-    overflow: auto;
-}
-.mymodal{
-    overflow: auto;
-}
+    .cardonhover:hover {
 
- }
+        border-color: #637fea !important;
+        border: 1px solid;
+    }
+    .modal-req ul li {
+        font-size: 16px;
+    }
+
+    @media (min-width: 300px) and (max-width: 480px) {
+        .modal-content {
+            max-width: 90%;
+            top: 2px !important;
+            overflow: auto;
+        }
+
+        .mymodal {
+            overflow: auto;
+        }
+
+    }
 
     .close {
         color: #aaa;
@@ -117,10 +165,11 @@
     /* Styling for the button */
     .trigger-button {
         padding: 10px 20px;
-        color: black;
-        border: rgb(195, 191, 191) 0.5px solid;
+        color: #0d6efd;
+        border: rgb(255, 255, 255) 0.5px solid;
         cursor: pointer;
         border-radius: 7px;
+        background-color: #cfdff7;
 
     }
 
@@ -129,8 +178,10 @@
         color: white;
     }
 
-    .apply-btn{
- padding: 10px 20px;
+    .apply-btn {
+        padding: 13px 28px;
+        font-size: 16px;
+        margin-left: -12px;
     }
 </style>
 
