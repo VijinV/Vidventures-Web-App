@@ -77,33 +77,10 @@
 
   <link rel="manifest" href="/user/assets/mainfest.json">
 
-  <script>
-    // Add your loading screen JavaScript code here
 
-
- window.addEventListener('load', () => {
-  // Check if the current page is http://localhost:3000/shop
-  if (window.location.href === 'https://www.vidventuresyt.com/shop') {
-    const loadingScreen = document.getElementById('loadingscreen');
-    const shopppingpage = document.getElementById('shopppingpage');
-    
-    loadingScreen.style.display = 'block';
-    
-
-    // Stop loading after 3 seconds
-    setTimeout(() => {
-      loadingScreen.style.display = 'none';
-      shopppingpage.style.display = '';
-    }, 1200);
-  }
-});
-
-  </script>
 
   <style>
-    #shopppingpage{
-      display: none ;
-    }
+    
     .loading {
       position: absolute;
       display: none;
@@ -174,6 +151,25 @@
 </head>
 
 <body class="rbt-header-sticky">
+
+    <script>
+    // Add your loading screen JavaScript code here
+
+
+ window.addEventListener('load', () => {
+  // Check if the current page is http://localhost:3000/shop
+  //if (window.location.href === 'https://www.vidventuresyt.com/shop') {
+    if (window.location.href === 'http://localhost:3000/shop') {
+    const loadingScreen = document.getElementById('loadingscreen');
+    loadingScreen.style.display = 'block';
+    // Stop loading after 3 seconds
+    setTimeout(() => {
+      loadingScreen.style.display = 'none';
+    }, 1200);
+  }
+});
+
+  </script>
 
   <div id="loadingscreen" class="loading">
     <div class="loader">
