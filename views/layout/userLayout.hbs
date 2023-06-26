@@ -85,11 +85,15 @@
   // Check if the current page is http://localhost:3000/shop
   if (window.location.href === 'https://www.vidventuresyt.com/shop') {
     const loadingScreen = document.getElementById('loadingscreen');
+    const shopppingpage = document.getElementById('shopppingpage');
+    
     loadingScreen.style.display = 'block';
+    
 
     // Stop loading after 3 seconds
     setTimeout(() => {
       loadingScreen.style.display = 'none';
+      shopppingpage.style.display = 'block';
     }, 1200);
   }
 });
@@ -97,6 +101,9 @@
   </script>
 
   <style>
+    #shopppingpage{
+      display: none !important;
+    }
     .loading {
       position: absolute;
       display: none;
