@@ -59,7 +59,10 @@ const loadHome = async (req, res, next) => {
   .skip(1)
   .limit(3);
 
-console.log(posts)
+  setTimeout(()=>{
+    console.log('300000')
+  },3000)
+
     // const Post = await postModel.find().then((res)=>console.log(res))
   res.render("home", {
     login,
