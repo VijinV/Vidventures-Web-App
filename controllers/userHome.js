@@ -60,18 +60,18 @@ const loadHome = async (req, res, next) => {
   .limit(3);
 
   setTimeout(()=>{
-    console.log('300000')
+    res.render("home", {
+      login,
+      session: getSession(req, res),
+      review: review,
+      post,
+      posts,
+      sorted
+    } )
   },3000)
 
     // const Post = await postModel.find().then((res)=>console.log(res))
-  res.render("home", {
-    login,
-    session: getSession(req, res),
-    review: review,
-    post,
-    posts,
-    sorted
-  });
+  
 };
 
 const formData = async (req, res) => {
