@@ -26,11 +26,24 @@
     <style>
         @media (min-width: 300px) and (max-width: 480px) {
 
+            .cartitemcard td {
+                border-bottom: 0 !important;
+            }
+
             .cartitemcard {
                 display: flex;
                 position: relative;
-                height: 13rem;
+                height: 11rem;
                 overflow: hidden;
+                border-bottom: 1px solid grey;
+
+            }
+
+            .cartitemcard .cartimg {
+                width: 100px !important;
+                margin-top: -10px;
+                margin-left: -17px;
+
             }
 
             .cartitemcard .pro-thumbnail {
@@ -42,20 +55,32 @@
             }
 
             .cartitemcard .pro-title {
-                margin-left: -34px;
+                margin-left: -20rem !important;
+                margin-top: 0rem;
+            }
+
+            .cartitemcard .pro-title a {
+                font-size: 16px;
+                font-family: 400;
             }
 
             .cartitemcard .pro-price {
-                bottom: -1px;
+                bottom: -6px;
                 position: absolute;
-                margin-left: 21px;
+                margin-left: 76px;
+                /* font-size: 5rem !important; */
                 border-bottom: 0;
             }
 
+            .cartitemcard .pro-price span {
+                font-size: 21px !important;
+            }
+
+
             .cartitemcard .pro-quantity {
-                bottom: -17px;
+                bottom: -15px;
                 position: absolute;
-                margin-left: 9rem;
+                margin-left: 13rem;
                 border-bottom: 0;
             }
 
@@ -65,8 +90,8 @@
 
             .cartitemcard .removebtn {
                 position: absolute;
-                bottom: 0;
-                left: 25rem;
+                bottom: -1px;
+                left: 26.3rem;
                 border-bottom: 0;
             }
 
@@ -74,6 +99,34 @@
                 display: none;
             }
 
+            .pro-quantity svg {
+                border: 6px solid;
+                /* font-size: 11px !important; */
+                border-radius: 50%;
+                background-color: lightgrey;
+                border-color: lightgrey;
+            }
+
+            .pro-quantity .pro-qty input {
+                width: 28px !important;
+            }
+
+            .pro-qty .plus-btn {
+                margin-left: 0 !important;
+            }
+            .removebtn a {
+                text-decoration: underline !important;
+                font-size: 14px;
+            }
+            thead{
+                display: none;
+            }
+            .rbt-section-gap{
+                padding: 20px 0 !important;
+            }
+            .priceofsingle{
+                display: none !important;
+            }
 
 
 
@@ -108,7 +161,7 @@
                                         <tr class="cartitemcard">
                                             <td class="pro-thumbnail"><a href="#"><img
                                                         src="admin/assets/ProductImages/{{productId.image}}"
-                                                        alt="Product" /></a></td>
+                                                        alt="Product" class="cartimg" /></a></td>
                                             <td class="pro-title"><a href="#">{{productId.name}}</a></td>
                                             <td class="pro-price"><span>${{productId.discountedPrice}}</span></td>
                                             <td class="pro-quantity">
@@ -119,7 +172,7 @@
                                                             <path fill="currentColor" d="M19 12.998H5v-2h14z" />
                                                         </svg></a>
 
-                                                    <input id="cartqty" class="qty-input w-100" type="number"
+                                                    <input id="cartqty" class="qty-input " type="number"
                                                         value="{{qty}}" data-product-id="{{productId._id}}" min="1" />
                                                     <a class="plus-btn ms-3 me-2"><svg
                                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -132,7 +185,8 @@
                                             <td class="removebtn text-danger"><a class="text-danger"
                                                     href="/removeFromCart?id={{productId._id}}">Remove</a></td>
                                             <small class="text-danger" id="small"></small>
-                                            <td style="display: none;" class="pro-remove"><a href="/removeFromCart?id={{productId._id}}"><i
+                                            <td style="display: none;" class="pro-remove"><a
+                                                    href="/removeFromCart?id={{productId._id}}"><i
                                                         class="feather-x"></i></a></td>
                                         </tr>
                                         {{/each}}
@@ -251,14 +305,14 @@
                                                     </td>
                                                     <td class="pro-quantity shtd">
                                                         <div class="pro-qty">
-                                                            <a onclick="shortsminus()" class="minus-btn ms-2 me-3"><svg
+                                                            <a onclick="shortsminus()" class="minus-btn ms-2"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="24"
                                                                     height="24" viewBox="0 0 24 24">
                                                                     <path fill="currentColor" d="M19 12.998H5v-2h14z" />
                                                                 </svg></a>
                                                             <input name="shortsQty" id="shorts" class="qty-input"
                                                                 type="number" value="0" />
-                                                            <a onclick="shortsadd()" class="plus-btn ms-3 me-2"><svg
+                                                            <a onclick="shortsadd()" class="plus-btn ms-3 "><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="24"
                                                                     height="24" viewBox="0 0 24 24">
                                                                     <path fill="currentColor"
@@ -285,7 +339,7 @@
                                                         <div class="pro-qty">
 
                                                             <a id="Thumnailminus" onclick="Thumbnailminus()"
-                                                                class="minus-btn ms-2 me-3"><svg
+                                                                class="minus-btn ms-2"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="24"
                                                                     height="24" viewBox="0 0 24 24">
                                                                     <path fill="currentColor" d="M19 12.998H5v-2h14z" />
@@ -416,7 +470,6 @@
 </form>
 
 <style>
-
     #addmoreTable tr {
 
         flex-direction: row;
@@ -431,7 +484,7 @@
     }
 
     #addmoreTable tr .pro-quantity {
-        margin-left: 7rem !important;
+        margin-left: 7rem ;
     }
 
 
@@ -481,10 +534,10 @@
 
         .tableaddmore .shtd {
             position: absolute;
-            margin-left: 125px !important;
+            margin-left: 104px  !important;
         }
 
-        .tableaddmore  .pro-qty {
+        .tableaddmore .pro-qty {
             border: 0;
         }
 
@@ -496,7 +549,7 @@
 
         #shorts-total {
             position: absolute !important;
-            margin-left: 25rem;
+            margin-left: 23rem;
             margin-top: 14px !important;
         }
 
@@ -504,30 +557,35 @@
             justify-content: start;
         }
 
-        .thumbproqty{
-                margin-top: 10px !important;
+        .thumbproqty {
+            margin-top: 10px !important;
         }
-        #thumbtotal{
-             position: absolute !important;
-            margin-left: 25rem;
-            margin-top: 22px !important;
-        }
-        .priceofsingtumb {
-            margin-left: -15px;
-    margin-top: 22px !important;
-        }
-        .channelmanagementTotalprice{
-              position: absolute !important;
+
+        #thumbtotal {
+            position: absolute !important;
             margin-left: 23rem;
             margin-top: 22px !important;
         }
-        .checkch{
+
+        .priceofsingtumb {
+            margin-left: -15px;
             margin-top: 22px !important;
         }
-        .hidembmon{
+
+        .channelmanagementTotalprice {
+            position: absolute !important;
+            margin-left: 22rem;
+            margin-top: 22px !important;
+        }
+
+        .checkch {
+            margin-top: 22px !important;
+        }
+
+        .hidembmon {
             display: none !important;
         }
-        
+
 
 
 
