@@ -432,13 +432,13 @@ const loadProfile = async (req, res) => {
   try {
     const userData = await userModel.getUserById(req.session.user_id);
     const order = await orderModel
-      .find({ userId: req.session.user_id })
+      .find({ })
       .populate("products.item.productId")
       .populate("userId")
       .sort({ createdAt: -1 });
 
     const orderDetails = await orderModel
-      .find({})
+      .find({ userId: req.session.user_id})
       .populate("products.item.productId")
       .populate("userId")
       .sort({ createdAt: -1 });
