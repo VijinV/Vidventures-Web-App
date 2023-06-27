@@ -710,12 +710,15 @@ const addInstruction = async (req, res) => {
 
 const loadSuccess = async (req, res, next) => {
   try {
-
-    if (req.session.paymentString == order.paymentString) {
+    const user = await userModel.findById({_id:req.session.user_id})
+    if (user.paymentString == order.paymentString) {
+      req.session.user_id = user._id;
+      req.session.email = user.email;
       const orderId = order.orderId;
       const date = order.createdAt;
       const fdate = date.toLocaleDateString("en-US");
       const totaAmount = order.products.totalPrice;
+      await userModel.findByIdAndUpdate({_id:req.session.user_id},{$set:{paymentString:''}})
 
       const message = {
         from: "vidventures.yt@gmail.com", // Sender address
@@ -1354,25 +1357,33 @@ const stripePayment = async (req, res) => {
   //   cancel_url: "http://localhost:3000/cancel",
   // });
 
-  const session = await stripe.checkout.sessions.create({
-    line_items: line_items,
-    mode: "payment",
-    success_url: "http://vidventuresyt.com/success",
-    cancel_url: "http://vidventuresyt.com/cancel",
-  });
+  if(user){
 
-  req.session.paymentString = randomstring.generate();
+    const session = await stripe.checkout.sessions.create({
+      line_items: line_items,
+      mode: "payment",
+      success_url: "http://vidventuresyt.com/success",
+      cancel_url: "http://vidventuresyt.com/cancel",
+    });
+    const paymentString = await randomstring.generate();
+    req.session.paymentString = paymentString
 
-  order = new orderModel({
-    products: user.cart,
-    userId: req.session.user_id,
-    status: "Confirm",
-    orderId: oid,
-    address: address,
-    paymentString: req.session.paymentString,
-  });
+    const updatedUser = await userModel.findByIdAndUpdate({_id:user._id},{$set:{paymentString:paymentString}})
+  
+    order = await new orderModel({
+      products: user.cart,
+      userId: req.session.user_id,
+      status: "Confirm",
+      orderId: oid,
+      address: address,
+      paymentString: paymentString
+    });
+  
+    res.redirect(303, session.url);
+  }else{
+    res.redirect('/login')
+  }
 
-  res.redirect(303, session.url);
 };
 
 const careerPage = async (req, res) => {

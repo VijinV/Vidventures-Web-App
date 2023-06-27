@@ -23,6 +23,9 @@ const userSchema = new mongoose.Schema({
   coordinator:{
     type:Boolean,
     default: false,
+  },
+  paymentString:{
+    type:String,
   }
   ,
   isVerified:{
