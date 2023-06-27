@@ -57,6 +57,8 @@ route.get('/homepage',(req, res) => {res.redirect('/')})
 
 route.get('/blog',userController.loadPosts)
 
+route.get('/forgetpassword',userController.loadForgetPassword)
+
 
 
 // post 
@@ -166,6 +168,11 @@ route.post('/paymentpage',userController.payment)
 
 route.get('/career',userController.careerPage)
 
+route.post('/forgetpassmail',userController.forgetpassmail)
+
+route.post('/otpconfirmforget',userController.forgetotpConfirm)
+
+route.post('/confimpassword',userController.resetPasswords)
 
 
 

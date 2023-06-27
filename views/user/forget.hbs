@@ -1,0 +1,35 @@
+<div class="container">
+    <form action="/forgetpassmail" method="post">
+    <div class="input-group col-md-6 col-md-8">
+        <label class="label">Email address</label>
+        <input autocomplete="off" name="email" id="Email" class="input" type="email">
+        <div class="button mt-5"> <button class="btn btn-primary btn-lg mt-5" type="submit">Reset Password</button></div>
+
+        <div></div>
+    </div>
+    </form>
+</div>
+
+
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -100px;
+        height: 100vh;
+        /* Adjust the height as needed */
+    }
+
+    .input-group {
+        
+    }
+
+    .button {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: 5rem !important;
+    }
+</style>

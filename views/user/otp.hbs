@@ -1,4 +1,10 @@
+{{#if forgetpassword}}
+<form action="/otpconfirmforget" method="POST" class="otp-form" name="otp-form" >
+{{else}}
 <form action="/verifyEmail" method="POST" class="otp-form" name="otp-form" >
+
+{{/if}}
+
   
   <div class="title">
     <br><br><br><br>
@@ -19,6 +25,7 @@
   <input type="number" class="otp__digit" name="digit5">
   <input type="number" class="otp__digit" name="digit6">
   <input type="hidden" name="otp" id="otp-input">
+  <input type="hidden" name="forgetpass" value="{{forgetpassword}}">
   
 </div>
 
