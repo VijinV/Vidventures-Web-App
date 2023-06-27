@@ -615,7 +615,7 @@ const updateCart = async (req, res) => {
       (item) => item.productId._id.toString() === productId.toString()
     );
 
-    const productPrice = cartItem.productId.discountedPrice;
+    const productPrice = parseInt( cartItem.productId.discountedPrice)
 
     const qtyChange = qty - cartItem.qty;
 
@@ -1263,7 +1263,7 @@ const stripePayment = async (req, res) => {
 
   cartItems.cart.item.forEach((item) => {
     let name = item.productId.name;
-    let price = item.productId.discountedPrice * 100;
+    let price = parseInt(item.productId.discountedPrice ) * 100;
     let newimage = item.productId.image;
 
     line_object = {
