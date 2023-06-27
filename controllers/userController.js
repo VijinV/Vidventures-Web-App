@@ -1268,7 +1268,7 @@ const stripePayment = async (req, res) => {
 
     line_object = {
       price_data: {
-        currency: "inr",
+        currency: "usd",
         product_data: {
           name: name,
           images: [
