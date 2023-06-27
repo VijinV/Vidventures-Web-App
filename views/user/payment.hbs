@@ -36,29 +36,29 @@
 
                                 <div class="col-md-6 col-12 mb--20">
                                     <label>Name*</label>
-                                    <input name="name" type="text" placeholder="First Name">
+                                    <input name="name" type="text" placeholder="First Name" required>
                                 </div>
 
                                 <div class="col-md-6 col-12 mb--20">
                                     <label>Email Address*</label>
-                                    <input name="email" type="email" placeholder="Email Address">
+                                    <input name="email" type="email" placeholder="Email Address" required>
                                 </div>
 
                                 <div class="col-md-6 col-12 mb--20">
                                     <label>Phone no*</label>
-                                    <input name="mobile" type="text" placeholder="Phone number">
+                                    <input name="mobile" type="text" placeholder="Phone number" required>
                                 </div>
 
                                 <div class="col-12 mb--20">
                                     <label>Address*</label>
-                                    <input type="text" name="line1" placeholder="Address line 1">
-                                    <input type="text" name="line2" placeholder="Address line 2">
+                                    <input type="text" name="line1" placeholder="Address line 1" required>
+                                    <input type="text" name="line2" placeholder="Address line 2" required>
                                 </div>
 
                                 <div class="col-md-6 col-12 mb--20">
                                     <label>Country*</label>
                                     <div class="rbt-modern-select bg-transparent height-45">
-                                        <select id="countrySelect" name="country" class="w-100">
+                                        <select id="countrySelect" name="country" class="w-100" required>
                                             <option value="">Select a Country</option>
 
                                         </select>
@@ -67,17 +67,17 @@
 
                                 <div class="col-md-6 col-12 mb--20">
                                     <label>Town/City*</label>
-                                    <input name="city" type="text" placeholder="Town/City">
+                                    <input name="city" type="text" placeholder="Town/City" required>
                                 </div>
 
                                 <div class="col-md-6 col-12 mb--20">
                                     <label>State*</label>
-                                    <input name="state" type="text" placeholder="State">
+                                    <input name="state" type="text" placeholder="State" required>
                                 </div>
 
                                 <div class="col-md-6 col-12 mb--20">
                                     <label>Zip Code*</label>
-                                    <input name="postal_code" type="text" placeholder="Zip Code">
+                                    <input name="postal_code" type="text" placeholder="Zip Code" required>
                                 </div>
                             </div>
 
@@ -147,13 +147,11 @@
                             <div class="checkout-payment-method">
 
                                 <div class="single-method">
-                                    <input type="radio" id="payment_bank" name="payment-method" value="bank">
+                                    <input type="radio" id="payment_bank" name="payment-method" value="bank" checked>
                                     <label for="payment_bank">Stripe</label>
-                                    <p data-method="bank">Please send a Check to Store name with
-                                        Store Street, Store Town, Store State, Store Postcode,
-                                        Store Country.</p>
+                                    <p data-method="bank"></p>
                                 </div>
-                                <div class="single-method">
+                                {{!-- <div class="single-method">
                                     <input type="radio" id="payment_paypal" name="payment-method" value="paypal">
                                     <label for="payment_paypal">Paypal</label>
                                     <p data-method="paypal">Please send a Check to Store name with
@@ -167,7 +165,7 @@
                                     <p data-method="check">Please send a Check to Store name with
                                         Store Street, Store Town, Store State, Store Postcode,
                                         Store Country.</p>
-                                </div>
+                                </div> --}}
 
 
 
@@ -176,8 +174,9 @@
 
                                 <div class="single-method">
                                     <input type="checkbox" id="accept_terms">
-                                    <label for="accept_terms">I’ve read and accept the terms &
-                                        conditions</label>
+                                    <label for="accept_terms">I’ve read and accept the <a
+                                            href="/termsandconditions">terms &
+                                            conditions</a></label>
                                 </div>
                             </div>
                             <div class="plceholder-button mt--50">

@@ -541,7 +541,7 @@ const contact = async (req, res) => {
 const loadShop = async (req, res) => {
   const product = await Product.getAvailableProducts();
 
-  res.render("shop", { session: true, product });
+  res.render("shop", { session: getSession(req,res), product });
 };
 
 const loadProductDetails = async (req, res) => {
@@ -956,7 +956,7 @@ const loadSuccess = async (req, res, next) => {
 };
 
 const loadTerms = (req, res) => {
-  res.render("terms");
+  res.render("terms",{session:getSession(req,res)``});
 };
 
 const loadBlog = async (req, res) => {
@@ -978,7 +978,7 @@ const loadBlog = async (req, res) => {
       .skip(4)
 
 
-    res.render("blog", { post, posts, postlist });
+    res.render("blog", { post, posts, postlist ,session:getSession(req,res) });
   } catch (error) {
     console.error(error.message);
   }
@@ -1015,13 +1015,13 @@ const loadBlogDetails = async (req, res) => {
 
 const loadPrivacy = async (req, res) => {
   try {
-    res.render("privacy");
+    res.render("privacy",{session:getSession(req,res)});
   } catch (error) { }
 };
 
 const loadOurStory = async (req, res) => {
   try {
-    res.render("ourStory");
+    res.render("ourStory",{session:getSession(req,res)});
   } catch (error) { }
 };
 
@@ -1345,21 +1345,21 @@ const stripePayment = async (req, res) => {
     channelManagement = null;
   }
 
-  const session = await stripe.checkout.sessions.create({
-    line_items: line_items,
-    mode: "payment",
-    // success_url: "http://vidventuresyt.com/success",
-    // cancel_url: "http://vidventuresyt.com/cancel",
-    success_url: "http://localhost:3000/success",
-    cancel_url: "http://localhost:3000/cancel",
-  });
-
   // const session = await stripe.checkout.sessions.create({
   //   line_items: line_items,
   //   mode: "payment",
-  //   success_url: "http://vidventuresyt.com/success",
-  //   cancel_url: "http://vidventuresyt.com/cancel",
+  //   // success_url: "http://vidventuresyt.com/success",
+  //   // cancel_url: "http://vidventuresyt.com/cancel",
+  //   success_url: "http://localhost:3000/success",
+  //   cancel_url: "http://localhost:3000/cancel",
   // });
+
+  const session = await stripe.checkout.sessions.create({
+    line_items: line_items,
+    mode: "payment",
+    success_url: "http://vidventuresyt.com/success",
+    cancel_url: "http://vidventuresyt.com/cancel",
+  });
 
   req.session.paymentString = randomstring.generate();
 
@@ -1380,7 +1380,7 @@ const careerPage = async (req, res) => {
 
     const job = await CarrerModel.find({ isAvailable: true }).sort({ _id: -1 })
 
-    res.render('career', { job })
+    res.render('career', { job ,session:getSession(req,res)})
   } catch (error) {
 
   }
