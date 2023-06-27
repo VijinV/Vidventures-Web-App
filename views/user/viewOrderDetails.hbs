@@ -7,9 +7,9 @@
       <div class="col-lg-8">
         <div class="course-details-content">
 
-          <div class="rbt-feature-box rbt-shadow-box thuumbnail">
-            <img class="w-100" src="assets/ProductImages/{{newProduct.image}}" alt="Card image">
-          </div>
+          {{!-- <div class="rbt-feature-box rbt-shadow-box thuumbnail">
+            <img class="w-100" src="admin/assets/ProductImages/{{newProduct.image}}" alt="Card image">
+          </div> --}}
 
           <!-- Start Course Feature Box  -->
           <div class="rbt-feature-box rbt-shadow-box mt--60">
@@ -19,8 +19,13 @@
                 <div class="section-title">
                   <h4 class="title mb--20">Product Description</h4>
                 </div>
-                <p>{{newProduct.sdescription}}<p>
-                  {{newProduct.description}}
+                
+                <ul>
+                  {{#each newProduct.list}}
+                  <li>{{this}}</li>
+                   {{/each}}
+                </ul>
+                 
                 </div>
               <!-- End Feture Box  -->
 
@@ -137,15 +142,15 @@
         </div> --}}
       </div>
 
-      <div class="col-lg-4 mt_md--60 mt_sm--60 mt-5">
+      <div class="col-lg-4 mt_md--60 mt_sm--60 mt-5" style="margin-top: 60vh !important;">
         <div class="course-sidebar rbt-gradient-border sticky-top rbt-shadow-box course-sidebar-top">
           <div class="inner">
 
 
             <!-- Start Viedo Wrapper  -->
-            <a class="video-popup-with-text video-popup-wrapper text-center popup-video sidebar-video-hidden mb--15">
+            <a class="video-popup-with-text  text-center popup-video  mb--15 " >
               <div class="video-content">
-                <img class="w-100 rbt-radius" src="assets/ProductImages/{{newProduct.image}}" alt="Video Images">
+                <img class="w-100 rbt-radius" src="admin/assets/ProductImages/{{newProduct.image}}" alt="Video Images">
 
               </div>
             </a>
@@ -193,9 +198,9 @@
 
                 <hr class="mt--20">
                 <div class="contact-with-us text-center">
-                  <p>For details about the course</p>
-                  <p class="rbt-badge-2 mt--10 justify-content-center w-100"><i class="feather-phone mr--5"></i> Call
-                    Us: <a href="#"><strong>+444 555 666 777</strong></a></p>
+                  <p></p>
+                  <p class="rbt-badge-2 mt--10 justify-content-center w-100"><i class="feather-phone mr--5"></i> Contact us
+                     <a href="https://wa.link/cac4zv"><strong>+91 7012533658</strong></a></p>
                 </div>
               </div>
 

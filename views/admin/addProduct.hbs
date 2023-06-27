@@ -38,7 +38,8 @@
                                     <div class="input-group">
                                         <input type="text" placeholder="Type here" name="list" class="form-control">
                                         <div class="input-group-append">
-                                            <span class="input-group-text" onclick="addNewInput()"><i class="bi bi-plus-lg"></i></span>
+                                            <span class="input-group-text" onclick="addNewInput()"><i
+                                                    class="bi bi-plus-lg"></i></span>
                                         </div>
                                     </div>
                                 </div>
@@ -83,8 +84,9 @@
                     <div class="card-body">
                         <div class="input-upload">
                             <img src="assets/imgs/theme/upload.svg" alt="">
-<input onchange="validateFile()" id="myFile" class="form-control" name="image" type="file"
-                accept=".png, .jpg, .jpeg, .gif" size="2048" />                        </div>
+                            <input onchange="validateFile()" id="myFile" class="form-control" name="image" type="file"
+                                accept=".png, .jpg, .jpeg, .gif .wepg" size="2048" />
+                        </div>
                     </div>
 
                 </div> <!-- card end// -->
@@ -126,7 +128,7 @@
 
         var plusIcon = document.createElement("i");
         plusIcon.classList.add("bi", "bi-plus-lg");
-        
+
 
         plusSpan.appendChild(plusIcon);
         appendDiv.appendChild(plusSpan);
@@ -137,5 +139,5 @@
         itemsDiv.appendChild(newDiv);
     }
 
-    
+
 </script>

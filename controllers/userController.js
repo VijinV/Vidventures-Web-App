@@ -403,7 +403,7 @@ const viewOrderDetail = async (req, res) => {
       .populate("userId");
     let product;
     const newProduct = await productModel.findById(productId);
-
+    console.log(newProduct)
     if (order) {
       const item = order.products.item.find(
         (i) => String(i.productId._id) === String(productId)
@@ -541,7 +541,7 @@ const contact = async (req, res) => {
 const loadShop = async (req, res) => {
   const product = await Product.getAvailableProducts();
 
-  res.render("shop", { session: getSession(req,res), product });
+  res.render("shop", { session: getSession(req, res), product });
 };
 
 const loadProductDetails = async (req, res) => {
@@ -710,7 +710,7 @@ const addInstruction = async (req, res) => {
 
 const loadSuccess = async (req, res, next) => {
   try {
-    const user = await userModel.findById({_id:req.session.user_id})
+    const user = await userModel.findById({ _id: req.session.user_id })
     if (user.paymentString == order.paymentString) {
       req.session.user_id = user._id;
       req.session.email = user.email;
@@ -718,7 +718,14 @@ const loadSuccess = async (req, res, next) => {
       const date = order.createdAt;
       const fdate = date.toLocaleDateString("en-US");
       const totaAmount = order.products.totalPrice;
-      await userModel.findByIdAndUpdate({_id:req.session.user_id},{$set:{paymentString:''}})
+      await userModel.findByIdAndUpdate({ _id: req.session.user_id }, { $set: { paymentString: '' } })
+      await userModel.findByIdAndUpdate({ _id: req.session.user_id }, {
+        $set: {
+          "cart.item": [],
+          "cart.totalPrice": "0",
+        },
+      },
+        { multi: true })
 
       const message = {
         from: "vidventures.yt@gmail.com", // Sender address
@@ -959,7 +966,7 @@ const loadSuccess = async (req, res, next) => {
 };
 
 const loadTerms = (req, res) => {
-  res.render("terms",{session:getSession(req,res)``});
+  res.render("terms", { session: getSession(req, res)`` });
 };
 
 const loadBlog = async (req, res) => {
@@ -981,7 +988,7 @@ const loadBlog = async (req, res) => {
       .skip(4)
 
 
-    res.render("blog", { post, posts, postlist ,session:getSession(req,res) });
+    res.render("blog", { post, posts, postlist, session: getSession(req, res) });
   } catch (error) {
     console.error(error.message);
   }
@@ -1018,13 +1025,13 @@ const loadBlogDetails = async (req, res) => {
 
 const loadPrivacy = async (req, res) => {
   try {
-    res.render("privacy",{session:getSession(req,res)});
+    res.render("privacy", { session: getSession(req, res) });
   } catch (error) { }
 };
 
 const loadOurStory = async (req, res) => {
   try {
-    res.render("ourStory",{session:getSession(req,res)});
+    res.render("ourStory", { session: getSession(req, res) });
   } catch (error) { }
 };
 
@@ -1357,7 +1364,7 @@ const stripePayment = async (req, res) => {
   //   cancel_url: "http://localhost:3000/cancel",
   // });
 
-  if(user){
+  if (user) {
 
     const session = await stripe.checkout.sessions.create({
       line_items: line_items,
@@ -1368,8 +1375,8 @@ const stripePayment = async (req, res) => {
     const paymentString = await randomstring.generate();
     req.session.paymentString = paymentString
 
-    const updatedUser = await userModel.findByIdAndUpdate({_id:user._id},{$set:{paymentString:paymentString}})
-  
+    const updatedUser = await userModel.findByIdAndUpdate({ _id: user._id }, { $set: { paymentString: paymentString } })
+
     order = await new orderModel({
       products: user.cart,
       userId: req.session.user_id,
@@ -1378,9 +1385,9 @@ const stripePayment = async (req, res) => {
       address: address,
       paymentString: paymentString
     });
-  
+
     res.redirect(303, session.url);
-  }else{
+  } else {
     res.redirect('/login')
   }
 
@@ -1391,7 +1398,7 @@ const careerPage = async (req, res) => {
 
     const job = await CarrerModel.find({ isAvailable: true }).sort({ _id: -1 })
 
-    res.render('career', { job ,session:getSession(req,res)})
+    res.render('career', { job, session: getSession(req, res) })
   } catch (error) {
 
   }
