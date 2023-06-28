@@ -1,52 +1,61 @@
 <style>
+    
     #nameSpan {
-        opacity: 0.5;
+        opacity: 0.8;
         font-weight: 600;
-
+        color: #F25C54;
+        
     }
 
     /* Keyframe animation for fading out */
     @keyframes fadeOut {
         0% {
-            opacity: 0.5;
+            opacity: 0.8;
             transform: translateY(0);
         }
 
         100% {
             opacity: 0;
-            transform: translateY(-1000px);
+            transform: translateY(-20px);
         }
     }
 
     /* Keyframe animation for fading in */
     @keyframes fadeIn {
         0% {
-            opacity: 0.5;
+            opacity: 0;
             transform: translateY(20px);
         }
 
         100% {
-            opacity: 1;
+            opacity: 0.8;
             transform: translateY(0);
         }
     }
 
     /* Animation classes */
     .fade-out {
-        animation: fadeOut 0.5s forwards;
+        animation: fadeOut 1s forwards;
     }
 
     .fade-in {
-        animation: fadeIn 0.5s forwards;
+        animation: fadeIn 1s forwards;
     }
-    
-  
+    .headingslide{
+        display: flex;
+        flex-direction: column;
+    }
+    .headingname{
+        margin-top: -21px;
+        font-weight: 500 !important;
+        opacity: 0.5;
+    }
 </style>
 
 <script>
     function changeText() {
         const nameSpan = document.getElementById('nameSpan');
-        const newTexts = ['Howdy', 'Hola', 'Namasthe'];
+        const newTexts = ['Howdy', 'Hola', 'Namasthe','Bonjour', ];
         const currentIndex = newTexts.indexOf(nameSpan.innerText);
         const nextIndex = (currentIndex + 1) % newTexts.length;
         const nextText = newTexts[nextIndex];
@@ -65,7 +74,7 @@
         newTexts.push(newTexts.shift());
     }
 
-    // setInterval(changeText, 1000);
+     setInterval(changeText, 1000);
 </script>
 <a class="close_side_menu" href="javascript:void(0);"></a>
 <!-- Start breadcrumb Area -->
@@ -74,10 +83,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-inner text-center">
-                    <span class="me-3" style="font-weight: 600; font-size: 80px;"
-                            id="nameSpan">Namasthe
+                    <div class="headingslide">
+                        <span class="me-3 my-element " style="font-weight: 600; font-size: 80px;" id="nameSpan">Hello
                         </span>
-                    <h2 class="title headingname " style="font-weight: 600; font-size: 80px;">{{userData.name}}</h2>
+
+                        <h2 class="title headingname " style="font-weight: 600; font-size: 35px;">{{userData.name}}</h2>
+                    </div>
                     {{!-- <ul class="page-list">
                         <li class="rbt-breadcrumb-item"><a href="/">Home</a></li>
                         <li>
