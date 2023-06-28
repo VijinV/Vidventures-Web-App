@@ -352,7 +352,7 @@ const verifyUserEmail = (req, res) => {
     if (otp == emailOtp) {
       newUser.isVerified = true;
 
-      newUser.save(() => { });
+      newUser.save(() => {});
 
       req.session.user_id = newUser._id;
 
@@ -360,7 +360,7 @@ const verifyUserEmail = (req, res) => {
     } else {
       res.render("otp", { message: "otp not valid", login: true });
     }
-  } catch (error) { }
+  } catch (error) {}
 };
 
 const verifyUser = async (req, res) => {
@@ -388,7 +388,7 @@ const verifyUser = async (req, res) => {
     } else {
       res.send("user not found");
     }
-  } catch (error) { }
+  } catch (error) {}
 };
 
 const viewOrderDetail = async (req, res) => {
@@ -403,7 +403,7 @@ const viewOrderDetail = async (req, res) => {
       .populate("userId");
     let product;
     const newProduct = await productModel.findById(productId);
-    console.log(newProduct)
+    console.log(newProduct);
     if (order) {
       const item = order.products.item.find(
         (i) => String(i.productId._id) === String(productId)
@@ -432,20 +432,18 @@ const loadProfile = async (req, res) => {
   try {
     const userData = await userModel.getUserById(req.session.user_id);
     const order = await orderModel
-      .find({ })
+      .find({})
       .populate("products.item.productId")
       .populate("userId")
       .sort({ createdAt: -1 });
 
     const orderDetails = await orderModel
-      .find({ userId: req.session.user_id})
+      .find({ userId: req.session.user_id })
       .populate("products.item.productId")
       .populate("userId")
       .sort({ createdAt: -1 });
 
     let data = [];
-
-
 
     await orderDetails.forEach((item) => {
       let id = item._id;
@@ -549,7 +547,6 @@ const loadProductDetails = async (req, res) => {
   const list = product.list;
   const listWithoutEmpty = list.filter((element) => element !== "");
 
-
   const products = await Product.find({ _id: { $ne: req.query.id } }).limit(2);
 
   res.render("productDetails", {
@@ -565,7 +562,9 @@ const addToCart = async (req, res) => {
     userSession = req.session;
     const userData = await userModel.findById({ _id: userSession.user_id });
     const productData = await Product.getProduct(req.query.id);
-    await userData.addToCart(productData).then((data) => { console.log('cart added to cart', data) })
+    await userData.addToCart(productData).then((data) => {
+      console.log("cart added to cart", data);
+    });
     res.redirect("/cart");
   } catch (error) {
     console.log(error.message);
@@ -615,7 +614,7 @@ const updateCart = async (req, res) => {
       (item) => item.productId._id.toString() === productId.toString()
     );
 
-    const productPrice = parseInt( cartItem.productId.discountedPrice)
+    const productPrice = parseInt(cartItem.productId.discountedPrice);
 
     const qtyChange = qty - cartItem.qty;
 
@@ -632,9 +631,11 @@ const updateCart = async (req, res) => {
     await user.save();
 
     // Send the updated subtotal and grand total back to the client
-    const subtotal = user.cart.item.reduce((acc, item) => {
-      return acc + parseFloat(item.price); // Convert to float for accurate addition
-    }, 0).toFixed(2); // Round to 2 decimal places
+    const subtotal = user.cart.item
+      .reduce((acc, item) => {
+        return acc + parseFloat(item.price); // Convert to float for accurate addition
+      }, 0)
+      .toFixed(2); // Round to 2 decimal places
     const grandTotal = (parseFloat(subtotal) + 45).toFixed(2); // Round to 2 decimal places
 
     res.json({ subtotal, grandTotal, productPrice, qtyChange });
@@ -643,9 +644,6 @@ const updateCart = async (req, res) => {
     res.status(500).send("Error updating cart item");
   }
 };
-
-
-
 
 const loadAbout = async (req, res) => {
   if (req.session.user_id) {
@@ -675,7 +673,6 @@ const loadAddInstruction = async (req, res) => {
     }
   });
 
-
   res.render("addInstruction", {
     session: getSession(req, res),
     id: id,
@@ -686,18 +683,32 @@ const loadAddInstruction = async (req, res) => {
 };
 
 const addInstruction = async (req, res) => {
-  const { script, voice, editing, thumbnail, id } = req.body;
+  const {
+    script,
+    voice,
+    editing,
+    thumbnail,
+    channelname,
+    niche,
+    link,
+    others,
+  } = req.body;
 
   const productId = req.body.productId;
+  const id = req.body.id;
 
   const instruction = {
     script: script,
     voice: voice,
     editing: editing,
     thumbnail: thumbnail,
+    channelname,
+    niche,
+    link,
+    others,
   };
 
-
+  console.log('instruction', id)
 
   const order = await orderModel.findOneAndUpdate(
     { _id: id, "products.item": { $elemMatch: { productId: productId } } },
@@ -705,12 +716,12 @@ const addInstruction = async (req, res) => {
     { new: true }
   );
 
-  res.redirect(`/viewOrderDetails?id=${id}&productId=${productId}`);
+  res.redirect('/profile');
 };
 
 const loadSuccess = async (req, res, next) => {
   try {
-    const user = await userModel.findById({ _id: req.session.user_id })
+    const user = await userModel.findById({ _id: req.session.user_id });
     if (user.paymentString == order.paymentString) {
       req.session.user_id = user._id;
       req.session.email = user.email;
@@ -718,14 +729,25 @@ const loadSuccess = async (req, res, next) => {
       const date = order.createdAt;
       const fdate = date.toLocaleDateString("en-US");
       const totaAmount = order.products.totalPrice;
-      await userModel.findByIdAndUpdate({ _id: req.session.user_id }, { $set: { paymentString: '' } })
-      await userModel.findByIdAndUpdate({ _id: req.session.user_id }, {
-        $set: {
-          "cart.item": [],
-          "cart.totalPrice": "0",
+      await userModel.findByIdAndUpdate(
+        { _id: req.session.user_id },
+        { $set: { paymentString: "" } }
+      );
+
+      const cartItem = await userModel.getCartItems(user._id);
+
+      await userModel.findByIdAndUpdate(
+        { _id: req.session.user_id },
+        {
+          $set: {
+            "cart.item": [],
+            "cart.totalPrice": "0",
+          },
         },
-      },
-        { multi: true })
+        { multi: true }
+      );
+      console.log("2",cartItem);
+ 
 
       const message = {
         from: "vidventures.yt@gmail.com", // Sender address
@@ -946,9 +968,12 @@ const loadSuccess = async (req, res, next) => {
         </html>`, // HTML body with a link
       };
 
-      await order.save();
+     
 
-      await transporter.sendMail(message, function (error, info) {
+      await order.save()
+      
+      console.log("3");
+       transporter.sendMail(message, function (error, info) {
         if (error) {
           console.log("Error occurred while sending email: ", error.message);
           return process.exit(1);
@@ -958,7 +983,9 @@ const loadSuccess = async (req, res, next) => {
 
       req.session.paymentString = null;
 
-      res.render("success");
+      console.log("4",orderId,'cartitems','cartItDetails',order);
+
+      res.render("success",{id:orderId,cartItem,orderDetails:order,session: true });
     }
   } catch (err) {
     console.log(err);
@@ -966,7 +993,7 @@ const loadSuccess = async (req, res, next) => {
 };
 
 const loadTerms = (req, res) => {
-  res.render("terms", { session: getSession(req, res)`` });
+  res.render("terms", { session: getSession(req, res) });
 };
 
 const loadBlog = async (req, res) => {
@@ -985,10 +1012,14 @@ const loadBlog = async (req, res) => {
     const postlist = await postModel
       .find({ isAvailable: true, postType: "Story" })
       .sort({ _id: -1 })
-      .skip(4)
+      .skip(4);
 
-
-    res.render("blog", { post, posts, postlist, session: getSession(req, res) });
+    res.render("blog", {
+      post,
+      posts,
+      postlist,
+      session: getSession(req, res),
+    });
   } catch (error) {
     console.error(error.message);
   }
@@ -1020,19 +1051,19 @@ const loadBlogDetails = async (req, res) => {
 
       res.render("blogDetails", { post, posts, split });
     }
-  } catch (error) { }
+  } catch (error) {}
 };
 
 const loadPrivacy = async (req, res) => {
   try {
     res.render("privacy", { session: getSession(req, res) });
-  } catch (error) { }
+  } catch (error) {}
 };
 
 const loadOurStory = async (req, res) => {
   try {
     res.render("ourStory", { session: getSession(req, res) });
-  } catch (error) { }
+  } catch (error) {}
 };
 
 const payment = async (req, res) => {
@@ -1054,7 +1085,6 @@ const payment = async (req, res) => {
       .findById({ _id: userSession.user_id })
       .populate("cart.item.productId");
     const totalPrice = await userModel.getCartTotalPrice(req.session.user_id);
-
 
     //calculating the price
 
@@ -1113,95 +1143,12 @@ const payment = async (req, res) => {
 
       addOnTotalPrice += channelManagementPrice;
       addon = true;
-
     } else {
       channelManagement = null;
     }
 
     let subtotal = parseInt(addOnTotalPrice) + parseInt(totalPrice);
 
-
-
-    // payment line items
-
-    // if (shorts) {
-    //   shortsPrice = (parseInt(shortsQty) * 8) * 100;
-    //   line_object = {
-    //     price_data: {
-    //       currency: "usd",
-    //       product_data: {
-    //         name: 'shorts',
-    //         images: [
-    //           "https://lh3.googleusercontent.com/p/AF1QipNl0KL5RiHkyjn6GWNcFtnyav2-cNug_A4AfWYO=s680-w680-h510",
-    //         ],
-    //       },
-    //       unit_amount: shortsPrice,
-    //     },
-    //     quantity: shortsQty,
-    //   };
-    //   addonobj = {
-    //     shorts: shortsQty
-    //   }
-    //   addon.push(addonobj)
-    //   line_items.push(line_object);
-    // } else {
-    //   shortsPrice = null
-    // }
-
-    // if (thumbnail) {
-
-    //   thumbnailPrice = parseInt(thumbnailQty) * 5
-
-    //   line_object = {
-    //     price_data: {
-    //       currency: "usd",
-    //       product_data: {
-    //         name: 'Premium Thumbnail',
-    //         images: [
-    //           "https://lh3.googleusercontent.com/p/AF1QipNl0KL5RiHkyjn6GWNcFtnyav2-cNug_A4AfWYO=s680-w680-h510",
-    //         ],
-    //       },
-    //       unit_amount: thumbnailPrice,
-    //     },
-    //     quantity: thumbnailQty,
-    //   };
-    //   addonobj = {
-    //     thumbnail: thumbnailQty
-    //   }
-    //   addon.push(addonobj)
-    //   line_items.push(line_object);
-
-    // } else {
-    //   thumbnailPrice = null
-    // }
-
-    // if (channelManagement) {
-
-    //   channelManagementPrice = 150
-
-    //   line_object = {
-    //     price_data: {
-    //       currency: "usd",
-    //       product_data: {
-    //         name: 'Channel Management',
-    //         images: [
-    //           "https://lh3.googleusercontent.com/p/AF1QipNl0KL5RiHkyjn6GWNcFtnyav2-cNug_A4AfWYO=s680-w680-h510",
-    //         ],
-    //       },
-    //       unit_amount: thumbnailPrice,
-    //     },
-    //     quantity: 1,
-    //   };
-    //   addonobj = {
-    //     channelManagement: 1
-    //   }
-    //   addon.push(addonobj)
-    //   line_items.push(line_object);
-
-    // } else {
-    //   channelManagement = null
-    // }
-    // cartItem, totalPrice ,session: true  => response
 
     res.render("payment", {
       cart,
@@ -1212,7 +1159,7 @@ const payment = async (req, res) => {
       thumbnailobj,
       channelManagementobj,
       subtotal,
-      addon
+      addon,
     });
   } catch (error) {
     console.log(error.message);
@@ -1263,12 +1210,12 @@ const stripePayment = async (req, res) => {
 
   cartItems.cart.item.forEach((item) => {
     let name = item.productId.name;
-    let price = parseInt(item.productId.discountedPrice ) * 100;
+    let price = parseInt(item.productId.discountedPrice) * 100;
     let newimage = item.productId.image;
 
     line_object = {
       price_data: {
-        currency: "usd",
+        currency: "inr",
         product_data: {
           name: name,
           images: [
@@ -1294,7 +1241,7 @@ const stripePayment = async (req, res) => {
     shortsPrice = 8 * 100;
     line_object = {
       price_data: {
-        currency: "usd",
+        currency: "inr",
         product_data: {
           name: "shorts",
           images: [
@@ -1316,7 +1263,7 @@ const stripePayment = async (req, res) => {
 
     line_object = {
       price_data: {
-        currency: "usd",
+        currency: "inr",
         product_data: {
           name: "Premium Thumbnail",
           images: [
@@ -1339,7 +1286,7 @@ const stripePayment = async (req, res) => {
 
     line_object = {
       price_data: {
-        currency: "usd",
+        currency: "inr",
         product_data: {
           name: "Channel Management",
           images: [
@@ -1365,7 +1312,6 @@ const stripePayment = async (req, res) => {
   // });
 
   if (user) {
-
     const session = await stripe.checkout.sessions.create({
       line_items: line_items,
       mode: "payment",
@@ -1373,9 +1319,12 @@ const stripePayment = async (req, res) => {
       cancel_url: "http://vidventuresyt.com/cancel",
     });
     const paymentString = await randomstring.generate();
-    req.session.paymentString = paymentString
+    req.session.paymentString = paymentString;
 
-    const updatedUser = await userModel.findByIdAndUpdate({ _id: user._id }, { $set: { paymentString: paymentString } })
+    const updatedUser = await userModel.findByIdAndUpdate(
+      { _id: user._id },
+      { $set: { paymentString: paymentString } }
+    );
 
     order = await new orderModel({
       products: user.cart,
@@ -1383,35 +1332,31 @@ const stripePayment = async (req, res) => {
       status: "Confirm",
       orderId: oid,
       address: address,
-      paymentString: paymentString
+      paymentString: paymentString,
     });
 
     res.redirect(303, session.url);
   } else {
-    res.redirect('/login')
+    res.redirect("/login");
   }
-
 };
 
 const careerPage = async (req, res) => {
   try {
+    const job = await CarrerModel.find({ isAvailable: true }).sort({ _id: -1 });
 
-    const job = await CarrerModel.find({ isAvailable: true }).sort({ _id: -1 })
-
-    res.render('career', { job, session: getSession(req, res) })
-  } catch (error) {
-
-  }
+    res.render("career", { job, session: getSession(req, res) });
+  } catch (error) {}
 };
 
 const loadPosts = async (req, res) => {
   try {
-
-    const post = await postModel.findOne({
-      isAvailable: true,
-      postType: "Blog"
-    }).sort({ _id: -1 });
-
+    const post = await postModel
+      .findOne({
+        isAvailable: true,
+        postType: "Blog",
+      })
+      .sort({ _id: -1 });
 
     const posts = await postModel
       .find({ isAvailable: true, postType: "Blog" })
@@ -1422,33 +1367,24 @@ const loadPosts = async (req, res) => {
     const postlist = await postModel
       .find({ isAvailable: true, postType: "Blog" })
       .sort({ _id: -1 })
-      .skip(4)
+      .skip(4);
 
-    res.render('blog', {
+    res.render("blog", {
       posts,
       postlist,
-      post
+      post,
     });
-
-  } catch (error) {
-
-  }
-}
-
+  } catch (error) {}
+};
 
 loadForgetPassword = async (req, res) => {
-
   try {
-    res.render('forget')
-  } catch (error) {
-
-  }
-
-}
+    res.render("forget");
+  } catch (error) {}
+};
 
 const forgetpassmail = async (req, res) => {
   try {
-
     try {
       const { email } = req.body;
 
@@ -1667,21 +1603,19 @@ const forgetpassmail = async (req, res) => {
           }
           console.log("Email sent successfully to: ", info.messageId);
         });
-        res.render("otp", { login: true, email: showEmail, forgetpassword: true });
+        res.render("otp", {
+          login: true,
+          email: showEmail,
+          forgetpassword: true,
+        });
       } else {
         res.render("forget", { message: "Account not found" });
       }
     } catch (error) {
       console.log(error.message);
     }
-
-  } catch (error) {
-
-  }
-}
-
-
-
+  } catch (error) {}
+};
 
 const forgetotpConfirm = async (req, res) => {
   try {
@@ -1694,31 +1628,29 @@ const forgetotpConfirm = async (req, res) => {
       req.body.digit6;
     const otp = Number(otpString);
     if (otp == emailOtp) {
-
-      res.render("resetpasswords")
+      res.render("resetpasswords");
     } else {
       res.render("forget", { message: "Invalid OTP" });
     }
-
-  } catch (error) {
-
-  }
-}
+  } catch (error) {}
+};
 
 const resetPasswords = async (req, res) => {
   try {
     const { password } = req.body;
     const hashPassword = await bcrypt.hash(password, 10);
-    await userModel.findByIdAndUpdate({ _id: req.session.forgetuser }, { $set: { password: hashPassword } }).then((data) => {
-      req.session.user_id = data._id;
-      req.session.user_email = data.email;
-      res.redirect('/')
-    })
-
-  } catch (error) {
-
-  }
-}
+    await userModel
+      .findByIdAndUpdate(
+        { _id: req.session.forgetuser },
+        { $set: { password: hashPassword } }
+      )
+      .then((data) => {
+        req.session.user_id = data._id;
+        req.session.user_email = data.email;
+        res.redirect("/");
+      });
+  } catch (error) {}
+};
 
 // =================================================================
 

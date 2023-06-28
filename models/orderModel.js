@@ -39,12 +39,23 @@ const orderSchema = new mongoose.Schema({
           thumbnail: {
             type: String,
           },
+          channelname: {
+            type: String,
+          },
+          niche: {
+            type: String,
+          },
+          link: {
+            type: String,
+          },
+          others: {
+            type: String,
+          },
         },
       },
     ],
     totalPrice: {
-      type: Number,
-      default: 0,
+      type: String,
     },
   },
   userId: {

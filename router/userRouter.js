@@ -164,7 +164,7 @@ route.post('/stripe-webhook', async (req, res) => {
 
 
 route.get('/paymentpage',userController.payment)
-route.post('/paymentpage',userController.payment)
+route.post('/paymentpage',userAuth.isLogin,userController.payment)
 
 route.get('/career',userController.careerPage)
 
@@ -175,21 +175,9 @@ route.post('/otpconfirmforget',userController.forgetotpConfirm)
 route.post('/confimpassword',userController.resetPasswords)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+route.get('/successpage',(req, res, next) =>{
+  res.render('success');
+})
 
 
 module.exports = route

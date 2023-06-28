@@ -1,219 +1,290 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="images/dollar.png" type="image/png" sizes="16x16">
-    <title>Payment Success</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-</head>
-<style>
-    body {
-        background: #dcf0fa;
-    }
-
-    .container {
-        max-width: 380px;
-        margin: 50px auto;
-        overflow: hidden;
-    }
-
-    .printer-top {
-        z-index: 1;
-        border: 6px solid #666666;
-        height: 6px;
-        border-bottom: 0;
-        border-radius: 6px 6px 0 0;
-        background: #333333;
-    }
-
-    .printer-bottom {
-        z-index: 0;
-        border: 6px solid #666666;
-        height: 6px;
-        border-top: 0;
-        border-radius: 0 0 6px 6px;
-        background: #333333;
-    }
-
-    .paper-container {
-        position: relative;
-        overflow: hidden;
-        height: 467px;
-    }
-
-    .paper {
-        background: #ffffff;
-        font-family: 'Poppins', sans-serif;
-        height: 447px;
-        position: absolute;
-        z-index: 2;
-        margin: 0 12px;
-        margin-top: -12px;
-        animation: print 5000ms cubic-bezier(0.68, -0.55, 0.265, 0.9) infinite;
-        -moz-animation: print 5000ms cubic-bezier(0.68, -0.55, 0.265, 0.9) infinite;
-    }
-
-    .main-contents {
-        margin: 0 12px;
-        padding: 24px;
-    }
-
-    // Paper Jagged Edge
-    .jagged-edge {
-        position: relative;
-        height: 20px;
-        width: 100%;
-        margin-top: -1px;
-    }
-
-    .jagged-edge:after {
-        content: "";
-        display: block;
-        position: absolute;
-        //bottom: 20px;
-        left: 0;
-        right: 0;
-        height: 20px;
-        background: linear-gradient(45deg,
-            transparent 33.333%,
-            #ffffff 33.333%,
-            #ffffff 66.667%,
-            transparent 66.667%),
-            linear-gradient(-45deg,
-            transparent 33.333%,
-            #ffffff 33.333%,
-            #ffffff 66.667%,
-            transparent 66.667%);
-        background-size: 16px 40px;
-        background-position: 0 -20px;
-    }
-
-    .success-icon {
-        text-align: center;
-        font-size: 48px;
-        height: 72px;
-        background: #359d00;
-        border-radius: 50%;
-        width: 72px;
-        height: 72px;
-        margin: 16px auto;
-        color: #fff;
-    }
-
-    .success-title {
-        font-size: 22px;
-        font-family: 'Poppins', sans-serif;
-        text-align: center;
-        color: #666;
-        font-weight: bold;
-        margin-bottom: 16px;
-    }
-
-    .success-description {
-        font-size: 15px;
-        font-family: 'Poppins', sans-serif;
-        line-height: 21px;
-        color: #999;
-        text-align: center;
-        margin-bottom: 24px;
-    }
-
-    .order-details {
-        text-align: center;
-        color: #333;
-        font-weight: bold;
-
-    }
-
-    .order-number-label {
-        font-size: 18px;
-        margin-bottom: 8px;
-    }
-
-    .order-number {
-        border-top: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
-        line-height: 48px;
-        font-size: 48px;
-        padding: 8px 0;
-        margin-bottom: 24px;
-    }
-    
-    .complement {
-        font-size: 18px;
-        margin-bottom: 8px;
-        color: #32a852;
-    }
-
-    }
-    
-    @keyframes print {
-        0% {
-            transform: translateY(-90%);
-        }
-
-        100% {
-            transform: translateY(0%);
-        }
-    }
-
-    @-webkit-keyframes print {
-        0% {
-            -webkit-transform: translateY(-90%);
-        }
-
-        100% {
-            -webkit-transform: translateY(0%);
-        }
-    }
-
-    @-moz-keyframes print {
-        0% {
-            -moz-transform: translateY(-90%);
-        }
-
-        100% {
-            -moz-transform: translateY(0%);
-        }
-    }
-
-    @-ms-keyframes print {
-        0% {
-            -ms-transform: translateY(-90%);
-        }
-
-        100% {
-            -ms-transform: translateY(0%);
-        }
-    }
-</style>
-
-<body>
-    <div class="container">
-        <div class="printer-top"></div>
-
-        <div class="paper-container">
-            <div class="printer-bottom"></div>
-
-            <div class="paper">
-                <div class="main-contents">
-                    <div class="success-icon">&#10004;</div>
-                    <div class="success-title">
-                        Payment Complete
+<div class="container succeescontainer">
+    <div class="row d-flex cardrow g-3 col-md-6">
+        <div class="col-sm-6 col-md-12">
+            <div class="card col-md-12 ">
+                <div class="card-body mt-5 mb-5 p-5">
+                    <div class="paymenticon">
+                        <img width="100px" src="admin/assets/imgs/logo/75779-check.gif" alt="">
                     </div>
-                    <div class="success-description">
-                        Thank you for completing the payment! You will shortly receive an email of your payment.
-                    </div>
-                    <div class="order-details">
-                        <div class="order-number-label">Transaction ID</div>
-                        <div class="order-number">123456789</div>
-                        <div class="complement">Thank You!</div>
-                    </div>
+                    <h2 class="card-title">Payment Success!</h2>
+                    <p class="card-text">${{orderDetails.products.totalPrice}}</p>
                 </div>
-                <div class="jagged-edge"></div>
+            </div>
+        </div>
+        <div class="col-sm-6  col-md-12">
+            <div class="card card2 ">
+                <div class="card-body mt-5 mb-5 card2-body p-5">
+                    <div class="cardhead  w-100">
+                        <h5 class="lftxt" class="ms-5">Payment Details </h5>
+                    </div>
+                    <div>
+                        <div class="trans">
+                            <h5 class="lftxt">Ref Number : </h5>
+                            <h5>{{orderDetails.orderId}}</h5>
+                        </div>
+                        <div class="trans">
+                            <h5 class="lftxt">Payment Status : </h5>
+                            <h5>Confirm</h5>
+                        </div>
+                        <div class="trans">
+                            <h5 class="lftxt">Payment Time : </h5>
+                            <h5>{{createdAt}}</h5>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {{!-- TODO fix asap --}}
+        {{!-- <div class="col-sm-6  col-md-12 mt-5">
+            <div class="card card3  ">
+                <div class="card-body mt-5 mb-5 p-5">
+                    <h5 class="card-title lineh">Please kindly update your requirements to ensure a <br> tailored
+                        content creation experience 🥳</h5>
+                    <button class="btn btn-primary mt-5 newbutton " data-bs-target="#exampleModalToggle"
+                        data-bs-toggle="modal">Add Instructions</button>
+
+                </div>
+            </div>
+        </div> --}}
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Add Instruction</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row g-3" action="/addInstructions" method="post">
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Channel Name </label>
+                        <input type="text" name="channelname" class="form-control" id="inputEmail4">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Channel Niche</label>
+                        <input type="text" name="niche" class="form-control" id="inputPassword4">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check checkboxli">
+                            <input type="hidden" name="id" value="{{id}}">
+
+                            {{#each cartItem}}
+
+                            <input class="form-check-input" type="radio" name="productId" id="productId._id"
+                                value="{{productId._id}}">
+
+                            <label class="form-check-label" for="productId._id">
+                                {{productId.name}}
+                            </label>
+                            {{/each}}
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Channel link </label>
+                        <input type="text" name="link" class="form-control" id="inputEmail4">
+                    </div>
+
+                    <div class="col-md-12">
+                        <label for="">Video Guidelines (if Any)</label>
+                        <div class="form-floating">
+                            <textarea name="script" class="form-control" placeholder="Leave a comment here"
+                                id="floatingTextarea2" style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">Script</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            <textarea name="voice" class="form-control" placeholder="Leave a comment here"
+                                id="floatingTextarea2" style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">VoiceOver</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            <textarea name="editing" class="form-control" placeholder="Leave a comment here"
+                                id="floatingTextarea2" style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">Video Editing</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            <textarea name="thumbnail" class="form-control" placeholder="Leave a comment here"
+                                id="floatingTextarea2" style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">Thumbnail</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+
+                        <div class="form-floating">
+                            <textarea name="others" class="form-control" placeholder="Leave a comment here"
+                                id="floatingTextarea2" style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">Any Questions?</label>
+
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary newbutton">Submit</button>
             </div>
         </div>
     </div>
-</body>
-</html>
+    </form>
+</div>
+
+
+
+
+
+
+
+<style>
+    .checkboxli {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .lineh {
+        line-height: 30px;
+    }
+
+    .newbutton {
+        width: 200px;
+        height: 50px;
+        border-radius: 30px;
+        font-size: 16px;
+        margin-top: 40px;
+
+    }
+
+    .lftxt {
+
+        font-weight: 600;
+
+    }
+
+    h2 {
+        font-weight: 400;
+    }
+
+    h6 {
+        font-weight: 600;
+    }
+
+    h5 {
+        font-weight: 400;
+    }
+
+    .trans {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+
+    }
+
+    .cardhead {
+        justify-self: start;
+        margin-left: 180px;
+    }
+
+    .card {
+        border-radius: 20px;
+        -webkit-box-shadow: -29px -7px 211px -66px rgb(153, 150, 229);
+        -moz-box-shadow: -29px -7px 211px -66px rgb(187, 186, 229);
+        box-shadow: -29px -7px 211px -66px rgb(172, 170, 233);
+    }
+
+    .card2-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+    }
+
+    .succeescontainer {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .cardrow {
+        flex-direction: column;
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media (min-width: 300px) and (max-width: 480px) {
+
+        .succeescontainer {
+            margin-top: 50px;
+        }
+
+        .lftxt {
+
+            font-weight: 600;
+            font-size: 20px;
+
+        }
+
+        .trans {
+
+            gap: 0px;
+
+        }
+
+        .cardhead {
+            margin-left: 0;
+        }
+
+        .succeescontainer {
+            height: 150vh;
+        }
+
+
+
+    }
+</style>
+
+<script>
+    // Get all trigger buttons
+    var buttons = document.getElementsByClassName("trigger-button");
+
+    // Get all modals
+    var modals = document.getElementsByClassName("mymodal");
+
+    // Function to open the modal
+    function openModal() {
+        var modalId = this.getAttribute("data-modal-id");
+        var modal = document.getElementById(modalId);
+        modal.style.display = "block";
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        var modal = this.closest(".mymodal");
+        modal.style.display = "none";
+    }
+
+    // Event listener for button click
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", openModal);
+    }
+
+    // Event listener for close button click
+    var closeButtons = document.getElementsByClassName("close");
+    for (var j = 0; j < closeButtons.length; j++) {
+        closeButtons[j].addEventListener("click", closeModal);
+    }
+</script>
