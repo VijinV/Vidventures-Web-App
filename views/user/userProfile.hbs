@@ -1,31 +1,71 @@
+<style>
+    #nameSpan {
+        opacity: 0.5;
+        font-weight: 600;
+
+    }
+
+    /* Keyframe animation for fading out */
+    @keyframes fadeOut {
+        0% {
+            opacity: 0.5;
+            transform: translateY(0);
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateY(-1000px);
+        }
+    }
+
+    /* Keyframe animation for fading in */
+    @keyframes fadeIn {
+        0% {
+            opacity: 0.5;
+            transform: translateY(20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Animation classes */
+    .fade-out {
+        animation: fadeOut 0.5s forwards;
+    }
+
+    .fade-in {
+        animation: fadeIn 0.5s forwards;
+    }
+    
+  
+</style>
+
 <script>
-    // Function to change the text inside the span tags
     function changeText() {
         const nameSpan = document.getElementById('nameSpan');
-        const span1 = document.getElementById('span1');
-        const span2 = document.getElementById('span2');
-        const span3 = document.getElementById('span3');
-
-        // Array of new texts
-        const newTexts = ['Howdy', 'Hola', 'Namasthe',];
-
-        // Get the current index of nameSpan
+        const newTexts = ['Howdy', 'Hola', 'Namasthe'];
         const currentIndex = newTexts.indexOf(nameSpan.innerText);
-
-        // Get the next index in the newTexts array
         const nextIndex = (currentIndex + 1) % newTexts.length;
+        const nextText = newTexts[nextIndex];
 
-        // Change the text inside the nameSpan
-        nameSpan.innerText = newTexts[nextIndex];
+        nameSpan.classList.add('fade-out');
 
-        // Rotate the texts in the array
+        setTimeout(() => {
+            nameSpan.innerText = nextText;
+            nameSpan.classList.remove('fade-out');
+            nameSpan.classList.add('fade-in');
+            setTimeout(() => {
+                nameSpan.classList.remove('fade-in');
+            }, 500); // Adjust the duration to match the animation duration
+        }, 500); // Adjust the duration to match the animation duration
+
         newTexts.push(newTexts.shift());
     }
 
-    // Call the changeText function every 1 second
-    setInterval(changeText, 1000);
-
-
+    // setInterval(changeText, 1000);
 </script>
 <a class="close_side_menu" href="javascript:void(0);"></a>
 <!-- Start breadcrumb Area -->
@@ -34,8 +74,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-inner text-center">
-                    <h2 class="title " style="font-weight: 600; font-size: 80px;"><span class="me-3" id="nameSpan">Hello
-                        </span>{{userData.name}}</h2>
+                    <span class="me-3" style="font-weight: 600; font-size: 80px;"
+                            id="nameSpan">Namasthe
+                        </span>
+                    <h2 class="title headingname " style="font-weight: 600; font-size: 80px;">{{userData.name}}</h2>
                     {{!-- <ul class="page-list">
                         <li class="rbt-breadcrumb-item"><a href="/">Home</a></li>
                         <li>
