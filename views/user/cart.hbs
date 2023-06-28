@@ -114,17 +114,21 @@
             .pro-qty .plus-btn {
                 margin-left: 0 !important;
             }
+
             .removebtn a {
                 text-decoration: underline !important;
                 font-size: 14px;
             }
-            thead{
+
+            thead {
                 display: none;
             }
-            .rbt-section-gap{
+
+            .rbt-section-gap {
                 padding: 20px 0 !important;
             }
-            .priceofsingle{
+
+            .priceofsingle {
                 display: none !important;
             }
 
@@ -172,8 +176,8 @@
                                                             <path fill="currentColor" d="M19 12.998H5v-2h14z" />
                                                         </svg></a>
 
-                                                    <input id="cartqty" class="qty-input " type="number"
-                                                        value="{{qty}}" data-product-id="{{productId._id}}" min="1" readonly />
+                                                    <input id="cartqty" class="qty-input " type="number" value="{{qty}}"
+                                                        data-product-id="{{productId._id}}" min="1" readonly />
                                                     <a class="plus-btn ms-3 me-2"><svg
                                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                             viewBox="0 0 24 24">
@@ -295,7 +299,7 @@
                                                     <td class="align-middle checkboxtd">
                                                         <label class="checkbox-container">
                                                             <input onchange="shortsOnChange()" name="shorts"
-                                                                value="shorts" type="checkbox" class="styled-checkbox" >
+                                                                value="shorts" type="checkbox" class="styled-checkbox">
                                                             <span class="checkmark"></span>
                                                         </label>
 
@@ -328,7 +332,7 @@
                                                         <label class="checkbox-container">
                                                             <input onchange="thumbnailonchange()" value="thumbnail"
                                                                 name="thumbnail" type="checkbox"
-                                                                class="styled-checkbox" >
+                                                                class="styled-checkbox">
                                                             <span class="checkmark"></span>
                                                         </label>
                                                     </td>
@@ -360,7 +364,7 @@
 
                                                         </div>
                                                     </td>
-                                                    <td class="priceofsingle priceofsingtumb">$ 5</td>
+                                                    <td class="priceofsingle priceofsingtumb">$5/per</td>
                                                     <td id="thumbtotal">$ 0</td>
                                                 </tr>
                                                 <tr class="d-flex ">
@@ -369,7 +373,7 @@
                                                             <input id="channelManagement"
                                                                 onchange="channelManagementClick()"
                                                                 name="channelManagement" value="channel" type="checkbox"
-                                                                class="styled-checkbox" >
+                                                                class="styled-checkbox">
                                                             <span class="checkmark"></span>
                                                         </label>
                                                     </td>
@@ -478,19 +482,19 @@
     }
 
     #addmoreTable tr .pro-title {
-        position: relative;
-        margin-left: 0;
-        font-weight: 600
+        color: #6b7385 !important;
+        position: absolute;
+        margin-left: 38px;
+        margin-top: 11px;
     }
-
-   /* #addmoreTable tr .pro-quantity {
-        margin-left: 7rem ;
-    } */
-
-
 
     #addmoreTable tr .pro-qty {
         margin-left: 1rem;
+    }
+
+    #addmoreTable tr .pro-quantity {
+        margin-top: 0;
+        margin-left: 125px !important;
     }
 
     #addmoreTable tr #shorts-total {
@@ -499,10 +503,6 @@
 
     .thumbproqty {
         margin-left: -18px !important
-    }
-
-    .channelmngmt {
-        margin-left: 13px !important
     }
 
 
@@ -534,7 +534,7 @@
 
         .tableaddmore .shtd {
             position: absolute;
-            margin-left: 104px  !important;
+            margin-left: 104px !important;
         }
 
         .tableaddmore .pro-qty {
@@ -584,89 +584,12 @@
 
         .hidembmon {
             display: none !important;
-        }
-
-
-
-
-
-
-
-        /* =================
-
-        #addmoreTable tr {
-
-            flex-direction: column;
-            position: relative;
 
         }
+    }
 
-        #addmoreTable tr .pro-title {
-            position: absolute !important;
-            margin-left: 100px;
-            font-weight: bolder
-        }
-
-        #addmoreTable tr .pro-quantity {
-            margin-bottom: 50px;
-        }
-
-        #addmoreTable tr .pro-qty {
-            margin-left: 1 rem !important;
-        }
-
-        #addmoreTable tr #shorts-total {
-            position: absolute;
-            bottom: 8px;
-            right: 50%;
-            font-weight: bold;
-        }
-
-
-        #addmoreTable tr #thumbtotal {
-            position: absolute;
-            bottom: 8px;
-            right: 50%;
-            font-weight: bold;
-        }
-
-        #addmoreTable tr .preminum {
-
-            margin-left: 63px !important;
-
-        }
-
-        #addmoreTotalname {
-            display: none;
-        }
-
-        .tableaddmore {
-            border-bottom: 2px solid #ebe6e6;
-
-        }
-
-        .channelmanagementTotalprice {
-            position: absolute;
-            right: 10px !important;
-        }
-
-        .channelmngmt {
-            margin-left: 50px !important;
-            font-weight: bold;
-        }
-
-        .priceofsingle {
-            position: absolute;
-            right: 10px !important;
-        }
-
-        .cardheight {
-            height: 51rem;
-        }
-
-
-*/
-
+    .hidembmon {
+        margin-left: 19rem;
     }
 </style>
 <!-- Latest version of jQuery -->
@@ -960,13 +883,7 @@
         const grandTotal = totalPrice + addOnTotal;
         total.textContent = grandTotal.toFixed(2);
     }
-
-
-
-
-
-
-
+    grandTotalPrice()
 
 </script>
 

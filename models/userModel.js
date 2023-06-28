@@ -86,7 +86,7 @@ userSchema.methods.addToCart = async function (product) {
   }
 
   cart.totalPrice = cart.item.reduce((total, item) => {
-    return total + (item.qty * item.price);
+    return total + (item.qty *  tem.price);
   }, 0);
 
   console.log(cart.totalPrice, 'price', product.discountedPrice, 'price');
