@@ -22227,18 +22227,20 @@ ul.testimonial-thumb-wrapper li a.active .thumb img {
   position: relative;
 }
 .rbt-search-style input {
-  background: #bdc7d1;
+  background: transparent;
   height: 50px;
   line-height: 50px;
   padding: 0 20px;
   padding-right: 60px;
   border-radius: 500px;
   min-width: 300px;
+  border-color: lightgray;
+  color: lightgray !important;
 
   color: var(--color-white);
 }
 .rbt-search-style input:focus {
-  border-color: var(--color-white);
+  border-color: lightgray;
 }
 .rbt-search-style .rbt-search-btn {
   position: absolute;
@@ -22247,11 +22249,11 @@ ul.testimonial-thumb-wrapper li a.active .thumb img {
   transform: translateY(-50%);
 }
 .rbt-search-style .rbt-search-btn i {
-  color: var(--color-white);
+  color: lightgray;
   transition: 0.3s;
 }
 .rbt-search-style .rbt-search-btn:hover i {
-  color: var(--color-primary);
+  color: lightgray;
 }
 
 /*-------------------------
