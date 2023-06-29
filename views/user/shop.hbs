@@ -260,7 +260,6 @@
             .then(response => response.json())
             .then(data => {
                 displaySearchResults(data)
-                console.log(data)
             })
             .catch(error => console.error('Error:', error));
     }
@@ -302,7 +301,7 @@
         }
     }
 
-     document.getElementById('sortvalue').addEventListener('change',sortProduct)
+    document.getElementById('sortvalue').addEventListener('change', sortProduct)
 
     function sortProduct() {
         const sortvalue = document.getElementById('sortvalue').value;
@@ -312,7 +311,6 @@
             .then(response => response.json())
             .then(data => {
                 displaySearchResults(data)
-                console.log(data)
             })
             .catch(error => console.error('Error:', error));
     }

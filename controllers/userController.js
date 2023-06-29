@@ -1689,7 +1689,7 @@ const sortProduct = async (req, res) => {
         break;
       case 'popularity':
         // Add logic for sorting by popularity
-        
+        products = await Product.find({isAvailable: true});
         break;
       case 'low':
         products = await Product.find({isAvailable: true}).sort({ discountedPrice: 1 });
