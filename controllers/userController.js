@@ -614,7 +614,8 @@ const updateCart = async (req, res) => {
       (item) => item.productId._id.toString() === productId.toString()
     );
 
-    const productPrice = parseInt(cartItem.productId.discountedPrice);
+    const productPrice =parseFloat(cartItem.productId.discountedPrice) 
+    console.log(productPrice,'parseiNtProduct');
 
     const qtyChange = qty - cartItem.qty;
 

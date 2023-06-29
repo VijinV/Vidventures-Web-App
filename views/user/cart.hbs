@@ -830,6 +830,7 @@
             total.innerHTML = totalPrice;
             addOnTotal += 5;
             addonTag.innerHTML = addOnTotal
+            grandTotalPrice()
 
         } else {
             const minusprice = inputvalue * 5
@@ -838,8 +839,10 @@
             total.innerHTML = totalPrice;
             addOnTotal -= minusprice;
             addonTag.innerHTML = addOnTotal
+            grandTotalPrice()
         }
-        grandTotalPrice()
+
+        
 
     }
 
@@ -859,7 +862,8 @@
             total.innerHTML = totalPrice;
             addOnTotal += 8;
             addonTag.innerHTML = addOnTotal
-            console.loe('if')
+           
+            grandTotalPrice()
         } else {
             const minusprice = (value * 8) - 8
             console.log(minusprice)
@@ -869,8 +873,10 @@
             console.log('else')
             addOnTotal -= minusprice;
             addonTag.innerHTML = addOnTotal
+            grandTotalPrice()
         }
-        grandTotalPrice()
+
+        
 
     }
 
