@@ -1,10 +1,9 @@
 <style>
-    
     #nameSpan {
         opacity: 0.8;
         font-weight: 600;
         color: #6d21f2;
-        
+
     }
 
     /* Keyframe animation for fading out */
@@ -26,7 +25,8 @@
             opacity: 0;
             transform: translateY(20px);
         }
-        50%{
+
+        50% {
             opacity: 0.5;
             transform: translateY(10px);
         }
@@ -45,11 +45,13 @@
     .fade-in {
         animation: fadeIn 1s forwards;
     }
-    .headingslide{
+
+    .headingslide {
         display: flex;
         flex-direction: column;
     }
-    .headingname{
+
+    .headingname {
         margin-top: -18px;
         font-weight: 500 !important;
         opacity: 1;
@@ -59,7 +61,7 @@
 <script>
     function changeText() {
         const nameSpan = document.getElementById('nameSpan');
-        const newTexts = ['Howdy', 'Hola', 'Namasthe','Bonjour' ];
+        const newTexts = ['Howdy', 'Hola', 'Namasthe', 'Bonjour','Welcome','Goedendag','مرحبًا'];
         const currentIndex = newTexts.indexOf(nameSpan.innerText);
         const nextIndex = (currentIndex + 1) % newTexts.length;
         const nextText = newTexts[nextIndex];
@@ -78,7 +80,7 @@
         newTexts.push(newTexts.shift());
     }
 
-     setInterval(changeText, 2000);
+    setInterval(changeText, 2000);
 </script>
 <a class="close_side_menu" href="javascript:void(0);"></a>
 <!-- Start breadcrumb Area -->
@@ -91,7 +93,8 @@
                         <span class="me-3 my-element " style="font-weight: 600; font-size: 80px;" id="nameSpan">Hello
                         </span>
 
-                        <h2 class="title headingname mt-1" style="font-weight: 600; font-size: 35px; color: #c4a6f9;">{{userData.name}}</h2>
+                        <h2 class="title headingname mt-1" style="font-weight: 600; font-size: 35px; color: #c4a6f9;">
+                            {{userData.name}}</h2>
                     </div>
                     {{!-- <ul class="page-list">
                         <li class="rbt-breadcrumb-item"><a href="/">Home</a></li>
@@ -131,15 +134,20 @@
                                     <h3>Dashboard</h3>
 
                                     <div class="about-address mb--20">
-                                        
+
                                         <p>Welcome to the Customer Login Portal!
 
-Our user-friendly dashboard is designed to provide you with a seamless and efficient experience in managing your YouTube automation needs. 
+                                            Our user-friendly dashboard is designed to provide you with a seamless and
+                                            efficient experience in managing your YouTube automation needs.
 
-</p>
-<p>At Vidventures, we believe in delivering exceptional services while maintaining a professional and user-friendly environment. Our customer login portal aims to enhance your experience, allowing you to leverage the power of YouTube automation effortlessly.
-</p>
-<p>Thank you for choosing Videntures. We look forward to supporting your YouTube success!</p>
+                                        </p>
+                                        <p>At Vidventures, we believe in delivering exceptional services while
+                                            maintaining a professional and user-friendly environment. Our customer login
+                                            portal aims to enhance your experience, allowing you to leverage the power
+                                            of YouTube automation effortlessly.
+                                        </p>
+                                        <p>Thank you for choosing Videntures. We look forward to supporting your YouTube
+                                            success!</p>
                                     </div>
 
                                     <p></p>
