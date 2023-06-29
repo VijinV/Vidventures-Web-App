@@ -4,6 +4,7 @@ document.getElementById('searchButton').addEventListener('keyup', searchProducts
         const searchTerm = $('#searchButton').val();
         const url = `http://localhost:3000/serviceSearch?searchTerm=${encodeURIComponent(searchTerm)}`;
 
+        $(function () {
         $.ajax({
             url: url,
             method: 'GET',
@@ -15,6 +16,7 @@ document.getElementById('searchButton').addEventListener('keyup', searchProducts
                 console.error('Error:', error);
             }
         });
+    })
     }
 
 
@@ -60,7 +62,7 @@ document.getElementById('searchButton').addEventListener('keyup', searchProducts
     function sortProduct() {
         const sortvalue = $('#sortvalue').val();
         const url = `http://localhost:3000/sort?sortby=${encodeURIComponent(sortvalue)}`;
-
+        $(function () {
         $.ajax({
             url: url,
             method: 'GET',
@@ -72,5 +74,6 @@ document.getElementById('searchButton').addEventListener('keyup', searchProducts
                 console.error('Error:', error);
             }
         });
+    });
     }
 
