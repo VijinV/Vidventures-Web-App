@@ -333,7 +333,7 @@
 
     .button-wrapper,
     .text,
-    .icon {
+    .icon-new {
         overflow: hidden;
         position: absolute;
         width: 100%;
@@ -347,11 +347,11 @@
     }
 
     .text,
-    .icon {
+    .icon-new {
         transition: top 0.5s;
     }
 
-    .icon {
+    .icon-new {
         color: #fff;
         top: 100%;
         display: flex;
@@ -359,7 +359,7 @@
         justify-content: center;
     }
 
-    .icon svg {
+    .icon-new svg {
         width: 24px;
         height: 24px;
     }
@@ -372,7 +372,7 @@
         top: -100%;
     }
 
-    .button-new:hover .icon {
+    .button-new:hover .icon-new {
         top: 0;
     }
 
@@ -1375,7 +1375,8 @@
                 <div class="col-xl-3 col-lg-6 col-md-6 col-12">
                     <div class="pricing-table style-2">
                         <div class="pricing-header">
-                            <h3 class="title">YouTube Shorts</h3>
+                            <h3 class="title">
+                             YouTube Shorts</h3>
                             <span class="rbt-badge mb--35">Sparkle Plan</span>
                             <div class="price-wrap">
                                 <div class="monthly-pricing" style="display: block;">
@@ -1384,12 +1385,12 @@
                                 </div>
                             </div>
                         </div>
-                        <a >
+                        <a>
                             <div class="button-new">
 
                                 <div class="button-wrapper">
                                     <div class="text ">Add to Cart</div>
-                                    <span class="icon">
+                                    <span class="icon-new">
                                         <svg viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" height="16"
                                             width="16" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -1431,7 +1432,7 @@
 
                                 <div class="button-wrapper">
                                     <div class="text ">Add to Cart</div>
-                                    <span class="icon">
+                                    <span class="icon-new">
                                         <svg viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" height="16"
                                             width="16" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -1518,7 +1519,7 @@
 
                                 <div class="button-wrapper">
                                     <div class="text ">Add to Cart</div>
-                                    <span class="icon">
+                                    <span class="icon-new">
                                         <svg viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" height="16"
                                             width="16" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -1539,7 +1540,7 @@
                                 <li><i class="feather-check"></i>Human voice over</li>
                                 <li><small class="ms-5">(multiple Options)</small></li>
                                 <li><i class="feather-check"></i>2 Revisions</li>
-                                <li><i class="feather-check"></i>SEO included</li>
+                                <li class="hidden-li"><i class="feather-check"></i>SEO included</li>
                                 <li class="hidden-li"><i class="feather-check"></i> Advanced + VFX
                                     <span style="margin-left: 31px;">Video Editing</span>
                                 </li>
@@ -1576,7 +1577,7 @@
 
                                 <div class="button-wrapper">
                                     <div class="text ">Add to Cart</div>
-                                    <span class="icon">
+                                    <span class="icon-new">
                                         <svg viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" height="16"
                                             width="16" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -1591,15 +1592,19 @@
                         <div class="pricing-body">
                             <ul class="plan-offer-list">
                                 <li><i class="feather-check"></i>1600 words script</li>
-                                <li><i class="feather-check"></i>Human voice over</li>
+                                <li><i class="feather-check"></i>Sound Effects</span>
+                                </li>
                                 <li><i class="feather-check"></i>3 Revisions</li>
                                 <li><i class="feather-check"></i>SEO included</li>
-                                <li id="hidden-li" class="hidden-li"><small class="ms-5">(multiple Options)</small></li>
+
                                 <li class="hidden-li"><i class="feather-check"></i> Cinematic + VFX
                                     <span style="margin-left: 31px;">Video Editing</span>
                                 </li>
-                                <li class="hidden-li mt-0"><i class="feather-check"></i>Sound Effects</span>
-                                </li>
+                                <li class="hidden-li mt-0"><i class="feather-check"></i>Human voice over</li>
+                                <li id="hidden-li" class="hidden-li"><small class="ms-5">(multiple Options)</small></li>
+
+
+
                                 <li class="hidden-li"><i class="feather-check"></i>Premium <span>Thumbnail</span>
                                 </li>
 
