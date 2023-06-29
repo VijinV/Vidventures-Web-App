@@ -253,16 +253,22 @@
     document.getElementById('searchButton').addEventListener('keyup', searchProducts);
 
     function searchProducts() {
-        const searchTerm = document.getElementById('searchButton').value;
+        const searchTerm = $('#searchButton').val();
         const url = `http://localhost:3000/serviceSearch?searchTerm=${encodeURIComponent(searchTerm)}`;
 
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                displaySearchResults(data)
-            })
-            .catch(error => console.error('Error:', error));
+        $.ajax({
+            url: url,
+            method: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                displaySearchResults(data);
+            },
+            error: function (error) {
+                console.error('Error:', error);
+            }
+        });
     }
+
 
     function displaySearchResults(results) {
         const searchResults = document.getElementById('searchResults');
@@ -304,16 +310,22 @@
     document.getElementById('sortvalue').addEventListener('change', sortProduct)
 
     function sortProduct() {
-        const sortvalue = document.getElementById('sortvalue').value;
+        const sortvalue = $('#sortvalue').val();
         const url = `http://localhost:3000/sort?sortby=${encodeURIComponent(sortvalue)}`;
 
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                displaySearchResults(data)
-            })
-            .catch(error => console.error('Error:', error));
+        $.ajax({
+            url: url,
+            method: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                displaySearchResults(data);
+            },
+            error: function (error) {
+                console.error('Error:', error);
+            }
+        });
     }
+
 
 
 
