@@ -1092,8 +1092,8 @@ ol ul {
 .rbt-page-banner-wrapper .rbt-banner-image, .bg-gradient-9 {
   position: relative;
   z-index: 1;
-  background: linear-gradient(270deg, var(--color-secondary) 0%, var(--color-primary) 100%) !important;
-  background: #f8f9fa;
+  background: rgb(127,124,254);
+  background: linear-gradient(180deg, rgba(127,124,254,1) 0%, rgba(255,255,255,1) 100%);
 }
 .rbt-page-banner-wrapper .rbt-banner-image::after, .bg-gradient-9::after {
   background: linear-gradient(white 0%, rgba(255, 255, 255, 0.1) 100%);
@@ -22227,14 +22227,14 @@ ul.testimonial-thumb-wrapper li a.active .thumb img {
   position: relative;
 }
 .rbt-search-style input {
-  background: transparent;
+  background: #bdc7d1;
   height: 50px;
   line-height: 50px;
   padding: 0 20px;
   padding-right: 60px;
   border-radius: 500px;
   min-width: 300px;
-  border: 2px solid var(--color-white);
+
   color: var(--color-white);
 }
 .rbt-search-style input:focus {

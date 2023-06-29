@@ -1652,9 +1652,67 @@ const resetPasswords = async (req, res) => {
   } catch (error) {}
 };
 
+const searchProduct = async (req, res) => {
+  const searchTerm = req.query.searchTerm;
+
+  try {
+    const products = await productModel.find({
+      $and: [
+        {
+          $or: [
+            { name: { $regex: searchTerm, $options: 'i' } },
+            { description: { $regex: searchTerm, $options: 'i' } }
+          ]
+        },
+        { isAvailable: true }
+      ]
+    }).sort({ _id: -1 });
+
+    res.json(products);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'An error occurred while searching for products.' });
+  }
+};
+
+const sortProduct = async (req, res) => {
+  try {
+    const { sortby } = req.query;
+    let products;
+
+    switch (sortby) {
+      case 'default':
+        products = await Product.find({isAvailable: true});
+        break;
+      case 'latest':
+        products = await Product.find({isAvailable: true}).sort({ _id: -1 });
+        break;
+      case 'popularity':
+        // Add logic for sorting by popularity
+        
+        break;
+      case 'low':
+        products = await Product.find({isAvailable: true}).sort({ discountedPrice: 1 });
+        break;
+      case 'high':
+        products = await Product.find({isAvailable: true}).sort({ discountedPrice: -1 });
+        break;
+      default:
+        products = await Product.find({isAvailable: true});
+    }
+
+    res.json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
 // =================================================================
 
 module.exports = {
+  sortProduct,
+  searchProduct,
   resetPasswords,
   forgetotpConfirm,
   forgetpassmail,

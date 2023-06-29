@@ -133,7 +133,7 @@ route.post('/create-checkout-session', async (req, res) => {
   route.post('/updateQuantity',userAuth.isLogin,userController.updateCart)
 
 
-  route.post('/getFormData',userHome.formData)
+  route.post('/getFormData',userHome.formData)    
   
 
 
@@ -173,6 +173,11 @@ route.post('/forgetpassmail',userController.forgetpassmail)
 route.post('/otpconfirmforget',userController.forgetotpConfirm)
 
 route.post('/confimpassword',userController.resetPasswords)
+
+route.get('/serviceSearch',userController.searchProduct)
+
+route.get('/sort',userController.sortProduct)
+
 
 
 route.get('/successpage',(req, res, next) =>{
