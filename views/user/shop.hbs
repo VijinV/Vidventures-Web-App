@@ -255,7 +255,7 @@
 
     function searchProducts() {
         const searchTerm = $('#searchButton').val();
-        const url = `http://localhost:3000/serviceSearch?searchTerm=${encodeURIComponent(searchTerm)}`;
+        const url = `https://vidventuresyt.com/serviceSearch?searchTerm=${encodeURIComponent(searchTerm)}`;
 
         $(function () {
         $.ajax({
@@ -314,7 +314,7 @@
 
     function sortProduct() {
         const sortvalue = $('#sortvalue').val();
-        const url = `http://localhost:3000/sort?sortby=${encodeURIComponent(sortvalue)}`;
+        const url = `https://vidventuresyt.com/sort?sortby=${encodeURIComponent(sortvalue)}`;
         $(function () {
         $.ajax({
             url: url,
