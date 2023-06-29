@@ -1007,7 +1007,7 @@
     {{!-- coumter mobile--}}
 
     {{!-- counter-windows --}}
-    <div class="rbt-counterup-area  windows_counter" style="margin-top: -100px;">
+    <div class="rbt-counterup-area  windows_counter" style="margin-top: -100px; margin-bottom: 0;">
         <div class="conter-style-2">
             <div class="container">
                 <div class="row g-5">
@@ -1076,7 +1076,7 @@
 
 
     <!-- Start About Area  -->
-    <div class="rbt-about-area bg-color-white rbt-section-gapTop pb_md--80 pb_sm--80 about-style-1">
+    <div class="rbt-about-area bg-color-white rbt-section-gapTop pb_md--80 pb_sm--80 about-style-1" style="margin-top: -100px;">
         <div class="container" id="whyus" style="padding-left: 44px;">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6">
@@ -1155,7 +1155,7 @@
     <!-- End About Area  -->
 
     <!-- Start Call To Action  -->
-    <div class="rbt-callto-action-area  rbt-section-gap">
+    <div class="rbt-callto-action-area  rbt-section-gap" style="margin-top: -100px;">
         <div class="rbt-callto-action rbt-cta-default style-2">
             <div class="container content-wrapper overflow-hidden">
                 <div class="row gy-5 align-items-center">
@@ -1368,7 +1368,7 @@
     </style>
     {{!-- pricing tables --}}
 
-    <div class="rbt-pricing-area  rbt-section-gap">
+    <div class="rbt-pricing-area  rbt-section-gap" style="margin-top: -100px;">
         <div class="container">
             <div class="row g-5">
                 <!-- Start Single Pricing  -->
@@ -1376,7 +1376,7 @@
                     <div class="pricing-table style-2">
                         <div class="pricing-header">
                             <h3 class="title">
-                             YouTube Shorts</h3>
+                                YouTube Shorts</h3>
                             <span class="rbt-badge mb--35">Sparkle Plan</span>
                             <div class="price-wrap">
                                 <div class="monthly-pricing" style="display: block;">
@@ -2194,16 +2194,111 @@
         </div>
     </div>
 
-    {{!-- testimonials --}}
-
-    {{!-- faq --}}
     <style>
-        . {
-            font-weight: 500 !important;
+        .fonunder {
+            position: relative;
+            justify-content: center;
+            width: 66%;
+        }
+
+        .founderimage img {
+            border-radius: 50%;
+        }
+
+        .founderimage {
+            display: flex;
+            gap: 10px;
+            justify-content: start;
+
+        }
+
+        .founderimage h5 {
+            position: absolute;
+            top: 48px;
+            margin-left: -64px;
+            left: 15.5rem;
+            color: #6d21f2;
+            opacity: 0.7;
+        }
+
+        .founderimage h3 {
+            margin-top: 6px;
+
+        }
+
+        .subheading {
+            margin-top: 40px;
+            display: flex;
+            justify-content: start;
+            flex-direction: column;
+            align-items: self-start;
+        }
+
+        .founderdes {
+            text-align: start;
+        }
+
+        .foundermain {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            margin-left: 31rem;
+        }
+        .gif{
+            width: 200px;
+            mask: var(--color-text);
+            background-color: #e8e8e8;
+            display: none;
         }
     </style>
 
-    <div class="container text-center" style="margin-bottom: 100px;">
+    {{!-- testimonials --}}
+
+    <div class="container text-center col-sm-12 col-md-12 foundermain">
+        <div class="fonunder">
+            <div class="founderimage">
+                <img width="80px" src="admin/assets/imgs/logo/founder.jpg" alt="">
+                <h3>Sangeeth Mohan</h3>
+                <h5>Founder</h5>
+            </div>
+
+            <div class="subheading">
+                <div>
+                    <h2>This is <span style="color: #6d21f2;">who we are</span> </h2>
+
+                </div>
+
+                <img class="gif gif1" src="admin/assets/imgs/gif/gif.gif" alt="">
+                <img class="gif gif2" src="admin/assets/imgs/gif/gif1.gif" alt="">
+                <img class="gif gif3" src="admin/assets/imgs/gif/gif2.gif" alt="">
+                <img class="gif gif4" src="admin/assets/imgs/gif/gif3.gif" alt="">
+
+
+                <div class="founderdes">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sapiente fuga dolores? Ratione
+                        nulla
+                        fugiat veniam exercitationem sed veritatis quas, temporibus ullam quos error reprehenderit at
+                        ipsum.
+                        Omnis, suscipit dolorem.
+                    </p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempore pariatur magni quia in ab
+                        aliquam aspernatur aut quod dolor recusandae, eveniet possimus est. Iusto in nihil hic quia
+                        laboriosam.</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique non sapiente tempora pariatur
+                        est
+                        amet laudantium enim fugiat quasi expedita iure fugit corporis harum repudiandae, molestias
+                        aspernatur deleniti dolore repellendus.</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    
+
+    <div class="container text-center" style="margin-bottom: 100px; margin-top: 100px;">
         <div class="heading justify-content-center mb-5">
             <h2 class="">Got Questions? <span class="" style="color: #6d21f2;">Find Answers in our FAQ</span></h2>
         </div>
