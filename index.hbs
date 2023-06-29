@@ -1,0 +1,121 @@
+<a class="close_side_menu" href="javascript:void(0);"></a>
+
+<div class="rbt-page-banner-wrapper">
+    <!-- Start Banner BG Image  -->
+    <!-- End Banner BG Image  -->
+    <div class="rbt-banner-content">
+        <!-- Start Banner Content Top  -->
+        <div class="rbt-banner-content-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Start Breadcrumb Area  -->
+                        <ul class="page-list">
+                            <li class="rbt-breadcrumb-item"><a href="/">Home</a></li>
+                            <li>
+                                <div class="icon-right"><i class="feather-chevron-right"></i></div>
+                            </li>
+                            <li class="rbt-breadcrumb-item active">All Service</li>
+                        </ul>
+                        <!-- End Breadcrumb Area  -->
+
+                        {{!-- <p class="description">Courses that help beginner designers become true unicorns. </p>
+                        --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="rbt-section-overlayping-top rbt-section-gapBottom masonary-wrapper-activation" style="min-height: 90vh;">
+    <div class="container h-100">
+        <!-- Start Card Area -->
+        <div class="row row--15">
+            <div class="col-lg-12">
+                <div class="mesonry-list grid-metro2">
+                    <div class="resizer"></div>
+                    {{#each product}}
+                    <!-- Start Single Card  -->
+                    <div class="maso-item cat--1">
+                        <div class="rbt-card variation-01 rbt-hover card-list-2">
+                            <div class="rbt-card-img">
+                                <a href="/productDetails?id={{_id}}">
+                                    <img src="admin/assets/ProductImages/{{image}}" alt="Card image">
+                                </a>
+                            </div>
+                            <div class="rbt-card-body">
+                                <div class="rbt-card-top">
+                                    {{!-- <div class="rbt-review">
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="rating-count"></span>
+                                    </div> --}}
+                                    <div class="rbt-bookmark-btn">
+                                        {{!-- <a class="rbt-round-btn" title="Bookmark" href="#"><i
+                                                class="feather-bookmark"></i></a> --}}
+                                    </div>
+                                </div>
+                              
+
+                                <h4 class="rbt-card-title"><a href="/productDetails?id={{_id}}">{{name}}</a>
+                                </h4>
+
+                                {{!-- <ul class="rbt-meta">
+                                    <li><i class="feather-book"></i>12 Lessons</li>
+                                    <li><i class="feather-users"></i>50 Students</li>
+                                </ul> --}}
+
+                                <p class="rbt-card-text">{{sdescription}}</p>
+                                {{!-- <div class="rbt-author-meta mb--10">
+                                    <div class="rbt-avater">
+                                        <a href="#">
+                                            <img src="assets/images/client/avatar-02.png" alt="Sophia Jaymes">
+                                        </a>
+                                    </div>
+                                    <div class="rbt-author-info">
+                                        By <a href="profile.html">Angela</a> In <a href="#">Development</a>
+                                    </div>
+                                </div> --}}
+                                <div class="rbt-card-bottom">
+                                    <div class="rbt-price">
+                                        <span class="current-price">${{discountedPrice}}</span>
+                                        <span class="off-price">${{mrp}}</span>
+                                    </div>
+                                    {{!-- <a class="rbt-btn hover-icon-reverse" href="/addToCart?id={{_id}}">
+                                        <span class="icon-reverse-wrapper">
+                                            <span class="btn-text">Histudy Button</span>
+                                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        </span>
+                                        </a> --}}
+                                        {{!-- </a>
+                                    <button style="background-color: #CADAF6;" class="btn rbt-btn-link left-icon"
+                                        href="/addToCart?id={{_id}}"><i class="feather-shopping-cart"></i> Add To
+                                        Cart</button> --}}
+                                    <a class="rbt-btn btn-sm btn-border radius-round-10" href="/addToCart?id={{_id}}">Add To Cart</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Card  -->
+                    {{/each}}
+
+                </div>
+                <!-- End Card Area -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="rbt-separator-mid">
+    <div class="container">
+        <hr class="rbt-separator m-0">
+    </div>
+</div>
