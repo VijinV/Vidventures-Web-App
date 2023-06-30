@@ -373,21 +373,35 @@
   </style>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const allowCookiesButton = document.getElementById('allow-cookies');
-      allowCookiesButton.addEventListener('click', () => {
-        fetch('/allow-cookies', { method: 'POST' })
-          .then(response => {
-            if (response.ok) {
-              document.getElementById('popup').style.display = 'none';
-            }
-          })
-          .catch(error => {
-            console.error('An error occurred:', error);
-          });
-      });
+  document.addEventListener('DOMContentLoaded', () => {
+    const allowCookiesButton = document.getElementById('allow-cookies');
+    const popup = document.getElementById('popup');
+
+    allowCookiesButton.addEventListener('click', () => {
+      // Save the user's preference in a cookie or local storage
+      // This example uses localStorage
+      localStorage.setItem('cookiesAccepted', true);
+      popup.style.display = 'none';
+
+      // Send a fetch request to the backend
+      fetch('/allow-cookies', { method: 'POST' })
+        .then(response => {
+          
+        })
+        .catch(error => {
+          console.error('An error occurred:', error);
+        });
     });
-  </script>
+
+    // Check if the user has already accepted cookies
+    const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+    if (cookiesAccepted) {
+      // If cookies have been accepted, hide the popup
+      popup.style.display = 'none';
+    }
+  });
+</script>
+
 
   {{!--
   <script>
