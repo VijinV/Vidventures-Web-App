@@ -150,30 +150,35 @@
 
 </head>
 
+
 <body class="rbt-header-sticky">
-
   <script>
-    // Add your loading screen JavaScript code here
+    function showLoadingScreen() {
+      const loadingScreen = document.getElementById('loadingscreen');
+      const body = document.querySelector('body');
+      loadingScreen.style.display = 'block';
+    }
 
+    function hideLoadingScreen() {
+      const loadingScreen = document.getElementById('loadingscreen');
+      const body = document.querySelector('body');
+      loadingScreen.style.display = 'none';
+    }
 
-    window.addEventListener('load', () => {
-      // Check if the current page is http://localhost:3000/shop
-      if (window.location.href === 'https://www.vidventuresyt.com/shop') {
-        // if (window.location.href === 'http://localhost:3000/shop') {
-        const loadingScreen = document.getElementById('loadingscreen');
-        loadingScreen.style.display = 'block';
-        // Stop loading after 3 seconds
-        setTimeout(() => {
-          loadingScreen.style.display = 'none';
-        }, 1200);
+    function handleWindowLoad() {
+      if (window.location.href === 'https://vidventuresyt.com/shop') {
+        showLoadingScreen();
+        setTimeout(hideLoadingScreen, 1200);
       }
-    });
+    }
 
-    document.addEventListener('contextmenu', event => event.preventDefault());
+    function preventContextMenu(event) {
+      event.preventDefault();
+    }
 
+    window.addEventListener('load', handleWindowLoad);
+    document.addEventListener('contextmenu', preventContextMenu);
   </script>
-
-
 
   <div id="loadingscreen" class="loading">
     <div class="loader">
@@ -183,6 +188,9 @@
       <div class="loader__circle"></div>
     </div>
   </div>
+
+
+
 
   <div id="popup" class="popup" {{#unless showPopup}}style="display:none" {{/unless}}>
     <div class="cookiepng">
@@ -268,35 +276,42 @@
         display: block;
         padding: 0;
       }
-      .cookiepng{
+
+      .cookiepng {
         margin-top: 4px;
       }
+
       .cookiepng img {
         width: 7rem;
-margin-top: 0px;
+        margin-top: 0px;
       }
-      .parag{
+
+      .parag {
         position: absolute;
         margin-left: 67px;
         margin-top: -59px;
       }
+
       .parag p {
         font-size: 17px;
         line-height: 22px;
       }
+
       .parag .p {
         margin-top: -29px;
 
       }
-      .cookiebtn{
+
+      .cookiebtn {
         margin-top: 70px;
         margin-left: 63px;
       }
+
       .cookiebtn button {
         width: 129px;
-height: 40px;
-font-size: 13px;
-border-radius: 29px;
+        height: 40px;
+        font-size: 13px;
+        border-radius: 29px;
       }
 
 
