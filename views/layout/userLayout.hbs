@@ -158,18 +158,19 @@
   <script>
     function showLoadingScreen() {
       const loadingScreen = document.getElementById('loadingscreen');
-      const body = document.querySelector('body');
       loadingScreen.style.display = 'block';
     }
 
     function hideLoadingScreen() {
       const loadingScreen = document.getElementById('loadingscreen');
-      const body = document.querySelector('body');
+      const screeenloadingScreen = document.querySelector('#shooping')
+
       loadingScreen.style.display = 'none';
+      screeenloadingScreen.style.display = 'block';
     }
 
     function handleWindowLoad() {
-       if (window.location.href === 'https://vidventuresyt.com/shop') {
+      if (window.location.href === 'https://vidventuresyt.com/shop') {
 
       // if (window.location.href === 'http://localhost:3000/shop') {
         console.log('window.location.href')
