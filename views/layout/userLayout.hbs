@@ -133,6 +133,7 @@
     .loader__circle:nth-of-type(4) {
       background-color: #ff9500;
       animation-delay: 0.75s;
+
     }
 
     @keyframes loader_901 {
@@ -148,10 +149,6 @@
         transform: scale(1);
       }
     }
-
-    footer {
-      margin-top: 100vh;
-    }
   </style>
 
 
@@ -161,7 +158,9 @@
 <body class="rbt-header-sticky">
   <script>
     function showLoadingScreen() {
+      
       const loadingScreen = document.getElementById('loadingscreen');
+      
       loadingScreen.style.display = 'block';
     }
 
@@ -169,16 +168,17 @@
       const loadingScreen = document.getElementById('loadingscreen');
       const screeenloadingScreen = document.querySelector('#shooping')
       const displaybanner = document.querySelector('#shoopingbanner')
-
+      const footer = document.querySelector('#footer')
+      footer.style.display = 'block';
       loadingScreen.style.display = 'none';
       screeenloadingScreen.style.display = 'block';
       displaybanner.style.display = 'block';
     }
 
     function handleWindowLoad() {
-      if (window.location.href === 'https://vidventuresyt.com/shop') {
+       if (window.location.href === 'https://vidventuresyt.com/shop') {
 
-       //  if (window.location.href === 'http://localhost:3000/shop') {
+     // if (window.location.href === 'http://localhost:3000/shop') {
         console.log('window.location.href')
         showLoadingScreen();
         setTimeout(hideLoadingScreen, 1000);
@@ -231,7 +231,7 @@
     .cookiepng img {
       width: 7rem;
     }
-
+    
     .cookiepng {
       margin-top: -13px;
     }
@@ -373,34 +373,34 @@
   </style>
 
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const allowCookiesButton = document.getElementById('allow-cookies');
-    const popup = document.getElementById('popup');
+    document.addEventListener('DOMContentLoaded', () => {
+      const allowCookiesButton = document.getElementById('allow-cookies');
+      const popup = document.getElementById('popup');
 
-    allowCookiesButton.addEventListener('click', () => {
-      // Save the user's preference in a cookie or local storage
-      // This example uses localStorage
-      localStorage.setItem('cookiesAccepted', true);
-      popup.style.display = 'none';
+      allowCookiesButton.addEventListener('click', () => {
+        // Save the user's preference in a cookie or local storage
+        // This example uses localStorage
+        localStorage.setItem('cookiesAccepted', true);
+        popup.style.display = 'none';
 
-      // Send a fetch request to the backend
-      fetch('/allow-cookies', { method: 'POST' })
-        .then(response => {
-          
-        })
-        .catch(error => {
-          console.error('An error occurred:', error);
-        });
+        // Send a fetch request to the backend
+        fetch('/allow-cookies', { method: 'POST' })
+          .then(response => {
+
+          })
+          .catch(error => {
+            console.error('An error occurred:', error);
+          });
+      });
+
+      // Check if the user has already accepted cookies
+      const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+      if (cookiesAccepted) {
+        // If cookies have been accepted, hide the popup
+        popup.style.display = 'none';
+      }
     });
-
-    // Check if the user has already accepted cookies
-    const cookiesAccepted = localStorage.getItem('cookiesAccepted');
-    if (cookiesAccepted) {
-      // If cookies have been accepted, hide the popup
-      popup.style.display = 'none';
-    }
-  });
-</script>
+  </script>
 
 
   {{!--
