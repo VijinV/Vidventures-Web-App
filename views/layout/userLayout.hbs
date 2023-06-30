@@ -148,6 +148,10 @@
         transform: scale(1);
       }
     }
+
+    footer {
+      margin-top: 100vh;
+    }
   </style>
 
 
@@ -164,15 +168,17 @@
     function hideLoadingScreen() {
       const loadingScreen = document.getElementById('loadingscreen');
       const screeenloadingScreen = document.querySelector('#shooping')
+      const displaybanner = document.querySelector('#shoopingbanner')
 
       loadingScreen.style.display = 'none';
       screeenloadingScreen.style.display = 'block';
+      displaybanner.style.display = 'block';
     }
 
     function handleWindowLoad() {
       if (window.location.href === 'https://vidventuresyt.com/shop') {
 
-      // if (window.location.href === 'http://localhost:3000/shop') {
+        // if (window.location.href === 'http://localhost:3000/shop') {
         console.log('window.location.href')
         showLoadingScreen();
         setTimeout(hideLoadingScreen, 1200);
