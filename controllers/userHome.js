@@ -59,6 +59,8 @@ const loadHome = async (req, res, next) => {
   .skip(1)
   .limit(3);
 
+  const showPopup = !req.cookies || !req.cookies.allowCookies;
+
   setTimeout(()=>{
     res.render("home", {
       login,
@@ -66,7 +68,8 @@ const loadHome = async (req, res, next) => {
       review: review,
       post,
       posts,
-      sorted
+      sorted,
+      showPopup
     } )
   },3000)
 

@@ -63,6 +63,14 @@ const adminRoute = require("./router/adminRouter");
 app.use("/", userRoute);
 app.use("/admin", adminRoute);
 
+// allow cookies 
+
+app.post('/allow-cookies', (req, res) => {
+  res.cookie('allowCookies', true);
+  res.sendStatus(200);
+});
+
+
 userRoute.set("views", path.join(__dirname + "/views/user"));
 userRoute.engine(
   "hbs",
