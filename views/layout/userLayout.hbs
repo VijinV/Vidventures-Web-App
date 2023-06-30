@@ -49,6 +49,9 @@
       overflow-x: hidden !important;
     }
   </style>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
   <!-- CSS
 	============================================ -->
   <link rel="stylesheet" href="user/assets/css/vendor/bootstrap.min.css">
@@ -166,7 +169,10 @@
     }
 
     function handleWindowLoad() {
-      if (window.location.href === 'https://vidventuresyt.com/shop') {
+       if (window.location.href === 'https://vidventuresyt.com/shop') {
+
+      // if (window.location.href === 'http://localhost:3000/shop') {
+        console.log('window.location.href')
         showLoadingScreen();
         setTimeout(hideLoadingScreen, 1200);
       }
@@ -176,8 +182,14 @@
       event.preventDefault();
     }
 
-    window.addEventListener('load', handleWindowLoad);
+    // window.addEventListener('load', handleWindowLoad);
+
     document.addEventListener('contextmenu', preventContextMenu);
+  </script>
+
+
+  <script>
+    $(window).on('load', handleWindowLoad);
   </script>
 
   <div id="loadingscreen" class="loading">
