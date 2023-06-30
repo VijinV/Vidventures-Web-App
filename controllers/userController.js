@@ -3,6 +3,7 @@ const userModel = require("../models/userModel");
 const nodemailer = require("nodemailer");
 const otplib = require("otplib");
 const secret = otplib.authenticator.generateSecret();
+const mongoose = require("mongoose");
 
 require("dotenv").config();
 
@@ -694,7 +695,8 @@ const addInstruction = async (req, res) => {
     others,
   } = req.body;
 
-  const productId = req.body.productId;
+  const productId =  req.body.productId;
+
   const id = req.body.id;
 
   const instruction = {
@@ -708,7 +710,7 @@ const addInstruction = async (req, res) => {
     others,
   };
 
-  console.log('instruction', id)
+  
 
   const order = await orderModel.findOneAndUpdate(
     { _id: id, "products.item": { $elemMatch: { productId: productId } } },
@@ -1215,7 +1217,7 @@ const stripePayment = async (req, res) => {
 
     line_object = {
       price_data: {
-        currency: "inr",
+        currency: "usd",
         product_data: {
           name: name,
           images: [
@@ -1241,7 +1243,7 @@ const stripePayment = async (req, res) => {
     shortsPrice = 8 * 100;
     line_object = {
       price_data: {
-        currency: "inr",
+        currency: "usd",
         product_data: {
           name: "shorts",
           images: [
@@ -1263,7 +1265,7 @@ const stripePayment = async (req, res) => {
 
     line_object = {
       price_data: {
-        currency: "inr",
+        currency: "usd",
         product_data: {
           name: "Premium Thumbnail",
           images: [
@@ -1286,7 +1288,7 @@ const stripePayment = async (req, res) => {
 
     line_object = {
       price_data: {
-        currency: "inr",
+        currency: "usd",
         product_data: {
           name: "Channel Management",
           images: [
