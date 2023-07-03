@@ -94,7 +94,7 @@
       width: 100%;
       height: 100%;
       background: rgba(237, 237, 237, 0.15);
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      
       backdrop-filter: blur(5px);
       -webkit-backdrop-filter: blur(5px);
       border-radius: 10px;
@@ -105,6 +105,7 @@
       justify-content: center;
       align-items: center;
       height: 100%;
+      background-color: #fff;
     }
 
     .loader__circle {
@@ -155,7 +156,7 @@
 </head>
 
 
-<body class="rbt-header-sticky">
+<body class="rbt-header-sticky body">
   <script>
     function showLoadingScreen() {
       
@@ -168,7 +169,7 @@
       const loadingScreen = document.getElementById('loadingscreen');
       const screeenloadingScreen = document.querySelector('#shooping')
       const displaybanner = document.querySelector('#shoopingbanner')
-      const footer = document.querySelector('#footer')
+      const footer = document.querySelector('.footer')
       footer.style.display = 'block';
       loadingScreen.style.display = 'none';
       screeenloadingScreen.style.display = 'block';
@@ -178,7 +179,7 @@
     function handleWindowLoad() {
        if (window.location.href === 'https://vidventuresyt.com/shop') {
 
-     // if (window.location.href === 'http://localhost:3000/shop') {
+    //  if (window.location.href === 'http://localhost:3000/shop') {
         console.log('window.location.href')
         showLoadingScreen();
         setTimeout(hideLoadingScreen, 1000);
