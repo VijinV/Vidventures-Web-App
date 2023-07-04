@@ -18,7 +18,7 @@
   <!-- Google tag (gtag.js) -->
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GSG3MCJJPV"></script>
-  <script async >
+  <script async>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
@@ -28,30 +28,7 @@
   <!-- Favicon -->
   <link rel="Vidventures YouTube Cashcow" type="image/x-icon" href="admin/assets/imgs/logo/logoMain.svg">
 
-  <style>
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    input[type="number"] {
-      appearance: textfield;
-      -moz-appearance: textfield;
-      -webkit-appearance: textfield;
-    }
-
-    .font-500 {
-      font-weight: 500 !important;
-    }
-
-    body {
-      overflow-x: hidden !important;
-    }
-  </style>
-
-
-  <script  type="application/ld+json">
+  <script type="application/ld+json">
 {
   "@context": "http://vidventuresyt.com/",
   "image": [
@@ -61,10 +38,6 @@
    ]
 }
 </script>
-
-
-  <script  src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
   <!-- CSS
 	============================================ -->
   <link rel="stylesheet" href="user/assets/css/vendor/bootstrap.min.css">
@@ -94,154 +67,21 @@
 
   <link rel="manifest" href="/user/assets/mainfest.json">
 
-
-
   <style>
-    .loading {
-      position: absolute;
+    #installButton {
       display: none;
-      top: 50vh;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
       z-index: 10000;
-      width: 100%;
-      height: 100%;
-      background: rgba(237, 237, 237, 0.15);
-
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      border-radius: 10px;
     }
 
-    .loader {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      background-color: #fff;
-    }
-
-    .loader__circle {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      margin: 0 4px;
-      animation: loader_901 1s ease-in-out infinite;
-    }
-
-    .loader__circle:nth-of-type(1) {
-      background-color: #007aff;
-      animation-delay: 0;
-    }
-
-    .loader__circle:nth-of-type(2) {
-      background-color: #ff2d55;
-      animation-delay: 0.25s;
-    }
-
-    .loader__circle:nth-of-type(3) {
-      background-color: #34c759;
-      animation-delay: 0.5s;
-    }
-
-    .loader__circle:nth-of-type(4) {
-      background-color: #ff9500;
-      animation-delay: 0.75s;
-
-    }
-
-    @keyframes loader_901 {
-      0% {
-        transform: scale(1);
-      }
-
-      20% {
-        transform: scale(1.2);
-      }
-
-      40% {
-        transform: scale(1);
-      }
-    }
-  </style>
-
-
-</head>
-
-
-<body class="rbt-header-sticky body">
-  <script>
-    function showLoadingScreen() {
-
-      const loadingScreen = document.getElementById('loadingscreen');
-
-      loadingScreen.style.display = 'block';
-    }
-
-    function hideLoadingScreen() {
-      const loadingScreen = document.getElementById('loadingscreen');
-      const screeenloadingScreen = document.querySelector('#shooping')
-      const displaybanner = document.querySelector('#shoopingbanner')
-      const footer = document.querySelector('.footer')
-      footer.style.display = 'block';
-      loadingScreen.style.display = 'none';
-      screeenloadingScreen.style.display = 'block';
-      displaybanner.style.display = 'block';
-    }
-
-    function handleWindowLoad() {
-      if (window.location.href === 'https://vidventuresyt.com/shop') {
-
-        //  if (window.location.href === 'http://localhost:3000/shop') {
-        console.log('window.location.href')
-        showLoadingScreen();
-        setTimeout(hideLoadingScreen, 800);
-      }
-    }
-
-    function preventContextMenu(event) {
-      event.preventDefault();
-    }
-
-    // window.addEventListener('load', handleWindowLoad);
-
-    document.addEventListener('contextmenu', preventContextMenu);
-  </script>
-
-
-  <script>
-    $(window).on('load', handleWindowLoad);
-  </script>
-
-  <div id="loadingscreen" class="loading">
-    <div class="loader">
-      <div class="loader__circle"></div>
-      <div class="loader__circle"></div>
-      <div class="loader__circle"></div>
-      <div class="loader__circle"></div>
-    </div>
-  </div>
-
-
-
-
-  <div id="popup" class="popup" {{#unless showPopup}}style="display:none" {{/unless}}>
-    <div class="cookiepng">
-      <img src="admin/assets/imgs/gif/cookie.gif" alt="">
-    </div>
-    <div class="parag">
-      <p>As a YouTube cashcow company, we utilize cookies to optimize your </p>
-      <p class="p">browsing experience and deliver personalized
-        content tailored to your interests.</p>
-    </div>
-    <div class="cookiebtn">
-      <button id="allow-cookies" class="button btn btn-primary">Allow Cookies</button>
-    </div>
-
-
-  </div>
-
-  <style>
     .cookiepng img {
       width: 7rem;
     }
@@ -286,7 +126,6 @@
     }
 
     .parag {
-
       color: white;
       font-size: 61px !important;
       margin-top: 6px;
@@ -299,7 +138,6 @@
     }
 
     @media (min-width: 300px) and (max-width: 480px) {
-
       #popup {
         top: 68vh;
         border-radius: 14px;
@@ -332,7 +170,6 @@
 
       .parag .p {
         margin-top: -29px;
-
       }
 
       .cookiebtn {
@@ -346,16 +183,12 @@
         font-size: 13px;
         border-radius: 29px;
       }
-
-
     }
 
     @media (min-width: 1150px) and (max-width: 1300px) {
-
       #popup {
         right: 0;
         left: 0;
-
       }
 
       .cookiebtn {
@@ -364,22 +197,17 @@
 
       .parag {
         margin-left: 0;
-
       }
 
       .parag p {
         font-size: 21px;
       }
-
     }
 
-
     @media (min-width: 1300px) and (max-width: 1800px) {
-
       #popup {
         right: 53px;
         left: 53px;
-
       }
 
       .cookiebtn {
@@ -388,11 +216,120 @@
 
       .parag {
         margin-left: 5px;
+      }
+    }
 
+    .loading {
+      position: absolute;
+      display: none;
+      top: 50vh;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10000;
+      width: 100%;
+      height: 100%;
+      background: rgba(237, 237, 237, 0.15);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border-radius: 10px;
+    }
+
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      background-color: #fff;
+    }
+
+    .loader__circle {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      margin: 0 4px;
+      animation: loader_901 1s ease-in-out infinite;
+    }
+
+    .loader__circle:nth-of-type(1) {
+      background-color: #007aff;
+      animation-delay: 0;
+    }
+
+    .loader__circle:nth-of-type(2) {
+      background-color: #ff2d55;
+      animation-delay: 0.25s;
+    }
+
+    .loader__circle:nth-of-type(3) {
+      background-color: #34c759;
+      animation-delay: 0.5s;
+    }
+
+    .loader__circle:nth-of-type(4) {
+      background-color: #ff9500;
+      animation-delay: 0.75s;
+    }
+
+    @keyframes loader_901 {
+      0% {
+        transform: scale(1);
       }
 
+      20% {
+        transform: scale(1.2);
+      }
+
+      40% {
+        transform: scale(1);
+      }
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type="number"] {
+      appearance: textfield;
+      -moz-appearance: textfield;
+      -webkit-appearance: textfield;
+    }
+
+    .font-500 {
+      font-weight: 500 !important;
+    }
+
+    body {
+      overflow-x: hidden !important;
     }
   </style>
+
+</head>
+
+
+<body class="rbt-header-sticky body">
+  <div id="loadingscreen" class="loading">
+    <div class="loader">
+      <div class="loader__circle"></div>
+      <div class="loader__circle"></div>
+      <div class="loader__circle"></div>
+      <div class="loader__circle"></div>
+    </div>
+  </div>
+  <div id="popup" class="popup" {{#unless showPopup}}style="display:none" {{/unless}}>
+    <div class="cookiepng">
+      <img src="admin/assets/imgs/gif/cookie.gif" alt="">
+    </div>
+    <div class="parag">
+      <p>As a YouTube cashcow company, we utilize cookies to optimize your </p>
+      <p class="p">browsing experience and deliver personalized
+        content tailored to your interests.</p>
+    </div>
+    <div class="cookiebtn">
+      <button id="allow-cookies" class="button btn btn-primary">Allow Cookies</button>
+    </div>
+  </div>
 
   {{#if login}}
   {{>noNav}}
@@ -411,25 +348,7 @@
   {{>footer}}
   {{/if}}
 
-  {{!-- pwa --}}
-
-  <style>
-    #installButton {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      padding: 10px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 10000;
-    }
-  </style>
-
-  <script >
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
       const allowCookiesButton = document.getElementById('allow-cookies');
       const popup = document.getElementById('popup');
@@ -451,65 +370,45 @@
       });
 
       // Check if the user has already accepted cookies
-      // const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+      const cookiesAccepted = localStorage.getItem('cookiesAccepted');
       if (cookiesAccepted) {
         // If cookies have been accepted, hide the popup
         popup.style.display = 'none';
       }
     });
+
+    function showLoadingScreen() {
+      const loadingScreen = document.getElementById('loadingscreen');
+      loadingScreen.style.display = 'block';
+    }
+
+    function hideLoadingScreen() {
+      const loadingScreen = document.getElementById('loadingscreen');
+      const screeenloadingScreen = document.querySelector('#shooping');
+      const displaybanner = document.querySelector('#shoopingbanner');
+      const footer = document.querySelector('.footer');
+      footer.style.display = 'block';
+      loadingScreen.style.display = 'none';
+      screeenloadingScreen.style.display = 'block';
+      displaybanner.style.display = 'block';
+    }
+
+    function handleWindowLoad() {
+      if (window.location.href === 'https://vidventuresyt.com/shop') {
+        showLoadingScreen();
+        setTimeout(hideLoadingScreen, 800);
+      }
+    }
+
+    function preventContextMenu(event) {
+      event.preventDefault();
+    }
+
+    document.addEventListener('contextmenu', preventContextMenu);
+    $(window).on('load', handleWindowLoad);
   </script>
 
-
-  {{!--
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js', {
-        scope: '/'
-      });
-    }
-  </script>
-
-  <script>
-    // Check if the app is already installed
-    if (!window.matchMedia('(display-mode: standalone)').matches) {
-      let deferredPrompt;
-
-      // Listen for the beforeinstallprompt event
-      window.addEventListener('beforeinstallprompt', (event) => {
-        event.preventDefault(); // Prevent automatic prompting
-
-        // Save the event for later use
-        deferredPrompt = event;
-
-        // Show the install button
-        document.getElementById('installButton').style.display = 'block';
-      });
-
-      // Handle install button click
-      document.getElementById('installButton').addEventListener('click', () => {
-        // Show the installation prompt
-        deferredPrompt.prompt();
-
-        // Wait for the user's response
-        deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            // User accepted the installation
-          } else {
-            // User dismissed the installation
-          }
-
-          // Clear the deferred prompt variable
-          deferredPrompt = null;
-
-          // Hide the install button
-          document.getElementById('installButton').style.display = 'none';
-        });
-      });
-    }
-  </script> --}}
-
-  <!-- JS
-============================================ -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- Modernizer JS -->
   <script src="user/assets/js/vendor/modernizr.min.js"></script>
   <!-- jQuery JS -->
@@ -540,7 +439,5 @@
   <!-- Main JS -->
   <script src="user/assets/js/main.js"></script>
   <script type="text/javascript" src="user/assets/js/client.js"></script>
-
 </body>
-
 </html>
