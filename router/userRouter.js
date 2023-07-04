@@ -102,7 +102,7 @@ route.post('/create-checkout-session', async (req, res) => {
     res.redirect(303, session.url);
   });
   
-  
+
   route.post('/create-checkout', async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: [
@@ -183,13 +183,12 @@ route.get('/sort',userController.sortProduct)
 
 route.get('/successpage', async(req, res, next) =>{
 
-  const order = await orderModel.findOne({_id:'649ee2260fdcd055bf805999'})
+  const order = await orderModel.findOne({_id:'649ee2260fdcd055bf805999'}).populate('products.item.productId')
 
-  console.log(order)
 
   const products = order.products.item
 
-  console.log(products[0].productId)
+  
 
 
   res.render('success');
