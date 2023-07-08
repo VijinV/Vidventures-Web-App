@@ -1,7 +1,7 @@
 <a class="close_side_menu" href="javascript:void(0);"></a>
 <div class="rbt-page-banner-wrapper">
     <!-- Start Banner BG Image  -->
-    
+
     <!-- End Banner BG Image  -->
     <div id="shoopingbanner" class="rbt-banner-content">
 
@@ -88,70 +88,6 @@
                                 </select>
                             </div>
                         </div>
-
-                        {{!-- <div class="filter-select-option">
-                            <div class="filter-select rbt-modern-select">
-                                <span class="select-label d-block">Short By Author</span>
-                                <select data-live-search="true" title="Select Author" multiple data-size="7"
-                                    data-actions-box="true" data-selected-text-format="count > 2">
-                                    <option data-subtext="Experts">Janin Afsana</option>
-                                    <option data-subtext="Experts">Joe Biden</option>
-                                    <option data-subtext="Experts">Fatima Asrafy</option>
-                                    <option data-subtext="Experts">Aysha Baby</option>
-                                    <option data-subtext="Experts">Mohamad Ali</option>
-                                    <option data-subtext="Experts">Jone Li</option>
-                                    <option data-subtext="Experts">Alberd Roce</option>
-                                    <option data-subtext="Experts">Zeliski Noor</option>
-                                </select>
-                            </div>
-                        </div> --}}
-
-                        {{!-- <div class="filter-select-option">
-                            <div class="filter-select rbt-modern-select">
-                                <span class="select-label d-block">Short By Offer</span>
-                                <select>
-                                    <option>Free</option>
-                                    <option>Paid</option>
-                                    <option>Premium</option>
-                                </select>
-                            </div>
-                        </div> --}}
-
-                        {{!-- <div class="filter-select-option">
-                            <div class="filter-select rbt-modern-select">
-                                <span class="select-label d-block">Short By Category</span>
-                                <select data-live-search="true">
-                                    <option>Web Design</option>
-                                    <option>Graphic</option>
-                                    <option>App Development</option>
-                                    <option>Figma Design</option>
-                                </select>
-                            </div>
-                        </div> --}}
-
-                        {{!-- <div class="filter-select-option">
-                            <div class="filter-select">
-                                <span class="select-label d-block">Price Range</span>
-
-                                <div class="price_filter s-filter clear">
-                                    <form action="#" method="GET">
-                                        <div id="slider-range"></div>
-                                        <div class="slider__range--output">
-                                            <div class="price__output--wrap">
-                                                <div class="price--output">
-                                                    <span>Price :</span><input type="text" id="amount">
-                                                </div>
-                                                <div class="price--filter">
-                                                    <a class="rbt-btn btn-gradient btn-sm" href="#">Filter</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-
-
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
                 <!-- End Filter Toggle  -->
@@ -162,21 +98,21 @@
 </div>
 
 <style>
-    #shooping{
+    #shooping {
         display: none;
     }
-    #shoopingbanner{
+
+    #shoopingbanner {
         display: none;
     }
-    .footer{
-      display: none;
+
+    .footer {
+        display: none;
     }
-    
-   
 </style>
 
 
-<div  id="shooping" class="rbt-section-overlayping-top rbt-section-gapBottom">
+<div id="shooping" class="rbt-section-overlayping-top rbt-section-gapBottom">
     <div class="inner">
         <div class="container">
             <div id="searchResults" class="rbt-course-grid-column">
@@ -265,6 +201,32 @@
 
 
 <script>
+    function showLoadingScreen() {
+        const loadingScreen = document.getElementById('loadingscreen');
+        loadingScreen.style.display = 'block';
+    }
+
+    function hideLoadingScreen() {
+        const loadingScreen = document.getElementById('loadingscreen');
+        const screeenloadingScreen = document.querySelector('#shooping');
+        const displaybanner = document.querySelector('#shoopingbanner');
+        const footer = document.querySelector('.footer');
+        footer.style.display = 'block';
+        loadingScreen.style.display = 'none';
+        screeenloadingScreen.style.display = 'block';
+        displaybanner.style.display = 'block';
+    }
+
+    function handleWindowLoad() {
+        if (window.location.href === 'https://vidventuresyt.com/shop') {
+            //  if (window.location.href === 'http://localhost:3000/shop') {
+            showLoadingScreen();
+            setTimeout(hideLoadingScreen, 300);
+        }
+    }
+
+    window.addEventListener('load', handleWindowLoad);
+
     document.getElementById('searchButton').addEventListener('keyup', searchProducts);
 
     function searchProducts() {
