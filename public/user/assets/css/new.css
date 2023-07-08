@@ -277,7 +277,7 @@
         bottom: 146px;
     }
     .modal-content{
-        max-width: 90%;
+        max-width: 90% !important;
     }
 
     .rbt-user-wrapper{
