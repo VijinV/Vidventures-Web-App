@@ -244,5 +244,52 @@
         justify-content: start;
         margin-left: 0 !important;
     }
+    .button-new{
+        left: 6rem;
+        margin-left: 0 !important;
+    }
+    .pricing-span{
+        margin-left: 0 !important;
+    }
 
+    .content-active{
+        text-align: start !important;
+    }
+    .filterbtn{
+        width: fit-content !important;
+    }
+    .rbt-banner-8.variation-02 .inner .description{
+        padding: 0 !important;
+        padding-left:15rem !important;
+        padding-right: 6rem !important;
+    }
+    .foundermain{
+        padding: 0;
+    }
+    .gif2{
+        left: -155px;
+    }
+    .gif4{
+        left: -153px;
+    }
+    .gif3{
+        right: -150px;
+        bottom: 146px;
+    }
+    .modal-content{
+        max-width: 90%;
+    }
+
+    .rbt-user-wrapper{
+        position: absolute;
+        top: 4px;
+        right: 4rem;
+    }
+    .mobileview{
+        display: block !important;
+        margin-top:6rem !important;
+    }
+    .mobilehide{
+        display: none !important;
+    }
 }
