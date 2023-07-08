@@ -33,7 +33,6 @@ const loadDashboard = async (req, res, next) => {
     const Sales = await orderModel.find({});
   
   
-    console.log(Sales.length, "sales", Sales);
   
     // Visitors count
   
@@ -47,7 +46,6 @@ const loadDashboard = async (req, res, next) => {
     const now = new Date();
     let currentYear = now.getFullYear();
     let currentMonth = now.getMonth() + 1; // Add 1 to get the month number (January is 0)
-    console.log(`Current year: ${currentYear}, Current month: ${currentMonth}`);
   
     // Aggregate orders by month and calculate total revenue
     const monthlyRevenue = await orderModel
@@ -72,7 +70,6 @@ const loadDashboard = async (req, res, next) => {
       ])
       .exec();
   
-    console.log("Total revenue:", monthlyRevenue[0]?.totalRevenue || 0); // Access the totalRevenue property of the first object in the array
   
     // dashboard charts
   
@@ -102,7 +99,7 @@ const loadDashboard = async (req, res, next) => {
         .then((count) => {
           salesArray[i] = count;
           if (i === 11) {
-            console.log(salesArray, "monthly sales");
+         
           }
         })
         .catch((err) => {
@@ -135,7 +132,7 @@ const loadDashboard = async (req, res, next) => {
         const count = await userModel.countDocuments(query);
         usersArray[i] = count;
         if (i === 11) {
-          console.log(usersArray, "userModel");
+         
         }
       } catch (err) {
         console.log(err);
