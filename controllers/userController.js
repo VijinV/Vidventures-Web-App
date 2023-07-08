@@ -538,7 +538,9 @@ const contact = async (req, res) => {
 };
 
 const loadShop = async (req, res) => {
-  const product = await Product.getAvailableProducts();
+  const product = await Product.find({})
+  console.log(product)
+
   res.render("shop", { session: getSession(req, res), product });
 };
 
