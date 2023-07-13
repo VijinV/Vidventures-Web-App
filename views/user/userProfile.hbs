@@ -188,7 +188,14 @@
                                                     <td>{{@index}}</td>
                                                     <td>{{productId.name}}</td>
                                                     <td>{{formatDate createdAt}}</td>
+                                                    {{#if (eq status "Confirm")}}
                                                     <td>{{status}}</td>
+                                                    {{else if (eq status "Delivered")}}
+                                                    <td style="color: rgb(41, 189, 41);">{{status}}</td>
+                                                    {{else}}
+                                                    {{status}}
+                                                    {{/if}}
+
                                                     <td>${{multi price qty}}</td>
                                                     <td>
                                                         <a class="rbt-btn btn-gradient btn-sm"

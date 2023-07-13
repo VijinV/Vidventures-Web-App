@@ -323,6 +323,19 @@
     .mobilehide {
         display: none !important;
     }
+    .plan1:hover{
+        height: 62rem;
+    }
+    .plan2:hover{
+        height: 62rem !important;
+    }
+    .plan3:hover{
+        height: 68rem !important;
+    }
+    .down_arrow{
+        left: 12rem !important;
+    }
+
 
     
 }

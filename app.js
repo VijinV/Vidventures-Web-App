@@ -91,6 +91,7 @@ userRoute.engine(
         if (v1 === v2) {
           return v2;
         } else {
+          return false;
         }
       },
       limit:function(ary, max, options) {
@@ -122,6 +123,7 @@ adminRoute.engine(
         if (v1 === v2) {
           return v2;
         } else {
+          return false;
         }
       },
       multi:function(val1,val2){

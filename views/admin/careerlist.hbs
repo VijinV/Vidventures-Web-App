@@ -47,7 +47,7 @@
                                     <input class="form-check-input" type="checkbox">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name">
+                            <div class="col-lg-3 col-sm-4 col-8 flex-grow-1 col-name">
                                 <a class="itemside" href="/admin/editCareer?id={{_id}}">
                                     <div class="info">
                                         <h6 class="mb-0">{{title}}</h6>
@@ -55,17 +55,17 @@
                                 </a>
                             </div>
                             
-                            <div class="col-lg-1 col-sm-2 col-4 col-price"> <span>{{subTitle}}</span> </div>
+                            <div class="col-lg-4 col-sm-2 col-4 col-price"> <span>{{subTitle}}</span> </div>
                             
                             <div class="col-lg-1 col-sm-2 col-4 col-date">
                                 <span>{{formatDate createdAt}}</span>
                             </div>
                             {{#if isAvailable}}
-                            <div class="col-lg-2 col-sm-2 col-4 col-status">
+                            <div class="col-lg-1 col-sm-2 col-4 col-status">
                                 <span class="badge rounded-pill alert-success">Open</span>
                             </div>
                             {{else}}
-                            <div class="col-lg-2 col-sm-2 col-4 col-status">
+                            <div class="col-lg-1 col-sm-2 col-4 col-status">
                                 <span class="badge rounded-pill alert-danger">Closed</span>
                             </div>
                             {{/if}}
