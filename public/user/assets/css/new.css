@@ -245,7 +245,7 @@
 
 
 /* Tablet Style */
-@media (min-width: 522px) and (max-width: 1024px) {
+@media (min-width: 522px) and (max-width: 1350px) {
 
     .rbt-mini-cart {
         position: absolute;
