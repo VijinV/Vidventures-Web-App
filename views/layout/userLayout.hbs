@@ -18,7 +18,7 @@
   <!-- Google tag (gtag.js) -->
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GSG3MCJJPV"></script>
-  <script async >
+  <script async>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
@@ -28,7 +28,8 @@
   <!-- Favicon -->
   <link rel="Vidventures YouTube Cashcow" type="image/x-icon" href="admin/assets/imgs/logo/logoMain.svg">
 
-  {{!-- <script type="application/ld+json">
+  {{!--
+  <script type="application/ld+json">
 {
   "@context": "http://vidventuresyt.com/",
   "image": [
@@ -60,14 +61,16 @@
 
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <link  href="https://fonts.googleapis.com">
-  <link  href="https://fonts.gstatic.com" crossorigin>
-  <link  href="https://fonts.googleapis.com">
-  <link  href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com">
+  <link href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com">
+  <link href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  {{!-- <meta name="theme-color" content="#000000" /> --}}
+  {{!--
+  <meta name="theme-color" content="#000000" /> --}}
 
-  {{!-- <link rel="manifest" href="/user/assets/mainfest.json"> --}}
+  {{!--
+  <link rel="manifest" href="/user/assets/mainfest.json"> --}}
 
   <style>
     #installButton {
@@ -319,7 +322,7 @@
       <div class="loader__circle"></div>
     </div>
   </div>
-  <div id="popup" class="popup" {{#unless showPopup}}style="display:none" {{/unless}}>
+  <div id="popup" class="popup" style="display: none;">
     <div class="cookiepng">
       <img src="admin/assets/imgs/gif/cookie.gif" alt="">
     </div>
@@ -332,6 +335,7 @@
       <button id="allow-cookies" class="button btn btn-primary">Allow Cookies</button>
     </div>
   </div>
+
 
   {{#if login}}
   {{>noNav}}
@@ -350,46 +354,46 @@
   {{/if}}
 
   <script>
-   document.addEventListener('DOMContentLoaded', () => {
-  const allowCookiesButton = document.getElementById('allow-cookies');
-  const popup = document.getElementById('popup');
+    document.addEventListener('DOMContentLoaded', () => {
+      const allowCookiesButton = document.getElementById('allow-cookies');
+      const popup = document.getElementById('popup');
 
-  allowCookiesButton.addEventListener('click', () => {
-    // Save the user's preference in a cookie or local storage
-    // This example uses localStorage
-    localStorage.setItem('cookiesAccepted', true);
-    popup.style.display = 'none';
+      allowCookiesButton.addEventListener('click', () => {
+        // Save the user's preference in a cookie or local storage
+        // This example uses localStorage
+        localStorage.setItem('cookiesAccepted', true);
+        popup.style.display = 'none';
 
-    // Set the "SameSite" attribute for the cookie
-    const cookieOptions = {
-      sameSite: 'Strict', // or 'Lax' depending on your requirements
-      secure: true, // Only send the cookie over HTTPS
-    };
-    console.log(JSON.stringify(cookieOptions));
-    // Send a fetch request to the backend
-    fetch('/allow-cookies', {
-      method: 'POST',
-      credentials: 'same-origin', // Send cookies only on the same site
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(cookieOptions),
-    })
-      .then(response => {
-
-      })
-      .catch(error => {
-        console.error('An error occurred:', error);
+        // Set the "SameSite" attribute for the cookie
+        const cookieOptions = {
+          sameSite: 'Strict', // or 'Lax' depending on your requirements
+          secure: true, // Only send the cookie over HTTPS
+        };
+        console.log(JSON.stringify(cookieOptions));
+        // Send a fetch request to the backend
+        fetch('/allow-cookies', {
+          method: 'POST',
+          credentials: 'same-origin', // Send cookies only on the same site
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(cookieOptions),
+        })
+          .then(response => {
+            // Handle the response if needed
+          })
+          .catch(error => {
+            console.error('An error occurred:', error);
+          });
       });
-  });
 
-  // Check if the user has already accepted cookies
-  const cookiesAccepted = localStorage.getItem('cookiesAccepted');
-  if (cookiesAccepted) {
-    // If cookies have been accepted, hide the popup
-    popup.style.display = 'none';
-  }
-});
+      // Check if the user has already accepted cookies
+      const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+      if (!cookiesAccepted) {
+        // If cookies have not been accepted, show the popup
+        popup.style.display = 'flex';
+      }
+    });
 
 
     function showLoadingScreen() {
@@ -420,16 +424,16 @@
     }
 
     document.addEventListener('contextmenu', preventContextMenu);
-   window.addEventListener('load', handleWindowLoad);
+    window.addEventListener('load', handleWindowLoad);
   </script>
 
-  
+
   <!-- Modernizer JS -->
   <script src="user/assets/js/vendor/modernizr.min.js"></script>
   <!-- jQuery JS -->
   <script src="user/assets/js/vendor/jquery.js"></script>
   <!-- Bootstrap JS -->
-  <script  src="user/assets/js/vendor/bootstrap.min.js"></script>
+  <script src="user/assets/js/vendor/bootstrap.min.js"></script>
   <!-- sal.js -->
   <script src="user/assets/js/vendor/sal.js"></script>
   <script src="user/assets/js/vendor/swiper.js"></script>
@@ -453,7 +457,8 @@
   <script src="user/assets/js/vendor/countdown.js"></script>
   <!-- Main JS -->
   <script src="user/assets/js/main.js"></script>
-  {{!-- <script type="text/javascript" src="user/assets/js/client.js"></script> --}}
+  {{!--
+  <script type="text/javascript" src="user/assets/js/client.js"></script> --}}
 </body>
 
 </html>
