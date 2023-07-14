@@ -19,6 +19,7 @@
   "homepage": "https://github.com/VijinV/Vidventures-WebApp#readme",
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.5",
+    "@paypal/checkout-server-sdk": "^1.0.3",
     "@sendgrid/mail": "^7.7.0",
     "bcrypt": "^5.1.0",
     "cloudinary": "^1.36.4",
@@ -42,6 +43,7 @@
     "otplib": "^12.0.1",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
+    "paypal-rest-sdk": "^1.8.1",
     "randomstring": "^1.2.3",
     "stripe": "^11.16.0",
     "twilio": "^4.9.0"

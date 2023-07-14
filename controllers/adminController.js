@@ -140,17 +140,25 @@ const verifyAdmin = async (req, res, next) => {
 
     const adminData = await adminModel.findOne({ email: email });
 
-    if (adminData.isAdmin || adminData.coordinator) {
-      const passwordMatch = await bcrypt.compare(password, adminData.password);
+    
 
-      if (passwordMatch) {
-        req.session.admin_id = adminData._id;
-
-        res.redirect("/admin");
-      }
-    } else {
-      res.render("login", { message: "You are not an administrator" });
-    }
+   if (adminData) {
+     if (adminData.isAdmin || adminData.coordinator) {
+       const passwordMatch = await bcrypt.compare(password, adminData.password);
+ 
+       if (passwordMatch) {
+         req.session.admin_id = adminData._id;
+ 
+         res.redirect("/admin");
+       } else {
+         res.render("login", { message: "PassWord Incorrect" , login: true});
+       }
+     } else {
+       res.render("login", { message: "You are not an administrator", login: true });
+     }
+   } else {
+    res.render("login", { message: "You are not an administrator", login: true });
+   }
   } catch (error) {
     console.log(error);
   }
@@ -232,11 +240,11 @@ const editProduct = (req, res) => {
       list,
       sdescription,
     } = req.body;
-    
+
     console.log(discountedPrice);
 
     const formattedDiscountedPrice = Number(Number(discountedPrice).toFixed(2)); // Format to 2 decimal points as a number
-   
+
 
     const image = req.file && req.file.filename ? req.file.filename : req.body.oldimage;
     Products.findByIdAndUpdate(
@@ -254,7 +262,7 @@ const editProduct = (req, res) => {
         },
       }
     ).then((p) => {
-      
+
       res.redirect("/admin/product");
     }).catch((error) => console.log(error));
   } catch (error) {
@@ -1091,7 +1099,7 @@ const loadAddCareer = async (req, res) => {
     id = req.query.id ?? null;
     const career = await careerModel.findOne({ _id: id });
     console.log(career)
-        
+
     res.render("addCareer", { career })
 
   } catch (error) {
@@ -1106,7 +1114,7 @@ const careerList = async (req, res) => {
 
     console.log(careerList)
 
-    res.render("careerlist", { job:careerList })
+    res.render("careerlist", { job: careerList })
   } catch (error) {
 
   }
@@ -1116,9 +1124,9 @@ const addCareer = async (req, res) => {
   try {
 
     const { Title, subTitle, description, list, link } = req.body
-console.log('addCareer')
+    console.log('addCareer')
     const id = req.body.id ?? null;
-    
+
 
     if (id) {
 
@@ -1126,29 +1134,29 @@ console.log('addCareer')
         _id: id,
       }, {
         $set: {
-          title:Title,
+          title: Title,
           subTitle,
           description,
-          requirements:list,
+          requirements: list,
           link,
         }
-      }).then(()=> res.redirect('/admin/careers'))
+      }).then(() => res.redirect('/admin/careers'))
 
     } else {
 
       const career = new careerModel({
 
-        title:Title,
+        title: Title,
         subTitle,
         description,
-        requirements:list,
+        requirements: list,
         link,
       })
 
-      career.save().then(() =>{
+      career.save().then(() => {
         res.redirect('/admin/careers')
         console.log('career added')
-      } )
+      })
 
     }
   } catch (error) {
@@ -1174,31 +1182,31 @@ const listCareers = async (req, res) => {
   }
 };
 
-const deleteBlog = async (req, res) =>{
-try {
-  
-  const id = req.query.id;
-
-  await postModel.findByIdAndDelete(id).then(()=>res.redirect('/admin/listBlogs'))
-
-} catch (error) {
-  
-}
-
-}
-
-const deleteStory = async (req, res) =>{
+const deleteBlog = async (req, res) => {
   try {
-    
+
     const id = req.query.id;
-  
-    await postModel.findByIdAndDelete(id).then(()=>res.redirect('/admin/listPosts'))
-  
+
+    await postModel.findByIdAndDelete(id).then(() => res.redirect('/admin/listBlogs'))
+
   } catch (error) {
-    
+
   }
-  
+
+}
+
+const deleteStory = async (req, res) => {
+  try {
+
+    const id = req.query.id;
+
+    await postModel.findByIdAndDelete(id).then(() => res.redirect('/admin/listPosts'))
+
+  } catch (error) {
+
   }
+
+}
 
 
 module.exports = {
