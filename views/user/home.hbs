@@ -16,6 +16,12 @@
         z-index: 1;
     }
 
+    .calltosub {
+        font-size: 2rem !important;
+        font-weight: 400;
+        margin-top: -11px;
+    }
+
     #newbtn:hover {
         animation: ani 8s linear infinite;
         border: none;
@@ -889,16 +895,17 @@
     <!-- Start Call To Action  -->
     <div class="rbt-callto-action-area  rbt-section-gap" style="margin-top: -90px;">
         <div class="rbt-callto-action rbt-cta-default style-2">
-            <div class="container content-wrapper overflow-hidden">
+            <div class="container content-wrapper overflow-hidden" style="max-width: 1090px;">
                 <div class="row gy-5 align-items-center">
                     <div class="col-lg-8">
                         <div class="inner">
                             <div class="content text-left text-dark" style="display: block;">
-                                <p class="title" data-sal="slide-up" data-sal-duration="400" data-sal-delay="200">
-                                    For more info or to explore our portfolio, Contact us know to create impactful
-                                    videos for your channel
+                                <p class="title" data-sal="slide-up" data-sal-duration="400" data-sal-delay="200"
+                                    style="font-size: 25px;">
+                                    For more info or to explore our portfolio, Contact us
                                 </p>
-                                <h6 class="subtitle" data-sal="slide-up" data-sal-duration="400" data-sal-delay="300">
+                                <h6 class="subtitle calltosub" data-sal="slide-up" data-sal-duration="400"
+                                    data-sal-delay="300">
                                     Schedule a call with our expert team today &#128521;</h6>
                             </div>
                         </div>
@@ -937,8 +944,10 @@
             transition: height 0.5s ease, opacity 0.7s ease;
 
         }
-        .rbt-button-group{
+
+        .rbt-button-group {
             justify-content: start !important;
+            margin-left: -19px !important
         }
 
         /* Show the hidden list items when the parent pricing table is hovered */
@@ -1540,7 +1549,7 @@
                 </div>
                 <!-- End Single Testimonial  -->
                 {{/each}}
-             
+
             </div>
         </div>
 
@@ -1580,7 +1589,7 @@
 
     <div class="container text-center" style="margin-bottom: 50px;margin-top: 15px;">
         <div class="heading justify-content-center mb-5">
-            <h2 >Got Questions? <span  style="color: #6d21f2;">Find Answers in our FAQ</span></h2>
+            <h2>Got Questions? <span style="color: #6d21f2;">Find Answers in our FAQ</span></h2>
         </div>
 
         <div class="container col-md-7">
@@ -1762,7 +1771,7 @@
                                 <img src="admin/assets/ProductImages/{{image}}" alt="Card image"> </a>
                         </div>
                         <div class="rbt-card-body">
-                            <h5 class="rbt-card-title  "><a  href="{{link}}">{{heading}}</a></h5>
+                            <h5 class="rbt-card-title  "><a href="{{link}}">{{heading}}</a></h5>
                             <div class="rbt-card-bottom">
                                 <a class="transparent-button">Read Article<i><svg width="17" height="12"
                                             xmlns="http://www.w3.org/2000/svg">
