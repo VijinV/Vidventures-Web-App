@@ -2,8 +2,7 @@
     #nameSpan {
         opacity: 0.8;
         font-weight: 600;
-        color: #565ee6
-;
+        color: #565ee6;
 
     }
 
@@ -26,18 +25,20 @@
             opacity: 0;
             transform: translateY(20px);
         }
+
         25% {
             opacity: 0.25;
-            
+
         }
 
         50% {
             opacity: 0.5;
             transform: translateY(10px);
         }
+
         75% {
             opacity: 0.75;
-            
+
         }
 
         100% {
@@ -70,7 +71,7 @@
 <script>
     function changeText() {
         const nameSpan = document.getElementById('nameSpan');
-        const newTexts = ['Goedendag','Howdy','Namasthe','مرحبًا','Hola','Bonjour','Hello'];
+        const newTexts = ['Goedendag', 'Howdy', 'Namasthe', 'مرحبًا', 'Hola', 'Bonjour', 'Hello'];
         const currentIndex = newTexts.indexOf(nameSpan.innerText);
         const nextIndex = (currentIndex + 1) % newTexts.length;
         const nextText = newTexts[nextIndex];
@@ -99,7 +100,7 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-inner text-center">
                     <div class="headingslide">
-                        <span class="me-3 my-element "  id="nameSpan">Welcome
+                        <span class="me-3 my-element " id="nameSpan">Welcome
                         </span>
 
                         <h2 class="title headingname mt-1">
@@ -127,9 +128,9 @@
                     <div class="col-lg-3 col-12">
                         <div class="rbt-my-account-tab-button nav" role="tablist">
                             <a href="#dashboad" class="active" data-bs-toggle="tab">Dashboard</a>
-                            <a href="#orders" data-bs-toggle="tab">Orders</a>
-                            <a href="#account-info" data-bs-toggle="tab">Account Details</a>
                             <a href="/shop">Go to Services</a>
+                            <a href="#account-info" data-bs-toggle="tab">Account Details</a>
+                            <a href="#orders" data-bs-toggle="tab">Orders</a>
                         </div>
                     </div>
                     <!-- My Account Tab Menu End -->

@@ -2432,8 +2432,17 @@ const loadSuccess = async (req, res, next) => {
   }
 };
 
+const loadPledge = async (req, res) => {
+  try {
+    res.render('pledge',{session:getSession(req,res)})
+  } catch (error) {
+    
+  }
+}
+
 
 module.exports = {
+  loadPledge,
   Payment,
   paypalSucess,
   paypalPayment,

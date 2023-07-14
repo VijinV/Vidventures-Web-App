@@ -214,6 +214,9 @@ route.get('/paypalcancel',(req, res, next) => {
 route.post('/paypalPay', userController.paypalPayment);
 
 
+route.get('/ourPledge', userController.loadPledge)
+
+
 
 
 
