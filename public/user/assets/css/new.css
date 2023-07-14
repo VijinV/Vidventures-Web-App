@@ -167,6 +167,9 @@
         margin-left: 0;
         padding: 0;
     }
+    .content-active{
+        width: 79% !important;  
+      }
 
     .founderimage h3 {
         margin-top: 14px;
@@ -252,6 +255,21 @@
         top: 4px;
         right: 4rem;
 
+    }
+    .content-active{
+      width: 75% !important;  
+    }
+    #div_content_one{
+        text-align: center !important;
+    }
+    #div_content_two{
+        text-align: center !important;
+    }
+    #div_content_three{
+        text-align: center !important;
+    }
+    #div_content_four{
+        text-align: center !important;
     }
 
     #myVideo {
