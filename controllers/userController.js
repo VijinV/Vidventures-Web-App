@@ -379,7 +379,7 @@ const verifyUser = async (req, res) => {
         if (passwordMatch) {
           req.session.user_id = userDate._id;
           req.session.user_email = userDate.email;
-          res.redirect("/");
+          res.redirect("/profile");
         } else {
           res.render("login", { message: "Invalid Password" });
         }
