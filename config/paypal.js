@@ -33,9 +33,28 @@ const Pay = async (req, res) => {
                 }]
             },
             "amount":{
-                
-            }
+                "currency":"USD",
+                "total":"25.00"
+
+            },
+            "description":"Payment using paypal"
         }]
     }
 
+    paypal.payment.create(create_payment_json,function (err,payment){
+        if(err){
+            throw err;
+        }else{
+            for(let i = 0;i<payment.links.length;i++){
+                if(payment.links[i].rel === "approval_url"){
+                    res.redirect(payment.links[i].href)
+                }
+            }
+        }
+    })
+
 };
+
+module.exports ={
+    Pay
+}

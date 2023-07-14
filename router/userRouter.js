@@ -129,7 +129,7 @@ route.post('/create-checkout', async (req, res) => {
 
 route.get('/save', userAuth.isLogin, userController.placeOrder)
 
-route.post('/checkout', userAuth.isLogin, userController.stripePayment)
+route.post('/checkout', userAuth.isLogin, userController.Payment)
 
 route.post('/updateQuantity', userAuth.isLogin, userController.updateCart)
 
@@ -195,11 +195,23 @@ route.get('/successpage', async (req, res, next) => {
 })
 
 
+
+
+const paypal = require('../config/paypal')
+
+
 route.get('/paypal', async (req, res, next) => {
 
   res.render('paypal',{ClientId:'AawfY8GD0ilW2dwLkgHjsyZaHKdeOzNsRB-zBOVKeRr0Gg13DzivSyti0N8SQDNjMCEesAzlEbJPJdWB'})
 });
 
+route.get('/paypalsuccess',userController.paypalSucess);
+
+route.get('/paypalcancel',(req, res, next) => {
+  res.send('Canceled')
+});
+
+route.post('/paypalPay', userController.paypalPayment);
 
 
 

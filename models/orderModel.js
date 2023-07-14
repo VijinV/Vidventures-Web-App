@@ -108,6 +108,9 @@ const orderSchema = new mongoose.Schema({
       type: String,
     },
   },
+  orderTotal:{
+    type: String,
+  }
 });
 
 orderSchema.statics.getOrder = async function (id) {
