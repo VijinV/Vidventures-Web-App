@@ -749,10 +749,10 @@ const DeliverOrder = async (req, res) => {
 
   // Create a message object
   const message = {
-    from: "vfcvijin@gmail.com", // Sender address
+    from: "vidventuresyt@gmail.com", // Sender address
     to: email, // List of recipients
-    subject: "Test Email from Node.js", // Subject line
-    text: "Hello, this is a test email sent from Node.js using Nodemailer!", // Plain text body
+    subject: "Your Order is Here!", // Subject line
+    text: "Your Order is Here!", // Plain text body
     html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" style="font-family:arial, 'helvetica neue', helvetica, sans-serif">
   <head>
