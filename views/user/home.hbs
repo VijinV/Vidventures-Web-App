@@ -532,9 +532,10 @@
             margin-left: 74px;
         }
 
-        .pricing-body span {
-            margin-left: 0px;
+        .pricing-span {
+           margin-left: 0 !important;
         }
+        
 
         .windows_counter {
             display: none;
@@ -560,9 +561,6 @@
             margin-left: 7rem;
         }
 
-        #hidden-li {
-            opacity: 1;
-        }
 
         #edit {
             margin-left: 3.1rem;
@@ -1745,10 +1743,10 @@
                                 <img src="admin/assets/ProductImages/{{post.image}}" alt="cashcow blog">
                         </div>
                         <div class="rbt-card-body">
-                            <h3 class="rbt-card-title "><a>{{post.heading}}</a></h3>
+                            <h3 class="rbt-card-title "><a href="/blogDetails?id={{post._id}}&&postType=Blog">{{post.heading}}</a></h3>
                             {{!-- <p class="rbt-card-text">It is a long established fact that a reader.</p> --}}
                             <div class="rbt-card-bottom">
-                                <a class="transparent-button">Learn More<i><svg width="17" height="12"
+                                <a href="/blogDetails?id={{post._id}}&&postType=Blog" class="transparent-button">Read more<i><svg width="17" height="12"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g stroke="#27374D" fill="none" fill-rule="evenodd">
                                                 <path d="M10.614 0l5.629 5.629-5.63 5.629" />
@@ -1771,7 +1769,7 @@
                                 <img src="admin/assets/ProductImages/{{image}}" alt="Card image"> </a>
                         </div>
                         <div class="rbt-card-body">
-                            <h5 class="rbt-card-title  "><a href="{{link}}">{{heading}}</a></h5>
+                            <h5 class="rbt-card-title  "><a href="/blogDetails?id={{_id}}&&postType=Blog">{{heading}}</a></h5>
                             <div class="rbt-card-bottom">
                                 <a class="transparent-button">Read Article<i><svg width="17" height="12"
                                             xmlns="http://www.w3.org/2000/svg">

@@ -62,7 +62,7 @@
 
     .rbt-shadow-box {
         padding: 57px !important;
-        padding-left: 81px !important;
+        padding-left: 81px ;
         padding-bottom: 35px !important;
     }
 
@@ -74,7 +74,11 @@
         font-size: 3rem;
         font-weight: 500
     }
-
+    @media (min-width: 300px) and (max-width: 480px) {
+        .rbt-shadow-box {
+            padding-left: 0 !important;
+        }
+    }
     /* Styling for the modal */
     .mymodal {
         display: none;
