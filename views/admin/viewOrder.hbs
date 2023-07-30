@@ -245,6 +245,8 @@
     // Assuming you have 'order' and 'products' data available here.
     const order = JSON.parse(document.querySelector('#orderfull').value);
     const products = JSON.parse(document.querySelector('#fullproducts').value);
+
+    console.log(order, products)
     
     // Add checks to ensure 'order' and 'products' are valid
     if (order && Array.isArray(products)) {
