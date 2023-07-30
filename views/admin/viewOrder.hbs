@@ -182,6 +182,10 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- Include jsPDF library -->
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.3/jspdf.min.js"></script>
 <!-- Your HTML code -->
 
@@ -189,60 +193,67 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
 
 <!-- Your other script code -->
+<!-- Remove duplicate script references and unwanted comment blocks -->
+
+<!-- Your other script code -->
 
 <script>
-
-     const order = document.querySelector('#orderfull').value
-    const products = document.querySelector('#fullproducts').value
-
-    console.log("name",order.userId.name, products)
-
-
   function generateProductPDF(order, products) {
     var doc = new jsPDF();
     doc.setFontSize(12);
 
-    doc.text("Order ID: " + order.orderId, 10, 10);
-    doc.text("Customer: " + order.userId.name, 10, 20);
-    doc.text("Email: " + order.userId.email, 10, 30);
-    doc.text("Mobile: " + order.userId.mobile, 10, 40);
-    doc.text("Address: " + order.address.line1 + ", " + order.address.line2, 10, 50);
-    doc.text("City: " + order.address.city, 10, 60);
-    doc.text("State: " + order.address.state, 10, 70);
-    doc.text("Postal Code: " + order.address.postal_code, 10, 80);
-    doc.text("Country: " + order.address.country, 10, 90); 
+    // Add checks to ensure 'order' and 'products' are valid
+    if (order && order.userId && products && products.length > 0) {
+      doc.text("Order ID: " + order.orderId, 10, 10);
+      doc.text("Customer: " + order.userId.name, 10, 20);
+      doc.text("Email: " + order.userId.email, 10, 30);
+      doc.text("Mobile: " + order.userId.mobile, 10, 40);
+      doc.text("Address: " + order.address.line1 + ", " + order.address.line2, 10, 50);
+      doc.text("City: " + order.address.city, 10, 60);
+      doc.text("State: " + order.address.state, 10, 70);
+      doc.text("Postal Code: " + order.address.postal_code, 10, 80);
+      doc.text("Country: " + order.address.country, 10, 90); 
 
-    var tableData = [];
-    products.forEach(function(product, index) {
-      tableData.push([
-        product.productId.name,
-        "$" + product.price.toFixed(2),
-        product.qty,
-        "$" + (product.price * product.qty).toFixed(2)
-      ]);
-    });
+      var tableData = [];
+      products.forEach(function(product, index) {
+        tableData.push([
+          product.productId.name,
+          "$" + product.price.toFixed(2),
+          product.qty,
+          "$" + (product.price * product.qty).toFixed(2)
+        ]);
+      });
 
-    doc.autoTable({
-      head: [["Product", "Unit Price", "Quantity", "Total"]],
-      body: tableData,
-      theme: "grid",
-      startY: 100, // Adjust startY to create space after the text content before the table
-      styles: { fontSize: 12 },
-      columnStyles: {
-        0: { fontStyle: "bold" },
-      },
-    });
+      doc.autoTable({
+        head: [["Product", "Unit Price", "Quantity", "Total"]],
+        body: tableData,
+        theme: "grid",
+        startY: 100, // Adjust startY to create space after the text content before the table
+        styles: { fontSize: 12 },
+        columnStyles: {
+          0: { fontStyle: "bold" },
+        },
+      });
+    } else {
+      console.error("Invalid order or products data.");
+    }
 
     return doc; // Return the generated PDF object
   }
 
   function generateAndDownloadInvoice() {
     // Assuming you have 'order' and 'products' data available here.
-    const order = document.querySelector('#orderfull').value
-    const products = document.querySelector('#fullproducts').value
-    var generatedPDF = generateProductPDF(order, products);
+    const order = JSON.parse(document.querySelector('#orderfull').value);
+    const products = JSON.parse(document.querySelector('#fullproducts').value);
+    
+    // Add checks to ensure 'order' and 'products' are valid
+    if (order && Array.isArray(products)) {
+      var generatedPDF = generateProductPDF(order, products);
 
-    // Save the PDF with an appropriate file name
-    generatedPDF.save('Invoice_' + order.orderId + '.pdf');
+      // Save the PDF with an appropriate file name
+      generatedPDF.save('Invoice_' + order.orderId + '.pdf');
+    } else {
+      console.error("Invalid order or products data.");
+    }
   }
 </script>
