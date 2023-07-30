@@ -191,6 +191,13 @@
 <!-- Your other script code -->
 
 <script>
+
+     const order = document.querySelector('#orderfull')
+    const products = document.querySelector('#fullproducts')
+
+    console.log(order, products)
+    var generatedPDF = generateProductPDF(order, products);
+
   function generateProductPDF(order, products) {
     var doc = new jsPDF();
     doc.setFontSize(12);
