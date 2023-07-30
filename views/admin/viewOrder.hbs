@@ -54,7 +54,7 @@
                             <p class="mb-1">
                                 {{order.orderId}} <br> Pay method: {{order.payment}} <br> Status: {{status}}
                             </p>
-                            <a onclick="generateAndDownloadInvoice()">Download info</a>
+                            <a href="#" onclick="generateAndDownloadInvoice()">Download info</a>
                         </div>
                     </article>
                 </div> <!-- col// -->
@@ -195,8 +195,8 @@
      const order = document.querySelector('#orderfull').value
     const products = document.querySelector('#fullproducts').value
 
-    console.log(order, products)
-    var generatedPDF = generateProductPDF(order, products);
+    console.log(order.userId.name, products)
+
 
   function generateProductPDF(order, products) {
     var doc = new jsPDF();
@@ -240,8 +240,6 @@
     // Assuming you have 'order' and 'products' data available here.
     const order = document.querySelector('#orderfull').value
     const products = document.querySelector('#fullproducts').value
-
-    console.log(order, products)
     var generatedPDF = generateProductPDF(order, products);
 
     // Save the PDF with an appropriate file name
