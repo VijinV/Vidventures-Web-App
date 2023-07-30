@@ -163,81 +163,75 @@
 
 
 
-<!-- Add these input elements in your HTML -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
 
 
-<!-- Add this button to trigger the PDF generation and download -->
-{{!-- <button onclick="generateAndDownloadInvoice()">Generate Invoice</button> --}}
 
-<!-- Include the EasyInvoice script -->
-<script src="https://unpkg.com/easyinvoice/dist/easyinvoice.min.js"></script>
+<!-- SheetJS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
 
-<!-- Add the following JavaScript code to your script -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include jsPDF library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.3/jspdf.min.js"></script>
+<!-- Your HTML code -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.3/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+
+<!-- Your other script code -->
+
 <script>
-  function generateAndDownloadInvoice() {
-    // Get the necessary data from the input elements
-    var userName = document.getElementById('userName').value;
-    var userMobile = document.getElementById('userMobile').value;
-    var userEmail = document.getElementById('userEmail').value;
-    var createdAt = document.getElementById('createdAt').value;
-    var orderId = document.getElementById('orderId').value;
-    var line1 = document.getElementById('line1').value;
-    var line2 = document.getElementById('line2').value;
-    var city = document.getElementById('city').value;
-    var state = document.getElementById('state').value;
-    var postal_code = document.getElementById('postal_code').value;
-    var country = document.getElementById('country').value;
+  function generateProductPDF(order, products) {
+    var doc = new jsPDF();
+    doc.setFontSize(12);
 
-    // Create the invoice data
-    var data = {
-      currency: 'USD',
-      taxNotation: 'vat', // Use 'vat' if you want to show tax amount separately
-      marginTop: 25,
-      marginRight: 25,
-      marginLeft: 25,
-      marginBottom: 25,
-      sender: {
-        company: 'Your Company',
-        address: '123 Main Street',
-        zip: '12345',
-        city: 'City',
-        country: 'Country',
-      },
-      client: {
-        company: userName,
-        address: line1 + ', ' + line2,
-        zip: postal_code,
-        city: city,
-        country: country,
-        email: userEmail,
-      },
-      invoiceNumber: orderId,
-      invoiceDate: createdAt,
-      products: [
-        {
-          quantity: '1',
-          description: 'Product 1',
-          tax: 0,
-          price: 10,
-        },
-        {
-          quantity: '2',
-          description: 'Product 2',
-          tax: 0,
-          price: 20,
-        },
-        // Add more products here if needed
-      ],
-      bottomNotice: 'Thank you for your purchase!',
-    };
+    doc.text("Order ID: " + order.orderId, 10, 10);
+    doc.text("Customer: " + order.userId.name, 10, 20);
+    doc.text("Email: " + order.userId.email, 10, 30);
+    doc.text("Mobile: " + order.userId.mobile, 10, 40);
+    doc.text("Address: " + order.address.line1 + ", " + order.address.line2, 10, 50);
+    doc.text("City: " + order.address.city, 10, 60);
+    doc.text("State: " + order.address.state, 10, 70);
+    doc.text("Postal Code: " + order.address.postal_code, 10, 80);
+    doc.text("Country: " + order.address.country, 10, 90);
 
-    // Generate the invoice
-    easyinvoice.createInvoice(data, function (result) {
-      // Display the generated invoice
-      var invoicePdf = result.pdf;
-      // Save the PDF with an appropriate file name
-      var fileName = 'Invoice_' + orderId + '.pdf';
-      saveAs(invoicePdf, fileName);
+    var tableData = [];
+    products.forEach(function(product, index) {
+      tableData.push([
+        product.productId.name,
+        "$" + product.price.toFixed(2),
+        product.qty,
+        "$" + (product.price * product.qty).toFixed(2)
+      ]);
     });
+
+    doc.autoTable({
+      head: [["Product", "Unit Price", "Quantity", "Total"]],
+      body: tableData,
+      theme: "grid",
+      startY: 100, // Adjust startY to create space after the text content before the table
+      styles: { fontSize: 12 },
+      columnStyles: {
+        0: { fontStyle: "bold" },
+      },
+    });
+
+    return doc; // Return the generated PDF object
+  }
+
+  function generateAndDownloadInvoice() {
+    // Assuming you have 'order' and 'products' data available here.
+    var generatedPDF = generateProductPDF(order, products);
+
+    // Save the PDF with an appropriate file name
+    generatedPDF.save('Invoice_' + order.orderId + '.pdf');
   }
 </script>
