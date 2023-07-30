@@ -233,6 +233,8 @@
     // Assuming you have 'order' and 'products' data available here.
     const order = document.querySelector('#orderfull').value
     const products = document.querySelector('#fullproducts').value
+
+    console.log(order, products)
     var generatedPDF = generateProductPDF(order, products);
 
     // Save the PDF with an appropriate file name
