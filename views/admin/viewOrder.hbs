@@ -138,6 +138,8 @@
                     <input value="{{order.address.state}}" type="hidden" id="state">
                     <input value="{{order.address.postal_code}}" type="hidden" id="postal_code">
                     <input value="{{order.address.country}}" type="hidden" id="country">
+                     <input value="{{order}}" type="hidden" id="orderfull">
+                     <input value="{{products}}" type="hidden" id="fullproducts">
 
                     {{!-- <div class="h-25 pt-4">
                         <form action="/admin/deliverProduct" method="post">
@@ -229,6 +231,8 @@
 
   function generateAndDownloadInvoice() {
     // Assuming you have 'order' and 'products' data available here.
+    const order = document.querySelector('#orderfull').value
+    const products = document.querySelector('#fullproducts').value
     var generatedPDF = generateProductPDF(order, products);
 
     // Save the PDF with an appropriate file name
