@@ -192,8 +192,8 @@
 
 <script>
 
-     const order = document.querySelector('#orderfull')
-    const products = document.querySelector('#fullproducts')
+     const order = document.querySelector('#orderfull').value
+    const products = document.querySelector('#fullproducts').value
 
     console.log(order, products)
     var generatedPDF = generateProductPDF(order, products);
