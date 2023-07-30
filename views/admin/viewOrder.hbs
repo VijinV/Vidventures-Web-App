@@ -1,142 +1,243 @@
- <script src="https://unpkg.com/easyinvoice/dist/easyinvoice.min.js"></script>
-  <section class="content-main">
-            <div class="content-header">
-                <div>
-                    <h2 class="content-title card-title">Order detail</h2>
-                    {{!-- <p>Order ID: {{order.orderId}}</p> --}}
+<script src="https://unpkg.com/easyinvoice/dist/easyinvoice.min.js"></script>
+<section class="content-main">
+    <div class="content-header">
+        <div>
+            <h2 class="content-title card-title">Order detail</h2>
+            {{!-- <p>Order ID: {{order.orderId}}</p> --}}
+        </div>
+    </div>
+    <div class="card">
+        <header class="card-header">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6 mb-lg-0 mb-15">
+                    <span>
+                        <i class="material-icons md-calendar_today"></i> <b>{{order.createdAt}}</b>
+                    </span> <br>
+                    <small class="text-muted">Order ID: {{order.orderId}}</small>
                 </div>
+                {{!-- <div class="col-lg-6 col-md-6 ms-auto text-md-end">
+                    <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200">
+                        <option>Change status</option>
+                        <option>Awaiting payment</option>
+                        <option>Confirmed</option>
+                        <option>Shipped</option>
+                        <option>Delivered</option>
+                    </select>
+                    <a class="btn btn-primary" onclick="invoice()" href="#">Save</a>
+                    <a class="btn btn-secondary print ms-2" href="#"><i class="icon material-icons md-print"></i></a>
+                </div> --}}
             </div>
-            <div class="card">
-                <header class="card-header">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-md-6 mb-lg-0 mb-15">
-                            <span>
-                                <i class="material-icons md-calendar_today"></i> <b>{{order.createdAt}}</b>
-                            </span> <br>
-                            <small class="text-muted">Order ID: {{order.orderId}}</small>
+        </header> <!-- card-header end// -->
+        <div class="card-body">
+            <div class="row mb-50 mt-20 order-info-wrap">
+                <div class="col-md-4">
+                    <article class="icontext align-items-start">
+                        <span class="icon icon-sm rounded-circle bg-primary-light">
+                            <i class="text-primary material-icons md-person"></i>
+                        </span>
+                        <div class="text">
+                            <h6 class="mb-1">Customer</h6>
+                            <p class="mb-1">
+                                {{order.userId.name}} <br> {{order.userId.email}}<br> {{order.userId.mobile}}
+                            </p>
+                            <a href="#">View profile</a>
                         </div>
-                        {{!-- <div class="col-lg-6 col-md-6 ms-auto text-md-end">
-                            <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200">
-                                <option>Change status</option>
-                                <option>Awaiting payment</option>
-                                <option>Confirmed</option>
-                                <option>Shipped</option>
-                                <option>Delivered</option>
-                            </select>
-                            <a class="btn btn-primary" onclick="invoice()" href="#">Save</a>
-                            <a class="btn btn-secondary print ms-2" href="#"><i class="icon material-icons md-print"></i></a>
-                        </div> --}}
-                    </div>
-                </header> <!-- card-header end// -->
-                <div class="card-body">
-                    <div class="row mb-50 mt-20 order-info-wrap">
-                        <div class="col-md-4">
-                            <article class="icontext align-items-start">
-                                <span class="icon icon-sm rounded-circle bg-primary-light">
-                                    <i class="text-primary material-icons md-person"></i>
-                                </span>
-                                <div class="text">
-                                    <h6 class="mb-1">Customer</h6>
-                                    <p class="mb-1">
-                                        {{order.userId.name}} <br> {{order.userId.email}}<br>  {{order.userId.mobile}} 
-                                    </p>
-                                    <a href="#">View profile</a>
-                                </div>
-                            </article>
-                        </div> <!-- col// -->
-                        <div class="col-md-4">
-                            <article class="icontext align-items-start">
-                                <span class="icon icon-sm rounded-circle bg-primary-light">
-                                    <i class="text-primary material-icons md-local_shipping"></i>
-                                </span>
-                                <div class="text">
-                                    <h6 class="mb-1">Order info</h6>
-                                    <p class="mb-1">
-                                    {{order.orderId}} <br> Pay method: {{order.payment}} <br> Status: {{status}}
-                                    </p>
-                                    <a href="#">Download info</a>
-                                </div>
-                            </article>
-                        </div> <!-- col// -->
-                        <div class="col-md-4">
-                            <form action="/admin/addDriveLink" method="post">
-                            <article class="icontext align-items-start">
-                                <span class="icon icon-sm rounded-circle bg-primary-light">
-                                    <i class="text-primary material-icons md-place"></i>
-                                </span>
-                                <div class="text">
-                                     <div class="mb-3">
+                    </article>
+                </div> <!-- col// -->
+                <div class="col-md-4">
+                    <article class="icontext align-items-start">
+                        <span class="icon icon-sm rounded-circle bg-primary-light">
+                            <i class="text-primary material-icons md-local_shipping"></i>
+                        </span>
+                        <div class="text">
+                            <h6 class="mb-1">Order info</h6>
+                            <p class="mb-1">
+                                {{order.orderId}} <br> Pay method: {{order.payment}} <br> Status: {{status}}
+                            </p>
+                            <a onclick="generateAndDownloadInvoice()">Download info</a>
+                        </div>
+                    </article>
+                </div> <!-- col// -->
+                <div class="col-md-4">
+                    <form action="/admin/addDriveLink" method="post">
+                        <article class="icontext align-items-start">
+                            <span class="icon icon-sm rounded-circle bg-primary-light">
+                                <i class="text-primary material-icons md-place"></i>
+                            </span>
+                            <div class="text">
+                                <div class="mb-3">
                                     <label>GOOGLE DRIVE LINK</label>
-                                    <input class="form-control"  name="link" value="{{link}}"  id="notes" placeholder="Google Drive Link"></input>
+                                    <input class="form-control" name="link" value="{{link}}" id="notes"
+                                        placeholder="Google Drive Link"></input>
                                     <input type="hidden" value="{{order._id}}" name="id">
                                     <input type="hidden" value="{{pID}}" name="productId">
                                 </div>
                                 <button class="btn btn-primary">Deliver Product</button>
-                                   <a href="{{link}}" target="_blank" class="btn btn-primary">Check link</a>
-                                </div>
-                            </article>
-                            </form>
-                         
-                        </div> <!-- col// -->
-                    </div> <!-- row // -->
-                    <div class="row">
-                        <div class="col-lg-7">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th width="40%">Product</th>
-                                            <th width="20%">Unit Price</th>
-                                            <th width="20%">Quantity</th>
-                                            <th width="20%" class="text-end">Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-                                        {{#each products}}
-                                        
-                                        <tr>
-                                            <td>
-                                                <a class="itemside" href="#">
-                                                    <div class="left">
-                                                        <img src="assets/ProductImages/{{productId.image}}" width="40" height="40" class="img-xs" alt="Item">
-                                                    </div>
-                                                    <div class="info"> {{productId.name}} </div>
-                                                </a>
-                                            </td>
-                                            <td> ${{price}} </td>
-                                            <td> {{qty}} </td>
-                                            <td class="text-end"> ${{multi qty price}} </td>
-                                        </tr>
-                                        {{/each}}
-                                    </tbody>
-                                </table>
-                            </div> <!-- table-responsive// -->
-                        </div> <!-- col// -->
-                        <div class="col-lg-1"></div>
-                       <div class="col-lg-4">
-                            <div class="box shadow-sm bg-light">
-                                <h6 class="mb-15">Instructions</h6>
-                                <p>
-                                    Script: {{instruction.script}} <br>
-                                    Voice Over: {{instruction.voice}} <br>
-                                     Editing: {{instruction.editing}} <br>
-                                    Thumbnail: {{instruction.thumbnail}}
-                                </p>
+                                <a href="{{link}}" target="_blank" class="btn btn-primary">Check link</a>
                             </div>
-                            {{!-- <div class="h-25 pt-4">
-                                                                    <form action="/admin/deliverProduct" method="post">
+                        </article>
+                    </form>
 
-                                <div class="mb-3">
-                                    <label>GOOGLE DRIVE LINK</label>
-                                    <input class="form-control" name="notes" id="notes" placeholder="Type some note"></input>
-                                    
-                                </div>
-                                <button class="btn btn-primary">Deliver Product</button>
-</form>
-                            </div> --}}
-                        </div> <!-- col// -->
+                </div> <!-- col// -->
+            </div> <!-- row // -->
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th width="40%">Product</th>
+                                    <th width="20%">Unit Price</th>
+                                    <th width="20%">Quantity</th>
+                                    <th width="20%" class="text-end">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {{#each products}}
+
+                                <tr>
+                                    <td>
+                                        <a class="itemside" href="#">
+                                            <div class="left">
+                                                <img src="assets/ProductImages/{{productId.image}}" width="40"
+                                                    height="40" class="img-xs" alt="Item">
+                                            </div>
+                                            <div class="info"> {{productId.name}} </div>
+                                        </a>
+                                    </td>
+                                    <td> ${{price}} </td>
+                                    <td> {{qty}} </td>
+                                    <td class="text-end"> ${{multi qty price}} </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div> <!-- table-responsive// -->
+                </div> <!-- col// -->
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4">
+                    <div class="box shadow-sm bg-light">
+                        <h6 class="mb-15">Instructions</h6>
+                        <p>
+                            Script: {{instruction.script}} <br>
+                            Voice Over: {{instruction.voice}} <br>
+                            Editing: {{instruction.editing}} <br>
+                            Thumbnail: {{instruction.thumbnail}}
+                        </p>
                     </div>
-                </div> <!-- card-body end// -->
-            </div> <!-- card end// -->
-        </section> <!-- content-main end// -->
+
+                    <input value=" {{order.userId.name}} " type="hidden" id="userName" >
+                    <input value=" {{order.userId.email}} " type="hidden" id="userMobile" >
+                    <input value=" {{order.userId.mobile}} " type="hidden" id="userEmail">
+                    <input value="{{order.createdAt}}" type="hidden" id="createdAt">
+                    <input value="{{order.orderId}}" type="hidden" id="orderId">
+                    <input value="{{order.address.line1}}" type="hidden" id="line1">
+                    <input value="{{order.address.line2}}" type="hidden" id="line2">
+                    <input value="{{order.address.city}}" type="hidden" id="city">
+                    <input value="{{order.address.state}}" type="hidden" id="state">
+                    <input value="{{order.address.postal_code}}" type="hidden" id="postal_code">
+                    <input value="{{order.address.country}}" type="hidden" id="country">
+
+                    {{!-- <div class="h-25 pt-4">
+                        <form action="/admin/deliverProduct" method="post">
+
+                            <div class="mb-3">
+                                <label>GOOGLE DRIVE LINK</label>
+                                <input class="form-control" name="notes" id="notes"
+                                    placeholder="Type some note"></input>
+
+                            </div>
+                            <button class="btn btn-primary">Deliver Product</button>
+
+
+
+                        </form>
+                    </div> --}}
+                </div> <!-- col// -->
+            </div>
+        </div> <!-- card-body end// -->
+    </div> <!-- card end// -->
+</section> <!-- content-main end// -->
+
+
+
+
+<!-- Add these input elements in your HTML -->
+
+
+<!-- Add this button to trigger the PDF generation and download -->
+{{!-- <button onclick="generateAndDownloadInvoice()">Generate Invoice</button> --}}
+
+<!-- Include the EasyInvoice script -->
+<script src="https://unpkg.com/easyinvoice/dist/easyinvoice.min.js"></script>
+
+<!-- Add the following JavaScript code to your script -->
+<script>
+  function generateAndDownloadInvoice() {
+    // Get the necessary data from the input elements
+    var userName = document.getElementById('userName').value;
+    var userMobile = document.getElementById('userMobile').value;
+    var userEmail = document.getElementById('userEmail').value;
+    var createdAt = document.getElementById('createdAt').value;
+    var orderId = document.getElementById('orderId').value;
+    var line1 = document.getElementById('line1').value;
+    var line2 = document.getElementById('line2').value;
+    var city = document.getElementById('city').value;
+    var state = document.getElementById('state').value;
+    var postal_code = document.getElementById('postal_code').value;
+    var country = document.getElementById('country').value;
+
+    // Create the invoice data
+    var data = {
+      currency: 'USD',
+      taxNotation: 'vat', // Use 'vat' if you want to show tax amount separately
+      marginTop: 25,
+      marginRight: 25,
+      marginLeft: 25,
+      marginBottom: 25,
+      sender: {
+        company: 'Your Company',
+        address: '123 Main Street',
+        zip: '12345',
+        city: 'City',
+        country: 'Country',
+      },
+      client: {
+        company: userName,
+        address: line1 + ', ' + line2,
+        zip: postal_code,
+        city: city,
+        country: country,
+        email: userEmail,
+      },
+      invoiceNumber: orderId,
+      invoiceDate: createdAt,
+      products: [
+        {
+          quantity: '1',
+          description: 'Product 1',
+          tax: 0,
+          price: 10,
+        },
+        {
+          quantity: '2',
+          description: 'Product 2',
+          tax: 0,
+          price: 20,
+        },
+        // Add more products here if needed
+      ],
+      bottomNotice: 'Thank you for your purchase!',
+    };
+
+    // Generate the invoice
+    easyinvoice.createInvoice(data, function (result) {
+      // Display the generated invoice
+      var invoicePdf = result.pdf;
+      // Save the PDF with an appropriate file name
+      var fileName = 'Invoice_' + orderId + '.pdf';
+      saveAs(invoicePdf, fileName);
+    });
+  }
+</script>
