@@ -2098,10 +2098,14 @@ const Payment = async (req, res) => {
 
       orderTotal += cartItems.cart.totalPrice
 
+      const newAmount = parseInt(cartItems.cart.totalPrice) + totalPaymentPrice;
+      const additionalAmount = newAmount * 0.04;
+      const totalAmount = newAmount + additionalAmount;
+
       amount = {
-        "currency": "USD",
-        "total": parseInt(cartItems.cart.totalPrice) + totalPaymentPrice
-      }
+        currency: "USD",
+        total: totalAmount,
+      };
 
 
       const create_payment_json = {
