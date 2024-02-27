@@ -157,7 +157,7 @@ app.use((req, res, next) => {
  
 app.use((err,req, res, next) => {
   res.status(500).render('user/404.hbs')
-})
+}) 
 
 
 userRoute.use(express.static(path.join(__dirname, "public")));
@@ -165,12 +165,12 @@ userRoute.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "public/admin")));
 
 mongoose.set("strictQuery", true);
-mongoose.connect(process.env.MONGO_URL, () =>
-  console.log("Database connection established")
-);
+mongoose.connect(process.env.DB).then(() => {
+  console.log("Database connection established");
+})
 
 
-app.listen(process.env.PORT, () => console.log("listening on port "+ process.env.PORT));
+app.listen(3030, () => console.log("listening on port "+ process.env.PORT));
 
 
 // app.listen(4000, () => console.log("listening on port "+ process.env.PORT));

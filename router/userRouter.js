@@ -12,7 +12,7 @@ const orderModel = require('../models/orderModel');
 
 require('dotenv').config();
 
-// get 
+// get mathodes
 
 route.get('/', userHome.loadHome)
 
@@ -202,9 +202,9 @@ const paypal = require('../config/paypal')
 
 route.get('/paypal', async (req, res, next) => {
 
-  res.render('paypal',{ClientId:'AawfY8GD0ilW2dwLkgHjsyZaHKdeOzNsRB-zBOVKeRr0Gg13DzivSyti0N8SQDNjMCEesAzlEbJPJdWB'})
+  res.render('paypal',{ClientId:'AaulNYR5x4G6N5o2BND0a982X03TwbXFJVXh72aHmCe8oyTI-qR9m5BjQPcWhfhX02FxUjeHjMP-4Viv'})
 });
-
+ 
 route.get('/paypalsuccess',userController.paypalSucess);
 
 route.get('/paypalcancel',(req, res, next) => {
@@ -223,7 +223,7 @@ route.get('/ourPledge', userController.loadPledge)
 
 
 
-
+ 
 
 
 module.exports = route

@@ -1451,9 +1451,6 @@ const stripePayment = async (req, res) => {
 const paypalPayment = async (req, res) => {
 
   try {
-
-
-
     //request body parameters
 
     const {
@@ -2010,6 +2007,7 @@ const Payment = async (req, res) => {
 
       })
 
+      
 
       const items = []
 
