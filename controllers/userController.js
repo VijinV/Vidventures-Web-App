@@ -2096,34 +2096,36 @@ const Payment = async (req, res) => {
 
       });
 
-      orderTotal += cartItems.cart.totalPrice
+      orderTotal += cartItems.cart.totalPrice;
+
 
       const newAmount = parseInt(cartItems.cart.totalPrice) + totalPaymentPrice;
-      const additionalAmount = newAmount * 0.04;
-      const totalAmount = newAmount + additionalAmount;
+    
 
-      amount = {
+
+      const paymentAmount = {
         currency: "USD",
-        total: totalAmount,
+        total: newAmount,
       };
 
-
       const create_payment_json = {
-        "intent": "sale",
-        "payer": {
-          "payment_method": "paypal"
+        intent: "sale",
+        payer: {
+          payment_method: "paypal",
         },
-        "redirect_urls": {
-          "return_url": "http://localhost:3000/paypalsuccess",
-          "cancel_url": "http://localhost:3000/paypalcancel"
+        redirect_urls: {
+          return_url: "http://localhost:3030/paypalsuccess",
+          cancel_url: "http://localhost:3030/paypalcancel",
         },
-        "transactions": [{
-          "item_list": {
-            "items": items
+        transactions: [
+          {
+            item_list: {
+              items: items,
+            },
+            amount: paymentAmount,
+            description: "Payment using PayPal",
           },
-          "amount": amount,
-          "description": "Payment using PayPal"
-        }]
+        ],
       };
 
       const updatedUser = await userModel.findByIdAndUpdate(

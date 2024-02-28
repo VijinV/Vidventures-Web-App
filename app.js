@@ -5,6 +5,7 @@ const session = require("express-session");
 const nocache = require("nocache");
 const moment = require("moment");
 const cors = require('cors');
+const morgan = require("morgan");
 
 // requiring config files
 require("dotenv").config();
@@ -21,6 +22,8 @@ const port = process.env.PORT || 4000
 
 const defaultPort = process.env.PORT;
 const fallbackPort = 4000;
+
+app.use(morgan("dev"));
 
 const path = require("path");
 // hbs
